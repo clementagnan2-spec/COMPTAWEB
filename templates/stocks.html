@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %}Stocks{% endblock %}
+{% block content %}
+  <h1>Stocks</h1>
+  <p class="subtitle">Synthèse des stocks, exercice {{ exercice }} — valorisation au coût unitaire moyen pondéré.</p>
+
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <thead><tr><th>Compte</th><th>Libellé</th>
+          <th class="num">Stock initial</th><th class="num">Entrées</th><th class="num">Sorties</th>
+          <th class="num">Stock final</th>
+          <th class="num">Qté initiale</th><th class="num">Qté entrées</th><th class="num">Qté sorties</th>
+          <th class="num">Qté finale</th><th class="num">Coût unit. moyen</th></tr></thead>
+      <tbody>
+        {% for s in synthese %}
+        <tr>
+          <td class="figure">{{ s.code }}</td>
+          <td>{{ s.label }}</td>
+          <td class="num figure">{{ s.stock_initial | cfa }}</td>
+          <td class="num figure debit-amt">{{ s.entrees | cfa }}</td>
+          <td class="num figure credit-amt">{{ s.sorties | cfa }}</td>
+          <td class="num figure">{{ s.stock_final | cfa }}</td>
+          <td class="num figure">{{ s.qte_initiale | cfa }}</td>
+          <td class="num figure">{{ s.qte_entrees | cfa }}</td>
+          <td class="num figure">{{ s.qte_sorties | cfa }}</td>
+          <td class="num figure">{{ s.qte_finale | cfa }}</td>
+          <td class="num figure">{{ s.cout_unitaire_moyen | cfa if s.cout_unitaire_moyen is not none else "—" }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="form-card" style="margin-top:24px;">
+    <h2 class="section-title" style="margin-top:0;">Modifier un stock initial (valeur + quantité)</h2>
+    <form method="post" class="form-row" style="align-items:flex-end;">
+      <div class="field">
+        <label>Compte</label>
+        <select name="compte" required>
+          {% for s in synthese %}<option value="{{ s.code }}">{{ s.code }} — {{ s.label }}</option>{% endfor %}
+        </select>
+      </div>
+      <div class="field small"><label>Valeur (F CFA)</label><input type="text" name="valeur" required></div>
+      <div class="field small"><label>Quantité</label><input type="text" name="quantite" required></div>
+      <div class="field small"><button type="submit" class="btn">Enregistrer</button></div>
+    </form>
+  </div>
+
+  <h2 class="section-title">Détail par compte (classe 3)</h2>
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <thead><tr><th>Compte</th><th>Libellé</th>
+          <th class="num">Stock initial</th><th class="num">Entrées</th><th class="num">Sorties</th>
+          <th class="num">Stock final</th><th class="num">Coût unit. moyen</th></tr></thead>
+      <tbody>
+        {% for d in detail %}
+        <tr>
+          <td class="figure">{{ d.code }}</td>
+          <td>{{ d.label }}</td>
+          <td class="num figure">{{ d.stock_initial | cfa }}</td>
+          <td class="num figure debit-amt">{{ d.entrees | cfa }}</td>
+          <td class="num figure credit-amt">{{ d.sorties | cfa }}</td>
+          <td class="num figure">{{ d.stock_final | cfa }}</td>
+          <td class="num figure">{{ d.cout_unitaire_moyen | cfa if d.cout_unitaire_moyen is not none else "—" }}</td>
+        </tr>
+        {% else %}
+        <tr><td colspan="7" style="text-align:center;color:var(--text-dim);padding:24px;">
+          Aucun compte de stock mouvementé sur cet exercice.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

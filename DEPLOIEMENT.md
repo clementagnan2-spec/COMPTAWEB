@@ -94,30 +94,51 @@ n'est garantie sur le plan Starter — on pourra passer à un plan avec
 ## Ce qui reste à construire (dans l'ordre convenu)
 
 1. ~~Fondations (connexion, tableau de bord, menu filtré)~~ ✅ fait
-2. ~~Saisie comptable + Rapports financiers~~ ✅ fait (voir ci-dessous)
-3. **Fournisseurs / Clients / Facturation** ← prochaine étape
-4. Stocks
-5. Immobilisations
-6. GRH / Paie
+2. ~~Saisie comptable + Rapports financiers~~ ✅ fait
+3. ~~Fournisseurs / Clients / Facturation~~ ✅ fait (voir ci-dessous)
+4. ~~Stocks~~ ✅ fait (voir ci-dessous)
+5. ~~Immobilisations~~ ✅ fait (voir ci-dessous)
+6. **GRH / Paie** ← prochaine étape
 7. Fabrication / Production
 8. Trésorerie
 9. Écrans ADMIN
 
-## Détail de l'étape 2 — Saisie comptable + Rapports financiers
+## Détail de l'étape 5 — Immobilisations
 
-Écrans construits et testés (identiques dans leur logique au bureau,
-`core.py` non modifié) :
-- **Saisie des écritures** : saisie multi-lignes avec recherche de compte
-  en direct, vérification d'équilibre en temps réel, liste des écritures
-  de l'exercice, suppression.
-- **Soldes d'ouverture** : saisie + liste par exercice.
-- **Grand livre** : détail chronologique d'un compte, solde cumulé.
-- **Balance** : balance générale de l'exercice.
-- **Bilan SYSCOHADA**, **Compte de résultat (SIG)**, **TFT**,
-  **Situation financière** : calculés depuis les mêmes gabarits Excel
-  officiels que le bureau — si des formules du gabarit TFT posent
-  toujours problème, le détail des cellules en erreur s'affiche
-  maintenant directement à l'écran.
+- **Immobilisations** : liste de tous les comptes de classe 2 ayant un
+  solde (valeur brute, amortissement réellement comptabilisé, valeur
+  nette) + fiche éditable par compte (fournisseur, prix d'achat, date
+  d'acquisition, base de répartition pour le coût de production en
+  Fabrication, amortissement manuel en attendant les vraies dotations).
+- **Amortissements** : taux indicatif par catégorie (le montant réellement
+  affiché ailleurs reste toujours celui comptabilisé dans la Balance).
 
-Un sélecteur d'exercice comptable est apparu en haut de chaque page
-concernée (mémorisé pendant la session).
+## Détail de l'étape 4 — Stocks
+
+- **Synthèse** des 4 comptes centralisateurs (Marchandises, Matières
+  premières, Autres approvisionnements, Produits finis) : stock initial,
+  entrées, sorties, stock final — en valeur ET en quantité, avec coût
+  unitaire moyen pondéré calculé automatiquement.
+- **Détail par compte** (tous les sous-comptes de la classe 3 réellement
+  utilisés).
+- Modification du stock initial (valeur + quantité) par compte et par
+  exercice.
+- Les entrées/sorties sont calculées **automatiquement** à partir des
+  écritures de Saisie (colonne Quantité) et des validations de facture —
+  aucune double saisie nécessaire, testé de bout en bout (stock initial
+  + écriture d'achat avec quantité → stock final recalculé correctement).
+
+## Détail de l'étape 3 — Fournisseurs / Clients / Facturation
+
+- **Fournisseurs** et **Clients** : liste, recherche, création, suppression.
+- **Facturation** : création de facture en brouillon → ajout de lignes
+  (compte de vente + quantité + prix, avec recherche de compte en direct,
+  calcul HT/TVA/TTC automatique) → **Valider (comptabiliser)** génère les
+  écritures comptables équilibrées (Débit Client, Crédit Ventes, Crédit
+  TVA) et les envoie directement dans Saisie comptable, exactement comme
+  le bureau → **Corriger (dévalider)** repasse la facture en brouillon et
+  supprime les écritures générées en cas d'erreur. Aperçu avant impression
+  disponible (ouvre le document dans un nouvel onglet).
+- Testé de bout en bout : création facture → ligne → validation →
+  écritures équilibrées vérifiées en base → apparition correcte dans
+  Saisie → dévalidation → écritures bien supprimées.

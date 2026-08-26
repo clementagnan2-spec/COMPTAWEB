@@ -126,6 +126,12 @@ MENU_ROUTES = {
     "compte_resultat_sig": "compte_resultat_sig",
     "tft": "tft",
     "situation_financiere": "situation_financiere",
+    "fournisseurs": "fournisseurs",
+    "clients": "clients",
+    "facturation": "facturation",
+    "stocks": "stocks",
+    "immobilisations": "immobilisations",
+    "amortissements": "amortissements",
 }
 
 
@@ -136,6 +142,27 @@ def menu_url(menu_key):
     return url_for("module_placeholder", menu_key=menu_key)
 
 
+@app.context_processor
+def inject_menu():
+    """Rend le menu (filtré par niveau d'accès) disponible dans TOUS les
+    templates automatiquement, sans que chaque route ait à le recalculer et
+    le passer explicitement — évite qu'une nouvelle page oublie de le faire
+    et se retrouve avec une barre latérale vide."""
+    if "user" not in session:
+        return {"menu": []}
+    try:
+        db = get_db()
+        autorises = core.get_menus_autorises(db, session["user"]["niveau_acces"])
+        menu = [
+            (titre, [(label, key) for label, key in items if key in autorises])
+            for titre, items in core.MENU_STRUCTURE
+            if any(key in autorises for _label, key in items)
+        ]
+        return {"menu": menu}
+    except Exception:
+        return {"menu": []}
+
+
 # ---------------------------------------------------------------------------
 # Tableau de bord — menu filtré par niveau d'accès (core.MENU_STRUCTURE /
 # core.get_menus_autorises, exactement la même règle que sur le bureau)
@@ -143,14 +170,7 @@ def menu_url(menu_key):
 @app.route("/")
 @login_required
 def dashboard():
-    db = get_db()
-    autorises = core.get_menus_autorises(db, session["user"]["niveau_acces"])
-    menu = [
-        (titre, [(label, key) for label, key in items if key in autorises])
-        for titre, items in core.MENU_STRUCTURE
-        if any(key in autorises for _label, key in items)
-    ]
-    return render_template("dashboard.html", menu=menu)
+    return render_template("dashboard.html")
 
 
 @app.route("/module/<menu_key>")
@@ -364,6 +384,241 @@ app.add_url_rule("/module/situation_financiere", "situation_financiere",
                   menu_requis("situation_financiere")(
                       _rapport_formule_generique("situation_financiere", "etat_formule.html",
                                                   core.compute_situation_fin)))
+
+
+# ---------------------------------------------------------------------------
+# ENGAGEMENTS-PROJETS > Fournisseurs & COMMERCIAL > Clients
+# ---------------------------------------------------------------------------
+@app.route("/module/fournisseurs", methods=["GET", "POST"])
+@menu_requis("fournisseurs")
+def fournisseurs():
+    db = get_db()
+    if request.method == "POST":
+        try:
+            core.add_fournisseur(
+                db, request.form["code"], request.form["raison_sociale"],
+                contact=request.form.get("contact", ""), telephone=request.form.get("telephone", ""),
+                adresse=request.form.get("adresse", ""),
+                delai_paiement_jours=request.form.get("delai_paiement_jours") or 30,
+                delai_livraison_jours=request.form.get("delai_livraison_jours") or 15,
+            )
+            flash("Fournisseur enregistré.", "success")
+        except (ValueError, KeyError) as exc:
+            flash(str(exc), "error")
+        return redirect(url_for("fournisseurs"))
+    q = request.args.get("q", "")
+    return render_template("fournisseurs.html", fournisseurs=core.list_fournisseurs(db, query=q or None), q=q)
+
+
+@app.route("/module/fournisseurs/supprimer/<code>", methods=["POST"])
+@menu_requis("fournisseurs")
+def fournisseurs_supprimer(code):
+    try:
+        core.delete_fournisseur(get_db(), code)
+        flash("Fournisseur supprimé.", "success")
+    except Exception as exc:
+        flash(f"Suppression impossible : {exc}", "error")
+    return redirect(url_for("fournisseurs"))
+
+
+@app.route("/module/clients", methods=["GET", "POST"])
+@menu_requis("clients")
+def clients():
+    db = get_db()
+    if request.method == "POST":
+        try:
+            core.add_client(
+                db, request.form["code"], request.form["raison_sociale"],
+                contact=request.form.get("contact", ""), telephone=request.form.get("telephone", ""),
+                adresse=request.form.get("adresse", ""),
+                delai_paiement_jours=request.form.get("delai_paiement_jours") or 30,
+            )
+            flash("Client enregistré.", "success")
+        except (ValueError, KeyError) as exc:
+            flash(str(exc), "error")
+        return redirect(url_for("clients"))
+    q = request.args.get("q", "")
+    return render_template("clients.html", clients=core.list_clients(db, query=q or None), q=q)
+
+
+@app.route("/module/clients/supprimer/<code>", methods=["POST"])
+@menu_requis("clients")
+def clients_supprimer(code):
+    try:
+        core.delete_client(get_db(), code)
+        flash("Client supprimé.", "success")
+    except Exception as exc:
+        flash(f"Suppression impossible : {exc}", "error")
+    return redirect(url_for("clients"))
+
+
+# ---------------------------------------------------------------------------
+# COMMERCIAL > Facturation
+# ---------------------------------------------------------------------------
+@app.route("/module/facturation", methods=["GET", "POST"])
+@menu_requis("facturation")
+def facturation():
+    db = get_db()
+    if request.method == "POST":
+        try:
+            fid = core.create_facture_vente(
+                db, request.form["numero"], request.form["date_facture"], request.form["client_code"],
+            )
+            flash("Facture créée en brouillon — ajoutez des lignes.", "success")
+            return redirect(url_for("facturation_detail", facture_id=fid))
+        except (ValueError, KeyError) as exc:
+            flash(str(exc), "error")
+        return redirect(url_for("facturation"))
+    return render_template("facturation.html", factures=core.list_factures_vente(db),
+                            clients=core.list_clients(db), today=core.date.today().isoformat())
+
+
+@app.route("/module/facturation/<int:facture_id>", methods=["GET", "POST"])
+@menu_requis("facturation")
+def facturation_detail(facture_id):
+    db = get_db()
+    facture = core.get_facture_vente(db, facture_id)
+    if not facture:
+        flash("Facture introuvable.", "error")
+        return redirect(url_for("facturation"))
+
+    if request.method == "POST":
+        action = request.form.get("action")
+        try:
+            if action == "ajouter_ligne":
+                core.add_ligne_facture_vente(
+                    db, facture_id, request.form["compte_vente"], request.form["libelle"],
+                    float(request.form["quantite"]), float(request.form["prix_unitaire"]),
+                )
+                flash("Ligne ajoutée.", "success")
+            elif action == "valider":
+                warnings = core.valider_facture_vente(db, facture_id)
+                flash("Facture validée — écritures envoyées en Saisie.", "success")
+                for w in warnings:
+                    flash(w, "error")
+            elif action == "devalider":
+                core.devalider_facture_vente(db, facture_id)
+                flash("Facture repassée en brouillon.", "success")
+        except (ValueError, KeyError) as exc:
+            flash(str(exc), "error")
+        return redirect(url_for("facturation_detail", facture_id=facture_id))
+
+    facture = core.get_facture_vente(db, facture_id)
+    lignes = core.list_lignes_facture_vente(db, facture_id)
+    totals = core.compute_facture_totals(db, facture_id)
+    return render_template("facturation_detail.html", facture=facture, lignes=lignes, totals=totals)
+
+
+@app.route("/module/facturation/<int:facture_id>/supprimer", methods=["POST"])
+@menu_requis("facturation")
+def facturation_supprimer(facture_id):
+    try:
+        core.delete_facture_vente(get_db(), facture_id)
+        flash("Facture supprimée.", "success")
+    except ValueError as exc:
+        flash(str(exc), "error")
+    return redirect(url_for("facturation"))
+
+
+@app.route("/module/facturation/ligne/<int:ligne_id>/supprimer", methods=["POST"])
+@menu_requis("facturation")
+def facturation_ligne_supprimer(ligne_id):
+    facture_id = request.form.get("facture_id", type=int)
+    core.delete_ligne_facture_vente(get_db(), ligne_id)
+    flash("Ligne supprimée.", "success")
+    return redirect(url_for("facturation_detail", facture_id=facture_id))
+
+
+@app.route("/module/facturation/<int:facture_id>/apercu")
+@menu_requis("facturation")
+def facturation_apercu(facture_id):
+    try:
+        html = core.render_facture_vente_html(get_db(), facture_id)
+        return html
+    except ValueError as exc:
+        flash(str(exc), "error")
+        return redirect(url_for("facturation_detail", facture_id=facture_id))
+
+
+# ---------------------------------------------------------------------------
+# COMMERCIAL/PRODUCTION > Stocks (Matières premières, Produits finis —
+# les 3 sous-menus du bureau pointent tous vers cette même clé "stocks")
+# ---------------------------------------------------------------------------
+@app.route("/module/stocks", methods=["GET", "POST"])
+@menu_requis("stocks")
+def stocks():
+    db = get_db()
+    exercice = exercice_actif(db)
+
+    if request.method == "POST":
+        try:
+            code = request.form["compte"].strip()
+            valeur = float(request.form.get("valeur") or 0)
+            quantite = float(request.form.get("quantite") or 0)
+            core.set_stock_initial(db, code, valeur, exercice=exercice)
+            core.set_stock_qte_initiale(db, code, quantite, exercice=exercice)
+            flash("Stock initial enregistré.", "success")
+        except (ValueError, KeyError) as exc:
+            flash(str(exc), "error")
+        return redirect(url_for("stocks", exercice=exercice))
+
+    synthese = core.compute_stocks(db, exercice=exercice)
+    detail = core.compute_stocks_detail(db, exercice=exercice)
+    return render_template("stocks.html", synthese=synthese, detail=detail, exercice=exercice,
+                            exercices=core.list_exercices(db))
+
+
+# ---------------------------------------------------------------------------
+# IMMOBILISATIONS > Immobilisations & Amortissements
+# ---------------------------------------------------------------------------
+@app.route("/module/immobilisations", methods=["GET", "POST"])
+@menu_requis("immobilisations")
+def immobilisations():
+    db = get_db()
+    exercice = exercice_actif(db)
+
+    if request.method == "POST":
+        try:
+            compte = request.form["compte"].strip()
+            if not core.account_exists(db, compte):
+                raise ValueError(f"Le compte « {compte} » n'existe pas dans le plan comptable.")
+            base_qte = request.form.get("base_repartition_quantite")
+            amort_manuel = request.form.get("amortissement_annuel_manuel")
+            core.set_immobilisation_fiche(
+                db, compte,
+                fournisseur_code=request.form.get("fournisseur_code") or None,
+                prix_achat=float(request.form["prix_achat"]) if request.form.get("prix_achat") else None,
+                date_acquisition=request.form.get("date_acquisition") or None,
+                base_repartition_quantite=float(base_qte) if base_qte else None,
+                base_repartition_unite=request.form.get("base_repartition_unite") or None,
+                amortissement_annuel_manuel=float(amort_manuel) if amort_manuel else None,
+            )
+            flash("Fiche immobilisation enregistrée.", "success")
+        except (ValueError, KeyError) as exc:
+            flash(str(exc), "error")
+        return redirect(url_for("immobilisations", exercice=exercice))
+
+    liste = core.compute_immobilisations_liste(db, exercice=exercice)
+    return render_template("immobilisations.html", liste=liste, exercice=exercice,
+                            exercices=core.list_exercices(db), fournisseurs=core.list_fournisseurs(db))
+
+
+@app.route("/module/amortissements", methods=["GET", "POST"])
+@menu_requis("amortissements")
+def amortissements():
+    db = get_db()
+    categories = [c for c, _b, _a in core.IMMO_CATEGORIES]
+    if request.method == "POST":
+        for i, categorie in enumerate(categories):
+            key = f"taux_{i}"
+            if key in request.form and request.form[key] != "":
+                core.set_taux_amortissement(db, categorie, float(request.form[key]))
+        flash("Taux d'amortissement enregistrés.", "success")
+        return redirect(url_for("amortissements"))
+    taux = core.list_taux_amortissement(db)
+    for i, t in enumerate(taux):
+        t["field_key"] = f"taux_{i}"
+    return render_template("amortissements.html", taux=taux)
 
 
 if __name__ == "__main__":

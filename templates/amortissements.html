@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Amortissements{% endblock %}
+{% block content %}
+  <h1>Amortissements</h1>
+  <p class="subtitle">Taux d'amortissement indicatifs par catégorie (le montant réellement comptabilisé reste celui de la Balance).</p>
+
+  <div class="form-card">
+    <form method="post">
+      <table class="lignes-table">
+        <thead><tr><th>Catégorie</th><th style="width:140px">Taux (%)</th></tr></thead>
+        <tbody>
+          {% for t in taux %}
+          <tr>
+            <td>{{ t.categorie }}</td>
+            <td><input type="text" name="{{ t.field_key }}" value="{{ t.taux_pct }}" class="num-input"></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <button type="submit" class="btn btn-inline">Enregistrer les taux</button>
+    </form>
+  </div>
+{% endblock %}

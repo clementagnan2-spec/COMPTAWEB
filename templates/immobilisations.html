@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block title %}Immobilisations{% endblock %}
+{% block content %}
+  <h1>Immobilisations</h1>
+  <p class="subtitle">Comptes de classe 2 ayant un solde, exercice {{ exercice }} — amortissement réellement comptabilisé.</p>
+
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <thead><tr><th>Compte</th><th>Libellé</th><th>Catégorie</th><th>Fournisseur</th>
+          <th class="num">Prix d'achat</th><th>Date acquisition</th>
+          <th class="num">Valeur brute</th><th class="num">Amortissement</th><th class="num">Valeur nette</th></tr></thead>
+      <tbody>
+        {% for l in liste %}
+        <tr>
+          <td class="figure">{{ l.compte }}</td>
+          <td>{{ l.libelle }}</td>
+          <td>{{ l.categorie }}</td>
+          <td>{{ l.fournisseur_nom }}</td>
+          <td class="num figure">{{ l.prix_achat | cfa }}</td>
+          <td class="figure">{{ l.date_acquisition }}</td>
+          <td class="num figure">{{ l.valeur_brute | cfa }}</td>
+          <td class="num figure credit-amt">{{ l.amortissement | cfa }}</td>
+          <td class="num figure">{{ l.valeur_nette | cfa }}</td>
+        </tr>
+        {% else %}
+        <tr><td colspan="9" style="text-align:center;color:var(--text-dim);padding:24px;">
+          Aucune immobilisation avec solde sur cet exercice.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="form-card" style="margin-top:24px;">
+    <h2 class="section-title" style="margin-top:0;">Fiche immobilisation</h2>
+    <p class="subtitle" style="margin-bottom:14px;">Renseignez ou mettez à jour la fiche d'un compte d'immobilisation existant.</p>
+    <form method="post">
+      <div class="form-row">
+        <div class="field small autocomplete-wrap">
+          <label>Compte</label>
+          <input type="text" name="compte" id="compte-input" autocomplete="off" required>
+        </div>
+        <div class="field grow">
+          <label>Fournisseur</label>
+          <select name="fournisseur_code">
+            <option value="">—</option>
+            {% for f in fournisseurs %}<option value="{{ f.code }}">{{ f.code }} — {{ f.raison_sociale }}</option>{% endfor %}
+          </select>
+        </div>
+        <div class="field small"><label>Prix d'achat</label><input type="text" name="prix_achat"></div>
+        <div class="field small"><label>Date d'acquisition</label><input type="date" name="date_acquisition"></div>
+      </div>
+      <div class="form-row">
+        <div class="field small"><label>Base de répartition (quantité annuelle)</label><input type="text" name="base_repartition_quantite" placeholder="ex. 5000"></div>
+        <div class="field small"><label>Unité</label><input type="text" name="base_repartition_unite" placeholder="ex. tonnes/an"></div>
+        <div class="field small"><label>Amortissement annuel manuel</label><input type="text" name="amortissement_annuel_manuel" placeholder="si pas encore comptabilisé"></div>
+      </div>
+      <button type="submit" class="btn btn-inline">Enregistrer la fiche</button>
+    </form>
+  </div>
+
+  <div class="autocomplete-list" id="autocomplete-list"></div>
+<script>
+const compteInput = document.getElementById('compte-input');
+compteInput.addEventListener('input', async () => {
+  const q = compteInput.value.trim();
+  const list = document.getElementById('autocomplete-list');
+  if (q.length < 1) { list.style.display = 'none'; return; }
+  const resp = await fetch('/api/comptes?q=' + encodeURIComponent(q));
+  const comptes = await resp.json();
+  list.innerHTML = '';
+  comptes.filter(c => c.classe === '2').slice(0, 15).forEach(c => {
+    const div = document.createElement('div');
+    div.innerHTML = `<span class="code">${c.code}</span>${c.label}`;
+    div.onclick = () => { compteInput.value = c.code; list.style.display = 'none'; };
+    list.appendChild(div);
+  });
+  const rect = compteInput.getBoundingClientRect();
+  list.style.left = (rect.left + window.scrollX) + 'px';
+  list.style.top = (rect.bottom + window.scrollY + 2) + 'px';
+  list.style.display = 'block';
+});
+document.addEventListener('click', (e) => {
+  const list = document.getElementById('autocomplete-list');
+  if (e.target !== compteInput && !list.contains(e.target)) list.style.display = 'none';
+});
+</script>
+{% endblock %}

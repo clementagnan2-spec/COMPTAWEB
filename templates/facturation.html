@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Facturation{% endblock %}
+{% block content %}
+  <h1>Facturation</h1>
+  <p class="subtitle">Factures de vente.</p>
+
+  <div class="form-card">
+    <h2 class="section-title" style="margin-top:0;">Nouvelle facture</h2>
+    <form method="post" class="form-row" style="align-items:flex-end;">
+      <div class="field small"><label>N° Facture</label><input type="text" name="numero" required></div>
+      <div class="field small"><label>Date</label><input type="date" name="date_facture" value="{{ today }}" required></div>
+      <div class="field grow">
+        <label>Client</label>
+        <select name="client_code" required>
+          <option value="">— choisir —</option>
+          {% for c in clients %}<option value="{{ c.code }}">{{ c.code }} — {{ c.raison_sociale }}</option>{% endfor %}
+        </select>
+      </div>
+      <div class="field small"><button type="submit" class="btn">Créer (brouillon)</button></div>
+    </form>
+  </div>
+
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <thead><tr><th>N°</th><th>Date</th><th>Client</th><th>Statut</th><th class="num">Total TTC</th><th></th></tr></thead>
+      <tbody>
+        {% for f in factures %}
+        <tr>
+          <td class="figure"><a href="{{ url_for('facturation_detail', facture_id=f.id) }}">{{ f.numero }}</a></td>
+          <td class="figure">{{ f.date_facture }}</td>
+          <td>{{ f.raison_sociale }}</td>
+          <td>{% if f.statut == "validee" %}<span style="color:var(--green);font-weight:600;">Validée</span>
+              {% else %}<span style="color:var(--text-dim);">Brouillon</span>{% endif %}</td>
+          <td class="num figure">—</td>
+          <td>
+            <a href="{{ url_for('facturation_detail', facture_id=f.id) }}" class="btn-danger-link"
+               style="color:var(--ink);">Ouvrir</a>
+            {% if f.statut != "validee" %}
+            <form method="post" action="{{ url_for('facturation_supprimer', facture_id=f.id) }}"
+                  style="display:inline;" onsubmit="return confirm('Supprimer cette facture ?');">
+              <button type="submit" class="btn-danger-link">Suppr.</button>
+            </form>
+            {% endif %}
+          </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="6" style="text-align:center;color:var(--text-dim);padding:24px;">Aucune facture.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
