@@ -94,11 +94,30 @@ n'est garantie sur le plan Starter — on pourra passer à un plan avec
 ## Ce qui reste à construire (dans l'ordre convenu)
 
 1. ~~Fondations (connexion, tableau de bord, menu filtré)~~ ✅ fait
-2. **Saisie comptable + Rapports financiers** ← prochaine étape
-3. Fournisseurs / Clients / Facturation
+2. ~~Saisie comptable + Rapports financiers~~ ✅ fait (voir ci-dessous)
+3. **Fournisseurs / Clients / Facturation** ← prochaine étape
 4. Stocks
 5. Immobilisations
 6. GRH / Paie
 7. Fabrication / Production
 8. Trésorerie
 9. Écrans ADMIN
+
+## Détail de l'étape 2 — Saisie comptable + Rapports financiers
+
+Écrans construits et testés (identiques dans leur logique au bureau,
+`core.py` non modifié) :
+- **Saisie des écritures** : saisie multi-lignes avec recherche de compte
+  en direct, vérification d'équilibre en temps réel, liste des écritures
+  de l'exercice, suppression.
+- **Soldes d'ouverture** : saisie + liste par exercice.
+- **Grand livre** : détail chronologique d'un compte, solde cumulé.
+- **Balance** : balance générale de l'exercice.
+- **Bilan SYSCOHADA**, **Compte de résultat (SIG)**, **TFT**,
+  **Situation financière** : calculés depuis les mêmes gabarits Excel
+  officiels que le bureau — si des formules du gabarit TFT posent
+  toujours problème, le détail des cellules en erreur s'affiche
+  maintenant directement à l'écran.
+
+Un sélecteur d'exercice comptable est apparu en haut de chaque page
+concernée (mémorisé pendant la session).

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Balance{% endblock %}
+{% block content %}
+  <h1>Balance</h1>
+  <p class="subtitle">Balance générale des comptes, exercice {{ exercice }}.</p>
+
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <thead><tr><th>Compte</th><th>Libellé</th>
+          <th class="num">Solde d'ouverture</th>
+          <th class="num">Débit période</th><th class="num">Crédit période</th>
+          <th class="num">Solde de clôture</th></tr></thead>
+      <tbody>
+        {% for l in lignes %}
+        <tr>
+          <td class="figure">{{ l.code }}</td>
+          <td>{{ l.label }}</td>
+          <td class="num figure">{{ l.solde_ouverture | cfa }}</td>
+          <td class="num figure debit-amt">{{ l.debit | cfa if l.debit else "" }}</td>
+          <td class="num figure credit-amt">{{ l.credit | cfa if l.credit else "" }}</td>
+          <td class="num figure">{{ l.solde_cloture | cfa }}</td>
+        </tr>
+        {% else %}
+        <tr><td colspan="6" style="text-align:center;color:var(--text-dim);padding:24px;">
+          Aucun compte mouvementé pour cet exercice.</td></tr>
+        {% endfor %}
+      </tbody>
+      {% if lignes %}
+      <tfoot>
+        <tr class="total-row">
+          <td colspan="2">Total</td>
+          <td class="num figure">{{ totaux.solde_ouverture | cfa }}</td>
+          <td class="num figure">{{ totaux.debit | cfa }}</td>
+          <td class="num figure">{{ totaux.credit | cfa }}</td>
+          <td class="num figure">{{ totaux.solde_cloture | cfa }}</td>
+        </tr>
+      </tfoot>
+      {% endif %}
+    </table>
+  </div>
+{% endblock %}

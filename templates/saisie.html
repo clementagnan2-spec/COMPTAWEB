@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+{% block title %}Saisie des écritures{% endblock %}
+{% block content %}
+  <h1>Saisie des écritures</h1>
+  <p class="subtitle">Journal général — chaque ligne au débit OU au crédit ; le total débit doit égaler le total crédit.</p>
+
+  <div class="form-card">
+    <form method="post" id="saisie-form">
+      <div class="form-row">
+        <div class="field small">
+          <label>Date</label>
+          <input type="date" name="date" value="{{ today }}" required>
+        </div>
+        <div class="field small">
+          <label>N° Pièce</label>
+          <input type="text" name="piece">
+        </div>
+        <div class="field small">
+          <label>Journal</label>
+          <select name="journal">
+            <option value="OD" selected>OD</option>
+            <option value="AC">AC</option>
+            <option value="VE">VE</option>
+            <option value="BQ">BQ</option>
+            <option value="CA">CA</option>
+          </select>
+        </div>
+        <div class="field grow">
+          <label>Tiers (optionnel, appliqué par défaut à toutes les lignes)</label>
+          <input type="text" name="tiers">
+        </div>
+      </div>
+
+      <table class="lignes-table" id="lignes-table">
+        <thead>
+          <tr>
+            <th style="width:140px">Compte</th>
+            <th>Libellé</th>
+            <th style="width:130px">Débit</th>
+            <th style="width:130px">Crédit</th>
+            <th style="width:30px"></th>
+          </tr>
+        </thead>
+        <tbody id="lignes-body"></tbody>
+      </table>
+      <button type="button" class="btn-secondary" onclick="ajouterLigne()">+ Ajouter une ligne</button>
+
+      <div class="totals-row">
+        <span>Total débit : <strong id="total-debit" class="figure">0</strong></span>
+        <span>Total crédit : <strong id="total-credit" class="figure">0</strong></span>
+        <span id="equilibre-msg" class="figure">—</span>
+      </div>
+
+      <div style="margin-top:16px;">
+        <button type="submit" class="btn btn-inline">Enregistrer l'écriture</button>
+      </div>
+    </form>
+  </div>
+
+  <h2 class="section-title">Écritures de l'exercice {{ exercice }}</h2>
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <thead>
+        <tr><th>Date</th><th>Pièce</th><th>Journal</th><th>Compte</th><th>Tiers</th><th>Libellé</th>
+            <th class="num">Débit</th><th class="num">Crédit</th><th></th></tr>
+      </thead>
+      <tbody>
+        {% for e in entries %}
+        <tr>
+          <td class="figure">{{ e.date }}</td>
+          <td>{{ e.piece }}</td>
+          <td>{{ e.journal }}</td>
+          <td class="figure">{{ e.compte }}</td>
+          <td>{{ e.tiers or "" }}</td>
+          <td>{{ e.libelle or "" }}</td>
+          <td class="num figure debit-amt">{{ e.debit | cfa if e.debit else "" }}</td>
+          <td class="num figure credit-amt">{{ e.credit | cfa if e.credit else "" }}</td>
+          <td>
+            <form method="post" action="{{ url_for('saisie_supprimer', entry_id=e.id) }}"
+                  onsubmit="return confirm('Supprimer cette ligne d\'écriture ?');">
+              <button type="submit" class="btn-danger-link">Suppr.</button>
+            </form>
+          </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="9" style="text-align:center;color:var(--text-dim);padding:24px;">
+          Aucune écriture pour cet exercice.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="autocomplete-list" id="autocomplete-list"></div>
+
+<script>
+let ligneIndex = 0;
+let activeInput = null;
+
+function ajouterLigne() {
+  const tbody = document.getElementById('lignes-body');
+  const tr = document.createElement('tr');
+  tr.innerHTML = `
+    <td><div class="autocomplete-wrap">
+      <input type="text" name="ligne_compte" class="compte-input" autocomplete="off" placeholder="N° compte"></div></td>
+    <td><input type="text" name="ligne_libelle" placeholder="Libellé"></td>
+    <td><input type="text" name="ligne_debit" class="num-input montant-input" placeholder="0"></td>
+    <td><input type="text" name="ligne_credit" class="num-input montant-input" placeholder="0"></td>
+    <td><button type="button" class="btn-danger-link" onclick="this.closest('tr').remove(); recalcTotaux();">✕</button></td>
+  `;
+  tbody.appendChild(tr);
+  const compteInput = tr.querySelector('.compte-input');
+  compteInput.addEventListener('input', () => rechercherCompte(compteInput));
+  compteInput.addEventListener('focus', () => rechercherCompte(compteInput));
+  tr.querySelectorAll('.montant-input').forEach(inp => inp.addEventListener('input', recalcTotaux));
+  ligneIndex++;
+}
+
+async function rechercherCompte(input) {
+  activeInput = input;
+  const q = input.value.trim();
+  const list = document.getElementById('autocomplete-list');
+  if (q.length < 1) { list.style.display = 'none'; return; }
+  const resp = await fetch('/api/comptes?q=' + encodeURIComponent(q));
+  const comptes = await resp.json();
+  list.innerHTML = '';
+  comptes.slice(0, 15).forEach(c => {
+    const div = document.createElement('div');
+    div.innerHTML = `<span class="code">${c.code}</span>${c.label}`;
+    div.onclick = () => {
+      input.value = c.code;
+      list.style.display = 'none';
+    };
+    list.appendChild(div);
+  });
+  const rect = input.getBoundingClientRect();
+  list.style.left = (rect.left + window.scrollX) + 'px';
+  list.style.top = (rect.bottom + window.scrollY + 2) + 'px';
+  list.style.display = comptes.length ? 'block' : 'none';
+}
+
+document.addEventListener('click', (e) => {
+  const list = document.getElementById('autocomplete-list');
+  if (activeInput && !list.contains(e.target) && e.target !== activeInput) {
+    list.style.display = 'none';
+  }
+});
+
+function recalcTotaux() {
+  let td = 0, tc = 0;
+  document.querySelectorAll('input[name=ligne_debit]').forEach(i => td += parseFloat(i.value) || 0);
+  document.querySelectorAll('input[name=ligne_credit]').forEach(i => tc += parseFloat(i.value) || 0);
+  document.getElementById('total-debit').textContent = td.toLocaleString('fr-FR');
+  document.getElementById('total-credit').textContent = tc.toLocaleString('fr-FR');
+  const msg = document.getElementById('equilibre-msg');
+  if (td === 0 && tc === 0) { msg.textContent = '—'; msg.className = 'figure'; }
+  else if (Math.abs(td - tc) < 0.01) { msg.textContent = '✓ Équilibrée'; msg.className = 'figure ok'; }
+  else { msg.textContent = `Écart de ${(td - tc).toLocaleString('fr-FR')}`; msg.className = 'figure ko'; }
+}
+
+ajouterLigne();
+ajouterLigne();
+</script>
+{% endblock %}

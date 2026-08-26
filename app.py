@@ -14,9 +14,10 @@ Variables d'environnement (pour la prod, voir DEPLOIEMENT.md) :
     SECRET_KEY     clé secrète des sessions Flask (à définir en prod !)
 """
 import os
+import json as _json
 from functools import wraps
 
-from flask import Flask, render_template, request, redirect, url_for, session, g, flash
+from flask import Flask, render_template, request, redirect, url_for, session, g, flash, jsonify
 
 import core
 
@@ -26,6 +27,22 @@ os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY", "dev-cle-a-changer-en-production")
+
+
+@app.template_filter("cfa")
+def fmt_cfa(v):
+    """Formate un montant en F CFA (espace comme séparateur de milliers,
+    aucune décimale — convention SYSCOHADA). Vide si non numérique."""
+    if v is None or v == "":
+        return ""
+    try:
+        v = float(v)
+    except (TypeError, ValueError):
+        return str(v)
+    sign = "-" if v < 0 else ""
+    v = abs(v)
+    entier = f"{v:,.0f}".replace(",", " ")
+    return f"{sign}{entier}"
 
 
 # ---------------------------------------------------------------------------
@@ -75,6 +92,8 @@ def menu_requis(menu_key):
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    if not core.list_utilisateurs(get_db()):
+        return redirect(url_for("premiere_configuration"))
     if request.method == "POST":
         nom = request.form.get("nom_utilisateur", "")
         mdp = request.form.get("mot_de_passe", "")
@@ -91,6 +110,30 @@ def login():
 def logout():
     session.clear()
     return redirect(url_for("login"))
+
+
+# ---------------------------------------------------------------------------
+# Table de correspondance menu_key -> endpoint Flask réellement construit.
+# Les clés absentes de ce dict retombent sur l'écran "en construction"
+# (module_placeholder). Complétée au fur et à mesure des modules livrés.
+# ---------------------------------------------------------------------------
+MENU_ROUTES = {
+    "saisie": "saisie",
+    "ouverture": "ouverture",
+    "grand_livre": "grand_livre",
+    "balance": "balance",
+    "bilan_syscohada": "bilan_syscohada",
+    "compte_resultat_sig": "compte_resultat_sig",
+    "tft": "tft",
+    "situation_financiere": "situation_financiere",
+}
+
+
+@app.template_global()
+def menu_url(menu_key):
+    if menu_key in MENU_ROUTES:
+        return url_for(MENU_ROUTES[menu_key])
+    return url_for("module_placeholder", menu_key=menu_key)
 
 
 # ---------------------------------------------------------------------------
@@ -146,6 +189,181 @@ def premiere_configuration():
             flash("Compte administrateur créé. Connectez-vous.", "success")
             return redirect(url_for("login"))
     return render_template("premiere_configuration.html")
+
+
+# ---------------------------------------------------------------------------
+# Utilitaire commun : exercice comptable actif (choisi en haut de chaque
+# page ; mémorisé en session, comme le sélecteur "EXERCICE COMPTABLE" du
+# bureau)
+# ---------------------------------------------------------------------------
+def exercice_actif(db):
+    ex = request.args.get("exercice") or session.get("exercice") or core.get_current_exercice(db)
+    session["exercice"] = ex
+    return ex
+
+
+@app.route("/api/comptes")
+@login_required
+def api_comptes():
+    """Recherche de comptes pour l'auto-complétion (Saisie, Grand livre...)."""
+    q = request.args.get("q", "")
+    rows = core.search_accounts(get_db(), q, limit=30)
+    return jsonify([dict(r) for r in rows])
+
+
+# ---------------------------------------------------------------------------
+# SAISIE > Saisie des écritures
+# ---------------------------------------------------------------------------
+@app.route("/module/saisie", methods=["GET", "POST"])
+@menu_requis("saisie")
+def saisie():
+    db = get_db()
+    exercice = exercice_actif(db)
+
+    if request.method == "POST":
+        try:
+            date_str = request.form["date"]
+            piece = request.form.get("piece", "").strip()
+            journal = request.form.get("journal", "OD")
+            tiers = request.form.get("tiers", "").strip()
+            comptes = request.form.getlist("ligne_compte")
+            libelles = request.form.getlist("ligne_libelle")
+            debits = request.form.getlist("ligne_debit")
+            credits = request.form.getlist("ligne_credit")
+            lignes = []
+            for i in range(len(comptes)):
+                if not comptes[i].strip():
+                    continue
+                lignes.append({
+                    "compte": comptes[i].strip(),
+                    "libelle": libelles[i].strip() if i < len(libelles) else "",
+                    "debit": float(debits[i]) if i < len(debits) and debits[i] else 0,
+                    "credit": float(credits[i]) if i < len(credits) and credits[i] else 0,
+                })
+            core.add_ecriture_multi_lignes(db, date_str, piece, journal, lignes, tiers=tiers)
+            flash("Écriture enregistrée.", "success")
+            return redirect(url_for("saisie", exercice=exercice))
+        except (ValueError, KeyError) as exc:
+            flash(str(exc), "error")
+
+    entries = core.list_entries(db, order_by="date", exercice=exercice)
+    entries.sort(key=lambda e: (e["date"], e["id"]), reverse=True)
+    return render_template("saisie.html", entries=entries, exercice=exercice,
+                            exercices=core.list_exercices(db),
+                            today=core.date.today().isoformat())
+
+
+@app.route("/module/saisie/supprimer/<int:entry_id>", methods=["POST"])
+@menu_requis("saisie")
+def saisie_supprimer(entry_id):
+    db = get_db()
+    try:
+        core.delete_entry(db, entry_id)
+        flash("Écriture supprimée.", "success")
+    except ValueError as exc:
+        flash(str(exc), "error")
+    return redirect(url_for("saisie", exercice=session.get("exercice")))
+
+
+# ---------------------------------------------------------------------------
+# SAISIE > Soldes d'ouverture
+# ---------------------------------------------------------------------------
+@app.route("/module/ouverture", methods=["GET", "POST"])
+@menu_requis("ouverture")
+def ouverture():
+    db = get_db()
+    exercice = exercice_actif(db)
+
+    if request.method == "POST":
+        try:
+            code = request.form["compte"].strip()
+            valeur = float(request.form.get("solde") or 0)
+            if not core.account_exists(db, code):
+                raise ValueError(f"Le compte « {code} » n'existe pas dans le plan comptable.")
+            core.set_opening_balance(db, code, valeur, exercice=exercice)
+            flash("Solde d'ouverture enregistré.", "success")
+        except (ValueError, KeyError) as exc:
+            flash(str(exc), "error")
+        return redirect(url_for("ouverture", exercice=exercice))
+
+    soldes = core.list_opening_balances(db, exercice=exercice)
+    return render_template("ouverture.html", soldes=soldes, exercice=exercice,
+                            exercices=core.list_exercices(db))
+
+
+# ---------------------------------------------------------------------------
+# RAPPORTS FINANCIERS
+# ---------------------------------------------------------------------------
+@app.route("/module/grand_livre")
+@menu_requis("grand_livre")
+def grand_livre():
+    db = get_db()
+    exercice = exercice_actif(db)
+    compte = request.args.get("compte", "").strip()
+    lignes = core.compute_grand_livre(db, compte, exercice=exercice) if compte else []
+    return render_template("grand_livre.html", lignes=lignes, compte=compte,
+                            exercice=exercice, exercices=core.list_exercices(db))
+
+
+@app.route("/module/balance")
+@menu_requis("balance")
+def balance():
+    db = get_db()
+    exercice = exercice_actif(db)
+    lignes = core.compute_balance(db, only_with_movement=True, exercice=exercice)
+    lignes.sort(key=lambda b: b["code"])
+    totaux = {
+        "debit": sum(l["debit"] for l in lignes), "credit": sum(l["credit"] for l in lignes),
+        "solde_ouverture": sum(l["solde_ouverture"] for l in lignes),
+        "solde_cloture": sum(l["solde_cloture"] for l in lignes),
+    }
+    return render_template("balance.html", lignes=lignes, totaux=totaux, exercice=exercice,
+                            exercices=core.list_exercices(db))
+
+
+@app.route("/module/bilan_syscohada")
+@menu_requis("bilan_syscohada")
+def bilan_syscohada():
+    db = get_db()
+    exercice = exercice_actif(db)
+    try:
+        d = core.compute_bilan_plat(db, exercice=exercice)
+        erreur = None
+    except Exception as exc:
+        d, erreur = None, str(exc)
+    return render_template("bilan.html", d=d, erreur=erreur, exercice=exercice,
+                            exercices=core.list_exercices(db))
+
+
+def _rapport_formule_generique(menu_key, template_name, compute_fn):
+    """Fabrique une route pour un écran RAPPORTS FINANCIERS basé sur
+    compute_etat_formule_generique (CR, TFT, Situation financière) — les
+    trois ont exactement la même structure de résultat
+    ({colonnes, lignes, errors})."""
+    def view():
+        db = get_db()
+        exercice = exercice_actif(db)
+        try:
+            d = compute_fn(db, exercice=exercice)
+            erreur = None
+        except Exception as exc:
+            d, erreur = None, str(exc)
+        return render_template(template_name, d=d, erreur=erreur, exercice=exercice,
+                                exercices=core.list_exercices(db))
+    view.__name__ = menu_key
+    return view
+
+
+app.add_url_rule("/module/compte_resultat_sig", "compte_resultat_sig",
+                  menu_requis("compte_resultat_sig")(
+                      _rapport_formule_generique("compte_resultat_sig", "etat_formule.html", core.compute_cr)))
+app.add_url_rule("/module/tft", "tft",
+                  menu_requis("tft")(
+                      _rapport_formule_generique("tft", "etat_formule.html", core.compute_tft_gabarit)))
+app.add_url_rule("/module/situation_financiere", "situation_financiere",
+                  menu_requis("situation_financiere")(
+                      _rapport_formule_generique("situation_financiere", "etat_formule.html",
+                                                  core.compute_situation_fin)))
 
 
 if __name__ == "__main__":

@@ -6,7 +6,7 @@
   <div class="card-grid">
     {% for titre, items in menu %}
       {% for label, key in items %}
-        <a class="tile" href="{{ url_for('module_placeholder', menu_key=key) }}">
+        <a class="tile" href="{{ menu_url(key) }}">
           <div class="tile-group">{{ titre }}</div>
           <div class="tile-label">{{ label }}</div>
         </a>

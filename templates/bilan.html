@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Bilan SYSCOHADA{% endblock %}
+{% block content %}
+  <h1>Bilan SYSCOHADA</h1>
+  <p class="subtitle">Calculé depuis le gabarit officiel — exercice {{ exercice }} / {{ d.exercice_n1 if d else "" }}.</p>
+
+  {% if erreur %}
+    <div class="flash error">Impossible de calculer le Bilan :<br>{{ erreur }}</div>
+  {% else %}
+  <div style="display:flex; gap:18px; flex-wrap:wrap;">
+    <div style="flex:1; min-width:340px;">
+      <h2 class="section-title" style="margin-top:0;">Actif</h2>
+      <div class="data-table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Libellé</th><th class="num">Brut</th><th class="num">Amort.</th>
+              <th class="num">Net N</th><th class="num">Net N-1</th></tr></thead>
+          <tbody>
+            {% for l in d.actif %}
+            <tr class="{{ 'total-row' if 'TOTAL' in l.libelle.upper() else '' }}">
+              <td>{{ l.libelle }}</td>
+              <td class="num figure">{{ l.brut | cfa }}</td>
+              <td class="num figure">{{ l.amort | cfa }}</td>
+              <td class="num figure">{{ l.net | cfa }}</td>
+              <td class="num figure">{{ l.net_n1 | cfa }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div style="flex:1; min-width:340px;">
+      <h2 class="section-title" style="margin-top:0;">Passif</h2>
+      <div class="data-table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Libellé</th><th class="num">Exercice N</th><th class="num">Exercice N-1</th></tr></thead>
+          <tbody>
+            {% for l in d.passif %}
+            <tr class="{{ 'total-row' if 'TOTAL' in l.libelle.upper() else '' }}">
+              <td>{{ l.libelle }}</td>
+              <td class="num figure">{{ l.montant | cfa }}</td>
+              <td class="num figure">{{ l.montant_n1 | cfa }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  {% if d.errors %}
+    <div class="flash error" style="margin-top:18px;">
+      {{ d.errors | length }} formule(s) du gabarit n'ont pas pu être évaluées :<br>
+      {% for coord, _formula, msg in d.errors %}• Cellule {{ coord }} : {{ msg }}<br>{% endfor %}
+    </div>
+  {% endif %}
+  {% endif %}
+{% endblock %}

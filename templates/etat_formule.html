@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% set page_titles = {"compte_resultat_sig": "Compte de résultat (SIG)",
+                       "tft": "Tableau des flux de trésorerie (TFT)",
+                       "situation_financiere": "Situation financière"} %}
+{% set page_title = page_titles.get(request.endpoint, "État financier") %}
+{% block title %}{{ page_title }}{% endblock %}
+{% block content %}
+  <h1>{{ page_title }}</h1>
+  <p class="subtitle">Calculé avec les formules du gabarit officiel — exercice {{ exercice }} / {{ d.exercice_n1 if d else "" }}.</p>
+
+  {% if erreur %}
+    <div class="flash error">Impossible de calculer cet état :<br>{{ erreur }}</div>
+  {% else %}
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Rubrique</th>
+          {% for col in d.colonnes %}<th class="num">{{ col }}</th>{% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for l in d.lignes %}
+        {% set upper = l.libelle.upper() %}
+        <tr class="{{ 'total-row' if ('TOTAL' in upper or 'CAFG' in upper or 'RESULTAT NET' in upper or 'TRESORERIE NETTE' in upper or 'VARIATION DE LA TR' in upper) else '' }}">
+          <td>{{ l.libelle }}</td>
+          {% for col in d.colonnes %}
+            <td class="num figure">{{ l[col] | cfa if l.get(col) is not none else "" }}</td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% if d.errors %}
+    <div class="flash error" style="margin-top:18px;">
+      {{ d.errors | length }} formule(s) du gabarit n'ont pas pu être évaluées. Les autres lignes restent correctes.<br>
+      {% for coord, _formula, msg in d.errors %}• Cellule {{ coord }} : {{ msg }}<br>{% endfor %}
+    </div>
+  {% endif %}
+  {% endif %}
+{% endblock %}

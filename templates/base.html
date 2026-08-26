@@ -18,7 +18,7 @@
           <div class="menu-group">
             <div class="group-title">{{ titre }}</div>
             {% for label, key in items %}
-              <a href="{{ url_for('module_placeholder', menu_key=key) }}">{{ label }}</a>
+              <a href="{{ menu_url(key) }}">{{ label }}</a>
             {% endfor %}
           </div>
           {% endif %}
@@ -33,6 +33,19 @@
     <div class="main">
       <div class="topbar">
         <span class="exercice">Connecté : <strong>{{ session.user.nom_utilisateur }}</strong></span>
+        {% if exercice is defined and exercices is defined %}
+        <form method="get" class="exercice-form">
+          <span class="exercice">Exercice :</span>
+          <select name="exercice" onchange="this.form.submit()">
+            {% for e in exercices %}
+              <option value="{{ e.exercice }}" {% if e.exercice == exercice %}selected{% endif %}>
+                {{ e.exercice }}{% if e.cloture %} (clôturé){% endif %}
+              </option>
+            {% endfor %}
+            {% if not exercices %}<option value="{{ exercice }}">{{ exercice }}</option>{% endif %}
+          </select>
+        </form>
+        {% endif %}
       </div>
       <div class="content">
         {% with messages = get_flashed_messages(with_categories=true) %}

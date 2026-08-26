@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}Grand livre{% endblock %}
+{% block content %}
+  <h1>Grand livre</h1>
+  <p class="subtitle">Détail chronologique des mouvements d'un compte, exercice {{ exercice }}.</p>
+
+  <div class="form-card">
+    <form method="get" class="form-row" style="align-items:flex-end;">
+      <input type="hidden" name="exercice" value="{{ exercice }}">
+      <div class="field grow autocomplete-wrap">
+        <label>Compte</label>
+        <input type="text" name="compte" id="compte-input" value="{{ compte }}" autocomplete="off" required>
+      </div>
+      <div class="field small"><button type="submit" class="btn">Afficher</button></div>
+    </form>
+  </div>
+
+  {% if compte %}
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <thead><tr><th>Date</th><th>Pièce</th><th>Journal</th><th>Tiers</th><th>Libellé</th>
+          <th class="num">Débit</th><th class="num">Crédit</th><th class="num">Solde cumulé</th></tr></thead>
+      <tbody>
+        {% for l in lignes %}
+        <tr>
+          <td class="figure">{{ l.date }}</td>
+          <td>{{ l.piece }}</td>
+          <td>{{ l.journal }}</td>
+          <td>{{ l.tiers or "" }}</td>
+          <td>{{ l.libelle or "" }}</td>
+          <td class="num figure debit-amt">{{ l.debit | cfa if l.debit else "" }}</td>
+          <td class="num figure credit-amt">{{ l.credit | cfa if l.credit else "" }}</td>
+          <td class="num figure">{{ l.solde_cumule | cfa }}</td>
+        </tr>
+        {% else %}
+        <tr><td colspan="8" style="text-align:center;color:var(--text-dim);padding:24px;">
+          Aucun mouvement pour ce compte sur cet exercice.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% endif %}
+
+  <div class="autocomplete-list" id="autocomplete-list"></div>
+<script>
+const compteInput = document.getElementById('compte-input');
+compteInput.addEventListener('input', async () => {
+  const q = compteInput.value.trim();
+  const list = document.getElementById('autocomplete-list');
+  if (q.length < 1) { list.style.display = 'none'; return; }
+  const resp = await fetch('/api/comptes?q=' + encodeURIComponent(q));
+  const comptes = await resp.json();
+  list.innerHTML = '';
+  comptes.slice(0, 15).forEach(c => {
+    const div = document.createElement('div');
+    div.innerHTML = `<span class="code">${c.code}</span>${c.label}`;
+    div.onclick = () => { compteInput.value = c.code; list.style.display = 'none'; };
+    list.appendChild(div);
+  });
+  const rect = compteInput.getBoundingClientRect();
+  list.style.left = (rect.left + window.scrollX) + 'px';
+  list.style.top = (rect.bottom + window.scrollY + 2) + 'px';
+  list.style.display = comptes.length ? 'block' : 'none';
+});
+document.addEventListener('click', (e) => {
+  const list = document.getElementById('autocomplete-list');
+  if (e.target !== compteInput && !list.contains(e.target)) list.style.display = 'none';
+});
+</script>
+{% endblock %}
