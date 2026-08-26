@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Plateforme intégrée de gestion{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand-block">
+        <p class="brand">Grand Livre<small>SYSCOHADA</small></p>
+      </div>
+      <nav>
+        {% for titre, items in menu %}
+          {% if items %}
+          <div class="menu-group">
+            <div class="group-title">{{ titre }}</div>
+            {% for label, key in items %}
+              <a href="{{ url_for('module_placeholder', menu_key=key) }}">{{ label }}</a>
+            {% endfor %}
+          </div>
+          {% endif %}
+        {% endfor %}
+      </nav>
+      <div class="user-block">
+        <div class="name">{{ session.user.nom_complet or session.user.nom_utilisateur }}</div>
+        <div class="role">{{ session.user.niveau_acces }}</div>
+        <a href="{{ url_for('logout') }}">Se déconnecter</a>
+      </div>
+    </aside>
+    <div class="main">
+      <div class="topbar">
+        <span class="exercice">Connecté : <strong>{{ session.user.nom_utilisateur }}</strong></span>
+      </div>
+      <div class="content">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% for category, message in messages %}
+            <div class="flash {{ category }}">{{ message }}</div>
+          {% endfor %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+      </div>
+    </div>
+  </div>
+</body>
+</html>

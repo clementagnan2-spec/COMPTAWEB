@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Tableau de bord{% endblock %}
+{% block content %}
+  <h1>Tableau de bord</h1>
+  <p class="subtitle">Sélectionnez une section pour commencer.</p>
+  <div class="card-grid">
+    {% for titre, items in menu %}
+      {% for label, key in items %}
+        <a class="tile" href="{{ url_for('module_placeholder', menu_key=key) }}">
+          <div class="tile-group">{{ titre }}</div>
+          <div class="tile-label">{{ label }}</div>
+        </a>
+      {% endfor %}
+    {% endfor %}
+  </div>
+{% endblock %}

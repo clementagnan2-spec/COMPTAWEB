@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Connexion — Plateforme intégrée de gestion</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="auth-screen">
+    <div class="auth-card">
+      <p class="brand">Grand Livre <small>SYSCOHADA</small></p>
+      <p class="tag">Plateforme intégrée de gestion</p>
+
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% for category, message in messages %}
+          <div class="flash {{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endwith %}
+
+      <form method="post">
+        <div class="field">
+          <label for="nom_utilisateur">Identifiant</label>
+          <input type="text" id="nom_utilisateur" name="nom_utilisateur" autofocus required>
+        </div>
+        <div class="field">
+          <label for="mot_de_passe">Mot de passe</label>
+          <input type="password" id="mot_de_passe" name="mot_de_passe" required>
+        </div>
+        <button type="submit" class="btn">Se connecter</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

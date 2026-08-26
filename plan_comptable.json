@@ -1,0 +1,7957 @@
+[
+{
+"code": "101000",
+"label": "CAPITAL SOCIAL",
+"classe": "1"
+},
+{
+"code": "101100",
+"label": "Capital souscrit, non appelé",
+"classe": "1"
+},
+{
+"code": "101200",
+"label": "Capital souscrit, appelé, non",
+"classe": "1"
+},
+{
+"code": "101300",
+"label": "Capital souscrit, appelé, vers",
+"classe": "1"
+},
+{
+"code": "101400",
+"label": "Capital souscrit, appelé, vers",
+"classe": "1"
+},
+{
+"code": "101800",
+"label": "Capital souscrit soumis à des",
+"classe": "1"
+},
+{
+"code": "102000",
+"label": "CAPITAL PAR DOTATION",
+"classe": "1"
+},
+{
+"code": "102100",
+"label": "Dotation initiale",
+"classe": "1"
+},
+{
+"code": "102200",
+"label": "Dotations complémentaires",
+"classe": "1"
+},
+{
+"code": "102800",
+"label": "Autres dotations",
+"classe": "1"
+},
+{
+"code": "103000",
+"label": "CAPITAL PERSONNEL",
+"classe": "1"
+},
+{
+"code": "104000",
+"label": "COMPTE DE L'EXPLOITANT",
+"classe": "1"
+},
+{
+"code": "104100",
+"label": "Apports temporaires",
+"classe": "1"
+},
+{
+"code": "104200",
+"label": "Opérations courantes",
+"classe": "1"
+},
+{
+"code": "104300",
+"label": "Rémunérations, impôts et autre",
+"classe": "1"
+},
+{
+"code": "104700",
+"label": "Prélèvements d’autoconsommatio",
+"classe": "1"
+},
+{
+"code": "104800",
+"label": "Autres prélèvements",
+"classe": "1"
+},
+{
+"code": "105000",
+"label": "PRIMES LIÉES AU CAPITAL SOCIAL",
+"classe": "1"
+},
+{
+"code": "105100",
+"label": "Primes d'émission",
+"classe": "1"
+},
+{
+"code": "105200",
+"label": "Primes d'apport",
+"classe": "1"
+},
+{
+"code": "105300",
+"label": "Primes de fusion",
+"classe": "1"
+},
+{
+"code": "105400",
+"label": "Primes de conversion",
+"classe": "1"
+},
+{
+"code": "105800",
+"label": "Autres primes",
+"classe": "1"
+},
+{
+"code": "106000",
+"label": "ÉCARTS DE RÉÉVALUATION",
+"classe": "1"
+},
+{
+"code": "106100",
+"label": "Écarts de réévaluation légale",
+"classe": "1"
+},
+{
+"code": "106200",
+"label": "Écarts de réévaluation libre",
+"classe": "1"
+},
+{
+"code": "109000",
+"label": "APPORTEURS, CAPITAL SOUSCRIT,",
+"classe": "1"
+},
+{
+"code": "110000",
+"label": "RÉSERVES",
+"classe": "1"
+},
+{
+"code": "111000",
+"label": "RÉSERVE LÉGALE",
+"classe": "1"
+},
+{
+"code": "111199",
+"label": "CAPITAL SOCIALSS",
+"classe": "1"
+},
+{
+"code": "112000",
+"label": "RÉSERVES STATUTAIRES OU CONTRA",
+"classe": "1"
+},
+{
+"code": "113000",
+"label": "RÉSERVES RÉGLEMENTÉES",
+"classe": "1"
+},
+{
+"code": "113100",
+"label": "Réserves de plus-values nettes",
+"classe": "1"
+},
+{
+"code": "113200",
+"label": "Réserves d'attribution gratuit",
+"classe": "1"
+},
+{
+"code": "113300",
+"label": "Réserves consécutives à l'octr",
+"classe": "1"
+},
+{
+"code": "113400",
+"label": "Réserves des valeurs mobilière",
+"classe": "1"
+},
+{
+"code": "113800",
+"label": "Autres réserves réglementées",
+"classe": "1"
+},
+{
+"code": "118000",
+"label": "AUTRES RÉSERVES",
+"classe": "1"
+},
+{
+"code": "118100",
+"label": "Réserves facultatives",
+"classe": "1"
+},
+{
+"code": "118800",
+"label": "Réserves diverses",
+"classe": "1"
+},
+{
+"code": "120000",
+"label": "REPORT À NOUVEAU",
+"classe": "1"
+},
+{
+"code": "121000",
+"label": "REPORT À NOUVEAU CRÉDITEUR",
+"classe": "1"
+},
+{
+"code": "129000",
+"label": "REPORT À NOUVEAU DÉBITEUR",
+"classe": "1"
+},
+{
+"code": "129100",
+"label": "Perte nette à reporter",
+"classe": "1"
+},
+{
+"code": "129200",
+"label": "Perte - Amortissements réputés",
+"classe": "1"
+},
+{
+"code": "130000",
+"label": "RÉSULTAT EN INSANCE D’AFFECTAT",
+"classe": "1"
+},
+{
+"code": "130100",
+"label": "Résultat en instance d'affecta",
+"classe": "1"
+},
+{
+"code": "130900",
+"label": "Résultat en instance d'affecta",
+"classe": "1"
+},
+{
+"code": "131000",
+"label": "RÉSULTAT NET : BÉNÉFICE",
+"classe": "1"
+},
+{
+"code": "132000",
+"label": "MARGE COMMERCIALE (M.C.)",
+"classe": "1"
+},
+{
+"code": "133000",
+"label": "VALEUR AJOUTÉE (V.A.)",
+"classe": "1"
+},
+{
+"code": "134000",
+"label": "EXCÉDENT BRUT D'EXPLOITATION (",
+"classe": "1"
+},
+{
+"code": "135000",
+"label": "RÉSULTAT D'EXPLOITATION (R.E.)",
+"classe": "1"
+},
+{
+"code": "136000",
+"label": "RÉSULTAT FINANCIER (R.F.)",
+"classe": "1"
+},
+{
+"code": "137000",
+"label": "RÉSULTAT DES ACTIVITÉS ORDINAI",
+"classe": "1"
+},
+{
+"code": "138000",
+"label": "RÉSULTAT HORS ACTIVITÉS ORDINA",
+"classe": "1"
+},
+{
+"code": "138100",
+"label": "Résultat de fusion",
+"classe": "1"
+},
+{
+"code": "138200",
+"label": "Résultat d'apport partiel d'ac",
+"classe": "1"
+},
+{
+"code": "138300",
+"label": "Résultat de scission",
+"classe": "1"
+},
+{
+"code": "138400",
+"label": "Résultat de liquidation",
+"classe": "1"
+},
+{
+"code": "139000",
+"label": "RÉSULTAT NET : PERTE",
+"classe": "1"
+},
+{
+"code": "140000",
+"label": "SUBVENTIONS D'INVESTISSEMENT",
+"classe": "1"
+},
+{
+"code": "141000",
+"label": "SUBVENTIONS D'ÉQUIPEMENT",
+"classe": "1"
+},
+{
+"code": "141100",
+"label": "État",
+"classe": "1"
+},
+{
+"code": "141200",
+"label": "Régions",
+"classe": "1"
+},
+{
+"code": "141300",
+"label": "Départements",
+"classe": "1"
+},
+{
+"code": "141400",
+"label": "Communes et collectivités publ",
+"classe": "1"
+},
+{
+"code": "141500",
+"label": "Entreprises publiques ou mixte",
+"classe": "1"
+},
+{
+"code": "141600",
+"label": "Entreprises et organismes priv",
+"classe": "1"
+},
+{
+"code": "141700",
+"label": "Organismes internationaux",
+"classe": "1"
+},
+{
+"code": "141800",
+"label": "Autres",
+"classe": "1"
+},
+{
+"code": "148000",
+"label": "AUTRES SUBVENTIONS D'INVESTISS",
+"classe": "1"
+},
+{
+"code": "150000",
+"label": "PROVISIONS RÉGLEMENTÉES ET FON",
+"classe": "1"
+},
+{
+"code": "151000",
+"label": "AMORTISSEMENTS DÉROGATOIRES",
+"classe": "1"
+},
+{
+"code": "152000",
+"label": "PLUS-VALUES DE CESSION À RÉINV",
+"classe": "1"
+},
+{
+"code": "153000",
+"label": "FONDS RÉGLEMENTÉS",
+"classe": "1"
+},
+{
+"code": "153100",
+"label": "Fonds National",
+"classe": "1"
+},
+{
+"code": "153200",
+"label": "Prélèvement pour le Budget",
+"classe": "1"
+},
+{
+"code": "154000",
+"label": "PROVISION SPÉCIALE DE RÉÉVALUA",
+"classe": "1"
+},
+{
+"code": "155000",
+"label": "PROVISIONS RÉGLEMENTÉES RELATI",
+"classe": "1"
+},
+{
+"code": "155100",
+"label": "Reconstitution des gisements m",
+"classe": "1"
+},
+{
+"code": "156000",
+"label": "PROVISIONS RÉGLEMENTÉES RELATI",
+"classe": "1"
+},
+{
+"code": "156100",
+"label": "Hausse de prix",
+"classe": "1"
+},
+{
+"code": "156200",
+"label": "Fluctuation des cours",
+"classe": "1"
+},
+{
+"code": "157000",
+"label": "PROVISIONS POUR INVESTISSEMENT",
+"classe": "1"
+},
+{
+"code": "158000",
+"label": "AUTRES PROVISIONS ET FONDS RÉG",
+"classe": "1"
+},
+{
+"code": "160000",
+"label": "EMPRUNTS ET DETTES ASSIMILÉES",
+"classe": "1"
+},
+{
+"code": "161000",
+"label": "EMPRUNTS OBLIGATAIRES",
+"classe": "1"
+},
+{
+"code": "161100",
+"label": "Emprunts obligataires ordinair",
+"classe": "1"
+},
+{
+"code": "161200",
+"label": "Emprunts obligataires converti",
+"classe": "1"
+},
+{
+"code": "161300",
+"label": "Emprunts obligatoires rembours",
+"classe": "1"
+},
+{
+"code": "161800",
+"label": "Autres emprunts obligataires",
+"classe": "1"
+},
+{
+"code": "162000",
+"label": "EMPRUNTS ET DETTES AUPRÈS DES",
+"classe": "1"
+},
+{
+"code": "162010",
+"label": "EMPRUNT CORIS BANK",
+"classe": "1"
+},
+{
+"code": "162020",
+"label": "EMPRUNT VISTA",
+"classe": "1"
+},
+{
+"code": "162030",
+"label": "EMPRUNT WBI",
+"classe": "1"
+},
+{
+"code": "163000",
+"label": "AVANCES REÇUES DE L'ÉTAT",
+"classe": "1"
+},
+{
+"code": "164000",
+"label": "AVANCES REÇUES ET COMPTES COUR",
+"classe": "1"
+},
+{
+"code": "165000",
+"label": "DÉPÔTS ET CAUTIONNEMENTS RECUS",
+"classe": "1"
+},
+{
+"code": "165100",
+"label": "Dépôts",
+"classe": "1"
+},
+{
+"code": "165200",
+"label": "Cautionnements",
+"classe": "1"
+},
+{
+"code": "166000",
+"label": "INTÉRÊTS COURUS",
+"classe": "1"
+},
+{
+"code": "166100",
+"label": "sur emprunts obligataires",
+"classe": "1"
+},
+{
+"code": "166200",
+"label": "sur emprunts et dettes auprès",
+"classe": "1"
+},
+{
+"code": "166300",
+"label": "sur avances reçues de l'État",
+"classe": "1"
+},
+{
+"code": "166400",
+"label": "sur avances reçues et comptes",
+"classe": "1"
+},
+{
+"code": "166500",
+"label": "sur dépôts et cautionnements r",
+"classe": "1"
+},
+{
+"code": "166700",
+"label": "sur avances assorties de condi",
+"classe": "1"
+},
+{
+"code": "166800",
+"label": "sur autres emprunts et dettes",
+"classe": "1"
+},
+{
+"code": "167000",
+"label": "AVANCES ASSORTIES DE CONDITION",
+"classe": "1"
+},
+{
+"code": "167100",
+"label": "Avances bloquées pour augmenta",
+"classe": "1"
+},
+{
+"code": "167200",
+"label": "Avances conditionnées par l'Ét",
+"classe": "1"
+},
+{
+"code": "167300",
+"label": "Avances conditionnées par les",
+"classe": "1"
+},
+{
+"code": "167400",
+"label": "Avances conditionnées par les",
+"classe": "1"
+},
+{
+"code": "168000",
+"label": "AUTRES EMPRUNTS ET DETTES",
+"classe": "1"
+},
+{
+"code": "168100",
+"label": "Rentes viagères capitalisées",
+"classe": "1"
+},
+{
+"code": "168200",
+"label": "Billets de fonds",
+"classe": "1"
+},
+{
+"code": "168300",
+"label": "Dettes consécutives à des titr",
+"classe": "1"
+},
+{
+"code": "168400",
+"label": "Emprunts participatifs",
+"classe": "1"
+},
+{
+"code": "168500",
+"label": "Participation des travailleurs",
+"classe": "1"
+},
+{
+"code": "168600",
+"label": "Emprunts et dettes contractées",
+"classe": "1"
+},
+{
+"code": "170000",
+"label": "DETTES DE LOCATION ACQUISITION",
+"classe": "1"
+},
+{
+"code": "172000",
+"label": "DETTES DE LOCATION ACQUISITION",
+"classe": "1"
+},
+{
+"code": "173000",
+"label": "DETTES DE LOCATION ACQUISITION",
+"classe": "1"
+},
+{
+"code": "174000",
+"label": "DETTES DE LOCATION ACQUISITION",
+"classe": "1"
+},
+{
+"code": "176000",
+"label": "INTÉRÊTS COURUS",
+"classe": "1"
+},
+{
+"code": "176200",
+"label": "sur dettes de location acquisi",
+"classe": "1"
+},
+{
+"code": "176300",
+"label": "sur dettes de location acquisi",
+"classe": "1"
+},
+{
+"code": "176400",
+"label": "sur dettes de location acquisi",
+"classe": "1"
+},
+{
+"code": "176800",
+"label": "sur autres dettes de location",
+"classe": "1"
+},
+{
+"code": "178000",
+"label": "AUTRES DETTES DE LOCATION ACQU",
+"classe": "1"
+},
+{
+"code": "180000",
+"label": "DETTES LIÉES À DES PARTICIPATI",
+"classe": "1"
+},
+{
+"code": "181000",
+"label": "DETTES LIÉES À DES PARTICIPATI",
+"classe": "1"
+},
+{
+"code": "181100",
+"label": "Dettes liées à des participati",
+"classe": "1"
+},
+{
+"code": "181200",
+"label": "Dettes liées à des participati",
+"classe": "1"
+},
+{
+"code": "182000",
+"label": "DETTES LIÉES À DES SOCIÉTÉS EN",
+"classe": "1"
+},
+{
+"code": "183000",
+"label": "INTÉRÊTS COURUS SUR DETTES LIÉ",
+"classe": "1"
+},
+{
+"code": "184000",
+"label": "COMPTES PERMANENTS BLOQUÉS DES",
+"classe": "1"
+},
+{
+"code": "185000",
+"label": "COMPTES PERMANENTS NON BLOQUÉS",
+"classe": "1"
+},
+{
+"code": "186000",
+"label": "COMPTES DE LIAISON CHARGES",
+"classe": "1"
+},
+{
+"code": "187000",
+"label": "COMPTES DE LIAISON PRODUITS",
+"classe": "1"
+},
+{
+"code": "188000",
+"label": "COMPTES DE LIAISON DES SOCIÉTÉ",
+"classe": "1"
+},
+{
+"code": "190000",
+"label": "PROVISIONS POUR RISQUES ET CHA",
+"classe": "1"
+},
+{
+"code": "191000",
+"label": "PROVISIONS POUR LITIGES",
+"classe": "1"
+},
+{
+"code": "192000",
+"label": "PROVISIONS POUR GARANTIES DONN",
+"classe": "1"
+},
+{
+"code": "193000",
+"label": "PROVISIONS POUR PERTES SUR MAR",
+"classe": "1"
+},
+{
+"code": "194000",
+"label": "PROVISIONS POUR PERTES DE CHAN",
+"classe": "1"
+},
+{
+"code": "195000",
+"label": "PROVISIONS POUR IMPÔTS",
+"classe": "1"
+},
+{
+"code": "196000",
+"label": "PROVISIONS POUR PENSIONS ET OB",
+"classe": "1"
+},
+{
+"code": "196100",
+"label": "Provisions pour pensions et ob",
+"classe": "1"
+},
+{
+"code": "196200",
+"label": "Actif du régime de retraite",
+"classe": "1"
+},
+{
+"code": "197000",
+"label": "PROVISIONS POUR RESTRUCTURATIO",
+"classe": "1"
+},
+{
+"code": "198000",
+"label": "AUTRES PROVISIONS POUR RISQUES",
+"classe": "1"
+},
+{
+"code": "198100",
+"label": "Provisions pour amendes et pén",
+"classe": "1"
+},
+{
+"code": "198300",
+"label": "Provisions de propre assureur",
+"classe": "1"
+},
+{
+"code": "198400",
+"label": "Provisions pour démantèlement",
+"classe": "1"
+},
+{
+"code": "198500",
+"label": "Provisions pour droits à réduc",
+"classe": "1"
+},
+{
+"code": "198800",
+"label": "Provisions financières pour ri",
+"classe": "1"
+},
+{
+"code": "210000",
+"label": "IMMOBILISATIONS INCORPORELLES",
+"classe": "2"
+},
+{
+"code": "211000",
+"label": "FRAIS DE DÉVELOPPEMENT",
+"classe": "2"
+},
+{
+"code": "212000",
+"label": "BREVETS, LICENCES, CONCESSIONS",
+"classe": "2"
+},
+{
+"code": "212100",
+"label": "BREVETS",
+"classe": "2"
+},
+{
+"code": "212200",
+"label": "LICENCES",
+"classe": "2"
+},
+{
+"code": "212300",
+"label": "CONCESSIONS DE SERVICE PUBLIC",
+"classe": "2"
+},
+{
+"code": "212800",
+"label": "AUTRES CONCESSIONS ET DROITS S",
+"classe": "2"
+},
+{
+"code": "213000",
+"label": "LOGICIELS ET SITES INTERNET",
+"classe": "2"
+},
+{
+"code": "213100",
+"label": "LOGICIELS",
+"classe": "2"
+},
+{
+"code": "213200",
+"label": "SITES INTERNET",
+"classe": "2"
+},
+{
+"code": "214000",
+"label": "MARQUES",
+"classe": "2"
+},
+{
+"code": "215000",
+"label": "FONDS COMMERCIAL",
+"classe": "2"
+},
+{
+"code": "216000",
+"label": "DROIT AU BAIL",
+"classe": "2"
+},
+{
+"code": "217000",
+"label": "INVESTISSEMENTS DE CRÉATION",
+"classe": "2"
+},
+{
+"code": "218000",
+"label": "AUTRES DROITS ET VALEURS INCOR",
+"classe": "2"
+},
+{
+"code": "218100",
+"label": "FRAIS DE PROSPECTION ET D'ÉVAL",
+"classe": "2"
+},
+{
+"code": "218200",
+"label": "COÛTS D'OBTENTION DU CONTRAT",
+"classe": "2"
+},
+{
+"code": "218300",
+"label": "FICHIERS CLIENTS, NOTICES, TIT",
+"classe": "2"
+},
+{
+"code": "218400",
+"label": "COÛTS DES FRANCHISES",
+"classe": "2"
+},
+{
+"code": "218800",
+"label": "DIVERS DROITS ET VALEURS INCOR",
+"classe": "2"
+},
+{
+"code": "219000",
+"label": "IMMOBILISATIONS INCORPORELLES",
+"classe": "2"
+},
+{
+"code": "219100",
+"label": "FRAIS DE DÉVELOPPEMENT",
+"classe": "2"
+},
+{
+"code": "219300",
+"label": "LOGICIELS ET INTERNET",
+"classe": "2"
+},
+{
+"code": "219800",
+"label": "AUTRES DROITS ET VALEURS INCOR",
+"classe": "2"
+},
+{
+"code": "220000",
+"label": "TERRAINS",
+"classe": "2"
+},
+{
+"code": "221000",
+"label": "TERRAINS AGRICOLES ET FORESTIE",
+"classe": "2"
+},
+{
+"code": "221100",
+"label": "TERRAINS D'EXPLOITATION AGRICO",
+"classe": "2"
+},
+{
+"code": "221200",
+"label": "TERRAINS D'EXPLOITATION FOREST",
+"classe": "2"
+},
+{
+"code": "221800",
+"label": "AUTRES TERRAINS",
+"classe": "2"
+},
+{
+"code": "222000",
+"label": "TERRAINS NUS",
+"classe": "2"
+},
+{
+"code": "222100",
+"label": "TERRAINS À BÂTIR",
+"classe": "2"
+},
+{
+"code": "222110",
+"label": "TERRAIN SONGDIN (58 351 M²) SI",
+"classe": "2"
+},
+{
+"code": "222800",
+"label": "TERRAINS RIVERAINS",
+"classe": "2"
+},
+{
+"code": "223000",
+"label": "TERRAINS BÂTIS",
+"classe": "2"
+},
+{
+"code": "223100",
+"label": "POUR BÂTIMENTS INDUSTRIELS ET",
+"classe": "2"
+},
+{
+"code": "223200",
+"label": "POUR BÂTIMENTS ADMINISTRATIFS",
+"classe": "2"
+},
+{
+"code": "223400",
+"label": "POUR BÂTIMENTS AFFECTÉS AUX AU",
+"classe": "2"
+},
+{
+"code": "223500",
+"label": "POUR BÂTIMENTS AFFECTÉS AUX AU",
+"classe": "2"
+},
+{
+"code": "223800",
+"label": "AUTRES TERRAINS BÂTIS",
+"classe": "2"
+},
+{
+"code": "224000",
+"label": "TRAVAUX DE MISE EN VALEUR DES",
+"classe": "2"
+},
+{
+"code": "224100",
+"label": "PLANTATION D'ARBRES ET D'ARBUS",
+"classe": "2"
+},
+{
+"code": "224500",
+"label": "AMÉLIORATIONS DU FONDS",
+"classe": "2"
+},
+{
+"code": "224800",
+"label": "AUTRES TRAVAUX",
+"classe": "2"
+},
+{
+"code": "225000",
+"label": "TERRAINS DE CARRIERES-TREFONDS",
+"classe": "2"
+},
+{
+"code": "225100",
+"label": "CARRIÈRES",
+"classe": "2"
+},
+{
+"code": "226000",
+"label": "TERRAINS AMÉNAGÉS",
+"classe": "2"
+},
+{
+"code": "226100",
+"label": "PARKINGS",
+"classe": "2"
+},
+{
+"code": "227000",
+"label": "TERRAINS MIS EN CONCESSION",
+"classe": "2"
+},
+{
+"code": "228000",
+"label": "AUTRES TERRAINS",
+"classe": "2"
+},
+{
+"code": "228100",
+"label": "TERRAINS DES IMMEUBLES DE PLAC",
+"classe": "2"
+},
+{
+"code": "228500",
+"label": "TERRAINS DES LOGEMENTS AFFECTÉ",
+"classe": "2"
+},
+{
+"code": "228600",
+"label": "TERRAINS DE LOCATION-ACQUISITI",
+"classe": "2"
+},
+{
+"code": "228800",
+"label": "AUTRES TERRAINS",
+"classe": "2"
+},
+{
+"code": "228801",
+"label": "TERRAIN RIVERAIN",
+"classe": "2"
+},
+{
+"code": "229000",
+"label": "AMÉNAGEMENTS DE TERRAINS EN CO",
+"classe": "2"
+},
+{
+"code": "229100",
+"label": "TERRAINS AGRICOLES ET FORESTIE",
+"classe": "2"
+},
+{
+"code": "229200",
+"label": "TERRAINS NUS",
+"classe": "2"
+},
+{
+"code": "229500",
+"label": "TERRAINS DE CARRIÈRES-TRÉFONDS",
+"classe": "2"
+},
+{
+"code": "229800",
+"label": "AUTRES TERRAINS",
+"classe": "2"
+},
+{
+"code": "230000",
+"label": "BÂTIMENTS, INSTALLATIONS TECHN",
+"classe": "2"
+},
+{
+"code": "231000",
+"label": "BÂTIMENTS INDUSTRIELS, AGRICOL",
+"classe": "2"
+},
+{
+"code": "231100",
+"label": "BÂTIMENTS INDUSTRIELS",
+"classe": "2"
+},
+{
+"code": "231200",
+"label": "BÂTIMENTS AGRICOLES",
+"classe": "2"
+},
+{
+"code": "231300",
+"label": "BÂTIMENTS ADMINISTRATIFS ET CO",
+"classe": "2"
+},
+{
+"code": "231400",
+"label": "BÂTIMENTS AFFECTÉS AU LOGEMENT",
+"classe": "2"
+},
+{
+"code": "231500",
+"label": "BÂTIMENTS -IMMEUBLES DE PLACEM",
+"classe": "2"
+},
+{
+"code": "231600",
+"label": "BÂTIMENTS DE LOCATION-ACQUISIT",
+"classe": "2"
+},
+{
+"code": "232000",
+"label": "BÂTIMENTS INDUSTRIELS, AGRICOL",
+"classe": "2"
+},
+{
+"code": "232100",
+"label": "BÂTIMENTS INDUSTRIELS",
+"classe": "2"
+},
+{
+"code": "232200",
+"label": "BÂTIMENTS AGRICOLES",
+"classe": "2"
+},
+{
+"code": "232300",
+"label": "BÂTIMENTS ADMINISTRATIFS ET CO",
+"classe": "2"
+},
+{
+"code": "232400",
+"label": "BÂTIMENTS AFFECTÉS AU LOGEMENT",
+"classe": "2"
+},
+{
+"code": "232500",
+"label": "BÂTIMENTS -IMMEUBLES DE PLACEM",
+"classe": "2"
+},
+{
+"code": "232600",
+"label": "BÂTIMENTS DE LOCATION-ACQUISIT",
+"classe": "2"
+},
+{
+"code": "233000",
+"label": "OUVRAGES D’INFRASTRUCTURE",
+"classe": "2"
+},
+{
+"code": "233100",
+"label": "VOIES DE TERRE",
+"classe": "2"
+},
+{
+"code": "233200",
+"label": "VOIES DE FER",
+"classe": "2"
+},
+{
+"code": "233300",
+"label": "VOIES D’EAU",
+"classe": "2"
+},
+{
+"code": "233400",
+"label": "BARRAGES, DIGUES",
+"classe": "2"
+},
+{
+"code": "233500",
+"label": "PISTES D’AÉRODROME",
+"classe": "2"
+},
+{
+"code": "233800",
+"label": "AUTRES OUVRAGES D'INFRASTRUCTU",
+"classe": "2"
+},
+{
+"code": "233801",
+"label": "Pompe Hybride",
+"classe": "2"
+},
+{
+"code": "234000",
+"label": "INSTALLATIONS, AGENCEMENTS ET",
+"classe": "2"
+},
+{
+"code": "234100",
+"label": "INSTALLATIONS COMPLEXES SPÉCIA",
+"classe": "2"
+},
+{
+"code": "234200",
+"label": "INSTALLATIONS COMPLEXES SPÉCIA",
+"classe": "2"
+},
+{
+"code": "234300",
+"label": "INSTALLATIONS À CARACTÈRE SPÉC",
+"classe": "2"
+},
+{
+"code": "234400",
+"label": "INSTALLATIONS À CARACTÈRE SPÉC",
+"classe": "2"
+},
+{
+"code": "234500",
+"label": "AMÉNAGEMENTS ET AGENCEMENTS",
+"classe": "2"
+},
+{
+"code": "235000",
+"label": "AMENAGEMENTS DE BUREAUX",
+"classe": "2"
+},
+{
+"code": "235100",
+"label": "INSTALLATIONS GÉNÉRALES",
+"classe": "2"
+},
+{
+"code": "235800",
+"label": "AUTRES AMÉNAGEMENTS DE BUREAUX",
+"classe": "2"
+},
+{
+"code": "237000",
+"label": "BÂTIMENTS INDUSTRIELS, AGRICOL",
+"classe": "2"
+},
+{
+"code": "238000",
+"label": "AUTRES INSTALLATIONS ET AGENCE",
+"classe": "2"
+},
+{
+"code": "239000",
+"label": "BÂTIMENTS AGENCEMENTS ET INSTA",
+"classe": "2"
+},
+{
+"code": "239100",
+"label": "BÂTIMENTS EN COURS",
+"classe": "2"
+},
+{
+"code": "239101",
+"label": "POSTE DE TRANSFORMATION SONABE",
+"classe": "2"
+},
+{
+"code": "239102",
+"label": "LABORATOIRE",
+"classe": "2"
+},
+{
+"code": "239103",
+"label": "LOCAL LOESCHE",
+"classe": "2"
+},
+{
+"code": "239104",
+"label": "BATIMENT ADMINISTRATIF",
+"classe": "2"
+},
+{
+"code": "239105",
+"label": "ALIMENTATION HTA USINE",
+"classe": "2"
+},
+{
+"code": "239200",
+"label": "INSTALLATIONS EN COURS",
+"classe": "2"
+},
+{
+"code": "239201",
+"label": "SYSTEME D'ALIMENTATION USINE",
+"classe": "2"
+},
+{
+"code": "239202",
+"label": "BROYEUR",
+"classe": "2"
+},
+{
+"code": "239203",
+"label": "SYSTEME DE REJET",
+"classe": "2"
+},
+{
+"code": "239204",
+"label": "FILTRE DEPOUSSIERAGE",
+"classe": "2"
+},
+{
+"code": "239205",
+"label": "SYSTEME DE RECHAUFFAGE",
+"classe": "2"
+},
+{
+"code": "239206",
+"label": "SYSTEME DE STOCKAGE DE PRODUIT",
+"classe": "2"
+},
+{
+"code": "239207",
+"label": "ACCESSOIRES ET TUYAUTERIE",
+"classe": "2"
+},
+{
+"code": "239208",
+"label": "EQUIPEMENT ADDITIONNEL",
+"classe": "2"
+},
+{
+"code": "239209",
+"label": "EQUIPEMENT ELECTRIQUE ET AUTOM",
+"classe": "2"
+},
+{
+"code": "239210",
+"label": "STRUCTURE EN ACIER",
+"classe": "2"
+},
+{
+"code": "239211",
+"label": "STRUCTURE EN BETON ET TRAVAUX",
+"classe": "2"
+},
+{
+"code": "239212",
+"label": "SERVICE D'INGENIERIE",
+"classe": "2"
+},
+{
+"code": "239213",
+"label": "SERVICE DU PERSONNEL",
+"classe": "2"
+},
+{
+"code": "239214",
+"label": "INSOLATION THERMIQUE ET PEINTU",
+"classe": "2"
+},
+{
+"code": "239215",
+"label": "ORGANISATION ET MONTAGE DU CHA",
+"classe": "2"
+},
+{
+"code": "239216",
+"label": "SILO 3",
+"classe": "2"
+},
+{
+"code": "239217",
+"label": "EQUIPEMENT MECANIQUE",
+"classe": "2"
+},
+{
+"code": "239218",
+"label": "MISE SOUS TERRE TRÉMI VOYAGEUR",
+"classe": "2"
+},
+{
+"code": "239219",
+"label": "TREMIS HALL CALCAIRE",
+"classe": "2"
+},
+{
+"code": "239220",
+"label": "TUYAUTERIE USINE",
+"classe": "2"
+},
+{
+"code": "239221",
+"label": "HANGAR PARLYM",
+"classe": "2"
+},
+{
+"code": "239300",
+"label": "OUVRAGES D'INFRASTRUCTURE EN",
+"classe": "2"
+},
+{
+"code": "239301",
+"label": "DOUANE, MISE EN PLACE CIMENTER",
+"classe": "2"
+},
+{
+"code": "239302",
+"label": "TRANSPORT MATERIELS USINE",
+"classe": "2"
+},
+{
+"code": "239303",
+"label": "EXPERTISE, EQUIPEMENTS CIMENTE",
+"classe": "2"
+},
+{
+"code": "239304",
+"label": "CHATEAU D'EAU METALLIQUE",
+"classe": "2"
+},
+{
+"code": "239305",
+"label": "POSTE DE PESEE",
+"classe": "2"
+},
+{
+"code": "239306",
+"label": "POSTE DE PESEE A2B",
+"classe": "2"
+},
+{
+"code": "239307",
+"label": "GUERITE",
+"classe": "2"
+},
+{
+"code": "239308",
+"label": "RESEAU INCENDIE",
+"classe": "2"
+},
+{
+"code": "239309",
+"label": "GUERITE B",
+"classe": "2"
+},
+{
+"code": "239310",
+"label": "AUTRES IMMOBILISATION EN COURS",
+"classe": "2"
+},
+{
+"code": "239311",
+"label": "HALL DE STOCKAGE/RIGA",
+"classe": "2"
+},
+{
+"code": "239400",
+"label": "AMÉNAGEMENTS ET AGENCEMENTS",
+"classe": "2"
+},
+{
+"code": "239500",
+"label": "AMÉNAGEMENTS DE BUREAUX EN COU",
+"classe": "2"
+},
+{
+"code": "239800",
+"label": "AUTRES INSTALLATIONS ET AGENCE",
+"classe": "2"
+},
+{
+"code": "240000",
+"label": "MATÉRIEL, MOBILIER ET ACTIFS B",
+"classe": "2"
+},
+{
+"code": "241000",
+"label": "MATÉRIEL ET OUTILLAGE INDUSTRI",
+"classe": "2"
+},
+{
+"code": "241100",
+"label": "MATÉRIEL INDUSTRIEL",
+"classe": "2"
+},
+{
+"code": "241101",
+"label": "TRANSPALETTE",
+"classe": "2"
+},
+{
+"code": "241102",
+"label": "CONVOYEUR MOBILE",
+"classe": "2"
+},
+{
+"code": "241103",
+"label": "BACHES 35/35",
+"classe": "2"
+},
+{
+"code": "241104",
+"label": "BOMBONE",
+"classe": "2"
+},
+{
+"code": "241105",
+"label": "CHARIOT THERMIQUE",
+"classe": "2"
+},
+{
+"code": "241106",
+"label": "TRANSFORMATEUR DE TENSION",
+"classe": "2"
+},
+{
+"code": "241200",
+"label": "OUTILLAGE INDUSTRIEL",
+"classe": "2"
+},
+{
+"code": "241300",
+"label": "MATÉRIEL COMMERCIAL",
+"classe": "2"
+},
+{
+"code": "241400",
+"label": "OUTILLAGE COMMERCIAL",
+"classe": "2"
+},
+{
+"code": "241600",
+"label": "MATÉRIEL ET OUTILLAGE INDUSTRI",
+"classe": "2"
+},
+{
+"code": "242000",
+"label": "MATÉRIEL ET OUTILLAGE AGRICOLE",
+"classe": "2"
+},
+{
+"code": "242100",
+"label": "MATÉRIEL AGRICOLE",
+"classe": "2"
+},
+{
+"code": "242200",
+"label": "OUTILLAGE AGRICOLE",
+"classe": "2"
+},
+{
+"code": "242600",
+"label": "MATÉRIEL ET OUTILLAGE AGRICOLE",
+"classe": "2"
+},
+{
+"code": "243000",
+"label": "MATÉRIEL D’EMBALLAGE RÉCUPÉRAB",
+"classe": "2"
+},
+{
+"code": "244000",
+"label": "MATÉRIEL ET MOBILIER",
+"classe": "2"
+},
+{
+"code": "244100",
+"label": "MATÉRIEL DE BUREAU",
+"classe": "2"
+},
+{
+"code": "244200",
+"label": "MATÉRIEL INFORMATIQUE",
+"classe": "2"
+},
+{
+"code": "244201",
+"label": "IMPRIMANTE",
+"classe": "2"
+},
+{
+"code": "244202",
+"label": "SERVEUR HPE PROLIANT ML350",
+"classe": "2"
+},
+{
+"code": "244203",
+"label": "ORDINATEUR",
+"classe": "2"
+},
+{
+"code": "244204",
+"label": "POSTE DE COMMUNICATION/TELEPHO",
+"classe": "2"
+},
+{
+"code": "244300",
+"label": "MATÉRIEL BUREAUTIQUE",
+"classe": "2"
+},
+{
+"code": "244400",
+"label": "MOBILIER DE BUREAU",
+"classe": "2"
+},
+{
+"code": "244500",
+"label": "MATÉRIEL ET MOBILIER-IMMEUBLES",
+"classe": "2"
+},
+{
+"code": "244600",
+"label": "MATÉRIEL ET MOBILIER DE LOCATI",
+"classe": "2"
+},
+{
+"code": "244700",
+"label": "MATÉRIEL ET MOBILIER DES LOGEM",
+"classe": "2"
+},
+{
+"code": "244800",
+"label": "CLIMATISEURS",
+"classe": "2"
+},
+{
+"code": "245000",
+"label": "MATÉRIEL DE TRANSPORT",
+"classe": "2"
+},
+{
+"code": "245001",
+"label": "SEMI-REMORQUE 11KH1036BF",
+"classe": "2"
+},
+{
+"code": "245002",
+"label": "SEMI-REMORQUE 11KH7402BF",
+"classe": "2"
+},
+{
+"code": "245003",
+"label": "SEMI-REMORQUE 11KH1040BF",
+"classe": "2"
+},
+{
+"code": "245004",
+"label": "SEMI-REMORQUE 11KH9120BF",
+"classe": "2"
+},
+{
+"code": "245005",
+"label": "BENNE POUR TRSP MATIERE",
+"classe": "2"
+},
+{
+"code": "245006",
+"label": "KIA SONET",
+"classe": "2"
+},
+{
+"code": "245007",
+"label": "KIA SORENTO",
+"classe": "2"
+},
+{
+"code": "245008",
+"label": "TOYOTA RAV 4",
+"classe": "2"
+},
+{
+"code": "245009",
+"label": "HONDA CRAY",
+"classe": "2"
+},
+{
+"code": "245100",
+"label": "MATÉRIEL AUTOMOBILE",
+"classe": "2"
+},
+{
+"code": "245200",
+"label": "MATÉRIEL FERROVIAIRE",
+"classe": "2"
+},
+{
+"code": "245300",
+"label": "MATÉRIEL FLUVIAL, LAGUNAIRE",
+"classe": "2"
+},
+{
+"code": "245400",
+"label": "MATÉRIEL NAVAL",
+"classe": "2"
+},
+{
+"code": "245500",
+"label": "MATÉRIEL AÉRIEN",
+"classe": "2"
+},
+{
+"code": "245600",
+"label": "MATÉRIEL DE TRANSPORT DE LOCAT",
+"classe": "2"
+},
+{
+"code": "245700",
+"label": "MATÉRIEL HIPPOMOBILE",
+"classe": "2"
+},
+{
+"code": "245800",
+"label": "AUTRES MATÉRIELS DE TRANSPORTS",
+"classe": "2"
+},
+{
+"code": "246000",
+"label": "ACTIFS BIOLOGIQUES",
+"classe": "2"
+},
+{
+"code": "246100",
+"label": "CHEPTEL, ANIMAUX DE TRAIT",
+"classe": "2"
+},
+{
+"code": "246200",
+"label": "CHEPTEL, ANIMAUX REPRODUCTEURS",
+"classe": "2"
+},
+{
+"code": "246300",
+"label": "ANIMAUX DE GARDE",
+"classe": "2"
+},
+{
+"code": "246500",
+"label": "PLANTATIONS AGRICOLES",
+"classe": "2"
+},
+{
+"code": "246800",
+"label": "AUTRES ACTIFS BIOLOGIQUES",
+"classe": "2"
+},
+{
+"code": "247000",
+"label": "AGENCEMENTS, AMÉNAGEMENTS DU",
+"classe": "2"
+},
+{
+"code": "247100",
+"label": "AGENCEMENTS ET AMÉNAGEMENTS",
+"classe": "2"
+},
+{
+"code": "247200",
+"label": "AGENCEMENTS ET AMÉNAGEMENTS",
+"classe": "2"
+},
+{
+"code": "247800",
+"label": "AUTRES AGENCEMENTS, AMÉNAGEMEN",
+"classe": "2"
+},
+{
+"code": "248000",
+"label": "AUTRES MATÉRIELS ET MOBILIERS",
+"classe": "2"
+},
+{
+"code": "248100",
+"label": "COLLECTIONS ET ÔUVRES D’ART",
+"classe": "2"
+},
+{
+"code": "248800",
+"label": "DIVERS MATÉRIELS ET MOBILIERS",
+"classe": "2"
+},
+{
+"code": "249000",
+"label": "MATÉRIEL ET ACTIFS BIOLOGIQUES",
+"classe": "2"
+},
+{
+"code": "249100",
+"label": "MATÉRIEL ET OUTILLAGE INDUSTRI",
+"classe": "2"
+},
+{
+"code": "249200",
+"label": "MATÉRIEL ET OUTILLAGE AGRICOLE",
+"classe": "2"
+},
+{
+"code": "249300",
+"label": "MATÉRIEL D’EMBALLAGE RÉCUPÉRAB",
+"classe": "2"
+},
+{
+"code": "249400",
+"label": "MATÉRIEL ET MOBILIER DE BUREAU",
+"classe": "2"
+},
+{
+"code": "249500",
+"label": "MATÉRIEL DE TRANSPORT",
+"classe": "2"
+},
+{
+"code": "249600",
+"label": "ACTIFS BIOLOGIQUES",
+"classe": "2"
+},
+{
+"code": "249700",
+"label": "AGENCEMENTS ET AMÉNAGEMENTS",
+"classe": "2"
+},
+{
+"code": "249800",
+"label": "AUTRES MATÉRIELS ET ACTIFS BIO",
+"classe": "2"
+},
+{
+"code": "250000",
+"label": "AVANCES ET ACOMPTES VERSÉS SUR",
+"classe": "2"
+},
+{
+"code": "251000",
+"label": "AVANCES ET ACOMPTES VERSÉS SUR",
+"classe": "2"
+},
+{
+"code": "252000",
+"label": "AVANCES ET ACOMPTES VERSÉS SUR",
+"classe": "2"
+},
+{
+"code": "260000",
+"label": "TITRES DE PARTICIPATION",
+"classe": "2"
+},
+{
+"code": "261000",
+"label": "TITRES DE PARTICIPATION DANS D",
+"classe": "2"
+},
+{
+"code": "262000",
+"label": "TITRES DE PARTICIPATION DANS D",
+"classe": "2"
+},
+{
+"code": "263000",
+"label": "TITRES DE PARTICIPATION DANS D",
+"classe": "2"
+},
+{
+"code": "265000",
+"label": "PARTICIPATIONS DANS DES ORGANI",
+"classe": "2"
+},
+{
+"code": "266000",
+"label": "PARTS DANS DES GROUPEMENTS D’I",
+"classe": "2"
+},
+{
+"code": "268000",
+"label": "AUTRES TITRES DE PARTICIPATION",
+"classe": "2"
+},
+{
+"code": "270000",
+"label": "AUTRES IMMOBLISATIONS FINANCIÈ",
+"classe": "2"
+},
+{
+"code": "271000",
+"label": "PRÊTS ET CRÉANCES",
+"classe": "2"
+},
+{
+"code": "271100",
+"label": "Prêts participatifs",
+"classe": "2"
+},
+{
+"code": "271200",
+"label": "Prêts aux associés",
+"classe": "2"
+},
+{
+"code": "271300",
+"label": "Billets de fonds",
+"classe": "2"
+},
+{
+"code": "271400",
+"label": "Titres prêtés",
+"classe": "2"
+},
+{
+"code": "271800",
+"label": "Autres prêts et créances",
+"classe": "2"
+},
+{
+"code": "272000",
+"label": "PRÊTS AU PERSONNEL",
+"classe": "2"
+},
+{
+"code": "272100",
+"label": "Prêts immobiliers",
+"classe": "2"
+},
+{
+"code": "272200",
+"label": "Prêts mobiliers et d’installat",
+"classe": "2"
+},
+{
+"code": "272800",
+"label": "Autres prêts au personnel",
+"classe": "2"
+},
+{
+"code": "273000",
+"label": "CRÉANCES SUR L’ÉTAT",
+"classe": "2"
+},
+{
+"code": "273100",
+"label": "Retenues de garantie",
+"classe": "2"
+},
+{
+"code": "273300",
+"label": "Fonds réglementé",
+"classe": "2"
+},
+{
+"code": "273400",
+"label": "Créances sur le concédant",
+"classe": "2"
+},
+{
+"code": "273800",
+"label": "Autres créances sur l'Etat",
+"classe": "2"
+},
+{
+"code": "274000",
+"label": "TITRES IMMOBILISÉS",
+"classe": "2"
+},
+{
+"code": "274100",
+"label": "Titres immobilisés de l’activi",
+"classe": "2"
+},
+{
+"code": "274200",
+"label": "Titres participatifs",
+"classe": "2"
+},
+{
+"code": "274300",
+"label": "Certificats d’investissement",
+"classe": "2"
+},
+{
+"code": "274400",
+"label": "Parts de fonds commun de place",
+"classe": "2"
+},
+{
+"code": "274500",
+"label": "Obligations",
+"classe": "2"
+},
+{
+"code": "274600",
+"label": "Actions ou parts propres",
+"classe": "2"
+},
+{
+"code": "274800",
+"label": "Autres titres immobilisés",
+"classe": "2"
+},
+{
+"code": "275000",
+"label": "DÉPÔTS ET CAUTIONNEMENTS VERSÉ",
+"classe": "2"
+},
+{
+"code": "275100",
+"label": "Dépôts pour loyers d’avance",
+"classe": "2"
+},
+{
+"code": "275200",
+"label": "Dépôts pour l’électricité",
+"classe": "2"
+},
+{
+"code": "275300",
+"label": "Dépôts pour l’eau",
+"classe": "2"
+},
+{
+"code": "275400",
+"label": "Dépôts pour le gaz",
+"classe": "2"
+},
+{
+"code": "275500",
+"label": "Dépôts pour le téléphone, le t",
+"classe": "2"
+},
+{
+"code": "275600",
+"label": "Cautionnements sur marchés pub",
+"classe": "2"
+},
+{
+"code": "275700",
+"label": "Cautionnements sur autres opér",
+"classe": "2"
+},
+{
+"code": "275800",
+"label": "Autres dépôts et cautionnement",
+"classe": "2"
+},
+{
+"code": "276000",
+"label": "INTÉRÊTS COURUS",
+"classe": "2"
+},
+{
+"code": "276100",
+"label": "Prêts et créances non commerci",
+"classe": "2"
+},
+{
+"code": "276200",
+"label": "Prêts au personnel",
+"classe": "2"
+},
+{
+"code": "276300",
+"label": "Créances sur l'Etat",
+"classe": "2"
+},
+{
+"code": "276400",
+"label": "Titres immobilisés",
+"classe": "2"
+},
+{
+"code": "276500",
+"label": "Dépôts et cautionnements versé",
+"classe": "2"
+},
+{
+"code": "276700",
+"label": "Créances rattachées à des part",
+"classe": "2"
+},
+{
+"code": "276800",
+"label": "Immobilisations financières di",
+"classe": "2"
+},
+{
+"code": "277000",
+"label": "CRÉANCES RATTACHÉES À DES PART",
+"classe": "2"
+},
+{
+"code": "277100",
+"label": "Créances rattachées à des part",
+"classe": "2"
+},
+{
+"code": "277200",
+"label": "Créances rattachées à des part",
+"classe": "2"
+},
+{
+"code": "277300",
+"label": "Créances rattachées à des soci",
+"classe": "2"
+},
+{
+"code": "277400",
+"label": "Avances à des Groupements d'in",
+"classe": "2"
+},
+{
+"code": "278000",
+"label": "IMMOBILISATIONS FINANCIÈRES DI",
+"classe": "2"
+},
+{
+"code": "278100",
+"label": "Créances diverses groupe",
+"classe": "2"
+},
+{
+"code": "278200",
+"label": "Créances divers hors groupe",
+"classe": "2"
+},
+{
+"code": "278400",
+"label": "Banques dépôts à terme",
+"classe": "2"
+},
+{
+"code": "278500",
+"label": "Or et métaux précieux (1)",
+"classe": "2"
+},
+{
+"code": "278800",
+"label": "Autres immobilisations financi",
+"classe": "2"
+},
+{
+"code": "280000",
+"label": "AMORTISSEMENTS",
+"classe": "2"
+},
+{
+"code": "281000",
+"label": "AMORTISSEMENTS DES IMMOBILISAT",
+"classe": "2"
+},
+{
+"code": "281100",
+"label": "Amortissements des frais de dé",
+"classe": "2"
+},
+{
+"code": "281200",
+"label": "Amortissements des brevets, li",
+"classe": "2"
+},
+{
+"code": "281300",
+"label": "Amortissements des logiciels e",
+"classe": "2"
+},
+{
+"code": "281400",
+"label": "Amortissements des marques",
+"classe": "2"
+},
+{
+"code": "281500",
+"label": "Amortissements du fonds commer",
+"classe": "2"
+},
+{
+"code": "281600",
+"label": "Amortissements du droit au bai",
+"classe": "2"
+},
+{
+"code": "281700",
+"label": "Amortissements des investissem",
+"classe": "2"
+},
+{
+"code": "281800",
+"label": "Amortissements des autres droi",
+"classe": "2"
+},
+{
+"code": "282000",
+"label": "AMORTISSEMENTS DES TERRAINS",
+"classe": "2"
+},
+{
+"code": "282100",
+"label": "AMORTISSEMENT DES LOGICIELS",
+"classe": "2"
+},
+{
+"code": "282400",
+"label": "Amortissements des travaux de",
+"classe": "2"
+},
+{
+"code": "282441",
+"label": "AMORTISSEMENT MAT ET OUTILLAGE",
+"classe": "2"
+},
+{
+"code": "282442",
+"label": "AMORTISSEMENT MAT INFORMATIQUE",
+"classe": "2"
+},
+{
+"code": "283000",
+"label": "AMORTISSEMENTS DES BÂTIMENTS,",
+"classe": "2"
+},
+{
+"code": "283100",
+"label": "Amortissements des bâtiments i",
+"classe": "2"
+},
+{
+"code": "283200",
+"label": "Amortissements des bâtiments i",
+"classe": "2"
+},
+{
+"code": "283300",
+"label": "Amortissements des ouvrages d'",
+"classe": "2"
+},
+{
+"code": "283400",
+"label": "Amortissements des aménagement",
+"classe": "2"
+},
+{
+"code": "283500",
+"label": "Amortissements des aménagement",
+"classe": "2"
+},
+{
+"code": "283700",
+"label": "Amortissements des bâtiments i",
+"classe": "2"
+},
+{
+"code": "283800",
+"label": "Amortissements des autres inst",
+"classe": "2"
+},
+{
+"code": "284000",
+"label": "AMORTISSEMENTS DU MATÉRIEL",
+"classe": "2"
+},
+{
+"code": "284100",
+"label": "Amortissements du matériel et",
+"classe": "2"
+},
+{
+"code": "284200",
+"label": "Amortissements du matériel et",
+"classe": "2"
+},
+{
+"code": "284300",
+"label": "Amortissements du matériel d'e",
+"classe": "2"
+},
+{
+"code": "284400",
+"label": "Amortissements du MAT et MOB",
+"classe": "2"
+},
+{
+"code": "284500",
+"label": "Amortissements du matériel de",
+"classe": "2"
+},
+{
+"code": "284600",
+"label": "Amortissements des actifs biol",
+"classe": "2"
+},
+{
+"code": "284700",
+"label": "Amortissements des agencements",
+"classe": "2"
+},
+{
+"code": "284800",
+"label": "Amortissements des autres maté",
+"classe": "2"
+},
+{
+"code": "290000",
+"label": "DEPRECIATIONS DES IMMOBILISATI",
+"classe": "2"
+},
+{
+"code": "291000",
+"label": "DÉPRÉCIATION DES IMMOBILISATIO",
+"classe": "2"
+},
+{
+"code": "291100",
+"label": "Dépréciation des frais de déve",
+"classe": "2"
+},
+{
+"code": "291200",
+"label": "Dépréciation des brevets, lice",
+"classe": "2"
+},
+{
+"code": "291300",
+"label": "Dépréciation des logiciels et",
+"classe": "2"
+},
+{
+"code": "291400",
+"label": "Dépréciation des marques",
+"classe": "2"
+},
+{
+"code": "291500",
+"label": "Dépréciation du fonds commerci",
+"classe": "2"
+},
+{
+"code": "291600",
+"label": "Dépréciation du droit au bail",
+"classe": "2"
+},
+{
+"code": "291700",
+"label": "Dépréciation des investissemen",
+"classe": "2"
+},
+{
+"code": "291800",
+"label": "Dépréciation des autres droits",
+"classe": "2"
+},
+{
+"code": "291900",
+"label": "Dépréciation des immobilisatio",
+"classe": "2"
+},
+{
+"code": "292000",
+"label": "DÉPRÉCIATION DES TERRAINS",
+"classe": "2"
+},
+{
+"code": "292100",
+"label": "Dépréciation des terrains agri",
+"classe": "2"
+},
+{
+"code": "292200",
+"label": "Dépréciation des terrains nus",
+"classe": "2"
+},
+{
+"code": "292300",
+"label": "Dépréciation des terrains bâti",
+"classe": "2"
+},
+{
+"code": "292400",
+"label": "Dépréciation des travaux de mi",
+"classe": "2"
+},
+{
+"code": "292500",
+"label": "Dépréciation des terrains de g",
+"classe": "2"
+},
+{
+"code": "292600",
+"label": "Dépréciation des terrains amén",
+"classe": "2"
+},
+{
+"code": "292700",
+"label": "Dépréciation des terrains mis",
+"classe": "2"
+},
+{
+"code": "292800",
+"label": "Dépréciation des autres terrai",
+"classe": "2"
+},
+{
+"code": "292900",
+"label": "Dépréciation des aménagements",
+"classe": "2"
+},
+{
+"code": "293000",
+"label": "DÉPRÉCIATION DES BÂTIMENTS, IN",
+"classe": "2"
+},
+{
+"code": "293100",
+"label": "Dépréciation des bâtiments ind",
+"classe": "2"
+},
+{
+"code": "293200",
+"label": "Dépréciation des bâtiments ind",
+"classe": "2"
+},
+{
+"code": "293300",
+"label": "Dépréciation des ouvrages d'in",
+"classe": "2"
+},
+{
+"code": "293400",
+"label": "Dépréciation des aménagements,",
+"classe": "2"
+},
+{
+"code": "293500",
+"label": "Dépréciation des aménagements",
+"classe": "2"
+},
+{
+"code": "293700",
+"label": "Dépréciation des bâtiments ind",
+"classe": "2"
+},
+{
+"code": "293800",
+"label": "Dépréciation des autres instal",
+"classe": "2"
+},
+{
+"code": "293900",
+"label": "Dépréciation des bâtiments et",
+"classe": "2"
+},
+{
+"code": "294000",
+"label": "DÉPRÉCIATION DE MATÉRIEL, DU M",
+"classe": "2"
+},
+{
+"code": "294100",
+"label": "Dépréciation du matériel et ou",
+"classe": "2"
+},
+{
+"code": "294200",
+"label": "Dépréciation du matériel et ou",
+"classe": "2"
+},
+{
+"code": "294300",
+"label": "Dépréciation du matériel d'emb",
+"classe": "2"
+},
+{
+"code": "294400",
+"label": "Dépréciation du matériel et mo",
+"classe": "2"
+},
+{
+"code": "294500",
+"label": "Dépréciation du matériel de tr",
+"classe": "2"
+},
+{
+"code": "294600",
+"label": "Dépréciation des actifs biolog",
+"classe": "2"
+},
+{
+"code": "294700",
+"label": "Dépréciation des agencements e",
+"classe": "2"
+},
+{
+"code": "294800",
+"label": "Dépréciation des autres matéri",
+"classe": "2"
+},
+{
+"code": "294900",
+"label": "Dépréciation de matériel en co",
+"classe": "2"
+},
+{
+"code": "295000",
+"label": "DÉPRÉCIATION DES AVANCES ET AC",
+"classe": "2"
+},
+{
+"code": "295100",
+"label": "Dépréciation des avances et ac",
+"classe": "2"
+},
+{
+"code": "295200",
+"label": "Dépréciation des avances et ac",
+"classe": "2"
+},
+{
+"code": "296000",
+"label": "DÉPRÉCIATION DES TITRES DE PAR",
+"classe": "2"
+},
+{
+"code": "296100",
+"label": "Dépréciation des titres de par",
+"classe": "2"
+},
+{
+"code": "296200",
+"label": "Dépréciation des titres de par",
+"classe": "2"
+},
+{
+"code": "296300",
+"label": "Dépréciation des titres de par",
+"classe": "2"
+},
+{
+"code": "296500",
+"label": "Dépréciation des participation",
+"classe": "2"
+},
+{
+"code": "296600",
+"label": "Dépréciation des parts dans de",
+"classe": "2"
+},
+{
+"code": "296800",
+"label": "Dépréciation des autres titres",
+"classe": "2"
+},
+{
+"code": "297000",
+"label": "DÉPRÉCIATION DES AUTRES IMMOBI",
+"classe": "2"
+},
+{
+"code": "297100",
+"label": "Dépréciation des prêts et créa",
+"classe": "2"
+},
+{
+"code": "297200",
+"label": "Dépréciation des prêts au pers",
+"classe": "2"
+},
+{
+"code": "297300",
+"label": "Dépréciation des créances sur",
+"classe": "2"
+},
+{
+"code": "297400",
+"label": "Dépréciation des titres immobi",
+"classe": "2"
+},
+{
+"code": "297500",
+"label": "Dépréciation des dépôts et cau",
+"classe": "2"
+},
+{
+"code": "297700",
+"label": "Dépréciation des créances ratt",
+"classe": "2"
+},
+{
+"code": "297800",
+"label": "Dépréciation des créances fina",
+"classe": "2"
+},
+{
+"code": "310000",
+"label": "MARCHANDISES",
+"classe": "3"
+},
+{
+"code": "311000",
+"label": "MARCHANDISES A",
+"classe": "3"
+},
+{
+"code": "311100",
+"label": "Marchandises A1",
+"classe": "3"
+},
+{
+"code": "311200",
+"label": "Marchandises A2",
+"classe": "3"
+},
+{
+"code": "312000",
+"label": "MARCHANDISES B",
+"classe": "3"
+},
+{
+"code": "312100",
+"label": "Marchandises B1",
+"classe": "3"
+},
+{
+"code": "312200",
+"label": "Marchandises B2",
+"classe": "3"
+},
+{
+"code": "313000",
+"label": "ACTIFS BIOLOGIQUES",
+"classe": "3"
+},
+{
+"code": "313100",
+"label": "Animaux",
+"classe": "3"
+},
+{
+"code": "313200",
+"label": "Végétaux",
+"classe": "3"
+},
+{
+"code": "318000",
+"label": "MARCHANDISES HORS ACTIVITÉS OR",
+"classe": "3"
+},
+{
+"code": "320000",
+"label": "MATIÈRES PREMIÈRES ET FOURNITU",
+"classe": "3"
+},
+{
+"code": "321000",
+"label": "MATIÈRES A",
+"classe": "3"
+},
+{
+"code": "321001",
+"label": "CLINKER",
+"classe": "3"
+},
+{
+"code": "321002",
+"label": "GYPSE",
+"classe": "3"
+},
+{
+"code": "321003",
+"label": "CALCAIRE",
+"classe": "3"
+},
+{
+"code": "321004",
+"label": "SACS VIDES",
+"classe": "3"
+},
+{
+"code": "322000",
+"label": "MATIÈRES B",
+"classe": "3"
+},
+{
+"code": "323000",
+"label": "FOURNITURES (A, B)",
+"classe": "3"
+},
+{
+"code": "330000",
+"label": "AUTRES APPROVISIONNEMENTS",
+"classe": "3"
+},
+{
+"code": "331000",
+"label": "MATIÈRES CONSOMMABLES",
+"classe": "3"
+},
+{
+"code": "332000",
+"label": "FOURNITURES D'ATELIER ET D'USI",
+"classe": "3"
+},
+{
+"code": "333000",
+"label": "FOURNITURES DE MAGASIN",
+"classe": "3"
+},
+{
+"code": "334000",
+"label": "FOURNITURES DE BUREAU",
+"classe": "3"
+},
+{
+"code": "335000",
+"label": "EMBALLAGES",
+"classe": "3"
+},
+{
+"code": "335100",
+"label": "Emballages perdus",
+"classe": "3"
+},
+{
+"code": "335200",
+"label": "Emballages récupérables non id",
+"classe": "3"
+},
+{
+"code": "335300",
+"label": "Emballages à usage mixte",
+"classe": "3"
+},
+{
+"code": "335800",
+"label": "Autres emballages",
+"classe": "3"
+},
+{
+"code": "338000",
+"label": "AUTRES MATIÈRES",
+"classe": "3"
+},
+{
+"code": "338100",
+"label": "STOCKS DE PIECES DE RECHANGE",
+"classe": "3"
+},
+{
+"code": "340000",
+"label": "PRODUITS EN COURS",
+"classe": "3"
+},
+{
+"code": "341000",
+"label": "PRODUITS EN COURS",
+"classe": "3"
+},
+{
+"code": "341100",
+"label": "Produits en cours P1",
+"classe": "3"
+},
+{
+"code": "341200",
+"label": "Produits en cours P2",
+"classe": "3"
+},
+{
+"code": "342000",
+"label": "TRAVAUX EN COURS",
+"classe": "3"
+},
+{
+"code": "342100",
+"label": "Travaux en cours T1",
+"classe": "3"
+},
+{
+"code": "342200",
+"label": "Travaux en cours T2",
+"classe": "3"
+},
+{
+"code": "343000",
+"label": "PRODUITS INTERMÉDIAIRES EN COU",
+"classe": "3"
+},
+{
+"code": "343100",
+"label": "Produits intermédiaires A",
+"classe": "3"
+},
+{
+"code": "343200",
+"label": "Produits intermédiaires B",
+"classe": "3"
+},
+{
+"code": "344000",
+"label": "PRODUITS RÉSIDUELS EN COURS",
+"classe": "3"
+},
+{
+"code": "344100",
+"label": "Produits résiduels A",
+"classe": "3"
+},
+{
+"code": "344200",
+"label": "Produits résiduels B",
+"classe": "3"
+},
+{
+"code": "345000",
+"label": "ACTIFS BIOLOGIQUES EN COURS",
+"classe": "3"
+},
+{
+"code": "345100",
+"label": "Animaux",
+"classe": "3"
+},
+{
+"code": "345200",
+"label": "Végétaux",
+"classe": "3"
+},
+{
+"code": "350000",
+"label": "SERVICES EN COURS",
+"classe": "3"
+},
+{
+"code": "351000",
+"label": "ÉTUDES EN COURS",
+"classe": "3"
+},
+{
+"code": "351100",
+"label": "Études en cours E1",
+"classe": "3"
+},
+{
+"code": "351200",
+"label": "Études en cours E2",
+"classe": "3"
+},
+{
+"code": "352000",
+"label": "PRESTATIONS DE SERVICES EN COU",
+"classe": "3"
+},
+{
+"code": "352100",
+"label": "Prestations de services S1",
+"classe": "3"
+},
+{
+"code": "352200",
+"label": "Prestations de services S2",
+"classe": "3"
+},
+{
+"code": "360000",
+"label": "PRODUITS FINIS",
+"classe": "3"
+},
+{
+"code": "361000",
+"label": "PRODUITS FINIS CPJ SHILO 1",
+"classe": "3"
+},
+{
+"code": "362000",
+"label": "PRODUITS FINIS CPA SHILO 2",
+"classe": "3"
+},
+{
+"code": "363000",
+"label": "ACTIFS BIOLOGIQUES",
+"classe": "3"
+},
+{
+"code": "363100",
+"label": "Animaux",
+"classe": "3"
+},
+{
+"code": "363200",
+"label": "Végétaux",
+"classe": "3"
+},
+{
+"code": "363800",
+"label": "Autres stocks (activités annex",
+"classe": "3"
+},
+{
+"code": "370000",
+"label": "PRODUITS INTERMÉDIAIRES ET RÉS",
+"classe": "3"
+},
+{
+"code": "371000",
+"label": "PRODUITS INTERMÉDIAIRES",
+"classe": "3"
+},
+{
+"code": "371100",
+"label": "Produits intermédiaires A",
+"classe": "3"
+},
+{
+"code": "371200",
+"label": "Produits intermédiaires B",
+"classe": "3"
+},
+{
+"code": "372000",
+"label": "PRODUITS RÉSIDUELS",
+"classe": "3"
+},
+{
+"code": "372100",
+"label": "Déchets",
+"classe": "3"
+},
+{
+"code": "372200",
+"label": "Rebuts",
+"classe": "3"
+},
+{
+"code": "372300",
+"label": "Matières de Récupération",
+"classe": "3"
+},
+{
+"code": "373000",
+"label": "ACTIFS BIOLOGIQUES",
+"classe": "3"
+},
+{
+"code": "373100",
+"label": "Animaux",
+"classe": "3"
+},
+{
+"code": "373200",
+"label": "Végétaux",
+"classe": "3"
+},
+{
+"code": "373300",
+"label": "Autres stocks (activités annex",
+"classe": "3"
+},
+{
+"code": "380000",
+"label": "STOCKS EN COURS DE ROUTE, EN C",
+"classe": "3"
+},
+{
+"code": "381000",
+"label": "MARCHANDISES EN COURS DE ROUTE",
+"classe": "3"
+},
+{
+"code": "382000",
+"label": "MATIÈRES PREMIÈRES ET FOURNITU",
+"classe": "3"
+},
+{
+"code": "382001",
+"label": "CLINKER EN COURS",
+"classe": "3"
+},
+{
+"code": "382002",
+"label": "GYPSE en cours",
+"classe": "3"
+},
+{
+"code": "382003",
+"label": "CALCAIRE en cours",
+"classe": "3"
+},
+{
+"code": "382004",
+"label": "SACS VIDES en cours",
+"classe": "3"
+},
+{
+"code": "383000",
+"label": "AUTRES APPROVISIONNEMENTS EN",
+"classe": "3"
+},
+{
+"code": "386000",
+"label": "PRODUITS FINIS EN COURS DE ROU",
+"classe": "3"
+},
+{
+"code": "387000",
+"label": "STOCK EN CONSIGNATION OU EN DÉ",
+"classe": "3"
+},
+{
+"code": "387100",
+"label": "Stock en consignation",
+"classe": "3"
+},
+{
+"code": "387200",
+"label": "Stock en dépôt",
+"classe": "3"
+},
+{
+"code": "388000",
+"label": "STOCK PROVENANT D'IMMOBILISATI",
+"classe": "3"
+},
+{
+"code": "390000",
+"label": "DÉPRÉCIATIONS DES STOCKS ET EN",
+"classe": "3"
+},
+{
+"code": "391000",
+"label": "DÉPRÉCIATIONS DES STOCKS DE MA",
+"classe": "3"
+},
+{
+"code": "392000",
+"label": "DÉPRÉCIATIONS DES STOCKS DE MA",
+"classe": "3"
+},
+{
+"code": "393000",
+"label": "DÉPRÉCIATIONS DES STOCKS D'AUT",
+"classe": "3"
+},
+{
+"code": "394000",
+"label": "DÉPRÉCIATIONS DES PRODUCTIONS",
+"classe": "3"
+},
+{
+"code": "395000",
+"label": "DÉPRÉCIATIONS DES SERVICES EN",
+"classe": "3"
+},
+{
+"code": "396000",
+"label": "DÉPRÉCIATIONS DES STOCKS DE PR",
+"classe": "3"
+},
+{
+"code": "397000",
+"label": "DÉPRÉCIATIONS DES STOCKS DE PR",
+"classe": "3"
+},
+{
+"code": "398000",
+"label": "DÉPRÉCIATIONS DES STOCKS EN CO",
+"classe": "3"
+},
+{
+"code": "400000",
+"label": "FOURNISSEURS ET COMPTES RATTAC",
+"classe": "4"
+},
+{
+"code": "401000",
+"label": "FOURNISSEURS, DETTES EN COMPTE",
+"classe": "4"
+},
+{
+"code": "401100",
+"label": "Fournisseurs",
+"classe": "4"
+},
+{
+"code": "401200",
+"label": "Fournisseurs Groupe",
+"classe": "4"
+},
+{
+"code": "401300",
+"label": "Fournisseurs sous-traitants",
+"classe": "4"
+},
+{
+"code": "401600",
+"label": "Fournisseurs, réserve de propr",
+"classe": "4"
+},
+{
+"code": "401700",
+"label": "Fournisseur, retenues de garan",
+"classe": "4"
+},
+{
+"code": "402000",
+"label": "FOURNISSEURS, EFFETS À PAYER",
+"classe": "4"
+},
+{
+"code": "402100",
+"label": "Fournisseurs, Effets à payer",
+"classe": "4"
+},
+{
+"code": "402200",
+"label": "Fournisseurs - Groupe, Effets",
+"classe": "4"
+},
+{
+"code": "402300",
+"label": "Fournisseurs sous-traitants, E",
+"classe": "4"
+},
+{
+"code": "404000",
+"label": "FOURNISSEURS, ACQUISITIONS COU",
+"classe": "4"
+},
+{
+"code": "404100",
+"label": "Fournisseurs dettes en compte,",
+"classe": "4"
+},
+{
+"code": "404200",
+"label": "Fournisseurs dettes en compte,",
+"classe": "4"
+},
+{
+"code": "404600",
+"label": "Fournisseurs effets à payer, i",
+"classe": "4"
+},
+{
+"code": "404700",
+"label": "Fournisseurs effets à payer, i",
+"classe": "4"
+},
+{
+"code": "408000",
+"label": "FOURNISSEURS, FACTURES NON PAR",
+"classe": "4"
+},
+{
+"code": "408100",
+"label": "Fournisseurs",
+"classe": "4"
+},
+{
+"code": "408200",
+"label": "Fournisseurs - Groupe",
+"classe": "4"
+},
+{
+"code": "408300",
+"label": "Fournisseurs sous-traitants",
+"classe": "4"
+},
+{
+"code": "408600",
+"label": "Fournisseurs, intérêts courus",
+"classe": "4"
+},
+{
+"code": "409000",
+"label": "FOURNISSEURS DÉBITEURS",
+"classe": "4"
+},
+{
+"code": "409100",
+"label": "Fournisseurs avances et acompt",
+"classe": "4"
+},
+{
+"code": "409101",
+"label": "AVCE RYAN INTERNATIONAL",
+"classe": "4"
+},
+{
+"code": "409102",
+"label": "AVANCE POLESGO",
+"classe": "4"
+},
+{
+"code": "409110",
+"label": "FOURNISSEURS AVANCES ET ACOMPT",
+"classe": "4"
+},
+{
+"code": "409200",
+"label": "Fournisseurs - Groupe avances",
+"classe": "4"
+},
+{
+"code": "409300",
+"label": "Fournisseurs sous-traitants av",
+"classe": "4"
+},
+{
+"code": "409400",
+"label": "Fournisseurs créances pour emb",
+"classe": "4"
+},
+{
+"code": "409800",
+"label": "Rabais, Remises, Ristournes et",
+"classe": "4"
+},
+{
+"code": "410000",
+"label": "CLIENTS ET COMPTES RATTACHÉS",
+"classe": "4"
+},
+{
+"code": "411000",
+"label": "CLIENTS",
+"classe": "4"
+},
+{
+"code": "411100",
+"label": "Clients",
+"classe": "4"
+},
+{
+"code": "411200",
+"label": "Clients - Groupe",
+"classe": "4"
+},
+{
+"code": "411400",
+"label": "Clients, État et Collectivités",
+"classe": "4"
+},
+{
+"code": "411500",
+"label": "Clients, organismes internatio",
+"classe": "4"
+},
+{
+"code": "411600",
+"label": "Clients, réserve de propriété",
+"classe": "4"
+},
+{
+"code": "411700",
+"label": "Client, retenues de garantie",
+"classe": "4"
+},
+{
+"code": "411800",
+"label": "Clients, dégrèvement de Taxes",
+"classe": "4"
+},
+{
+"code": "412000",
+"label": "CLIENTS, ÉFFETS À RECEVOIR EN",
+"classe": "4"
+},
+{
+"code": "412100",
+"label": "Clients, Effets à recevoir",
+"classe": "4"
+},
+{
+"code": "412200",
+"label": "Clients - Groupe, Effets à rec",
+"classe": "4"
+},
+{
+"code": "412400",
+"label": "État et Collectivités publique",
+"classe": "4"
+},
+{
+"code": "412500",
+"label": "Organismes Internationaux, Eff",
+"classe": "4"
+},
+{
+"code": "413000",
+"label": "CLIENTS, CHEQUES, ÉFFETS ET AU",
+"classe": "4"
+},
+{
+"code": "413100",
+"label": "Clients, chèques impayés",
+"classe": "4"
+},
+{
+"code": "413200",
+"label": "Clients, effets impayés",
+"classe": "4"
+},
+{
+"code": "413300",
+"label": "Clients, cartes de crédit impa",
+"classe": "4"
+},
+{
+"code": "413800",
+"label": "Clients, autres valeurs impayé",
+"classe": "4"
+},
+{
+"code": "414000",
+"label": "CRÉANCES SUR CESSIONS D'IMMOBI",
+"classe": "4"
+},
+{
+"code": "414100",
+"label": "Créances en compte, immobilisa",
+"classe": "4"
+},
+{
+"code": "414200",
+"label": "Créances en compte, immobilisa",
+"classe": "4"
+},
+{
+"code": "414600",
+"label": "Effets à recevoir, immobilisat",
+"classe": "4"
+},
+{
+"code": "414700",
+"label": "Effets à recevoir, immobilisat",
+"classe": "4"
+},
+{
+"code": "415000",
+"label": "CLIENTS, ÉFFETS ESCOMPTÉS NON",
+"classe": "4"
+},
+{
+"code": "416000",
+"label": "CRÉANCES CLIENTS LITIGIEUSES O",
+"classe": "4"
+},
+{
+"code": "416100",
+"label": "Créances litigieuses",
+"classe": "4"
+},
+{
+"code": "416200",
+"label": "Créances douteuses",
+"classe": "4"
+},
+{
+"code": "418000",
+"label": "CLIENTS, PRODUITS À RECEVOIR",
+"classe": "4"
+},
+{
+"code": "418100",
+"label": "Clients, factures à établir",
+"classe": "4"
+},
+{
+"code": "418600",
+"label": "Clients, intérêts courus",
+"classe": "4"
+},
+{
+"code": "419000",
+"label": "CLIENTS CRÉDITEURS",
+"classe": "4"
+},
+{
+"code": "419100",
+"label": "CLIENTS, VERSEMENT A VENTILLE",
+"classe": "4"
+},
+{
+"code": "419200",
+"label": "Clients - Groupe, avances et a",
+"classe": "4"
+},
+{
+"code": "419400",
+"label": "Clients, dettes pour emballage",
+"classe": "4"
+},
+{
+"code": "419800",
+"label": "Rabais, Remises, Ristournes et",
+"classe": "4"
+},
+{
+"code": "420000",
+"label": "PERSONNEL",
+"classe": "4"
+},
+{
+"code": "421000",
+"label": "PERSONNEL, AVANCES ET ACOMPTES",
+"classe": "4"
+},
+{
+"code": "421001",
+"label": "AVANCE RABO MAMADOU",
+"classe": "4"
+},
+{
+"code": "421002",
+"label": "AVANCE BINI MANTCHATOU",
+"classe": "4"
+},
+{
+"code": "421003",
+"label": "AVANCE DEMBELE LOSSANE",
+"classe": "4"
+},
+{
+"code": "421004",
+"label": "AVANCE PAFADNAM ABDOULAYE",
+"classe": "4"
+},
+{
+"code": "421005",
+"label": "AVANCE DOAMBA DELPHINE",
+"classe": "4"
+},
+{
+"code": "421006",
+"label": "ZONGO FOUSSENI",
+"classe": "4"
+},
+{
+"code": "421007",
+"label": "AVANCE SAKANDE RASMANE",
+"classe": "4"
+},
+{
+"code": "421008",
+"label": "AVANCE KABORE OUMAROU",
+"classe": "4"
+},
+{
+"code": "421100",
+"label": "Personnel, avances",
+"classe": "4"
+},
+{
+"code": "421101",
+"label": "AVANCE OUEDRAOGO E. ISSA",
+"classe": "4"
+},
+{
+"code": "421200",
+"label": "Personnel, acomptes",
+"classe": "4"
+},
+{
+"code": "421300",
+"label": "Frais avancés et fournitures a",
+"classe": "4"
+},
+{
+"code": "422000",
+"label": "PERSONNEL, RÉMUNÉRATIONS DUES",
+"classe": "4"
+},
+{
+"code": "423000",
+"label": "PERSONNEL, OPPOSITIONS, SAISIE",
+"classe": "4"
+},
+{
+"code": "423100",
+"label": "Personnel, oppositions",
+"classe": "4"
+},
+{
+"code": "423200",
+"label": "Personnel, saisies arrêts",
+"classe": "4"
+},
+{
+"code": "423300",
+"label": "Personnel, avis à tiers détent",
+"classe": "4"
+},
+{
+"code": "424000",
+"label": "PERSONNEL, OEUVRES SOCIALES IN",
+"classe": "4"
+},
+{
+"code": "424100",
+"label": "Assistance médicale",
+"classe": "4"
+},
+{
+"code": "424200",
+"label": "Allocations familiales",
+"classe": "4"
+},
+{
+"code": "424500",
+"label": "Organismes sociaux rattachés à",
+"classe": "4"
+},
+{
+"code": "424800",
+"label": "Autres œuvres sociales interne",
+"classe": "4"
+},
+{
+"code": "425000",
+"label": "REPRÉSENTANTS DU PERSONNEL",
+"classe": "4"
+},
+{
+"code": "425100",
+"label": "Délégués du personnel",
+"classe": "4"
+},
+{
+"code": "425200",
+"label": "Syndicats et Comités d'entrepr",
+"classe": "4"
+},
+{
+"code": "425800",
+"label": "Autres représentants du person",
+"classe": "4"
+},
+{
+"code": "426000",
+"label": "PERSONNEL, PARTICIPATION AUX B",
+"classe": "4"
+},
+{
+"code": "426100",
+"label": "Participation aux bénéfices",
+"classe": "4"
+},
+{
+"code": "426400",
+"label": "Participation au capital",
+"classe": "4"
+},
+{
+"code": "427000",
+"label": "PERSONNEL – DÉPÔTS",
+"classe": "4"
+},
+{
+"code": "428000",
+"label": "PERSONNEL, CHARGES À PAYER ET",
+"classe": "4"
+},
+{
+"code": "428100",
+"label": "Dettes provisionnées pour cong",
+"classe": "4"
+},
+{
+"code": "428600",
+"label": "Autres Charges à payer",
+"classe": "4"
+},
+{
+"code": "428700",
+"label": "Produits à recevoir",
+"classe": "4"
+},
+{
+"code": "430000",
+"label": "ORGANISMES SOCIAUX",
+"classe": "4"
+},
+{
+"code": "431000",
+"label": "SÉCURITÉ SOCIALE",
+"classe": "4"
+},
+{
+"code": "431100",
+"label": "Prestations familiales",
+"classe": "4"
+},
+{
+"code": "431200",
+"label": "Accidents de travail",
+"classe": "4"
+},
+{
+"code": "431300",
+"label": "Caisse de retraite obligatoire",
+"classe": "4"
+},
+{
+"code": "431400",
+"label": "Caisse de retraite facultative",
+"classe": "4"
+},
+{
+"code": "431800",
+"label": "Autres cotisations sociales",
+"classe": "4"
+},
+{
+"code": "432000",
+"label": "CAISSES DE RETRAITE COMPLÉMENT",
+"classe": "4"
+},
+{
+"code": "433000",
+"label": "AUTRES ORGANISMES SOCIAUX",
+"classe": "4"
+},
+{
+"code": "433100",
+"label": "Mutuelle",
+"classe": "4"
+},
+{
+"code": "433200",
+"label": "Assurances Retraite",
+"classe": "4"
+},
+{
+"code": "433300",
+"label": "Assurances et organismes de sa",
+"classe": "4"
+},
+{
+"code": "433400",
+"label": "T.V.A. facturée sur production",
+"classe": "4"
+},
+{
+"code": "433500",
+"label": "T.V.A. sur factures à établir",
+"classe": "4"
+},
+{
+"code": "438000",
+"label": "ORGANISMES SOCIAUX, CHARGES À",
+"classe": "4"
+},
+{
+"code": "438100",
+"label": "Charges sociales sur gratifica",
+"classe": "4"
+},
+{
+"code": "438200",
+"label": "Charges sociales sur congés à",
+"classe": "4"
+},
+{
+"code": "438600",
+"label": "Autres charges à payer",
+"classe": "4"
+},
+{
+"code": "438700",
+"label": "Produits à recevoir",
+"classe": "4"
+},
+{
+"code": "440000",
+"label": "ÉTAT ET COLLECTIVITÉS PUBLIQUE",
+"classe": "4"
+},
+{
+"code": "441000",
+"label": "ÉTAT, IMPÔT SUR LES BÉNÉFICES",
+"classe": "4"
+},
+{
+"code": "441100",
+"label": "ETAT, IMPÔT SUR LES SOCIÉTÉS",
+"classe": "4"
+},
+{
+"code": "441200",
+"label": "ETAT, AP IS DUE",
+"classe": "4"
+},
+{
+"code": "442000",
+"label": "ÉTAT, AUTRES IMPÔTS ET TAXES",
+"classe": "4"
+},
+{
+"code": "442100",
+"label": "Impôts et taxes d'Etat",
+"classe": "4"
+},
+{
+"code": "442200",
+"label": "Impôts et taxes pour les colle",
+"classe": "4"
+},
+{
+"code": "442210",
+"label": "PATENTE ET TAXE DE VOIRIE",
+"classe": "4"
+},
+{
+"code": "442300",
+"label": "Impôts et taxes recouvrables s",
+"classe": "4"
+},
+{
+"code": "442400",
+"label": "Impôts et taxes recouvrables s",
+"classe": "4"
+},
+{
+"code": "442600",
+"label": "Droits de douane",
+"classe": "4"
+},
+{
+"code": "442800",
+"label": "Autres impôts et taxes (-TSC-)",
+"classe": "4"
+},
+{
+"code": "442810",
+"label": "TPA",
+"classe": "4"
+},
+{
+"code": "443000",
+"label": "ÉTAT, T.V.A. FACTURÉE",
+"classe": "4"
+},
+{
+"code": "443100",
+"label": "T.V.A. facturée sur ventes",
+"classe": "4"
+},
+{
+"code": "443200",
+"label": "T.V.A. facturée sur prestation",
+"classe": "4"
+},
+{
+"code": "443300",
+"label": "T.V.A. facturée sur travaux",
+"classe": "4"
+},
+{
+"code": "444000",
+"label": "ÉTAT, T.V.A. DUE OU CRÉDIT DE",
+"classe": "4"
+},
+{
+"code": "444100",
+"label": "État, T.V.A. due",
+"classe": "4"
+},
+{
+"code": "444900",
+"label": "État, crédit de T.V.A. à repor",
+"classe": "4"
+},
+{
+"code": "445000",
+"label": "ÉTAT, T.V.A. RÉCUPÉRABLE",
+"classe": "4"
+},
+{
+"code": "445100",
+"label": "T.V.A. récupérable sur immobil",
+"classe": "4"
+},
+{
+"code": "445200",
+"label": "T.V.A. récupérable sur achats",
+"classe": "4"
+},
+{
+"code": "445300",
+"label": "T.V.A. récupérable sur transpo",
+"classe": "4"
+},
+{
+"code": "445400",
+"label": "T.V.A. récupérable sur service",
+"classe": "4"
+},
+{
+"code": "445500",
+"label": "T.V.A. récupérable sur facture",
+"classe": "4"
+},
+{
+"code": "445600",
+"label": "T.V.A. TRANSFÉRÉE PAR D'AUTRES",
+"classe": "4"
+},
+{
+"code": "446000",
+"label": "ÉTAT, AUTRES TAXES SUR LE CHIF",
+"classe": "4"
+},
+{
+"code": "447000",
+"label": "ÉTAT, IMPÔTS RETENUS À LA SOUR",
+"classe": "4"
+},
+{
+"code": "447100",
+"label": "Impôt Général sur le revenu",
+"classe": "4"
+},
+{
+"code": "447200",
+"label": "Impôts sur salaires",
+"classe": "4"
+},
+{
+"code": "447210",
+"label": "IUTS",
+"classe": "4"
+},
+{
+"code": "447220",
+"label": "RETENUE OBLIGATOIRE 1% SALAIRE",
+"classe": "4"
+},
+{
+"code": "447300",
+"label": "Contribution nationale",
+"classe": "4"
+},
+{
+"code": "447400",
+"label": "Contribution nationale de soli",
+"classe": "4"
+},
+{
+"code": "447800",
+"label": "Autres impôts et contributions",
+"classe": "4"
+},
+{
+"code": "447810",
+"label": "RETENUE 5% OPÉRÉE",
+"classe": "4"
+},
+{
+"code": "447820",
+"label": "RETENUE 1% OPÉRÉE",
+"classe": "4"
+},
+{
+"code": "447831",
+"label": "RETENUE LIBÉRATOIRE 25%",
+"classe": "4"
+},
+{
+"code": "447832",
+"label": "RETENUE LIBÉRATOIRE 10%",
+"classe": "4"
+},
+{
+"code": "447833",
+"label": "RETENUE LIBÉRATOIRE 2%",
+"classe": "4"
+},
+{
+"code": "447840",
+"label": "RETENUE/PRESTATAIRE NON RESIDE",
+"classe": "4"
+},
+{
+"code": "447850",
+"label": "RETENUE IRF OPÉRÉE",
+"classe": "4"
+},
+{
+"code": "448000",
+"label": "ÉTAT, CHARGES À PAYER ET PRODU",
+"classe": "4"
+},
+{
+"code": "448600",
+"label": "Charges à payer",
+"classe": "4"
+},
+{
+"code": "448700",
+"label": "Produits à recevoir",
+"classe": "4"
+},
+{
+"code": "449000",
+"label": "ÉTAT, CRÉANCES ET DETTES DIVER",
+"classe": "4"
+},
+{
+"code": "449100",
+"label": "État, obligations cautionnées",
+"classe": "4"
+},
+{
+"code": "449200",
+"label": "État, avances et acomptes vers",
+"classe": "4"
+},
+{
+"code": "449210",
+"label": "AP, IS DÉCLARÉ",
+"classe": "4"
+},
+{
+"code": "449220",
+"label": "PRELÈVEMENT IS,BIC,BNC SUPPORT",
+"classe": "4"
+},
+{
+"code": "449230",
+"label": "AP, PATENTE",
+"classe": "4"
+},
+{
+"code": "449300",
+"label": "État, fonds de dotation à rece",
+"classe": "4"
+},
+{
+"code": "449400",
+"label": "État, subventions investisseme",
+"classe": "4"
+},
+{
+"code": "449500",
+"label": "État, subventions d'exploitati",
+"classe": "4"
+},
+{
+"code": "449600",
+"label": "État, subventions d'équilibre",
+"classe": "4"
+},
+{
+"code": "449700",
+"label": "Etat, avances sur subventions",
+"classe": "4"
+},
+{
+"code": "449900",
+"label": "État, fonds réglementé provisi",
+"classe": "4"
+},
+{
+"code": "450000",
+"label": "ORGANISMES INTERNATIONAUX",
+"classe": "4"
+},
+{
+"code": "451000",
+"label": "OPÉRATIONS AVEC LES ORGANISMES",
+"classe": "4"
+},
+{
+"code": "452000",
+"label": "OPÉRATIONS AVEC LES AUTRES ORG",
+"classe": "4"
+},
+{
+"code": "458000",
+"label": "ORGANISMES INTERNATIONAUX, FON",
+"classe": "4"
+},
+{
+"code": "458100",
+"label": "Organismes internationaux, fon",
+"classe": "4"
+},
+{
+"code": "458200",
+"label": "Organismes internationaux, sub",
+"classe": "4"
+},
+{
+"code": "460000",
+"label": "APPORTEURS, ASSOCIÉS ET GROUPE",
+"classe": "4"
+},
+{
+"code": "460010",
+"label": "GCM LOGISTICS",
+"classe": "4"
+},
+{
+"code": "460020",
+"label": "ECO OIL",
+"classe": "4"
+},
+{
+"code": "460030",
+"label": "AMKO",
+"classe": "4"
+},
+{
+"code": "460040",
+"label": "BURKINA CONTROLE SA",
+"classe": "4"
+},
+{
+"code": "460050",
+"label": "FASO ENERGY",
+"classe": "4"
+},
+{
+"code": "460060",
+"label": "GCM IMMOBILIER",
+"classe": "4"
+},
+{
+"code": "460070",
+"label": "CAMIB",
+"classe": "4"
+},
+{
+"code": "460080",
+"label": "TPB",
+"classe": "4"
+},
+{
+"code": "460090",
+"label": "MINAFRIQUE",
+"classe": "4"
+},
+{
+"code": "460100",
+"label": "NAKAMA PARTICIPATIONS",
+"classe": "4"
+},
+{
+"code": "461000",
+"label": "APPORTEURS, OPÉRATIONS SUR LE",
+"classe": "4"
+},
+{
+"code": "461100",
+"label": "Apporteurs, apports en nature",
+"classe": "4"
+},
+{
+"code": "461200",
+"label": "Apporteurs, apports en numérai",
+"classe": "4"
+},
+{
+"code": "461300",
+"label": "Apporteurs, capital appelé non",
+"classe": "4"
+},
+{
+"code": "461340",
+"label": "SOUSCRIPTEUR ECO OIL",
+"classe": "4"
+},
+{
+"code": "461341",
+"label": "SOUSCRIPTEUR NAKAMA",
+"classe": "4"
+},
+{
+"code": "461342",
+"label": "SOUSCRIPTEUR GCM IMMO",
+"classe": "4"
+},
+{
+"code": "461400",
+"label": "Apporteurs, compte d’apport, o",
+"classe": "4"
+},
+{
+"code": "461500",
+"label": "Apporteurs, versements reçus s",
+"classe": "4"
+},
+{
+"code": "461600",
+"label": "Apporteurs, versements anticip",
+"classe": "4"
+},
+{
+"code": "461700",
+"label": "Apporteurs défaillants",
+"classe": "4"
+},
+{
+"code": "461800",
+"label": "Apporteurs, titres à échanger",
+"classe": "4"
+},
+{
+"code": "461900",
+"label": "Apporteurs, capital à rembours",
+"classe": "4"
+},
+{
+"code": "462000",
+"label": "ASSOCIÉS (2), COMPTES COURANTS",
+"classe": "4"
+},
+{
+"code": "462100",
+"label": "Principal",
+"classe": "4"
+},
+{
+"code": "462110",
+"label": "ASSOCIE KOUANDA MOUSSA",
+"classe": "4"
+},
+{
+"code": "462120",
+"label": "ASSOCIE KOUANDA ZAKARIA",
+"classe": "4"
+},
+{
+"code": "462130",
+"label": "ASSOCIE KOANDA SAIBA",
+"classe": "4"
+},
+{
+"code": "462140",
+"label": "ASSOCIE ECO-OIL",
+"classe": "4"
+},
+{
+"code": "462141",
+"label": "ASSOCIE COMPTE COURANT NAKAMA",
+"classe": "4"
+},
+{
+"code": "462142",
+"label": "ASSOCIE CMPTE COURANT GCM IMMO",
+"classe": "4"
+},
+{
+"code": "462600",
+"label": "Intérêts courus",
+"classe": "4"
+},
+{
+"code": "463000",
+"label": "ASSOCIÉS (2), OPÉRATIONS FAITE",
+"classe": "4"
+},
+{
+"code": "463100",
+"label": "Opérations courantes",
+"classe": "4"
+},
+{
+"code": "463200",
+"label": "Intérêts courus",
+"classe": "4"
+},
+{
+"code": "465000",
+"label": "ASSOCIÉS (2), DIVIDENDES À PAY",
+"classe": "4"
+},
+{
+"code": "466000",
+"label": "GROUPE, COMPTES COURANTS",
+"classe": "4"
+},
+{
+"code": "467000",
+"label": "APPORTEURS, RESTANT DÛ SUR CAP",
+"classe": "4"
+},
+{
+"code": "470000",
+"label": "DÉBITEURS ET CRÉDITEURS DIVERS",
+"classe": "4"
+},
+{
+"code": "471000",
+"label": "DÉBITEURS ET CRÉDITEURS DIVERS",
+"classe": "4"
+},
+{
+"code": "471100",
+"label": "Débiteurs divers",
+"classe": "4"
+},
+{
+"code": "471101",
+"label": "GCM LOGISTICS",
+"classe": "4"
+},
+{
+"code": "471102",
+"label": "ECO OIL",
+"classe": "4"
+},
+{
+"code": "471103",
+"label": "GERANT ALT Mission à justifier",
+"classe": "4"
+},
+{
+"code": "471104",
+"label": "FASO ENERGIE",
+"classe": "4"
+},
+{
+"code": "471105",
+"label": "TRANSIT SAKANDE AB à justifier",
+"classe": "4"
+},
+{
+"code": "471200",
+"label": "Créditeurs divers",
+"classe": "4"
+},
+{
+"code": "471220",
+"label": "HOTEL DU PARC",
+"classe": "4"
+},
+{
+"code": "471300",
+"label": "Obligataires",
+"classe": "4"
+},
+{
+"code": "471500",
+"label": "Rémunérations d’administrateur",
+"classe": "4"
+},
+{
+"code": "471600",
+"label": "Compte d’affacturage",
+"classe": "4"
+},
+{
+"code": "471700",
+"label": "Débiteurs divers-retenues de g",
+"classe": "4"
+},
+{
+"code": "471800",
+"label": "Apport, compte de fusion et op",
+"classe": "4"
+},
+{
+"code": "471900",
+"label": "Bons de souscription d’actions",
+"classe": "4"
+},
+{
+"code": "472000",
+"label": "CREANCES ET DETTES SUR TITRES",
+"classe": "4"
+},
+{
+"code": "472100",
+"label": "Créances sur cessions de titre",
+"classe": "4"
+},
+{
+"code": "472600",
+"label": "Titres de participation",
+"classe": "4"
+},
+{
+"code": "473000",
+"label": "INTERMEDIAIRES-OPERATIONS FAIT",
+"classe": "4"
+},
+{
+"code": "473100",
+"label": "Mandants",
+"classe": "4"
+},
+{
+"code": "473200",
+"label": "Mandataires",
+"classe": "4"
+},
+{
+"code": "473300",
+"label": "Commettants",
+"classe": "4"
+},
+{
+"code": "473400",
+"label": "Commissionnaires",
+"classe": "4"
+},
+{
+"code": "473900",
+"label": "Etat, Collectivités publiques,",
+"classe": "4"
+},
+{
+"code": "474000",
+"label": "COMPTE DE RÉPARTITION PÉRIODIQ",
+"classe": "4"
+},
+{
+"code": "474600",
+"label": "Compte de répartition périodiq",
+"classe": "4"
+},
+{
+"code": "474700",
+"label": "Compte de répartition périodiq",
+"classe": "4"
+},
+{
+"code": "475000",
+"label": "COMPTE TRANSITOIRE, AJUSTEMENT",
+"classe": "4"
+},
+{
+"code": "475100",
+"label": "Compte actif",
+"classe": "4"
+},
+{
+"code": "475200",
+"label": "Compte passif",
+"classe": "4"
+},
+{
+"code": "476000",
+"label": "CHARGES CONSTATÉES D'AVANCE",
+"classe": "4"
+},
+{
+"code": "477000",
+"label": "PRODUITS CONSTATÉS D'AVANCE",
+"classe": "4"
+},
+{
+"code": "478000",
+"label": "ÉCARTS DE CONVERSION - ACTIF",
+"classe": "4"
+},
+{
+"code": "478100",
+"label": "Diminution des créances d’expl",
+"classe": "4"
+},
+{
+"code": "478200",
+"label": "Diminution des créances financ",
+"classe": "4"
+},
+{
+"code": "478300",
+"label": "Augmentation des dettes d’expl",
+"classe": "4"
+},
+{
+"code": "478400",
+"label": "Augmentation des dettes financ",
+"classe": "4"
+},
+{
+"code": "478600",
+"label": "Différences d’évaluation sur i",
+"classe": "4"
+},
+{
+"code": "478800",
+"label": "Différences compensées par cou",
+"classe": "4"
+},
+{
+"code": "479000",
+"label": "ÉCARTS DE CONVERSION - PASSIF",
+"classe": "4"
+},
+{
+"code": "479100",
+"label": "Augmentation des créances d’ex",
+"classe": "4"
+},
+{
+"code": "479200",
+"label": "Augmentation des créances fina",
+"classe": "4"
+},
+{
+"code": "479300",
+"label": "Diminution des dettes d’exploi",
+"classe": "4"
+},
+{
+"code": "479400",
+"label": "Diminution des dettes financiè",
+"classe": "4"
+},
+{
+"code": "479700",
+"label": "Différences d’évaluation sur i",
+"classe": "4"
+},
+{
+"code": "479800",
+"label": "Différences compensées par cou",
+"classe": "4"
+},
+{
+"code": "480000",
+"label": "CRÉANCES ET DETTES HORS ACTIVI",
+"classe": "4"
+},
+{
+"code": "481000",
+"label": "FOURNISSEURS D'INVESTISSEMENTS",
+"classe": "4"
+},
+{
+"code": "481100",
+"label": "Immobilisations incorporelles",
+"classe": "4"
+},
+{
+"code": "481200",
+"label": "Immobilisations corporelles",
+"classe": "4"
+},
+{
+"code": "481300",
+"label": "Versements restant à effectuer",
+"classe": "4"
+},
+{
+"code": "481600",
+"label": "Réserve de propriété (3)",
+"classe": "4"
+},
+{
+"code": "481700",
+"label": "Retenues de garantie (3)",
+"classe": "4"
+},
+{
+"code": "481800",
+"label": "Factures non parvenues(3)",
+"classe": "4"
+},
+{
+"code": "482000",
+"label": "FOURNISSEURS D'INVESTISSEMENTS",
+"classe": "4"
+},
+{
+"code": "482100",
+"label": "Immobilisations incorporelles",
+"classe": "4"
+},
+{
+"code": "482200",
+"label": "Immobilisations corporelles",
+"classe": "4"
+},
+{
+"code": "484000",
+"label": "AUTRES DETTES HORS ACTIVITES O",
+"classe": "4"
+},
+{
+"code": "485000",
+"label": "CRÉANCES SUR CESSIONS D'IMMOBI",
+"classe": "4"
+},
+{
+"code": "485100",
+"label": "En compte, immobilisations inc",
+"classe": "4"
+},
+{
+"code": "485200",
+"label": "En compte, immobilisations cor",
+"classe": "4"
+},
+{
+"code": "485300",
+"label": "Effets à recevoir, immobilisat",
+"classe": "4"
+},
+{
+"code": "485400",
+"label": "Effets à recevoir, immobilisat",
+"classe": "4"
+},
+{
+"code": "485500",
+"label": "Effets escomptés non échus",
+"classe": "4"
+},
+{
+"code": "485700",
+"label": "Retenues de garantie",
+"classe": "4"
+},
+{
+"code": "485800",
+"label": "Factures à établir",
+"classe": "4"
+},
+{
+"code": "488000",
+"label": "AUTRES CRÉANCES HORS ACTIVITÉS",
+"classe": "4"
+},
+{
+"code": "490000",
+"label": "DÉPRÉCIATIONS DES COMPTES FOUR",
+"classe": "4"
+},
+{
+"code": "491000",
+"label": "DÉPRÉCIATIONS DES COMPTES CLIE",
+"classe": "4"
+},
+{
+"code": "491100",
+"label": "Créances litigieuses",
+"classe": "4"
+},
+{
+"code": "491200",
+"label": "Créances douteuses",
+"classe": "4"
+},
+{
+"code": "492000",
+"label": "DÉPRÉCIATIONS DES COMPTES PERS",
+"classe": "4"
+},
+{
+"code": "493000",
+"label": "DÉPRÉCIATIONS DES COMPTES ORGA",
+"classe": "4"
+},
+{
+"code": "494000",
+"label": "DÉPRÉCIATIONS DES COMPTES ÉTAT",
+"classe": "4"
+},
+{
+"code": "495000",
+"label": "DÉPRÉCIATIONS DES COMPTES ORGA",
+"classe": "4"
+},
+{
+"code": "496000",
+"label": "DÉPRÉCIATIONS DES COMPTES APPO",
+"classe": "4"
+},
+{
+"code": "496200",
+"label": "Associés, comptes courants",
+"classe": "4"
+},
+{
+"code": "496300",
+"label": "Associés, opérations faites en",
+"classe": "4"
+},
+{
+"code": "496600",
+"label": "Groupe, comptes courants",
+"classe": "4"
+},
+{
+"code": "497000",
+"label": "DÉPRÉCIATIONS DES COMPTES DÉBI",
+"classe": "4"
+},
+{
+"code": "498000",
+"label": "DÉPRÉCIATIONS DES COMPTES DE C",
+"classe": "4"
+},
+{
+"code": "498500",
+"label": "Créances sur cessions d'immobi",
+"classe": "4"
+},
+{
+"code": "498600",
+"label": "Créances sur cessions de titre",
+"classe": "4"
+},
+{
+"code": "498800",
+"label": "Autres créances H.A.O.",
+"classe": "4"
+},
+{
+"code": "499000",
+"label": "PROVISIONS POUR RISQUES A COUR",
+"classe": "4"
+},
+{
+"code": "499100",
+"label": "Sur opérations d'exploitation",
+"classe": "4"
+},
+{
+"code": "499700",
+"label": "Sur opérations financières",
+"classe": "4"
+},
+{
+"code": "499800",
+"label": "Sur opérations H.A.O.",
+"classe": "4"
+},
+{
+"code": "500000",
+"label": "TITRES DE PLACEMENT",
+"classe": "5"
+},
+{
+"code": "501000",
+"label": "TITRES DU TRÉSOR ET BONS DE CA",
+"classe": "5"
+},
+{
+"code": "501100",
+"label": "Titres du Trésor à court terme",
+"classe": "5"
+},
+{
+"code": "501200",
+"label": "Titres d'organismes financiers",
+"classe": "5"
+},
+{
+"code": "501300",
+"label": "Bons de caisse à court terme",
+"classe": "5"
+},
+{
+"code": "501600",
+"label": "Frais d’acquisition des titres",
+"classe": "5"
+},
+{
+"code": "502000",
+"label": "ACTIONS",
+"classe": "5"
+},
+{
+"code": "502100",
+"label": "Actions propres",
+"classe": "5"
+},
+{
+"code": "502200",
+"label": "Actions cotées",
+"classe": "5"
+},
+{
+"code": "502300",
+"label": "Actions non cotées",
+"classe": "5"
+},
+{
+"code": "502400",
+"label": "Actions démembrées (certificat",
+"classe": "5"
+},
+{
+"code": "502500",
+"label": "Autres actions",
+"classe": "5"
+},
+{
+"code": "502600",
+"label": "Frais d’acquisition des action",
+"classe": "5"
+},
+{
+"code": "503000",
+"label": "OBLIGATIONS",
+"classe": "5"
+},
+{
+"code": "503100",
+"label": "Obligations émises par la soci",
+"classe": "5"
+},
+{
+"code": "503200",
+"label": "Obligations cotées",
+"classe": "5"
+},
+{
+"code": "503300",
+"label": "Obligations non cotées",
+"classe": "5"
+},
+{
+"code": "503500",
+"label": "Autres obligations",
+"classe": "5"
+},
+{
+"code": "503600",
+"label": "Frais d’acquisition des action",
+"classe": "5"
+},
+{
+"code": "504000",
+"label": "BONS DE SOUSCRIPTION",
+"classe": "5"
+},
+{
+"code": "504200",
+"label": "Bons de souscription d'actions",
+"classe": "5"
+},
+{
+"code": "504300",
+"label": "Bons de souscription d'obligat",
+"classe": "5"
+},
+{
+"code": "505000",
+"label": "TITRES NÉGOCIABLES HORS REGION",
+"classe": "5"
+},
+{
+"code": "506000",
+"label": "INTÉRÊTS COURUS",
+"classe": "5"
+},
+{
+"code": "506100",
+"label": "Titres du Trésor et bons de ca",
+"classe": "5"
+},
+{
+"code": "506200",
+"label": "Actions",
+"classe": "5"
+},
+{
+"code": "506300",
+"label": "Obligations",
+"classe": "5"
+},
+{
+"code": "508000",
+"label": "AUTRES VALEURS ASSIMILÉES",
+"classe": "5"
+},
+{
+"code": "510000",
+"label": "VALEURS À ENCAISSER",
+"classe": "5"
+},
+{
+"code": "511000",
+"label": "EFFETS À ENCAISSER",
+"classe": "5"
+},
+{
+"code": "512000",
+"label": "EFFETS À L'ENCAISSEMENT",
+"classe": "5"
+},
+{
+"code": "513000",
+"label": "CHÈQUES À ENCAISSER",
+"classe": "5"
+},
+{
+"code": "514000",
+"label": "CHÈQUES À L'ENCAISSEMENT",
+"classe": "5"
+},
+{
+"code": "515000",
+"label": "CARTES DE CRÉDIT À ENCAISSER",
+"classe": "5"
+},
+{
+"code": "518000",
+"label": "AUTRES VALEURS À L'ENCAISSEMEN",
+"classe": "5"
+},
+{
+"code": "518100",
+"label": "Warrants",
+"classe": "5"
+},
+{
+"code": "518200",
+"label": "Billets de fonds",
+"classe": "5"
+},
+{
+"code": "518500",
+"label": "Chèques de voyage",
+"classe": "5"
+},
+{
+"code": "518600",
+"label": "Coupons échus",
+"classe": "5"
+},
+{
+"code": "518700",
+"label": "Intérêts échus des obligations",
+"classe": "5"
+},
+{
+"code": "520000",
+"label": "BANQUES",
+"classe": "5"
+},
+{
+"code": "521000",
+"label": "BANQUES LOCALES",
+"classe": "5"
+},
+{
+"code": "521100",
+"label": "Banques en monnaie nationale",
+"classe": "5"
+},
+{
+"code": "521110",
+"label": "WENDKUNI BANK",
+"classe": "5"
+},
+{
+"code": "521111",
+"label": "WENDKUNI BANK/TRANSPORT",
+"classe": "5"
+},
+{
+"code": "521120",
+"label": "CORIS BANK",
+"classe": "5"
+},
+{
+"code": "521130",
+"label": "IB BANK",
+"classe": "5"
+},
+{
+"code": "521140",
+"label": "BANK OF AFRICA",
+"classe": "5"
+},
+{
+"code": "521150",
+"label": "BANQUE ATLANTIQUE",
+"classe": "5"
+},
+{
+"code": "521160",
+"label": "VISTA BANK",
+"classe": "5"
+},
+{
+"code": "521161",
+"label": "VISTA BANK",
+"classe": "5"
+},
+{
+"code": "521170",
+"label": "ECOBANK",
+"classe": "5"
+},
+{
+"code": "521180",
+"label": "Banque de l'union",
+"classe": "5"
+},
+{
+"code": "521190",
+"label": "BSIC BURKINA",
+"classe": "5"
+},
+{
+"code": "521200",
+"label": "BDU DEPENSES",
+"classe": "5"
+},
+{
+"code": "521500",
+"label": "Banques en devises",
+"classe": "5"
+},
+{
+"code": "522000",
+"label": "BANQUES AUTRES ÉTATS REGION",
+"classe": "5"
+},
+{
+"code": "523000",
+"label": "BANQUES AUTRES ETATS ZONE MONE",
+"classe": "5"
+},
+{
+"code": "524000",
+"label": "BANQUES HORS ZONE MONETAIRE",
+"classe": "5"
+},
+{
+"code": "525000",
+"label": "BANQUES DEPOT A TERME",
+"classe": "5"
+},
+{
+"code": "526000",
+"label": "BANQUES, INTERETS COURUS",
+"classe": "5"
+},
+{
+"code": "526100",
+"label": "Banque, intérêts courus charge",
+"classe": "5"
+},
+{
+"code": "526700",
+"label": "Banque, intérêts courus produi",
+"classe": "5"
+},
+{
+"code": "530000",
+"label": "ÉTABLISSEMENTS FINANCIERS ET A",
+"classe": "5"
+},
+{
+"code": "531000",
+"label": "CHÈQUES POSTAUX",
+"classe": "5"
+},
+{
+"code": "532000",
+"label": "TRÉSOR",
+"classe": "5"
+},
+{
+"code": "533000",
+"label": "SOCIÉTÉS DE GESTION ET D'INTER",
+"classe": "5"
+},
+{
+"code": "536000",
+"label": "ETABLISSEMENTS FINANCIERS, INT",
+"classe": "5"
+},
+{
+"code": "538000",
+"label": "AUTRES ORGANISMES FINANCIERS",
+"classe": "5"
+},
+{
+"code": "540000",
+"label": "INSTRUMENTS DE TRÉSORERIE",
+"classe": "5"
+},
+{
+"code": "541000",
+"label": "OPTIONS DE TAUX D'INTÉRÊT",
+"classe": "5"
+},
+{
+"code": "542000",
+"label": "OPTIONS DE TAUX DE CHANGE",
+"classe": "5"
+},
+{
+"code": "543000",
+"label": "OPTIONS DE TAUX BOURSIERS",
+"classe": "5"
+},
+{
+"code": "544000",
+"label": "INSTRUMENTS DE MARCHÉS À TERME",
+"classe": "5"
+},
+{
+"code": "545000",
+"label": "AVOIRS D'OR ET AUTRES MÉTAUX P",
+"classe": "5"
+},
+{
+"code": "550000",
+"label": "INSTRUMENTS DE MONNAIE ELECTRO",
+"classe": "5"
+},
+{
+"code": "551000",
+"label": "MONNAIE ELECTRONIQUE-CARTE CAR",
+"classe": "5"
+},
+{
+"code": "552000",
+"label": "MONNAIE ELECTRONIQUE- TELEPHON",
+"classe": "5"
+},
+{
+"code": "553000",
+"label": "MONNAIE ELECTRONIQUE- CARTE PE",
+"classe": "5"
+},
+{
+"code": "554000",
+"label": "PORTE-MONNAIE ELECTRONIQUE",
+"classe": "5"
+},
+{
+"code": "558000",
+"label": "AUTRES INSTRUMENTS MONNAIES EL",
+"classe": "5"
+},
+{
+"code": "560000",
+"label": "BANQUES, CRÉDITS DE TRÉSORERIE",
+"classe": "5"
+},
+{
+"code": "561000",
+"label": "CRÉDITS DE TRÉSORERIE",
+"classe": "5"
+},
+{
+"code": "561010",
+"label": "CRÉDIT DE TRÉSORERIE CORIS",
+"classe": "5"
+},
+{
+"code": "561020",
+"label": "CREDIT DE TRESORERIE WBI RECET",
+"classe": "5"
+},
+{
+"code": "564000",
+"label": "ESCOMPTE DE CRÉDITS DE CAMPAGN",
+"classe": "5"
+},
+{
+"code": "565000",
+"label": "ESCOMPTE DE CRÉDITS ORDINAIRES",
+"classe": "5"
+},
+{
+"code": "566000",
+"label": "BANQUES, CREDITS DE TRESORERIE",
+"classe": "5"
+},
+{
+"code": "570000",
+"label": "CAISSE",
+"classe": "5"
+},
+{
+"code": "571000",
+"label": "CAISSE SIÈGE SOCIAL",
+"classe": "5"
+},
+{
+"code": "571100",
+"label": "Caisse en monétaires nationale",
+"classe": "5"
+},
+{
+"code": "571200",
+"label": "Caisse en devises",
+"classe": "5"
+},
+{
+"code": "572000",
+"label": "CAISSE SUCCURSALE A",
+"classe": "5"
+},
+{
+"code": "572100",
+"label": "en monétaires nationales",
+"classe": "5"
+},
+{
+"code": "572200",
+"label": "en devises",
+"classe": "5"
+},
+{
+"code": "573000",
+"label": "CAISSE SUCCURSALE B",
+"classe": "5"
+},
+{
+"code": "573100",
+"label": "Caisse en monétaires nationale",
+"classe": "5"
+},
+{
+"code": "573200",
+"label": "en devises",
+"classe": "5"
+},
+{
+"code": "580000",
+"label": "RÉGIES D'AVANCES, ACCRÉDITIFS",
+"classe": "5"
+},
+{
+"code": "581000",
+"label": "RÉGIES D'AVANCE",
+"classe": "5"
+},
+{
+"code": "582000",
+"label": "ACCRÉDITIFS",
+"classe": "5"
+},
+{
+"code": "585000",
+"label": "VIREMENTS DE FONDS",
+"classe": "5"
+},
+{
+"code": "588000",
+"label": "AUTRES VIREMENTS INTERNES",
+"classe": "5"
+},
+{
+"code": "590000",
+"label": "DÉPRÉCIATIONS DES TITRES DE PL",
+"classe": "5"
+},
+{
+"code": "591000",
+"label": "DÉPRÉCIATIONS DES TITRES ET VA",
+"classe": "5"
+},
+{
+"code": "592000",
+"label": "DÉPRÉCIATIONS DES COMPTES BANQ",
+"classe": "5"
+},
+{
+"code": "593000",
+"label": "DÉPRÉCIATIONS DES COMPTES ÉTAB",
+"classe": "5"
+},
+{
+"code": "594000",
+"label": "DÉPRÉCIATIONS DES COMPTES D’IN",
+"classe": "5"
+},
+{
+"code": "599000",
+"label": "PROVISIONS POUR RISQUES A COUR",
+"classe": "5"
+},
+{
+"code": "600000",
+"label": "ACHATS ET VARIATIONS DE STOCKS",
+"classe": "6"
+},
+{
+"code": "601000",
+"label": "ACHATS DE MARCHANDISES",
+"classe": "6"
+},
+{
+"code": "601100",
+"label": "dans la Région (5[3])",
+"classe": "6"
+},
+{
+"code": "601200",
+"label": "hors Région (1)",
+"classe": "6"
+},
+{
+"code": "601300",
+"label": "aux entités du groupe dans la",
+"classe": "6"
+},
+{
+"code": "601400",
+"label": "aux entités du groupe hors Rég",
+"classe": "6"
+},
+{
+"code": "601500",
+"label": "Frais sur achats",
+"classe": "6"
+},
+{
+"code": "601900",
+"label": "Rabais, Remises et Ristournes",
+"classe": "6"
+},
+{
+"code": "602000",
+"label": "ACHATS DE MATIÈRES PREMIÈRES E",
+"classe": "6"
+},
+{
+"code": "602100",
+"label": "dans la Région (1)",
+"classe": "6"
+},
+{
+"code": "602101",
+"label": "ACHAT CLINKER",
+"classe": "6"
+},
+{
+"code": "602102",
+"label": "ACHAT DE GYPSE",
+"classe": "6"
+},
+{
+"code": "602103",
+"label": "ACHAT DE CALCAIRE",
+"classe": "6"
+},
+{
+"code": "602104",
+"label": "ACHAT DE SACS VIDES",
+"classe": "6"
+},
+{
+"code": "602200",
+"label": "hors Région (1)",
+"classe": "6"
+},
+{
+"code": "602300",
+"label": "aux entités du groupe dans la",
+"classe": "6"
+},
+{
+"code": "602400",
+"label": "aux entités du groupe hors Rég",
+"classe": "6"
+},
+{
+"code": "602500",
+"label": "Frais sur achats",
+"classe": "6"
+},
+{
+"code": "602501",
+"label": "TRANSPORT CLINKER",
+"classe": "6"
+},
+{
+"code": "602502",
+"label": "TRANSPORT GYPSE",
+"classe": "6"
+},
+{
+"code": "602503",
+"label": "TRANSPORT TUFF",
+"classe": "6"
+},
+{
+"code": "602504",
+"label": "TRANSPORT CALCAIRE",
+"classe": "6"
+},
+{
+"code": "602505",
+"label": "TRANSIT CLINKER",
+"classe": "6"
+},
+{
+"code": "602506",
+"label": "TRANSIT GYPSE",
+"classe": "6"
+},
+{
+"code": "602507",
+"label": "AUTRES FRAIS MAT 1ERS",
+"classe": "6"
+},
+{
+"code": "602508",
+"label": "ASSURANCE SUR CLINKER",
+"classe": "6"
+},
+{
+"code": "602700",
+"label": "FRAIS DE TRANSISTE",
+"classe": "6"
+},
+{
+"code": "602900",
+"label": "Rabais, Remises et Ristournes",
+"classe": "6"
+},
+{
+"code": "603000",
+"label": "VARIATIONS DES STOCKS DE BIENS",
+"classe": "6"
+},
+{
+"code": "603100",
+"label": "Variations des stocks de march",
+"classe": "6"
+},
+{
+"code": "603200",
+"label": "Variations des stocks de matiè",
+"classe": "6"
+},
+{
+"code": "603201",
+"label": "VARIATION STOCK CLINKER",
+"classe": "6"
+},
+{
+"code": "603210",
+"label": "VARIAT° STOCK CLINKER",
+"classe": "6"
+},
+{
+"code": "603220",
+"label": "VARIAT° STOCK GYPSE",
+"classe": "6"
+},
+{
+"code": "603230",
+"label": "VARIAT° STOCK CALCAIRE",
+"classe": "6"
+},
+{
+"code": "603240",
+"label": "VARIAT° STOCK SACS VIDES",
+"classe": "6"
+},
+{
+"code": "603300",
+"label": "Variations des stocks d'autres",
+"classe": "6"
+},
+{
+"code": "603303",
+"label": "VARIATION",
+"classe": "6"
+},
+{
+"code": "603381",
+"label": "VARIAT DE STOCKS DE PIECES REC",
+"classe": "6"
+},
+{
+"code": "603610",
+"label": "VARIATION DE STOKS CPJ SHILO 1",
+"classe": "6"
+},
+{
+"code": "603620",
+"label": "VARIATION DE STOCKS CPA SHILO2",
+"classe": "6"
+},
+{
+"code": "604000",
+"label": "ACHATS STOCKÉS DE MATIÈRES ET",
+"classe": "6"
+},
+{
+"code": "604100",
+"label": "Matières consommables",
+"classe": "6"
+},
+{
+"code": "604200",
+"label": "Matières combustibles",
+"classe": "6"
+},
+{
+"code": "604300",
+"label": "Produits d'entretien",
+"classe": "6"
+},
+{
+"code": "604400",
+"label": "Fournitures d'atelier et d'usi",
+"classe": "6"
+},
+{
+"code": "604401",
+"label": "MATERIEL DE PROTECTION",
+"classe": "6"
+},
+{
+"code": "604402",
+"label": "PRODUITS DE LABORATOIRE",
+"classe": "6"
+},
+{
+"code": "604500",
+"label": "Frais sur achats",
+"classe": "6"
+},
+{
+"code": "604501",
+"label": "TRANSIT AUTRES ACHATS",
+"classe": "6"
+},
+{
+"code": "604502",
+"label": "DROITS DE DOUANES AUTRES ACHAT",
+"classe": "6"
+},
+{
+"code": "604503",
+"label": "ASSURANCE AUTRES ACHATS",
+"classe": "6"
+},
+{
+"code": "604600",
+"label": "Fournitures de magasin",
+"classe": "6"
+},
+{
+"code": "604700",
+"label": "Fournitures de bureau",
+"classe": "6"
+},
+{
+"code": "604701",
+"label": "CONSOMMABLE INFORMATIQUE",
+"classe": "6"
+},
+{
+"code": "604900",
+"label": "Rabais, Remises et Ristournes",
+"classe": "6"
+},
+{
+"code": "605000",
+"label": "AUTRES ACHATS",
+"classe": "6"
+},
+{
+"code": "605100",
+"label": "EAU",
+"classe": "6"
+},
+{
+"code": "605200",
+"label": "ELECTRICITE",
+"classe": "6"
+},
+{
+"code": "605300",
+"label": "LUBRIFIANT",
+"classe": "6"
+},
+{
+"code": "605310",
+"label": "CARBURANT",
+"classe": "6"
+},
+{
+"code": "605311",
+"label": "Super 91",
+"classe": "6"
+},
+{
+"code": "605400",
+"label": "PRODUITS D'ENTRETIEN",
+"classe": "6"
+},
+{
+"code": "605500",
+"label": "FOURNITURES DE BUREAU",
+"classe": "6"
+},
+{
+"code": "605600",
+"label": "Achats de petit matériel et ou",
+"classe": "6"
+},
+{
+"code": "605700",
+"label": "Achats d'études et prestations",
+"classe": "6"
+},
+{
+"code": "605800",
+"label": "Achats de travaux, matériels e",
+"classe": "6"
+},
+{
+"code": "605900",
+"label": "Rabais, Remises et Ristournes",
+"classe": "6"
+},
+{
+"code": "608000",
+"label": "ACHATS D'EMBALLAGES",
+"classe": "6"
+},
+{
+"code": "608100",
+"label": "SACS VIDES",
+"classe": "6"
+},
+{
+"code": "608200",
+"label": "Emballages récupérables non id",
+"classe": "6"
+},
+{
+"code": "608300",
+"label": "Emballages à usage mixte",
+"classe": "6"
+},
+{
+"code": "608500",
+"label": "Frais sur achats",
+"classe": "6"
+},
+{
+"code": "608501",
+"label": "TRANSIT SACS VIDES",
+"classe": "6"
+},
+{
+"code": "608900",
+"label": "Rabais, Remises et Ristournes",
+"classe": "6"
+},
+{
+"code": "610000",
+"label": "TRANSPORTS",
+"classe": "6"
+},
+{
+"code": "612000",
+"label": "TRANSPORTS SUR VENTES",
+"classe": "6"
+},
+{
+"code": "613000",
+"label": "TRANSPORTS POUR LE COMPTE DE",
+"classe": "6"
+},
+{
+"code": "614000",
+"label": "TRANSPORTS DU PERSONNEL",
+"classe": "6"
+},
+{
+"code": "614100",
+"label": "PARKING",
+"classe": "6"
+},
+{
+"code": "616000",
+"label": "TRANSPORTS DE PLIS",
+"classe": "6"
+},
+{
+"code": "618000",
+"label": "AUTRES FRAIS DE TRANSPORT",
+"classe": "6"
+},
+{
+"code": "618100",
+"label": "Voyages et déplacements",
+"classe": "6"
+},
+{
+"code": "618200",
+"label": "Transports entre établissement",
+"classe": "6"
+},
+{
+"code": "618300",
+"label": "Transports administratifs",
+"classe": "6"
+},
+{
+"code": "620000",
+"label": "SERVICES EXTÉRIEURS",
+"classe": "6"
+},
+{
+"code": "621000",
+"label": "SOUS-TRAITANCE GÉNÉRALE",
+"classe": "6"
+},
+{
+"code": "621400",
+"label": "Commissions d’affacturage",
+"classe": "6"
+},
+{
+"code": "622000",
+"label": "LOCATIONS, CHARGES LOCATIVES",
+"classe": "6"
+},
+{
+"code": "622100",
+"label": "Locations de terrains",
+"classe": "6"
+},
+{
+"code": "622200",
+"label": "Locations de bâtiments",
+"classe": "6"
+},
+{
+"code": "622300",
+"label": "Locations de matériels et outi",
+"classe": "6"
+},
+{
+"code": "622301",
+"label": "LOCATION DE CHARGEUR",
+"classe": "6"
+},
+{
+"code": "622302",
+"label": "LOCATION VEHICULE INDUSTRIEL",
+"classe": "6"
+},
+{
+"code": "622400",
+"label": "Malis sur emballages",
+"classe": "6"
+},
+{
+"code": "622500",
+"label": "Locations d'emballages",
+"classe": "6"
+},
+{
+"code": "622600",
+"label": "Fermages et loyers du foncier",
+"classe": "6"
+},
+{
+"code": "622800",
+"label": "Locations et charges locatives",
+"classe": "6"
+},
+{
+"code": "623000",
+"label": "REDEVANCES DE LOCATION ACQUISI",
+"classe": "6"
+},
+{
+"code": "623200",
+"label": "Crédit-bail immobilier",
+"classe": "6"
+},
+{
+"code": "623300",
+"label": "Crédit-bail mobilier",
+"classe": "6"
+},
+{
+"code": "623400",
+"label": "Location vente",
+"classe": "6"
+},
+{
+"code": "623800",
+"label": "Autres contrats de locations a",
+"classe": "6"
+},
+{
+"code": "624000",
+"label": "ENTRETIEN, RÉPARATIONS, REMISE",
+"classe": "6"
+},
+{
+"code": "624100",
+"label": "ENTRETIEN ET REPAR BIENS IMMOS",
+"classe": "6"
+},
+{
+"code": "624101",
+"label": "ENT ET REPARATION INDUSTRIEL",
+"classe": "6"
+},
+{
+"code": "624200",
+"label": "ENTRETIEN ET REPAR BIENS MOBIL",
+"classe": "6"
+},
+{
+"code": "624201",
+"label": "ENT ET REP MAT INFORMATIQUE",
+"classe": "6"
+},
+{
+"code": "624300",
+"label": "Maintenance",
+"classe": "6"
+},
+{
+"code": "624400",
+"label": "Charges de démantèlement et re",
+"classe": "6"
+},
+{
+"code": "624800",
+"label": "Autres entretiens et réparatio",
+"classe": "6"
+},
+{
+"code": "625000",
+"label": "PRIMES D'ASSURANCE",
+"classe": "6"
+},
+{
+"code": "625100",
+"label": "Assurances multirisques",
+"classe": "6"
+},
+{
+"code": "625200",
+"label": "Assurances matériel de transpo",
+"classe": "6"
+},
+{
+"code": "625300",
+"label": "Assurances risques d'exploitat",
+"classe": "6"
+},
+{
+"code": "625400",
+"label": "Assurances responsabilité du p",
+"classe": "6"
+},
+{
+"code": "625500",
+"label": "Assurances insolvabilité clien",
+"classe": "6"
+},
+{
+"code": "625600",
+"label": "ASSURANCE TRANSPORT ACHAT",
+"classe": "6"
+},
+{
+"code": "625700",
+"label": "Assurances transport sur vente",
+"classe": "6"
+},
+{
+"code": "625800",
+"label": "Autres primes d'assurances",
+"classe": "6"
+},
+{
+"code": "626000",
+"label": "ÉTUDES, RECHERCHES ET DOCUMENT",
+"classe": "6"
+},
+{
+"code": "626100",
+"label": "Études et recherches",
+"classe": "6"
+},
+{
+"code": "626500",
+"label": "Documentation générale",
+"classe": "6"
+},
+{
+"code": "626600",
+"label": "Documentation technique",
+"classe": "6"
+},
+{
+"code": "627000",
+"label": "PUBLICITÉ, PUBLICATIONS, RELAT",
+"classe": "6"
+},
+{
+"code": "627100",
+"label": "Annonces, insertions",
+"classe": "6"
+},
+{
+"code": "627200",
+"label": "Catalogues, imprimés publicita",
+"classe": "6"
+},
+{
+"code": "627300",
+"label": "Échantillons",
+"classe": "6"
+},
+{
+"code": "627400",
+"label": "Foires et expositions",
+"classe": "6"
+},
+{
+"code": "627500",
+"label": "Publications",
+"classe": "6"
+},
+{
+"code": "627600",
+"label": "Cadeaux à la clientèle",
+"classe": "6"
+},
+{
+"code": "627700",
+"label": "Frais de colloques, séminaires",
+"classe": "6"
+},
+{
+"code": "627800",
+"label": "Autres charges de publicité et",
+"classe": "6"
+},
+{
+"code": "627801",
+"label": "RELATIONS PUBLIQUES",
+"classe": "6"
+},
+{
+"code": "628000",
+"label": "FRAIS DE TÉLÉCOMMUNICATIONS",
+"classe": "6"
+},
+{
+"code": "628100",
+"label": "Frais de téléphone",
+"classe": "6"
+},
+{
+"code": "628200",
+"label": "Frais de télex",
+"classe": "6"
+},
+{
+"code": "628300",
+"label": "Frais de télécopie",
+"classe": "6"
+},
+{
+"code": "628800",
+"label": "Autres frais de télécommunicat",
+"classe": "6"
+},
+{
+"code": "630000",
+"label": "AUTRES SERVICES EXTÉRIEURS",
+"classe": "6"
+},
+{
+"code": "631000",
+"label": "FRAIS BANCAIRES",
+"classe": "6"
+},
+{
+"code": "631100",
+"label": "Frais sur titres (achat, vente",
+"classe": "6"
+},
+{
+"code": "631200",
+"label": "Frais sur effets",
+"classe": "6"
+},
+{
+"code": "631300",
+"label": "Location de coffres",
+"classe": "6"
+},
+{
+"code": "631500",
+"label": "Commissions sur cartes de créd",
+"classe": "6"
+},
+{
+"code": "631600",
+"label": "Frais d'émission d'emprunts",
+"classe": "6"
+},
+{
+"code": "631700",
+"label": "Frais sur instruments monnaie",
+"classe": "6"
+},
+{
+"code": "631800",
+"label": "Autres frais bancaires",
+"classe": "6"
+},
+{
+"code": "632000",
+"label": "RÉMUNÉRATIONS D'INTERMÉDIAIRES",
+"classe": "6"
+},
+{
+"code": "632200",
+"label": "Commissions et courtages sur v",
+"classe": "6"
+},
+{
+"code": "632400",
+"label": "Honoraires des professions règ",
+"classe": "6"
+},
+{
+"code": "632500",
+"label": "Frais d'actes et de contentieu",
+"classe": "6"
+},
+{
+"code": "632600",
+"label": "Rémunérations d’affacturage",
+"classe": "6"
+},
+{
+"code": "632700",
+"label": "Rémunérations des autres prest",
+"classe": "6"
+},
+{
+"code": "632800",
+"label": "Divers frais",
+"classe": "6"
+},
+{
+"code": "633000",
+"label": "FRAIS DE FORMATION DU PERSONNE",
+"classe": "6"
+},
+{
+"code": "634000",
+"label": "REDEVANCES POUR BREVETS, LICEN",
+"classe": "6"
+},
+{
+"code": "634200",
+"label": "Redevances pour brevets, licen",
+"classe": "6"
+},
+{
+"code": "634300",
+"label": "Redevances pour logiciels",
+"classe": "6"
+},
+{
+"code": "634400",
+"label": "Redevances pour marques",
+"classe": "6"
+},
+{
+"code": "634500",
+"label": "Redevances pour sites internet",
+"classe": "6"
+},
+{
+"code": "634600",
+"label": "Redevances pour concessions, d",
+"classe": "6"
+},
+{
+"code": "635000",
+"label": "COTISATIONS",
+"classe": "6"
+},
+{
+"code": "635100",
+"label": "Cotisations",
+"classe": "6"
+},
+{
+"code": "635310",
+"label": "Super 91",
+"classe": "6"
+},
+{
+"code": "635800",
+"label": "Concours divers",
+"classe": "6"
+},
+{
+"code": "637000",
+"label": "RÉMUNÉRATIONS DE PERSONNEL EXT",
+"classe": "6"
+},
+{
+"code": "637100",
+"label": "Personnel intérimaire",
+"classe": "6"
+},
+{
+"code": "637200",
+"label": "Personnel détaché ou prêté à l",
+"classe": "6"
+},
+{
+"code": "637801",
+"label": "RELATIONS PUBLIQUES",
+"classe": "6"
+},
+{
+"code": "638000",
+"label": "AUTRES CHARGES EXTERNES",
+"classe": "6"
+},
+{
+"code": "638100",
+"label": "Frais de recrutement du person",
+"classe": "6"
+},
+{
+"code": "638200",
+"label": "Frais de déménagement",
+"classe": "6"
+},
+{
+"code": "638300",
+"label": "Réceptions",
+"classe": "6"
+},
+{
+"code": "638310",
+"label": "HEBERGEMENT",
+"classe": "6"
+},
+{
+"code": "638320",
+"label": "RESTAURATION",
+"classe": "6"
+},
+{
+"code": "638400",
+"label": "Missions",
+"classe": "6"
+},
+{
+"code": "638410",
+"label": "MISSION HEBERGEMENT",
+"classe": "6"
+},
+{
+"code": "638420",
+"label": "MISSION RESTAURATION",
+"classe": "6"
+},
+{
+"code": "638500",
+"label": "Charges de copropriété",
+"classe": "6"
+},
+{
+"code": "640000",
+"label": "IMPÔTS ET TAXES",
+"classe": "6"
+},
+{
+"code": "641000",
+"label": "IMPÔTS ET TAXES DIRECTS",
+"classe": "6"
+},
+{
+"code": "641100",
+"label": "Impôts fonciers et taxes annex",
+"classe": "6"
+},
+{
+"code": "641200",
+"label": "Patentes, licences et taxes an",
+"classe": "6"
+},
+{
+"code": "641300",
+"label": "Taxes sur appointements et sal",
+"classe": "6"
+},
+{
+"code": "641400",
+"label": "Taxes d'apprentissage",
+"classe": "6"
+},
+{
+"code": "641500",
+"label": "Formation professionnelle cont",
+"classe": "6"
+},
+{
+"code": "641800",
+"label": "Autres impôts et taxes directs",
+"classe": "6"
+},
+{
+"code": "645000",
+"label": "IMPÔTS ET TAXES INDIRECTS",
+"classe": "6"
+},
+{
+"code": "646000",
+"label": "DROITS D'ENREGISTREMENT",
+"classe": "6"
+},
+{
+"code": "646100",
+"label": "Droits de mutation",
+"classe": "6"
+},
+{
+"code": "646200",
+"label": "Droits de timbre",
+"classe": "6"
+},
+{
+"code": "646300",
+"label": "Taxes sur les véhicules de soc",
+"classe": "6"
+},
+{
+"code": "646400",
+"label": "Vignettes",
+"classe": "6"
+},
+{
+"code": "646800",
+"label": "Autres droits",
+"classe": "6"
+},
+{
+"code": "647000",
+"label": "PÉNALITÉS ET AMENDES FISCALES",
+"classe": "6"
+},
+{
+"code": "647100",
+"label": "Pénalités d'assiette, impôts d",
+"classe": "6"
+},
+{
+"code": "647200",
+"label": "Pénalités d'assiette, impôts i",
+"classe": "6"
+},
+{
+"code": "647300",
+"label": "Pénalités de recouvrement, imp",
+"classe": "6"
+},
+{
+"code": "647400",
+"label": "Pénalités de recouvrement, imp",
+"classe": "6"
+},
+{
+"code": "647800",
+"label": "Autres amendes pénales et fisc",
+"classe": "6"
+},
+{
+"code": "648000",
+"label": "AUTRES IMPÔTS ET TAXES",
+"classe": "6"
+},
+{
+"code": "650000",
+"label": "AUTRES CHARGES",
+"classe": "6"
+},
+{
+"code": "651000",
+"label": "PERTES SUR CRÉANCES CLIENTS ET",
+"classe": "6"
+},
+{
+"code": "651100",
+"label": "Clients",
+"classe": "6"
+},
+{
+"code": "651500",
+"label": "Autres débiteurs",
+"classe": "6"
+},
+{
+"code": "652000",
+"label": "QUOTE-PART DE RÉSULTAT SUR OPÉ",
+"classe": "6"
+},
+{
+"code": "652100",
+"label": "Quote-part transférée de bénéf",
+"classe": "6"
+},
+{
+"code": "652500",
+"label": "Pertes imputées par transfert",
+"classe": "6"
+},
+{
+"code": "654000",
+"label": "VALEUR COMPTABLE DES CESSIONS",
+"classe": "6"
+},
+{
+"code": "654100",
+"label": "Immobilisations incorporelles",
+"classe": "6"
+},
+{
+"code": "654200",
+"label": "Immobilisations corporelles",
+"classe": "6"
+},
+{
+"code": "656000",
+"label": "PERTE DE CHANGE SUR CREANCES",
+"classe": "6"
+},
+{
+"code": "657000",
+"label": "PENALITES ET AMENDES PENALES",
+"classe": "6"
+},
+{
+"code": "658000",
+"label": "CHARGES DIVERSES",
+"classe": "6"
+},
+{
+"code": "658100",
+"label": "Indemnités de fonctions et aut",
+"classe": "6"
+},
+{
+"code": "658200",
+"label": "Dons",
+"classe": "6"
+},
+{
+"code": "658300",
+"label": "Mécénat",
+"classe": "6"
+},
+{
+"code": "658800",
+"label": "Autres charges diverses",
+"classe": "6"
+},
+{
+"code": "659000",
+"label": "CHARGES POUR DEPRECIATIONS ET",
+"classe": "6"
+},
+{
+"code": "659100",
+"label": "sur risques à court terme",
+"classe": "6"
+},
+{
+"code": "659300",
+"label": "sur stocks",
+"classe": "6"
+},
+{
+"code": "659400",
+"label": "sur créances",
+"classe": "6"
+},
+{
+"code": "659800",
+"label": "Autres charges pour dépréciati",
+"classe": "6"
+},
+{
+"code": "660000",
+"label": "CHARGES DE PERSONNEL",
+"classe": "6"
+},
+{
+"code": "661000",
+"label": "RÉMUNÉRATIONS DIRECTES VERSÉES",
+"classe": "6"
+},
+{
+"code": "661100",
+"label": "Appointements salaires et comm",
+"classe": "6"
+},
+{
+"code": "661200",
+"label": "Primes et gratifications",
+"classe": "6"
+},
+{
+"code": "661300",
+"label": "CONGES PAYES DES NATIONAUX",
+"classe": "6"
+},
+{
+"code": "661400",
+"label": "Indemnités de préavis, de lice",
+"classe": "6"
+},
+{
+"code": "661500",
+"label": "Indemnités de maladie versées",
+"classe": "6"
+},
+{
+"code": "661600",
+"label": "Supplément familial",
+"classe": "6"
+},
+{
+"code": "661700",
+"label": "Avantages en nature",
+"classe": "6"
+},
+{
+"code": "661800",
+"label": "Autres rémunérations directes",
+"classe": "6"
+},
+{
+"code": "661900",
+"label": "INDEMNITE DE STAGE",
+"classe": "6"
+},
+{
+"code": "662000",
+"label": "RÉMUNÉRATIONS DIRECTES VERSÉES",
+"classe": "6"
+},
+{
+"code": "662100",
+"label": "Appointements salaires et comm",
+"classe": "6"
+},
+{
+"code": "662200",
+"label": "Primes et gratifications",
+"classe": "6"
+},
+{
+"code": "662300",
+"label": "CONGES PAYES NON NATIONAUX",
+"classe": "6"
+},
+{
+"code": "662400",
+"label": "Indemnités de préavis, de lice",
+"classe": "6"
+},
+{
+"code": "662500",
+"label": "Indemnités de maladie versées",
+"classe": "6"
+},
+{
+"code": "662600",
+"label": "Supplément familial",
+"classe": "6"
+},
+{
+"code": "662700",
+"label": "Avantages en nature",
+"classe": "6"
+},
+{
+"code": "662800",
+"label": "Autres rémunérations directes",
+"classe": "6"
+},
+{
+"code": "663000",
+"label": "INDEMNITÉS FORFAITAIRES VERSÉE",
+"classe": "6"
+},
+{
+"code": "663100",
+"label": "Indemnités de logement",
+"classe": "6"
+},
+{
+"code": "663200",
+"label": "Indemnités de représentation",
+"classe": "6"
+},
+{
+"code": "663300",
+"label": "Indemnités d'expatriation",
+"classe": "6"
+},
+{
+"code": "663400",
+"label": "Indemnités de transport",
+"classe": "6"
+},
+{
+"code": "663800",
+"label": "Autres indemnités et avantages",
+"classe": "6"
+},
+{
+"code": "664000",
+"label": "CHARGES SOCIALES",
+"classe": "6"
+},
+{
+"code": "664100",
+"label": "Charges sociales sur rémunérat",
+"classe": "6"
+},
+{
+"code": "664200",
+"label": "Charges sociales sur rémunérat",
+"classe": "6"
+},
+{
+"code": "666000",
+"label": "RÉMUNÉRATIONS ET CHARGES SOCIA",
+"classe": "6"
+},
+{
+"code": "666100",
+"label": "Rémunération du travail de l'e",
+"classe": "6"
+},
+{
+"code": "666200",
+"label": "Charges sociales",
+"classe": "6"
+},
+{
+"code": "667000",
+"label": "RÉMUNÉRATION TRANSFÉRÉE DE PER",
+"classe": "6"
+},
+{
+"code": "667100",
+"label": "Personnel intérimaire",
+"classe": "6"
+},
+{
+"code": "667200",
+"label": "Personnel détaché ou prêté à l",
+"classe": "6"
+},
+{
+"code": "668000",
+"label": "AUTRES CHARGES SOCIALES",
+"classe": "6"
+},
+{
+"code": "668100",
+"label": "Versements aux Syndicats et Co",
+"classe": "6"
+},
+{
+"code": "668200",
+"label": "Versements aux Comités d'hygiè",
+"classe": "6"
+},
+{
+"code": "668300",
+"label": "Versements et contributions au",
+"classe": "6"
+},
+{
+"code": "668400",
+"label": "Médecine du travail et pharmac",
+"classe": "6"
+},
+{
+"code": "668500",
+"label": "Assurances et organismes de sa",
+"classe": "6"
+},
+{
+"code": "668600",
+"label": "Assurances retraite et fonds d",
+"classe": "6"
+},
+{
+"code": "668700",
+"label": "Majorations et pénalités socia",
+"classe": "6"
+},
+{
+"code": "668800",
+"label": "Charges sociales diverses",
+"classe": "6"
+},
+{
+"code": "670000",
+"label": "FRAIS FINANCIERS ET CHARGES AS",
+"classe": "6"
+},
+{
+"code": "671000",
+"label": "INTÉRÊTS DES EMPRUNTS",
+"classe": "6"
+},
+{
+"code": "671100",
+"label": "Emprunts obligataires",
+"classe": "6"
+},
+{
+"code": "671200",
+"label": "Emprunts auprès des établissem",
+"classe": "6"
+},
+{
+"code": "671300",
+"label": "Dettes liées à des participati",
+"classe": "6"
+},
+{
+"code": "671400",
+"label": "Primes de remboursement des ob",
+"classe": "6"
+},
+{
+"code": "672000",
+"label": "INTÉRÊTS DANS LOYERS DE LOCATI",
+"classe": "6"
+},
+{
+"code": "672200",
+"label": "Intérêts dans loyers de locati",
+"classe": "6"
+},
+{
+"code": "672300",
+"label": "Intérêts dans loyers de locati",
+"classe": "6"
+},
+{
+"code": "672400",
+"label": "Intérêts dans loyers de locati",
+"classe": "6"
+},
+{
+"code": "672800",
+"label": "Intérêts dans loyers des autre",
+"classe": "6"
+},
+{
+"code": "673000",
+"label": "ESCOMPTES ACCORDÉS",
+"classe": "6"
+},
+{
+"code": "674000",
+"label": "AUTRES INTÉRÊTS",
+"classe": "6"
+},
+{
+"code": "674100",
+"label": "Avances reçues et dépôts crédi",
+"classe": "6"
+},
+{
+"code": "674200",
+"label": "Comptes courants bloqués",
+"classe": "6"
+},
+{
+"code": "674300",
+"label": "Intérêts sur obligations cauti",
+"classe": "6"
+},
+{
+"code": "674400",
+"label": "Intérêts sur dettes commercial",
+"classe": "6"
+},
+{
+"code": "674500",
+"label": "Intérêts bancaires et sur opér",
+"classe": "6"
+},
+{
+"code": "674800",
+"label": "Intérêts sur dettes diverses",
+"classe": "6"
+},
+{
+"code": "675000",
+"label": "ESCOMPTES DES EFFETS DE COMMER",
+"classe": "6"
+},
+{
+"code": "676000",
+"label": "PERTES DE CHANGE FINANCIERES",
+"classe": "6"
+},
+{
+"code": "677000",
+"label": "PERTES SUR TITRES DE PLACEMENT",
+"classe": "6"
+},
+{
+"code": "677100",
+"label": "Pertes sur cessions de titres",
+"classe": "6"
+},
+{
+"code": "677200",
+"label": "Malis provenant d’attribution",
+"classe": "6"
+},
+{
+"code": "678000",
+"label": "PERTES ET CHARGES SUR RISQUES",
+"classe": "6"
+},
+{
+"code": "678100",
+"label": "sur rentes viagères",
+"classe": "6"
+},
+{
+"code": "678200",
+"label": "sur opérations financières",
+"classe": "6"
+},
+{
+"code": "678400",
+"label": "sur instruments de trésorerie",
+"classe": "6"
+},
+{
+"code": "679000",
+"label": "CHARGES POUR DEPRECIATIONS ET",
+"classe": "6"
+},
+{
+"code": "679100",
+"label": "sur risques financiers",
+"classe": "6"
+},
+{
+"code": "679500",
+"label": "sur titres de placement",
+"classe": "6"
+},
+{
+"code": "679800",
+"label": "Autres charges pour dépréciati",
+"classe": "6"
+},
+{
+"code": "680000",
+"label": "DOTATIONS AUX AMORTISSEMENTS",
+"classe": "6"
+},
+{
+"code": "681000",
+"label": "DOTATIONS AUX AMORTISSEMENTS",
+"classe": "6"
+},
+{
+"code": "681200",
+"label": "Dotations aux amortissements d",
+"classe": "6"
+},
+{
+"code": "681300",
+"label": "DOTATION AMMORT CORPORELS",
+"classe": "6"
+},
+{
+"code": "687200",
+"label": "Dotations aux amortissements d",
+"classe": "6"
+},
+{
+"code": "690000",
+"label": "DOTATIONS AUX PROVISIONS ET AU",
+"classe": "6"
+},
+{
+"code": "691000",
+"label": "DOTATIONS AUX PROVISIONS ET AU",
+"classe": "6"
+},
+{
+"code": "691100",
+"label": "Dotations aux provisions pour",
+"classe": "6"
+},
+{
+"code": "691300",
+"label": "Dotations aux dépréciations de",
+"classe": "6"
+},
+{
+"code": "691400",
+"label": "Dotations aux dépréciations de",
+"classe": "6"
+},
+{
+"code": "697000",
+"label": "DOTATIONS AUX PROVISIONS ET AU",
+"classe": "6"
+},
+{
+"code": "697100",
+"label": "Dotations aux provisions pour",
+"classe": "6"
+},
+{
+"code": "697200",
+"label": "Dotations aux dépréciations de",
+"classe": "6"
+},
+{
+"code": "700000",
+"label": "VENTES",
+"classe": "7"
+},
+{
+"code": "701000",
+"label": "VENTES DE MARCHANDISES",
+"classe": "7"
+},
+{
+"code": "701100",
+"label": "dans la Région (7[5])",
+"classe": "7"
+},
+{
+"code": "701200",
+"label": "hors Région (1)",
+"classe": "7"
+},
+{
+"code": "701300",
+"label": "aux entités du groupe dans la",
+"classe": "7"
+},
+{
+"code": "701400",
+"label": "aux entités du groupe hors Rég",
+"classe": "7"
+},
+{
+"code": "701500",
+"label": "sur internet",
+"classe": "7"
+},
+{
+"code": "701900",
+"label": "Rabais, remises, ristournes ac",
+"classe": "7"
+},
+{
+"code": "702000",
+"label": "VENTES DE PRODUITS FINIS",
+"classe": "7"
+},
+{
+"code": "702100",
+"label": "dans la Région (1)",
+"classe": "7"
+},
+{
+"code": "702101",
+"label": "VENTE DE MACHANDISES (CPA)",
+"classe": "7"
+},
+{
+"code": "702102",
+"label": "VENTE DE MARCHANDISES (CPJ)",
+"classe": "7"
+},
+{
+"code": "702103",
+"label": "VENTE DE MACHANDISES (CPAVRAC)",
+"classe": "7"
+},
+{
+"code": "702104",
+"label": "VENTE DE MACHANDISES (CPJVRAC)",
+"classe": "7"
+},
+{
+"code": "702200",
+"label": "hors Région (1)",
+"classe": "7"
+},
+{
+"code": "702300",
+"label": "aux entités du groupe dans la",
+"classe": "7"
+},
+{
+"code": "702400",
+"label": "aux entités du groupe hors Rég",
+"classe": "7"
+},
+{
+"code": "702500",
+"label": "sur internet",
+"classe": "7"
+},
+{
+"code": "702900",
+"label": "Rabais, remises, ristournes ac",
+"classe": "7"
+},
+{
+"code": "703000",
+"label": "VENTES DE PRODUITS INTERMÉDIAI",
+"classe": "7"
+},
+{
+"code": "703100",
+"label": "dans la Région (1)",
+"classe": "7"
+},
+{
+"code": "703200",
+"label": "hors Région (1)",
+"classe": "7"
+},
+{
+"code": "703300",
+"label": "aux entités du groupe dans la",
+"classe": "7"
+},
+{
+"code": "703400",
+"label": "aux entités du groupe hors Rég",
+"classe": "7"
+},
+{
+"code": "703500",
+"label": "sur internet",
+"classe": "7"
+},
+{
+"code": "703900",
+"label": "Rabais, remises, ristournes ac",
+"classe": "7"
+},
+{
+"code": "704000",
+"label": "VENTES DE PRODUITS RÉSIDUELS",
+"classe": "7"
+},
+{
+"code": "704100",
+"label": "dans la Région (1)",
+"classe": "7"
+},
+{
+"code": "704200",
+"label": "hors Région (1)",
+"classe": "7"
+},
+{
+"code": "704300",
+"label": "aux entités du groupe dans la",
+"classe": "7"
+},
+{
+"code": "704400",
+"label": "aux entités du groupe hors Rég",
+"classe": "7"
+},
+{
+"code": "704500",
+"label": "sur internet",
+"classe": "7"
+},
+{
+"code": "704900",
+"label": "Rabais, remises, ristournes ac",
+"classe": "7"
+},
+{
+"code": "705000",
+"label": "TRAVAUX FACTURÉS",
+"classe": "7"
+},
+{
+"code": "705100",
+"label": "dans la Région (1)",
+"classe": "7"
+},
+{
+"code": "705200",
+"label": "hors Région (1)",
+"classe": "7"
+},
+{
+"code": "705300",
+"label": "aux entités du groupe dans la",
+"classe": "7"
+},
+{
+"code": "705400",
+"label": "aux entités du groupe hors Rég",
+"classe": "7"
+},
+{
+"code": "705500",
+"label": "sur internet",
+"classe": "7"
+},
+{
+"code": "705900",
+"label": "Rabais, remises, ristournes ac",
+"classe": "7"
+},
+{
+"code": "706000",
+"label": "SERVICES VENDUS",
+"classe": "7"
+},
+{
+"code": "706100",
+"label": "dans la Région (1)",
+"classe": "7"
+},
+{
+"code": "706200",
+"label": "hors Région (1)",
+"classe": "7"
+},
+{
+"code": "706300",
+"label": "aux entités du groupe dans la",
+"classe": "7"
+},
+{
+"code": "706400",
+"label": "aux entités du groupe hors Rég",
+"classe": "7"
+},
+{
+"code": "706500",
+"label": "sur internet",
+"classe": "7"
+},
+{
+"code": "706900",
+"label": "Rabais, remises, ristournes ac",
+"classe": "7"
+},
+{
+"code": "707000",
+"label": "PRODUITS ACCESSOIRES",
+"classe": "7"
+},
+{
+"code": "707100",
+"label": "Ports, emballages perdus et au",
+"classe": "7"
+},
+{
+"code": "707200",
+"label": "Commissions et courtages (8[6]",
+"classe": "7"
+},
+{
+"code": "707300",
+"label": "Locations (2)",
+"classe": "7"
+},
+{
+"code": "707400",
+"label": "Bonis sur reprises et cessions",
+"classe": "7"
+},
+{
+"code": "707500",
+"label": "Mise à disposition de personne",
+"classe": "7"
+},
+{
+"code": "707600",
+"label": "Redevances pour brevets, logic",
+"classe": "7"
+},
+{
+"code": "707700",
+"label": "Services exploités dans l'inté",
+"classe": "7"
+},
+{
+"code": "707800",
+"label": "Autres produits accessoires",
+"classe": "7"
+},
+{
+"code": "710000",
+"label": "SUBVENTIONS D'EXPLOITATION",
+"classe": "7"
+},
+{
+"code": "711000",
+"label": "SUR PRODUITS À L'EXPORTATION",
+"classe": "7"
+},
+{
+"code": "712000",
+"label": "SUR PRODUITS À L'IMPORTATION",
+"classe": "7"
+},
+{
+"code": "713000",
+"label": "SUR PRODUITS DE PÉRÉQUATION",
+"classe": "7"
+},
+{
+"code": "714000",
+"label": "INDEMNITES ET SUBVENTIONS D’EX",
+"classe": "7"
+},
+{
+"code": "718000",
+"label": "AUTRES SUBVENTIONS D'EXPLOITAT",
+"classe": "7"
+},
+{
+"code": "718100",
+"label": "Versées par l'État et les coll",
+"classe": "7"
+},
+{
+"code": "718200",
+"label": "Versées par les organismes int",
+"classe": "7"
+},
+{
+"code": "718300",
+"label": "Versées par des tiers",
+"classe": "7"
+},
+{
+"code": "720000",
+"label": "PRODUCTION IMMOBILISÉE",
+"classe": "7"
+},
+{
+"code": "721000",
+"label": "IMMOBILISATIONS INCORPORELLES",
+"classe": "7"
+},
+{
+"code": "722000",
+"label": "IMMOBILISATIONS CORPORELLES",
+"classe": "7"
+},
+{
+"code": "722100",
+"label": "Immobilisations corporelles (h",
+"classe": "7"
+},
+{
+"code": "722200",
+"label": "Immobilisations corporelles (a",
+"classe": "7"
+},
+{
+"code": "724000",
+"label": "PRODUCTION AUTO-CONSOMMEE",
+"classe": "7"
+},
+{
+"code": "726000",
+"label": "IMMOBILISATIONS FINANCIÈRES (9",
+"classe": "7"
+},
+{
+"code": "730000",
+"label": "VARIATIONS DES STOCKS DE BIENS",
+"classe": "7"
+},
+{
+"code": "734000",
+"label": "VARIATIONS DES STOCKS DE PRODU",
+"classe": "7"
+},
+{
+"code": "734100",
+"label": "Produits en cours",
+"classe": "7"
+},
+{
+"code": "734200",
+"label": "Travaux en cours",
+"classe": "7"
+},
+{
+"code": "735000",
+"label": "VARIATIONS DES EN-COURS DE SER",
+"classe": "7"
+},
+{
+"code": "735100",
+"label": "Études en cours",
+"classe": "7"
+},
+{
+"code": "735200",
+"label": "Prestations de services en cou",
+"classe": "7"
+},
+{
+"code": "736000",
+"label": "VARIATIONS DES STOCKS DE PRODU",
+"classe": "7"
+},
+{
+"code": "737000",
+"label": "VARIATIONS DES STOCKS DE PRODU",
+"classe": "7"
+},
+{
+"code": "737100",
+"label": "Produits intermédiaires",
+"classe": "7"
+},
+{
+"code": "737200",
+"label": "Produits résiduels",
+"classe": "7"
+},
+{
+"code": "750000",
+"label": "AUTRES PRODUITS",
+"classe": "7"
+},
+{
+"code": "751000",
+"label": "PROFITS SUR CREANCES CLIENTS E",
+"classe": "7"
+},
+{
+"code": "752000",
+"label": "QUOTE-PART DE RÉSULTAT SUR OPÉ",
+"classe": "7"
+},
+{
+"code": "752100",
+"label": "Quote-part transférée de perte",
+"classe": "7"
+},
+{
+"code": "752500",
+"label": "Bénéfices attribués par transf",
+"classe": "7"
+},
+{
+"code": "754000",
+"label": "PRODUITS DES CESSIONS COURANTE",
+"classe": "7"
+},
+{
+"code": "754100",
+"label": "Immobilisations incorporelles",
+"classe": "7"
+},
+{
+"code": "754200",
+"label": "Immobilisations corporelles",
+"classe": "7"
+},
+{
+"code": "756000",
+"label": "GAINS DE CHANGE SUR CREANCES",
+"classe": "7"
+},
+{
+"code": "758000",
+"label": "PRODUITS DIVERS",
+"classe": "7"
+},
+{
+"code": "758100",
+"label": "Indemnités de fonction et autr",
+"classe": "7"
+},
+{
+"code": "758200",
+"label": "Indemnités d’assurances reçues",
+"classe": "7"
+},
+{
+"code": "758800",
+"label": "Autres produits divers",
+"classe": "7"
+},
+{
+"code": "759000",
+"label": "REPRISES DE CHARGES POUR DEPRE",
+"classe": "7"
+},
+{
+"code": "759100",
+"label": "sur risques à court terme",
+"classe": "7"
+},
+{
+"code": "759300",
+"label": "sur stocks",
+"classe": "7"
+},
+{
+"code": "759400",
+"label": "sur créances",
+"classe": "7"
+},
+{
+"code": "759800",
+"label": "sur autres charges pour dépréc",
+"classe": "7"
+},
+{
+"code": "770000",
+"label": "REVENUS FINANCIERS ET PRODUITS",
+"classe": "7"
+},
+{
+"code": "771000",
+"label": "INTÉRÊTS DE PRÊTS ET CREANCES",
+"classe": "7"
+},
+{
+"code": "771200",
+"label": "Intérêts de prêts",
+"classe": "7"
+},
+{
+"code": "771300",
+"label": "Intérêts sur créances diverses",
+"classe": "7"
+},
+{
+"code": "772000",
+"label": "REVENUS DE PARTICIPATIONS ET A",
+"classe": "7"
+},
+{
+"code": "772100",
+"label": "Revenus des titres de particip",
+"classe": "7"
+},
+{
+"code": "772200",
+"label": "Revenus autres titres immbilis",
+"classe": "7"
+},
+{
+"code": "773000",
+"label": "ESCOMPTES OBTENUS",
+"classe": "7"
+},
+{
+"code": "774000",
+"label": "REVENUS DE PLACEMENT",
+"classe": "7"
+},
+{
+"code": "774500",
+"label": "Revenus des obligations",
+"classe": "7"
+},
+{
+"code": "774600",
+"label": "Revenus des titres de placemen",
+"classe": "7"
+},
+{
+"code": "775000",
+"label": "INTERETS DANS LOYERS DE LOCATI",
+"classe": "7"
+},
+{
+"code": "776000",
+"label": "GAINS DE CHANGE FINANCIERS",
+"classe": "7"
+},
+{
+"code": "777000",
+"label": "GAINS SUR CESSIONS DE TITRES D",
+"classe": "7"
+},
+{
+"code": "778000",
+"label": "GAINS SUR RISQUES FINANCIERS",
+"classe": "7"
+},
+{
+"code": "778100",
+"label": "sur rentes viagères",
+"classe": "7"
+},
+{
+"code": "778200",
+"label": "sur opérations financières",
+"classe": "7"
+},
+{
+"code": "778400",
+"label": "sur instruments de trésorerie",
+"classe": "7"
+},
+{
+"code": "779000",
+"label": "REPRISES DE CHARGES POUR DEPRE",
+"classe": "7"
+},
+{
+"code": "779100",
+"label": "sur risques financiers",
+"classe": "7"
+},
+{
+"code": "779500",
+"label": "sur titres de placement",
+"classe": "7"
+},
+{
+"code": "779800",
+"label": "autres charges pour dépréciati",
+"classe": "7"
+},
+{
+"code": "780000",
+"label": "TRANSFERTS DE CHARGES",
+"classe": "7"
+},
+{
+"code": "781000",
+"label": "TRANSFERTS DE CHARGES D'EXPLOI",
+"classe": "7"
+},
+{
+"code": "787000",
+"label": "TRANSFERTS DE CHARGES FINANCIE",
+"classe": "7"
+},
+{
+"code": "790000",
+"label": "REPRISES DE PROVISIONS, DE DEP",
+"classe": "7"
+},
+{
+"code": "791000",
+"label": "REPRISES DE PROVISIONS ET DEPR",
+"classe": "7"
+},
+{
+"code": "791100",
+"label": "pour risques et charges",
+"classe": "7"
+},
+{
+"code": "791300",
+"label": "des immobilisations incorporel",
+"classe": "7"
+},
+{
+"code": "791400",
+"label": "des immobilisations corporelle",
+"classe": "7"
+},
+{
+"code": "797000",
+"label": "REPRISES DE PROVISIONS ET DEPR",
+"classe": "7"
+},
+{
+"code": "797100",
+"label": "pour risques et charges",
+"classe": "7"
+},
+{
+"code": "797200",
+"label": "des immobilisations financière",
+"classe": "7"
+},
+{
+"code": "798000",
+"label": "REPRISES D'AMORTISSEMENTS (10[",
+"classe": "7"
+},
+{
+"code": "799000",
+"label": "REPRISES DE SUBVENTIONS D’INVE",
+"classe": "7"
+},
+{
+"code": "810000",
+"label": "VALEURS COMPTABLES DES CESSION",
+"classe": "8"
+},
+{
+"code": "811000",
+"label": "IMMOBILISATIONS INCORPORELLES",
+"classe": "8"
+},
+{
+"code": "812000",
+"label": "IMMOBILISATIONS CORPORELLES",
+"classe": "8"
+},
+{
+"code": "816000",
+"label": "IMMOBILISATIONS FINANCIÈRES",
+"classe": "8"
+},
+{
+"code": "820000",
+"label": "PRODUITS DES CESSIONS D'IMMOBI",
+"classe": "8"
+},
+{
+"code": "821000",
+"label": "IMMOBILISATIONS INCORPORELLES",
+"classe": "8"
+},
+{
+"code": "822000",
+"label": "IMMOBILISATIONS CORPORELLES",
+"classe": "8"
+},
+{
+"code": "826000",
+"label": "IMMOBILISATIONS FINANCIÈRES",
+"classe": "8"
+},
+{
+"code": "830000",
+"label": "CHARGES HORS ACTIVITÉS ORDINAI",
+"classe": "8"
+},
+{
+"code": "831000",
+"label": "CHARGES H.A.O. CONSTATÉES",
+"classe": "8"
+},
+{
+"code": "833000",
+"label": "CHARGES LIEES AUX OPERATIONS D",
+"classe": "8"
+},
+{
+"code": "834000",
+"label": "PERTES SUR CRÉANCES H.A.O.",
+"classe": "8"
+},
+{
+"code": "835000",
+"label": "DONS ET LIBÉRALITÉS ACCORDÉS",
+"classe": "8"
+},
+{
+"code": "836000",
+"label": "ABANDONS DE CRÉANCES CONSENTIS",
+"classe": "8"
+},
+{
+"code": "837000",
+"label": "CHARGES LIEES AUX OPERATIONS D",
+"classe": "8"
+},
+{
+"code": "839000",
+"label": "CHARGES POUR DEPRECIATIONS ET",
+"classe": "8"
+},
+{
+"code": "840000",
+"label": "PRODUITS HORS ACTIVITÉS ORDINA",
+"classe": "8"
+},
+{
+"code": "841000",
+"label": "PRODUITS H.A.O CONSTATÉS",
+"classe": "8"
+},
+{
+"code": "843000",
+"label": "PRODUITS LIES AUX OPERATIONS D",
+"classe": "8"
+},
+{
+"code": "844000",
+"label": "INDEMNITES ET SUBVENTIONS H.A.",
+"classe": "8"
+},
+{
+"code": "845000",
+"label": "DONS ET LIBÉRALITÉS OBTENUS",
+"classe": "8"
+},
+{
+"code": "846000",
+"label": "ABANDONS DE CRÉANCES OBTENUS",
+"classe": "8"
+},
+{
+"code": "847000",
+"label": "PRODUITS LIES AUX OPERATIONS D",
+"classe": "8"
+},
+{
+"code": "848000",
+"label": "TRANSFERTS DE CHARGES H.A.O",
+"classe": "8"
+},
+{
+"code": "849000",
+"label": "REPRISES DES CHARGES POUR DEPR",
+"classe": "8"
+},
+{
+"code": "850000",
+"label": "DOTATIONS HORS ACTIVITÉS ORDIN",
+"classe": "8"
+},
+{
+"code": "851000",
+"label": "DOTATIONS AUX PROVISIONS RÉGLE",
+"classe": "8"
+},
+{
+"code": "852000",
+"label": "DOTATIONS AUX AMORTISSEMENTS",
+"classe": "8"
+},
+{
+"code": "853000",
+"label": "DOTATIONS AUX DÉPRÉCIATIONS H.",
+"classe": "8"
+},
+{
+"code": "854000",
+"label": "DOTATIONS AUX PROVISIONS POUR",
+"classe": "8"
+},
+{
+"code": "858000",
+"label": "AUTRES DOTATIONS H.A.O.",
+"classe": "8"
+},
+{
+"code": "860000",
+"label": "REPRISES DE CHARGES, PROVISION",
+"classe": "8"
+},
+{
+"code": "861000",
+"label": "REPRISES DE PROVISIONS RÉGLEME",
+"classe": "8"
+},
+{
+"code": "862000",
+"label": "REPRISES D’AMORTISSEMENTS H.A.",
+"classe": "8"
+},
+{
+"code": "863000",
+"label": "REPRISES DE DÉPRÉCIATION H.A.O",
+"classe": "8"
+},
+{
+"code": "864000",
+"label": "REPRISES DE PROVISIONS POUR RI",
+"classe": "8"
+},
+{
+"code": "868000",
+"label": "AUTRES REPRISES H.A.O.",
+"classe": "8"
+},
+{
+"code": "870000",
+"label": "PARTICIPATION DES TRAVAILLEURS",
+"classe": "8"
+},
+{
+"code": "871000",
+"label": "PARTICIPATION LÉGALE AUX BÉNÉF",
+"classe": "8"
+},
+{
+"code": "874000",
+"label": "PARTICIPATION CONTRACTUELLE AU",
+"classe": "8"
+},
+{
+"code": "878000",
+"label": "AUTRES PARTICIPATIONS",
+"classe": "8"
+},
+{
+"code": "880000",
+"label": "SUBVENTIONS D'ÉQUILIBRE",
+"classe": "8"
+},
+{
+"code": "881000",
+"label": "ÉTAT",
+"classe": "8"
+},
+{
+"code": "884000",
+"label": "COLLECTIVITÉS PUBLIQUES",
+"classe": "8"
+},
+{
+"code": "886000",
+"label": "GROUPE",
+"classe": "8"
+},
+{
+"code": "888000",
+"label": "AUTRES",
+"classe": "8"
+},
+{
+"code": "890000",
+"label": "IMPÔTS SUR LE RÉSULTAT",
+"classe": "8"
+},
+{
+"code": "891000",
+"label": "IMPÔTS SUR LES BÉNÉFICES DE L'",
+"classe": "8"
+},
+{
+"code": "891100",
+"label": "Activités exercées dans l'État",
+"classe": "8"
+},
+{
+"code": "891200",
+"label": "Activités exercées dans les au",
+"classe": "8"
+},
+{
+"code": "891300",
+"label": "Activités exercées hors Région",
+"classe": "8"
+},
+{
+"code": "892000",
+"label": "RAPPEL D'IMPÔTS SUR RÉSULTATS",
+"classe": "8"
+},
+{
+"code": "895000",
+"label": "IMPÔT MINIMUM FORFAITAIRE (I.M",
+"classe": "8"
+},
+{
+"code": "899000",
+"label": "DÉGRÈVEMENTS ET ANNULATIONS D’",
+"classe": "8"
+},
+{
+"code": "899100",
+"label": "Dégrèvements",
+"classe": "8"
+},
+{
+"code": "899400",
+"label": "Annulations pour pertes rétroa",
+"classe": "8"
+},
+{
+"code": "900000",
+"label": "ENGAGEMENTS OBTENUS ET ENGAGEM",
+"classe": "9"
+},
+{
+"code": "901000",
+"label": "ENGAGEMENTS DE FINANCEMENT OBT",
+"classe": "9"
+},
+{
+"code": "901100",
+"label": "Crédits confirmés obtenus",
+"classe": "9"
+},
+{
+"code": "901200",
+"label": "Emprunts restant à encaisser",
+"classe": "9"
+},
+{
+"code": "901300",
+"label": "Facilités de financement renou",
+"classe": "9"
+},
+{
+"code": "901400",
+"label": "Facilités d'émission",
+"classe": "9"
+},
+{
+"code": "901800",
+"label": "Autres engagements de financem",
+"classe": "9"
+},
+{
+"code": "902000",
+"label": "ENGAGEMENTS DE GARANTIE OBTENU",
+"classe": "9"
+},
+{
+"code": "902100",
+"label": "Avals obtenus",
+"classe": "9"
+},
+{
+"code": "902200",
+"label": "Cautions, garanties obtenues",
+"classe": "9"
+},
+{
+"code": "902300",
+"label": "Hypothèques obtenues",
+"classe": "9"
+},
+{
+"code": "902400",
+"label": "Effets endossés par des tiers",
+"classe": "9"
+},
+{
+"code": "902800",
+"label": "Autres garanties obtenues",
+"classe": "9"
+},
+{
+"code": "903000",
+"label": "ENGAGEMENTS RÉCIPROQUES",
+"classe": "9"
+},
+{
+"code": "903100",
+"label": "Achats de marchandises à terme",
+"classe": "9"
+},
+{
+"code": "903200",
+"label": "Achats à terme de devises",
+"classe": "9"
+},
+{
+"code": "903300",
+"label": "Commandes fermes des clients",
+"classe": "9"
+},
+{
+"code": "903800",
+"label": "Autres engagements réciproques",
+"classe": "9"
+},
+{
+"code": "904000",
+"label": "AUTRES ENGAGEMENTS OBTENUS",
+"classe": "9"
+},
+{
+"code": "904100",
+"label": "Abandons de créances condition",
+"classe": "9"
+},
+{
+"code": "904300",
+"label": "Ventes avec clause de réserve",
+"classe": "9"
+},
+{
+"code": "904800",
+"label": "Divers engagements obtenus",
+"classe": "9"
+},
+{
+"code": "905000",
+"label": "ENGAGEMENTS DE FINANCEMENT ACC",
+"classe": "9"
+},
+{
+"code": "905100",
+"label": "Crédits accordés non décaissés",
+"classe": "9"
+},
+{
+"code": "905800",
+"label": "Autres engagements de financem",
+"classe": "9"
+},
+{
+"code": "906000",
+"label": "ENGAGEMENTS DE GARANTIE ACCORD",
+"classe": "9"
+},
+{
+"code": "906100",
+"label": "Avals accordés",
+"classe": "9"
+},
+{
+"code": "906200",
+"label": "Cautions, garanties accordées",
+"classe": "9"
+},
+{
+"code": "906300",
+"label": "Hypothèques accordées",
+"classe": "9"
+},
+{
+"code": "906400",
+"label": "Effets endossés par l'entité",
+"classe": "9"
+},
+{
+"code": "906800",
+"label": "Autres garanties accordées",
+"classe": "9"
+},
+{
+"code": "907000",
+"label": "ENGAGEMENTS RÉCIPROQUES",
+"classe": "9"
+},
+{
+"code": "907100",
+"label": "Ventes de marchandises à terme",
+"classe": "9"
+},
+{
+"code": "907200",
+"label": "Ventes à terme de devises",
+"classe": "9"
+},
+{
+"code": "907300",
+"label": "Commandes fermes aux fournisse",
+"classe": "9"
+},
+{
+"code": "907800",
+"label": "Autres engagements réciproques",
+"classe": "9"
+},
+{
+"code": "908000",
+"label": "AUTRES ENGAGEMENTS ACCORDÉS",
+"classe": "9"
+},
+{
+"code": "908100",
+"label": "Annulations conditionnelles de",
+"classe": "9"
+},
+{
+"code": "908200",
+"label": "Engagements de retraite",
+"classe": "9"
+},
+{
+"code": "908300",
+"label": "Achats avec clause de réserve",
+"classe": "9"
+},
+{
+"code": "908800",
+"label": "Divers engagements accordés",
+"classe": "9"
+},
+{
+"code": "910000",
+"label": "CONTREPARTIES DES ENGAGEMENTS",
+"classe": "9"
+},
+{
+"code": "920000",
+"label": "COMPTES REFLECHIS",
+"classe": "9"
+},
+{
+"code": "930000",
+"label": "COMPTES DE RECLASSEMENTS",
+"classe": "9"
+},
+{
+"code": "940000",
+"label": "COMPTES DE COÛTS",
+"classe": "9"
+},
+{
+"code": "950000",
+"label": "COMPTES DE STOCKS",
+"classe": "9"
+},
+{
+"code": "960000",
+"label": "COMPTES D'ECARTS SUR COUTS PRE",
+"classe": "9"
+},
+{
+"code": "970000",
+"label": "COMPTES DE DIFFERENCES DE TRAI",
+"classe": "9"
+},
+{
+"code": "980000",
+"label": "COMPTES DE RESULTATS",
+"classe": "9"
+},
+{
+"code": "990000",
+"label": "COMPTES DE LIAISONS INTERNES",
+"classe": "9"
+},
+{
+"code": "999111",
+"label": "FORMATION MINUIT",
+"classe": "9"
+}
+]
