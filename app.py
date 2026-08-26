@@ -15,9 +15,10 @@ Variables d'environnement (pour la prod, voir DEPLOIEMENT.md) :
 """
 import os
 import json as _json
+import tempfile
 from functools import wraps
 
-from flask import Flask, render_template, request, redirect, url_for, session, g, flash, jsonify
+from flask import Flask, render_template, request, redirect, url_for, session, g, flash, jsonify, send_file
 
 import core
 
@@ -253,6 +254,79 @@ def exercice_actif(db):
     ex = request.args.get("exercice") or session.get("exercice") or core.get_current_exercice(db)
     session["exercice"] = ex
     return ex
+
+
+# ---------------------------------------------------------------------------
+# Import / Export Excel — mécanisme générique réutilisé par tous les écrans
+# concernés (chaque fonction core.export_xxx_xlsx(conn, path, ...) écrit sur
+# disque ; chaque core.import_xxx_xlsx(conn, path) lit un fichier uploadé).
+# ---------------------------------------------------------------------------
+def export_xlsx_response(export_fn, filename, *args, **kwargs):
+    """Appelle export_fn(*args, tmp_path, **kwargs) (signature core.py :
+    (conn, path, ...) ou parfois juste (path,)) et renvoie le fichier."""
+    tmp = tempfile.NamedTemporaryFile(suffix=".xlsx", delete=False)
+    tmp_path = tmp.name
+    tmp.close()
+    try:
+        export_fn(*args, tmp_path, **kwargs)
+        return send_file(tmp_path, as_attachment=True, download_name=filename,
+                          mimetype="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+    finally:
+        # send_file lit le fichier en streaming ; on nettoie via un callback
+        # n'est pas nécessaire ici car l'OS supprimera /tmp — mais on essaie
+        # quand même de bonne foi, en silence si le fichier est encore ouvert.
+        try:
+            os.unlink(tmp_path)
+        except OSError:
+            pass
+
+
+def handle_import_upload(import_fn, *args, redirect_endpoint, file_field="fichier", **kwargs):
+    """Gère l'upload d'un .xlsx depuis un <input type=file>, appelle
+    import_fn(*args, tmp_path, **kwargs) puis affiche un résumé et redirige.
+    Les fonctions core.import_xxx_xlsx renvoient des formats hétérogènes
+    (dict {crees,mis_a_jour,erreurs} / tuple (nb, avertissements) / simple
+    entier) — ce bloc les interprète tous sans supposer un format précis."""
+    fichier = request.files.get(file_field)
+    if not fichier or not fichier.filename:
+        flash("Aucun fichier sélectionné.", "error")
+        return redirect(url_for(redirect_endpoint))
+    tmp = tempfile.NamedTemporaryFile(suffix=".xlsx", delete=False)
+    tmp_path = tmp.name
+    tmp.close()
+    try:
+        fichier.save(tmp_path)
+        resultat = import_fn(*args, tmp_path, **kwargs)
+        erreurs = []
+        if isinstance(resultat, dict):
+            crees = resultat.get("crees")
+            maj = resultat.get("mis_a_jour")
+            erreurs = resultat.get("erreurs") or []
+            parts = []
+            if crees is not None:
+                parts.append(f"{crees} créé(s)")
+            if maj is not None:
+                parts.append(f"{maj} mis à jour")
+            flash("Import terminé — " + (", ".join(parts) if parts else f"{len(erreurs)} avertissement(s)") + ".",
+                  "success")
+        elif isinstance(resultat, tuple) and len(resultat) == 2:
+            nb, erreurs = resultat
+            erreurs = erreurs or []
+            flash(f"Import terminé — {nb} ligne(s) importée(s).", "success")
+        elif isinstance(resultat, int):
+            flash(f"Import terminé — {resultat} ligne(s) importée(s).", "success")
+        else:
+            flash("Import terminé.", "success")
+        for e in erreurs[:10]:
+            flash(str(e), "error")
+    except (ValueError, KeyError) as exc:
+        flash(f"Erreur d'import : {exc}", "error")
+    finally:
+        try:
+            os.unlink(tmp_path)
+        except OSError:
+            pass
+    return redirect(url_for(redirect_endpoint))
 
 
 @app.route("/api/comptes")
@@ -1903,6 +1977,207 @@ def maintenance():
         "Coûts de maintenance (véhicules, bâtiments, machines, informatique...) par code analytique, "
         "sur une période choisie — alimentés par les écritures de Saisie taguées avec un code "
         "« MAINT- » et par les lignes « Autre charge » des recettes de Fabrication qui leur sont associées.")
+
+
+# ---------------------------------------------------------------------------
+# IMPORT / EXPORT EXCEL — un export + un import par écran concerné
+# ---------------------------------------------------------------------------
+
+# ---- Plan comptable ----
+@app.route("/module/plan_comptable/export")
+@menu_requis("plan_comptable")
+def plan_comptable_export():
+    return export_xlsx_response(core.export_plan_comptable_xlsx, "plan_comptable.xlsx", get_db())
+
+
+@app.route("/module/plan_comptable/import", methods=["POST"])
+@menu_requis("plan_comptable")
+def plan_comptable_import():
+    return handle_import_upload(core.import_plan_comptable_xlsx, get_db(), redirect_endpoint="plan_comptable")
+
+
+# ---- Soldes d'ouverture ----
+@app.route("/module/ouverture/export")
+@menu_requis("ouverture")
+def ouverture_export():
+    db = get_db()
+    exercice = exercice_actif(db)
+    return export_xlsx_response(core.export_opening_balances_xlsx, f"soldes_ouverture_{exercice}.xlsx",
+                                 db, exercice=exercice)
+
+
+@app.route("/module/ouverture/import", methods=["POST"])
+@menu_requis("ouverture")
+def ouverture_import():
+    db = get_db()
+    exercice = exercice_actif(db)
+    return handle_import_upload(core.import_opening_balances_xlsx, db, redirect_endpoint="ouverture",
+                                 exercice=exercice)
+
+
+# ---- Plan analytique ----
+@app.route("/module/plan_analytique/export")
+@menu_requis("plan_analytique")
+def plan_analytique_export():
+    return export_xlsx_response(core.export_analytic_codes_xlsx, "plan_analytique.xlsx", get_db())
+
+
+@app.route("/module/plan_analytique/import", methods=["POST"])
+@menu_requis("plan_analytique")
+def plan_analytique_import():
+    return handle_import_upload(core.import_analytic_codes_xlsx, get_db(), redirect_endpoint="plan_analytique")
+
+
+# ---- Plan budgétaire ----
+@app.route("/module/plan_budgetaire/export")
+@menu_requis("plan_budgetaire")
+def plan_budgetaire_export():
+    return export_xlsx_response(core.export_budget_codes_xlsx, "plan_budgetaire.xlsx", get_db())
+
+
+@app.route("/module/plan_budgetaire/import", methods=["POST"])
+@menu_requis("plan_budgetaire")
+def plan_budgetaire_import():
+    return handle_import_upload(core.import_budget_codes_xlsx, get_db(), redirect_endpoint="plan_budgetaire")
+
+
+# ---- Plan bailleurs ----
+@app.route("/module/plan_bailleur/export")
+@menu_requis("plan_bailleur")
+def plan_bailleur_export():
+    return export_xlsx_response(core.export_donor_codes_xlsx, "plan_bailleurs.xlsx", get_db())
+
+
+@app.route("/module/plan_bailleur/import", methods=["POST"])
+@menu_requis("plan_bailleur")
+def plan_bailleur_import():
+    return handle_import_upload(core.import_donor_codes_xlsx, get_db(), redirect_endpoint="plan_bailleur")
+
+
+# ---- Taux de TVA ----
+@app.route("/module/taux_tva/export")
+@menu_requis("taux_tva")
+def taux_tva_export():
+    return export_xlsx_response(core.export_taux_tva_xlsx, "taux_tva.xlsx", get_db())
+
+
+@app.route("/module/taux_tva/import", methods=["POST"])
+@menu_requis("taux_tva")
+def taux_tva_import():
+    return handle_import_upload(core.import_taux_tva_xlsx, get_db(), redirect_endpoint="taux_tva")
+
+
+# ---- Taux de retenue ----
+@app.route("/module/taux_retenue/export")
+@menu_requis("taux_retenue")
+def taux_retenue_export():
+    return export_xlsx_response(core.export_taux_retenue_xlsx, "taux_retenue.xlsx", get_db())
+
+
+@app.route("/module/taux_retenue/import", methods=["POST"])
+@menu_requis("taux_retenue")
+def taux_retenue_import():
+    return handle_import_upload(core.import_taux_retenue_xlsx, get_db(), redirect_endpoint="taux_retenue")
+
+
+# ---- Fournisseurs (modèle + import — pas d'export des données réelles) ----
+@app.route("/module/fournisseurs/modele")
+@menu_requis("fournisseurs")
+def fournisseurs_modele():
+    return export_xlsx_response(core.export_fournisseurs_template, "modele_fournisseurs.xlsx")
+
+
+@app.route("/module/fournisseurs/import", methods=["POST"])
+@menu_requis("fournisseurs")
+def fournisseurs_import():
+    return handle_import_upload(core.import_fournisseurs_from_xlsx, get_db(), redirect_endpoint="fournisseurs")
+
+
+# ---- Clients (modèle + import) ----
+@app.route("/module/clients/modele")
+@menu_requis("clients")
+def clients_modele():
+    return export_xlsx_response(core.export_clients_template, "modele_clients.xlsx")
+
+
+@app.route("/module/clients/import", methods=["POST"])
+@menu_requis("clients")
+def clients_import():
+    return handle_import_upload(core.import_clients_from_xlsx, get_db(), redirect_endpoint="clients")
+
+
+# ---- Saisie : import d'écritures ----
+@app.route("/module/saisie/import", methods=["POST"])
+@menu_requis("saisie")
+def saisie_import():
+    return handle_import_upload(core.import_entries_from_xlsx, get_db(), redirect_endpoint="saisie")
+
+
+# ---- Balance (export seul) ----
+@app.route("/module/balance/export")
+@menu_requis("balance")
+def balance_export():
+    db = get_db()
+    exercice = exercice_actif(db)
+    return export_xlsx_response(core.export_balance_xlsx, f"balance_{exercice}.xlsx", db, exercice=exercice)
+
+
+# ---- Bilan SYSCOHADA (export seul, 2 formats) ----
+@app.route("/module/bilan_syscohada/export")
+@menu_requis("bilan_syscohada")
+def bilan_syscohada_export():
+    db = get_db()
+    exercice = exercice_actif(db)
+    detaille = request.args.get("detaille") == "1"
+    fn = core.export_bilan_detaille_xlsx if detaille else core.export_bilan_gabarit_xlsx
+    suffix = "detaille" if detaille else "gabarit"
+    return export_xlsx_response(fn, f"bilan_{suffix}_{exercice}.xlsx", db, exercice=exercice)
+
+
+# ---- Immobilisations (import seul) ----
+@app.route("/module/immobilisations/import", methods=["POST"])
+@menu_requis("immobilisations")
+def immobilisations_import():
+    return handle_import_upload(core.import_immobilisations_from_xlsx, get_db(), redirect_endpoint="immobilisations")
+
+
+# ---- Niveaux d'accès ----
+@app.route("/module/niveaux_acces/export")
+@menu_requis("niveaux_acces")
+def niveaux_acces_export():
+    return export_xlsx_response(core.export_niveaux_acces_xlsx, "niveaux_acces.xlsx", get_db())
+
+
+@app.route("/module/niveaux_acces/import", methods=["POST"])
+@menu_requis("niveaux_acces")
+def niveaux_acces_import():
+    return handle_import_upload(core.import_niveaux_acces_xlsx, get_db(), redirect_endpoint="niveaux_acces")
+
+
+# ---- GRH Personnel : modèle + import ----
+@app.route("/module/grh_personnel/modele")
+@menu_requis("grh_personnel")
+def grh_personnel_modele():
+    return export_xlsx_response(lambda path: core.export_personnel_template_xlsx(path), "modele_personnel.xlsx")
+
+
+@app.route("/module/grh_personnel/import", methods=["POST"])
+@menu_requis("grh_personnel")
+def grh_personnel_import():
+    return handle_import_upload(core.import_personnel_xlsx, get_db(), redirect_endpoint="grh_personnel")
+
+
+# ---- GRH Time sheet : modèle + import ----
+@app.route("/module/grh_time_sheet/modele")
+@menu_requis("grh_time_sheet")
+def grh_time_sheet_modele():
+    return export_xlsx_response(lambda path: core.export_time_sheet_template_xlsx(path), "modele_time_sheet.xlsx")
+
+
+@app.route("/module/grh_time_sheet/import", methods=["POST"])
+@menu_requis("grh_time_sheet")
+def grh_time_sheet_import():
+    return handle_import_upload(core.import_time_sheet_xlsx, get_db(), redirect_endpoint="grh_time_sheet")
 
 
 if __name__ == "__main__":

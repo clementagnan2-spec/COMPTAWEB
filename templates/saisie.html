@@ -3,6 +3,12 @@
 {% block content %}
   <h1>Saisie des écritures</h1>
   <p class="subtitle">Journal général — chaque ligne au débit OU au crédit ; le total débit doit égaler le total crédit.</p>
+  {% set import_url = url_for('saisie_import', exercice=exercice) %}
+  {% include "_io_bar.html" %}
+  <p style="font-size:0.78rem; color:var(--text-dim); margin-top:-10px; margin-bottom:16px;">
+    Colonnes reconnues à l'import : Date, N° Pièce, Journal, N° Compte, Tiers, Libellé, Débit, Crédit,
+    Quantité, Code analytique, Code budgétaire, Code bailleur (ordre libre, en-têtes en français).
+  </p>
 
   <div class="form-card">
     <form method="post" id="saisie-form">

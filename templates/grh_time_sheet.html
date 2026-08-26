@@ -3,6 +3,9 @@
 {% block content %}
   <h1>Time sheet</h1>
   <p class="subtitle">Pointage des heures travaillées par employé.</p>
+  {% set modele_url = url_for('grh_time_sheet_modele') %}
+  {% set import_url = url_for('grh_time_sheet_import') %}
+  {% include "_io_bar.html" %}
 
   <div class="form-card">
     <h2 class="section-title" style="margin-top:0;">Nouveau pointage</h2>

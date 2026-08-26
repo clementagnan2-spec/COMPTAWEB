@@ -3,6 +3,8 @@
 {% block content %}
   <h1>Balance</h1>
   <p class="subtitle">Balance générale des comptes, exercice {{ exercice }}.</p>
+  {% set export_url = url_for('balance_export', exercice=exercice) %}
+  {% include "_io_bar.html" %}
 
   <div class="data-table-wrap">
     <table class="data-table">

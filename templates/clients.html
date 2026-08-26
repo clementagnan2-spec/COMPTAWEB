@@ -3,6 +3,9 @@
 {% block content %}
   <h1>Clients</h1>
   <p class="subtitle">Liste des clients.</p>
+  {% set modele_url = url_for('clients_modele') %}
+  {% set import_url = url_for('clients_import') %}
+  {% include "_io_bar.html" %}
 
   <div class="form-card">
     <h2 class="section-title" style="margin-top:0;">Nouveau client</h2>

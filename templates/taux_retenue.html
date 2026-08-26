@@ -3,6 +3,9 @@
 {% block content %}
   <h1>Taux de retenue à la source</h1>
   <p class="subtitle">Taux de retenue à la source disponibles appliqués en Facturation ou Achats.</p>
+  {% set export_url = url_for('taux_retenue_export') %}
+  {% set import_url = url_for('taux_retenue_import') %}
+  {% include "_io_bar.html" %}
 
   <div class="form-card">
     <form method="post" class="form-row" style="align-items:flex-end;">

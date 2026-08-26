@@ -3,6 +3,9 @@
 {% block content %}
   <h1>Niveaux d'accès</h1>
   <p class="subtitle">Chaque niveau détermine les sous-menus visibles pour les utilisateurs qui lui sont rattachés.</p>
+  {% set export_url = url_for('niveaux_acces_export') %}
+  {% set import_url = url_for('niveaux_acces_import') %}
+  {% include "_io_bar.html" %}
 
   <div class="form-card">
     <h2 class="section-title" style="margin-top:0;">Nouveau niveau</h2>

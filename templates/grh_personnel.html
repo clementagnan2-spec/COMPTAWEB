@@ -3,6 +3,9 @@
 {% block content %}
   <h1>Liste du personnel</h1>
   <p class="subtitle">Employés de l'entreprise.</p>
+  {% set modele_url = url_for('grh_personnel_modele') %}
+  {% set import_url = url_for('grh_personnel_import') %}
+  {% include "_io_bar.html" %}
 
   <div class="form-card">
     <h2 class="section-title" style="margin-top:0;">Nouvel employé</h2>

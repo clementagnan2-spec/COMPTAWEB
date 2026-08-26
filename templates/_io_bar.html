@@ -1,0 +1,12 @@
+<div class="io-bar">
+  <span class="io-label">Fichier</span>
+  {% if export_url %}<a href="{{ export_url }}" class="btn-secondary">⭳ Exporter (.xlsx)</a>{% endif %}
+  {% if export_url2 %}<a href="{{ export_url2 }}" class="btn-secondary">⭳ {{ export_url2_label or "Exporter (détaillé)" }}</a>{% endif %}
+  {% if modele_url %}<a href="{{ modele_url }}" class="btn-secondary">⭳ Télécharger un modèle</a>{% endif %}
+  {% if import_url %}
+  <form method="post" action="{{ import_url }}" enctype="multipart/form-data">
+    <input type="file" name="fichier" accept=".xlsx" required>
+    <button type="submit" class="btn-secondary">⭱ Importer</button>
+  </form>
+  {% endif %}
+</div>

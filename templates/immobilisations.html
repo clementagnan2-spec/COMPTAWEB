@@ -3,6 +3,8 @@
 {% block content %}
   <h1>Immobilisations</h1>
   <p class="subtitle">Comptes de classe 2 ayant un solde, exercice {{ exercice }} — amortissement réellement comptabilisé.</p>
+  {% set import_url = url_for('immobilisations_import', exercice=exercice) %}
+  {% include "_io_bar.html" %}
 
   <div class="data-table-wrap">
     <table class="data-table">

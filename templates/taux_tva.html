@@ -3,6 +3,9 @@
 {% block content %}
   <h1>Taux de TVA</h1>
   <p class="subtitle">Taux de TVA disponibles en Facturation.</p>
+  {% set export_url = url_for('taux_tva_export') %}
+  {% set import_url = url_for('taux_tva_import') %}
+  {% include "_io_bar.html" %}
 
   <div class="form-card">
     <form method="post" class="form-row" style="align-items:flex-end;">

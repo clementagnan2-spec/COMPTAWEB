@@ -339,3 +339,31 @@ un lot ultérieur.
   côté moteur `core.py` depuis le début, mais pas encore exposé dans
   l'interface HTML) — ajouté et testé de bout en bout (écriture taguée
   ENERGIE-EAU → apparaît correctement dans l'écran Énergie).
+
+## Correctif — Import / Export Excel (oublié lors de la construction initiale)
+
+Ajouté et testé de bout en bout sur les 16 écrans concernés :
+
+| Écran | Export | Modèle | Import |
+|---|---|---|---|
+| Plan comptable | ✅ | | ✅ |
+| Soldes d'ouverture | ✅ | | ✅ |
+| Plan analytique | ✅ | | ✅ |
+| Plan budgétaire | ✅ | | ✅ |
+| Plan bailleurs | ✅ | | ✅ |
+| Taux de TVA | ✅ | | ✅ |
+| Taux de retenue | ✅ | | ✅ |
+| Fournisseurs | | ✅ | ✅ |
+| Clients | | ✅ | ✅ |
+| Saisie des écritures | | | ✅ (import en masse) |
+| Balance | ✅ | | |
+| Bilan SYSCOHADA | ✅ (2 formats) | | |
+| Immobilisations | | | ✅ |
+| Niveaux d'accès | ✅ | | ✅ |
+| Liste du personnel | | ✅ | ✅ |
+| Time sheet | | ✅ | ✅ |
+
+Testé de bout en bout : export d'un code analytique → suppression en base
+→ réimport du même fichier → code bien restauré ; téléchargement du
+modèle Fournisseurs → remplissage avec un vrai fournisseur → import →
+fournisseur bien créé.

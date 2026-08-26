@@ -3,6 +3,9 @@
 {% block content %}
   <h1>Plan analytique</h1>
   <p class="subtitle">Codes analytiques (centres de coûts, projets...).</p>
+  {% set export_url = url_for('plan_analytique_export') %}
+  {% set import_url = url_for('plan_analytique_import') %}
+  {% include "_io_bar.html" %}
 
   <div class="form-card">
     <form method="post" class="form-row" style="align-items:flex-end;">

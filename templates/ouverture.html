@@ -3,6 +3,9 @@
 {% block content %}
   <h1>Soldes d'ouverture</h1>
   <p class="subtitle">Solde de chaque compte au 1er janvier de l'exercice {{ exercice }}.</p>
+  {% set export_url = url_for('ouverture_export', exercice=exercice) %}
+  {% set import_url = url_for('ouverture_import', exercice=exercice) %}
+  {% include "_io_bar.html" %}
 
   <div class="form-card">
     <form method="post" class="form-row" style="align-items:flex-end;">

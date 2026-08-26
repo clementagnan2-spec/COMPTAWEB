@@ -3,6 +3,9 @@
 {% block content %}
   <h1>Fournisseurs</h1>
   <p class="subtitle">Liste des fournisseurs.</p>
+  {% set modele_url = url_for('fournisseurs_modele') %}
+  {% set import_url = url_for('fournisseurs_import') %}
+  {% include "_io_bar.html" %}
 
   <div class="form-card">
     <h2 class="section-title" style="margin-top:0;">Nouveau fournisseur</h2>

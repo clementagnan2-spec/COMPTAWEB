@@ -3,6 +3,12 @@
 {% block content %}
   <h1>Bilan SYSCOHADA</h1>
   <p class="subtitle">Calculé depuis le gabarit officiel — exercice {{ exercice }} / {{ d.exercice_n1 if d else "" }}.</p>
+  {% if not erreur %}
+  {% set export_url = url_for('bilan_syscohada_export', exercice=exercice) %}
+  {% set export_url2 = url_for('bilan_syscohada_export', exercice=exercice, detaille=1) %}
+  {% set export_url2_label = "Exporter (détaillé)" %}
+  {% include "_io_bar.html" %}
+  {% endif %}
 
   {% if erreur %}
     <div class="flash error">Impossible de calculer le Bilan :<br>{{ erreur }}</div>

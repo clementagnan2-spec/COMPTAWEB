@@ -3,6 +3,9 @@
 {% block content %}
   <h1>Plan bailleurs de fonds</h1>
   <p class="subtitle">Bailleurs de fonds (pour le suivi de projets financés).</p>
+  {% set export_url = url_for('plan_bailleur_export') %}
+  {% set import_url = url_for('plan_bailleur_import') %}
+  {% include "_io_bar.html" %}
 
   <div class="form-card">
     <form method="post" class="form-row" style="align-items:flex-end;">

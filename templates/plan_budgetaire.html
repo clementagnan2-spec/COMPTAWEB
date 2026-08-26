@@ -3,6 +3,9 @@
 {% block content %}
   <h1>Plan budgétaire</h1>
   <p class="subtitle">Lignes budgétaires.</p>
+  {% set export_url = url_for('plan_budgetaire_export') %}
+  {% set import_url = url_for('plan_budgetaire_import') %}
+  {% include "_io_bar.html" %}
 
   <div class="form-card">
     <form method="post" class="form-row" style="align-items:flex-end;">

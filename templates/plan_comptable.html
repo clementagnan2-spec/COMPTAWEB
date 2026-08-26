@@ -3,6 +3,9 @@
 {% block content %}
   <h1>Plan comptable</h1>
   <p class="subtitle">Comptes SYSCOHADA utilisés par l'application.</p>
+  {% set export_url = url_for('plan_comptable_export') %}
+  {% set import_url = url_for('plan_comptable_import') %}
+  {% include "_io_bar.html" %}
 
   <div class="form-card">
     <h2 class="section-title" style="margin-top:0;">Ajouter / modifier un compte</h2>
