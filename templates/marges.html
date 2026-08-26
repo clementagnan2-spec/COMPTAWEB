@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Marges bénéficiaires{% endblock %}
+{% block content %}
+  <h1>Marges bénéficiaires</h1>
+  <p class="subtitle">Marge commerciale et valeur ajoutée, calculées comme dans la liasse fiscale — exercice {{ exercice }}.</p>
+
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <tbody>
+        <tr><td>Ventes de marchandises (TA)</td><td class="num figure">{{ cr.TA | cfa }}</td></tr>
+        <tr><td>Achats de marchandises (RA)</td><td class="num figure">{{ -cr.RA | cfa }}</td></tr>
+        <tr class="total-row"><td>MARGE COMMERCIALE (XA)</td><td class="num figure">{{ cr.XA | cfa }}</td></tr>
+        <tr><td>Chiffre d'affaires (XB)</td><td class="num figure">{{ cr.XB | cfa }}</td></tr>
+        <tr class="total-row"><td>VALEUR AJOUTÉE (XC)</td><td class="num figure">{{ cr.XC | cfa }}</td></tr>
+        <tr><td>Résultat d'exploitation (XE)</td><td class="num figure">{{ cr.XE | cfa }}</td></tr>
+        <tr class="total-row"><td>RÉSULTAT NET (XI)</td><td class="num figure">{{ cr.XI | cfa }}</td></tr>
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

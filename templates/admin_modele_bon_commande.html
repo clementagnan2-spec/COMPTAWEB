@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Modèle de bon de commande{% endblock %}
+{% block content %}
+  <h1>Modèle de bon de commande (par défaut)</h1>
+  <p class="subtitle">Appliqué automatiquement à tout bon de commande dont l'en-tête ou le pied de page n'a pas été rempli spécifiquement — pratique pour ne définir qu'une seule fois les coordonnées de votre société.</p>
+
+  <div class="form-card">
+    <form method="post">
+      <div class="field" style="margin-bottom:18px;">
+        <label>En-tête par défaut</label>
+        <textarea name="entete" rows="6" style="width:100%; padding:10px; border:1px solid var(--line); border-radius:3px; font-family:var(--font-body); font-size:0.9rem;">{{ entete }}</textarea>
+      </div>
+      <div class="field" style="margin-bottom:18px;">
+        <label>Pied de page par défaut</label>
+        <textarea name="pied" rows="4" style="width:100%; padding:10px; border:1px solid var(--line); border-radius:3px; font-family:var(--font-body); font-size:0.9rem;">{{ pied }}</textarea>
+      </div>
+      <button type="submit" class="btn btn-inline">Enregistrer le modèle</button>
+    </form>
+  </div>
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block title %}Paie — Bulletins{% endblock %}
+{% block content %}
+  <h1>Paie</h1>
+  <div style="display:flex; gap:4px; margin-bottom:20px; border-bottom:1px solid var(--line);">
+    <a href="{{ url_for('grh_paie_bulletins', periode=periode) }}" class="btn-secondary" style="border-radius:3px 3px 0 0; border-bottom:2px solid var(--ink); text-decoration:none;">Bulletins</a>
+    <a href="{{ url_for('grh_paie_etat', periode=periode) }}" class="btn-secondary" style="border-radius:3px 3px 0 0; text-decoration:none;">État de paie</a>
+    {% if session.user.niveau_acces == "Administrateur" %}
+    <a href="{{ url_for('grh_paie_parametres') }}" class="btn-secondary" style="border-radius:3px 3px 0 0; text-decoration:none;">Paramètres</a>
+    {% endif %}
+  </div>
+
+  <form method="get" class="form-row" style="max-width:220px; margin-bottom:18px;">
+    <div class="field">
+      <label>Période</label>
+      <input type="month" name="periode" value="{{ periode }}" onchange="this.form.submit()">
+    </div>
+  </form>
+
+  {% if verrouille %}
+    <div class="flash error">Cette période a déjà été validée (comptabilisée) — les bulletins ne sont plus modifiables.</div>
+  {% else %}
+  <div class="form-card">
+    <h2 class="section-title" style="margin-top:0;">Saisir / mettre à jour un bulletin</h2>
+    <form method="post">
+      <div class="form-row">
+        <div class="field grow">
+          <label>Employé</label>
+          <select name="personnel_id" required>
+            <option value="">— choisir —</option>
+            {% for p in personnel %}<option value="{{ p.id }}">{{ p.matricule }} — {{ p.nom }} {{ p.prenom }}</option>{% endfor %}
+          </select>
+        </div>
+        <div class="field small">
+          <label>Classification</label>
+          <select name="classification"><option value="AUTRE">Autre</option><option value="CADRE">Cadre</option></select>
+        </div>
+        <div class="field small"><label>Personnes à charge</label><input type="text" name="personnes_a_charge" value="0"></div>
+      </div>
+      <div class="form-row">
+        <div class="field small"><label>Salaire de base</label><input type="text" name="salaire_base" required></div>
+        <div class="field small"><label>Prime ancienneté</label><input type="text" name="prime_anciennete" value="0"></div>
+        <div class="field small"><label>Heures sup.</label><input type="text" name="heures_sup" value="0"></div>
+        <div class="field small"><label>Sursalaire</label><input type="text" name="sursalaire" value="0"></div>
+        <div class="field small"><label>Gratification</label><input type="text" name="gratification" value="0"></div>
+      </div>
+      <div class="form-row">
+        <div class="field small"><label>Ind. caisse</label><input type="text" name="indemnite_caisse" value="0"></div>
+        <div class="field small"><label>Ind. logement</label><input type="text" name="indemnite_logement" value="0"></div>
+        <div class="field small"><label>Ind. fonction</label><input type="text" name="indemnite_fonction" value="0"></div>
+        <div class="field small"><label>Ind. transport</label><input type="text" name="indemnite_transport" value="0"></div>
+        <div class="field small"><label>Retenue prêt</label><input type="text" name="retenue_pret" value="0"></div>
+      </div>
+      <button type="submit" class="btn btn-inline">Enregistrer le bulletin</button>
+    </form>
+  </div>
+  {% endif %}
+
+  <h2 class="section-title">Bulletins de la période {{ periode }}</h2>
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <thead><tr><th>Matricule</th><th>Nom</th><th>Classification</th>
+          <th class="num">Salaire base</th><th class="num">Autres éléments</th><th></th></tr></thead>
+      <tbody>
+        {% for b in bulletins %}
+        <tr>
+          <td class="figure">{{ b.matricule }}</td>
+          <td>{{ b.nom }} {{ b.prenom }}</td>
+          <td>{{ b.classification }}</td>
+          <td class="num figure">{{ b.salaire_base | cfa }}</td>
+          <td class="num figure">{{ (b.prime_anciennete + b.heures_sup + b.sursalaire + b.gratification + b.indemnite_caisse + b.indemnite_logement + b.indemnite_fonction + b.indemnite_transport) | cfa }}</td>
+          <td>
+            {% if not verrouille %}
+            <form method="post" action="{{ url_for('grh_paie_bulletin_supprimer', bulletin_id=b.id) }}">
+              <button type="submit" class="btn-danger-link">Suppr.</button>
+            </form>
+            {% endif %}
+          </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="6" style="text-align:center;color:var(--text-dim);padding:24px;">Aucun bulletin pour cette période.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Bordereau {{ bordereau.numero }}{% endblock %}
+{% block content %}
+  <h1>Bordereau de livraison {{ bordereau.numero }}</h1>
+  <p class="subtitle">
+    {% if bordereau.statut == "validee" %}<span style="color:var(--green);font-weight:600;">Validé (réception confirmée)</span>
+    {% else %}<span style="color:var(--text-dim);">En attente de confirmation</span>{% endif %}
+  </p>
+
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <thead><tr><th>Libellé</th><th class="num">Qté commandée</th><th class="num">Qté livrée</th><th>Unité</th><th></th></tr></thead>
+      <tbody>
+        {% for l in lignes %}
+        <tr>
+          <td>{{ l.libelle }}</td>
+          <td class="num figure">{{ l.quantite_commandee }}</td>
+          <td class="num figure">{{ l.quantite_livree }}</td>
+          <td>{{ l.unite or "" }}</td>
+          <td>
+            {% if bordereau.statut != "validee" %}
+            <form method="post" style="display:flex; gap:4px;">
+              <input type="hidden" name="action" value="maj_quantite">
+              <input type="hidden" name="ligne_id" value="{{ l.id }}">
+              <input type="text" name="quantite_livree" value="{{ l.quantite_livree }}" style="width:70px; padding:4px 6px; font-size:0.8rem; border:1px solid var(--line); border-radius:3px;">
+              <button type="submit" class="btn-secondary" style="padding:4px 10px; font-size:0.78rem;">MAJ</button>
+            </form>
+            {% endif %}
+          </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="5" style="text-align:center;color:var(--text-dim);padding:24px;">Aucune ligne.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div style="margin-top:20px; display:flex; gap:10px;">
+    <a href="{{ url_for('bordereau_livraison') }}" class="btn-secondary" style="text-decoration:none;">← Retour</a>
+    {% if lignes and bordereau.statut != "validee" %}
+    <form method="post" onsubmit="return confirm('Confirmer la réception ? Aucune écriture comptable ne sera générée (déjà comptabilisé par le Bon de commande).');">
+      <input type="hidden" name="action" value="valider">
+      <button type="submit" class="btn btn-inline">Confirmer la réception</button>
+    </form>
+    {% endif %}
+  </div>
+{% endblock %}

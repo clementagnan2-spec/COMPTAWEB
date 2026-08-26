@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}Paie — État{% endblock %}
+{% block content %}
+  <h1>Paie</h1>
+  <div style="display:flex; gap:4px; margin-bottom:20px; border-bottom:1px solid var(--line);">
+    <a href="{{ url_for('grh_paie_bulletins', periode=periode) }}" class="btn-secondary" style="border-radius:3px 3px 0 0; text-decoration:none;">Bulletins</a>
+    <a href="{{ url_for('grh_paie_etat', periode=periode) }}" class="btn-secondary" style="border-radius:3px 3px 0 0; border-bottom:2px solid var(--ink); text-decoration:none;">État de paie</a>
+    {% if session.user.niveau_acces == "Administrateur" %}
+    <a href="{{ url_for('grh_paie_parametres') }}" class="btn-secondary" style="border-radius:3px 3px 0 0; text-decoration:none;">Paramètres</a>
+    {% endif %}
+  </div>
+
+  <form method="get" class="form-row" style="max-width:220px; margin-bottom:18px;">
+    <div class="field">
+      <label>Période</label>
+      <input type="month" name="periode" value="{{ periode }}" onchange="this.form.submit()">
+    </div>
+  </form>
+
+  {% if verrouille %}
+    <div class="flash success">Cette période a été validée (comptabilisée) — voir les écritures dans Saisie (pièce PAIE-{{ periode }}).</div>
+  {% endif %}
+
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <thead><tr><th>Employé</th><th class="num">Rémun. totale</th><th class="num">CNSS sal.</th>
+          <th class="num">IUTS</th><th class="num">Net perçu</th><th class="num">Coût employeur</th></tr></thead>
+      <tbody>
+        {% for l in etat.lignes %}
+        <tr>
+          <td>{{ l.nom }} {{ l.prenom }} <span style="color:var(--text-dim);">({{ l.matricule }})</span></td>
+          <td class="num figure">{{ l.remuneration_totale | cfa }}</td>
+          <td class="num figure">{{ l.cnss_salariale | cfa }}</td>
+          <td class="num figure">{{ l.iuts_net | cfa }}</td>
+          <td class="num figure" style="font-weight:600;">{{ l.net_percu | cfa }}</td>
+          <td class="num figure">{{ l.cout_total_employeur | cfa }}</td>
+        </tr>
+        {% else %}
+        <tr><td colspan="6" style="text-align:center;color:var(--text-dim);padding:24px;">Aucun bulletin pour cette période.</td></tr>
+        {% endfor %}
+      </tbody>
+      {% if etat.lignes %}
+      <tfoot>
+        <tr class="total-row">
+          <td>Total</td>
+          <td class="num figure">—</td>
+          <td class="num figure">—</td>
+          <td class="num figure">{{ etat.totaux.iuts_net | cfa }}</td>
+          <td class="num figure">{{ etat.totaux.net_percu | cfa }}</td>
+          <td class="num figure">{{ etat.totaux.cout_total_employeur | cfa }}</td>
+        </tr>
+      </tfoot>
+      {% endif %}
+    </table>
+  </div>
+
+  {% if etat.lignes and not verrouille %}
+  <form method="post" style="margin-top:20px;"
+        onsubmit="return confirm('Valider la paie {{ periode }} ? Les écritures comptables seront générées et les bulletins ne seront plus modifiables.');">
+    <input type="hidden" name="action" value="valider">
+    <button type="submit" class="btn btn-inline">Valider la paie (comptabiliser)</button>
+  </form>
+  {% endif %}
+{% endblock %}

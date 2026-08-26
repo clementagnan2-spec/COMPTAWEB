@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% block title %}Bon de commande {{ bon.numero }}{% endblock %}
+{% block content %}
+  <h1>Bon de commande {{ bon.numero }}</h1>
+  <p class="subtitle">
+    {% if bon.statut == "validee" %}<span style="color:var(--green);font-weight:600;">Validé — achat comptabilisé</span>
+    {% else %}<span style="color:var(--text-dim);">Brouillon</span>{% endif %}
+  </p>
+
+  {% if bon.statut != "validee" %}
+  <div class="form-card">
+    <h2 class="section-title" style="margin-top:0;">Ajouter une ligne</h2>
+    <form method="post">
+      <input type="hidden" name="action" value="ajouter_ligne">
+      <div class="form-row" style="align-items:flex-end;">
+        <div class="field grow"><label>Libellé</label><input type="text" name="libelle" required></div>
+        <div class="field small"><label>Quantité</label><input type="text" name="quantite" required></div>
+        <div class="field small"><label>Prix unitaire</label><input type="text" name="prix_unitaire" required></div>
+        <div class="field small"><label>Unité</label><input type="text" name="unite"></div>
+      </div>
+      <div class="form-row">
+        <div class="field small autocomplete-wrap">
+          <label>Compte de charge (obligatoire pour valider)</label>
+          <input type="text" name="compte_charge" id="compte-input" autocomplete="off">
+        </div>
+        <div class="field small"><label>Code analytique</label><input type="text" name="analytic_code"></div>
+        <div class="field small"><button type="submit" class="btn">Ajouter</button></div>
+      </div>
+    </form>
+  </div>
+  {% endif %}
+
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <thead><tr><th>Libellé</th><th>Compte</th><th class="num">Quantité</th>
+          <th class="num">Prix unit.</th><th class="num">Montant HT</th><th></th></tr></thead>
+      <tbody>
+        {% for l in lignes %}
+        <tr>
+          <td>{{ l.libelle }}</td>
+          <td class="figure">{{ l.compte_charge or "—" }}</td>
+          <td class="num figure">{{ l.quantite }}</td>
+          <td class="num figure">{{ l.prix_unitaire | cfa }}</td>
+          <td class="num figure">{{ l.montant_ht | cfa }}</td>
+          <td>
+            {% if bon.statut != "validee" %}
+            <form method="post" action="{{ url_for('ep_bon_commande_ligne_supprimer', bon_id=bon.id, ligne_id=l.id) }}">
+              <button type="submit" class="btn-danger-link">Suppr.</button>
+            </form>
+            {% endif %}
+          </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="6" style="text-align:center;color:var(--text-dim);padding:24px;">Aucune ligne.</td></tr>
+        {% endfor %}
+      </tbody>
+      {% if lignes %}
+      <tfoot>
+        <tr><td colspan="4" style="text-align:right;">Total HT</td><td class="num figure">{{ totals.total_ht | cfa }}</td><td></td></tr>
+        <tr><td colspan="4" style="text-align:right;">Retenue ({{ totals.retenue_taux }}%)</td><td class="num figure">{{ totals.retenue_montant | cfa }}</td><td></td></tr>
+        <tr class="total-row"><td colspan="4" style="text-align:right;">Net à payer</td><td class="num figure">{{ totals.net_a_payer | cfa }}</td><td></td></tr>
+      </tfoot>
+      {% endif %}
+    </table>
+  </div>
+
+  <div style="margin-top:20px; display:flex; gap:10px;">
+    <a href="{{ url_for('ep_bon_commande') }}" class="btn-secondary" style="text-decoration:none;">← Retour</a>
+    {% if lignes and bon.statut != "validee" %}
+    <form method="post" onsubmit="return confirm('Valider ce bon de commande ? L\'achat sera comptabilisé (chaque ligne doit avoir un compte de charge) et le Bordereau + Règlement seront générés automatiquement.');">
+      <input type="hidden" name="action" value="valider">
+      <button type="submit" class="btn btn-inline">Valider (comptabiliser)</button>
+    </form>
+    {% endif %}
+  </div>
+
+  <div class="autocomplete-list" id="autocomplete-list"></div>
+<script>
+const compteInput = document.getElementById('compte-input');
+if (compteInput) {
+  compteInput.addEventListener('input', async () => {
+    const q = compteInput.value.trim();
+    const list = document.getElementById('autocomplete-list');
+    if (q.length < 1) { list.style.display = 'none'; return; }
+    const resp = await fetch('/api/comptes?q=' + encodeURIComponent(q));
+    const comptes = await resp.json();
+    list.innerHTML = '';
+    comptes.slice(0, 15).forEach(c => {
+      const div = document.createElement('div');
+      div.innerHTML = `<span class="code">${c.code}</span>${c.label}`;
+      div.onclick = () => { compteInput.value = c.code; list.style.display = 'none'; };
+      list.appendChild(div);
+    });
+    const rect = compteInput.getBoundingClientRect();
+    list.style.left = (rect.left + window.scrollX) + 'px';
+    list.style.top = (rect.bottom + window.scrollY + 2) + 'px';
+    list.style.display = comptes.length ? 'block' : 'none';
+  });
+  document.addEventListener('click', (e) => {
+    const list = document.getElementById('autocomplete-list');
+    if (e.target !== compteInput && !list.contains(e.target)) list.style.display = 'none';
+  });
+}
+</script>
+{% endblock %}

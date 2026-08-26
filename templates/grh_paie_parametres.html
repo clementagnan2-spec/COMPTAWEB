@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Paie — Paramètres{% endblock %}
+{% block content %}
+  <h1>Paie</h1>
+  <div style="display:flex; gap:4px; margin-bottom:20px; border-bottom:1px solid var(--line);">
+    <a href="{{ url_for('grh_paie_bulletins') }}" class="btn-secondary" style="border-radius:3px 3px 0 0; text-decoration:none;">Bulletins</a>
+    <a href="{{ url_for('grh_paie_etat') }}" class="btn-secondary" style="border-radius:3px 3px 0 0; text-decoration:none;">État de paie</a>
+    <a href="{{ url_for('grh_paie_parametres') }}" class="btn-secondary" style="border-radius:3px 3px 0 0; border-bottom:2px solid var(--ink); text-decoration:none;">Paramètres</a>
+  </div>
+  <p class="subtitle">Réservé à l'administrateur — taux appliqués à tous les bulletins futurs (le barème IUTS 9 tranches n'est pas modifiable ici).</p>
+
+  <div class="form-card">
+    <form method="post">
+      <div class="form-row">
+        <div class="field"><label>Taux CNSS salarié (%)</label><input type="text" name="taux_cnss_salarie" value="{{ (p.taux_cnss_salarie*100) | round(3) }}"></div>
+        <div class="field"><label>Plafond CNSS (F CFA)</label><input type="text" name="plafond_cnss" value="{{ p.plafond_cnss | int }}"></div>
+        <div class="field"><label>CNSS salariale plafonnée</label><input type="text" name="cnss_salariale_plafonnee" value="{{ p.cnss_salariale_plafonnee | int }}"></div>
+      </div>
+      <div class="form-row">
+        <div class="field"><label>Taux CNSS patronale (%)</label><input type="text" name="taux_cnss_patronale" value="{{ (p.taux_cnss_patronale*100) | round(3) }}"></div>
+        <div class="field"><label>Taux TPA (%)</label><input type="text" name="taux_tpa" value="{{ (p.taux_tpa*100) | round(3) }}"></div>
+        <div class="field"><label>Taux retenue obligatoire (%)</label><input type="text" name="taux_retenue_obligatoire" value="{{ (p.taux_retenue_obligatoire*100) | round(3) }}"></div>
+      </div>
+      <div class="form-row">
+        <div class="field"><label>Abattement CADRE (%)</label><input type="text" name="abattement_cadre" value="{{ (p.abattement_cadre*100) | round(3) }}"></div>
+        <div class="field"><label>Abattement AUTRE (%)</label><input type="text" name="abattement_autre" value="{{ (p.abattement_autre*100) | round(3) }}"></div>
+      </div>
+      <button type="submit" class="btn btn-inline">Enregistrer</button>
+    </form>
+  </div>
+{% endblock %}

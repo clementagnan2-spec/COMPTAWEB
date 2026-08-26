@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block title %}KPI{% endblock %}
+{% block content %}
+  <h1>KPI</h1>
+  <p class="subtitle">Indicateurs de performance, par employé ou par service.</p>
+
+  <div class="form-card">
+    <h2 class="section-title" style="margin-top:0;">Nouvel indicateur</h2>
+    <form method="post">
+      <div class="form-row">
+        <div class="field grow"><label>Indicateur</label><input type="text" name="indicateur" required></div>
+        <div class="field grow"><label>Description</label><input type="text" name="description"></div>
+      </div>
+      <div class="form-row">
+        <div class="field">
+          <label>Employé (optionnel)</label>
+          <select name="personnel_id"><option value="">—</option>
+            {% for p in personnel %}<option value="{{ p.id }}">{{ p.nom }} {{ p.prenom }}</option>{% endfor %}
+          </select>
+        </div>
+        <div class="field"><label>Service</label><input type="text" name="service"></div>
+        <div class="field small"><label>Période</label><input type="text" name="periode" placeholder="2026-08"></div>
+      </div>
+      <div class="form-row">
+        <div class="field small"><label>Valeur cible</label><input type="text" name="valeur_cible"></div>
+        <div class="field small"><label>Valeur réalisée</label><input type="text" name="valeur_realisee"></div>
+        <div class="field small"><label>Unité</label><input type="text" name="unite"></div>
+        <div class="field small">
+          <label>Statut</label>
+          <select name="statut"><option value="en_cours">En cours</option><option value="atteint">Atteint</option><option value="non_atteint">Non atteint</option></select>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-inline">Enregistrer</button>
+    </form>
+  </div>
+
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <thead><tr><th>Indicateur</th><th>Employé/Service</th><th>Période</th>
+          <th class="num">Cible</th><th class="num">Réalisé</th><th class="num">Taux</th><th>Statut</th><th></th></tr></thead>
+      <tbody>
+        {% for k in kpis %}
+        <tr>
+          <td>{{ k.indicateur }}</td>
+          <td>{{ k.employe or k.service }}</td>
+          <td class="figure">{{ k.periode }}</td>
+          <td class="num figure">{{ k.valeur_cible }} {{ k.unite }}</td>
+          <td class="num figure">{{ k.valeur_realisee }} {{ k.unite }}</td>
+          <td class="num figure">{{ "%.0f"|format(k.taux_realisation) + "%" if k.taux_realisation is not none else "—" }}</td>
+          <td>
+            <form method="post" action="{{ url_for('grh_kpi_statut', kpi_id=k.id) }}" style="display:flex; gap:4px;">
+              <select name="statut" onchange="this.form.submit()" style="font-size:0.78rem; padding:2px;">
+                <option value="en_cours" {% if k.statut == "en_cours" %}selected{% endif %}>En cours</option>
+                <option value="atteint" {% if k.statut == "atteint" %}selected{% endif %}>Atteint</option>
+                <option value="non_atteint" {% if k.statut == "non_atteint" %}selected{% endif %}>Non atteint</option>
+              </select>
+              <input type="hidden" name="valeur_realisee" value="{{ k.valeur_realisee }}">
+            </form>
+          </td>
+          <td>
+            <form method="post" action="{{ url_for('grh_kpi_supprimer', kpi_id=k.id) }}">
+              <button type="submit" class="btn-danger-link">Suppr.</button>
+            </form>
+          </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="8" style="text-align:center;color:var(--text-dim);padding:24px;">Aucun KPI.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

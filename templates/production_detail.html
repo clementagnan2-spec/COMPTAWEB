@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% block title %}Recette — {{ produit.nom }}{% endblock %}
+{% block content %}
+  <h1>{{ produit.nom }}</h1>
+  <p class="subtitle">Recette de fabrication — {{ produit.quantite_produite }} unité(s) par lot, marge {{ produit.marge_pourcentage }}%.</p>
+
+  <div class="form-card">
+    <h2 class="section-title" style="margin-top:0;">Ajouter une ligne à la recette</h2>
+    <form method="post">
+      <input type="hidden" name="action" value="ajouter_ligne">
+      <div class="form-row" style="align-items:flex-end;">
+        <div class="field">
+          <label>Type</label>
+          <select name="type_ligne" id="type-select">
+            {% for key, label in ligne_types.items() %}<option value="{{ key }}">{{ label }}</option>{% endfor %}
+          </select>
+        </div>
+        <div class="field grow"><label>Libellé</label><input type="text" name="libelle" required></div>
+        <div class="field small"><label>Quantité</label><input type="text" name="quantite" required></div>
+        <div class="field small"><label>Coût unitaire (si manuel)</label><input type="text" name="cout_unitaire"></div>
+      </div>
+      <div class="form-row">
+        <div class="field small autocomplete-wrap">
+          <label>Compte (matière / amortissement)</label>
+          <input type="text" name="compte" id="compte-input" autocomplete="off">
+        </div>
+        <div class="field small"><label>Code analytique (main-d'œuvre/énergie/autre)</label><input type="text" name="analytic_code"></div>
+        <div class="field small"><button type="submit" class="btn">Ajouter</button></div>
+      </div>
+    </form>
+  </div>
+
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <thead><tr><th>Type</th><th>Libellé</th><th>Compte/Code</th><th class="num">Quantité</th>
+          <th class="num">Coût unit. utilisé</th><th>Source</th><th class="num">Montant</th><th></th></tr></thead>
+      <tbody>
+        {% for l in cout.lignes %}
+        <tr>
+          <td>{{ ligne_types.get(l.type_ligne, l.type_ligne) }}</td>
+          <td>{{ l.libelle }}</td>
+          <td class="figure">{{ l.compte or l.analytic_code or "" }}</td>
+          <td class="num figure">{{ l.quantite }}</td>
+          <td class="num figure">{{ l.cout_unitaire_utilise | cfa }}</td>
+          <td style="font-size:0.78rem; color:var(--text-dim);">{{ l.source_cout }}</td>
+          <td class="num figure">{{ l.montant | cfa }}</td>
+          <td>
+            <form method="post" action="{{ url_for('production_ligne_supprimer', code=produit.code, ligne_id=l.id) }}">
+              <button type="submit" class="btn-danger-link">Suppr.</button>
+            </form>
+          </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="8" style="text-align:center;color:var(--text-dim);padding:24px;">Recette vide.</td></tr>
+        {% endfor %}
+      </tbody>
+      {% if cout.lignes %}
+      <tfoot>
+        <tr class="total-row"><td colspan="6" style="text-align:right;">Coût de production total</td>
+            <td class="num figure">{{ cout.cout_production_total | cfa }}</td><td></td></tr>
+      </tfoot>
+      {% endif %}
+    </table>
+  </div>
+
+  {% if cout.lignes %}
+  <div class="form-card" style="margin-top:20px;">
+    <div class="totals-row" style="font-size:1rem;">
+      <span>Coût unitaire produit : <strong class="figure">{{ cout.cout_unitaire_produit | cfa }}</strong></span>
+      <span>Prix de vente unitaire suggéré (+{{ cout.marge_pourcentage }}%) : <strong class="figure">{{ cout.prix_vente_unitaire | cfa }}</strong></span>
+      <span>Marge unitaire : <strong class="figure ok">{{ cout.marge_unitaire | cfa }}</strong></span>
+    </div>
+    <form method="post" style="margin-top:16px;"
+          onsubmit="return confirm('Comptabiliser cette fabrication ? Le stock de matières sera diminué et le stock de produits finis augmenté.');">
+      <input type="hidden" name="action" value="produire">
+      <button type="submit" class="btn btn-inline">Produire (comptabiliser)</button>
+    </form>
+  </div>
+  {% endif %}
+
+  <div class="autocomplete-list" id="autocomplete-list"></div>
+<script>
+const compteInput = document.getElementById('compte-input');
+compteInput.addEventListener('input', async () => {
+  const q = compteInput.value.trim();
+  const list = document.getElementById('autocomplete-list');
+  if (q.length < 1) { list.style.display = 'none'; return; }
+  const resp = await fetch('/api/comptes?q=' + encodeURIComponent(q));
+  const comptes = await resp.json();
+  list.innerHTML = '';
+  comptes.slice(0, 15).forEach(c => {
+    const div = document.createElement('div');
+    div.innerHTML = `<span class="code">${c.code}</span>${c.label}`;
+    div.onclick = () => { compteInput.value = c.code; list.style.display = 'none'; };
+    list.appendChild(div);
+  });
+  const rect = compteInput.getBoundingClientRect();
+  list.style.left = (rect.left + window.scrollX) + 'px';
+  list.style.top = (rect.bottom + window.scrollY + 2) + 'px';
+  list.style.display = comptes.length ? 'block' : 'none';
+});
+document.addEventListener('click', (e) => {
+  const list = document.getElementById('autocomplete-list');
+  if (e.target !== compteInput && !list.contains(e.target)) list.style.display = 'none';
+});
+</script>
+{% endblock %}

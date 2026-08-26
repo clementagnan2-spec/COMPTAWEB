@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}Utilisateurs{% endblock %}
+{% block content %}
+  <h1>Utilisateurs</h1>
+  <p class="subtitle">Comptes ayant accès à l'application.</p>
+
+  <div class="form-card">
+    <h2 class="section-title" style="margin-top:0;">Nouvel utilisateur</h2>
+    <form method="post">
+      <div class="form-row">
+        <div class="field"><label>Identifiant</label><input type="text" name="nom_utilisateur" required></div>
+        <div class="field"><label>Mot de passe</label><input type="password" name="mot_de_passe" required></div>
+        <div class="field grow"><label>Nom complet</label><input type="text" name="nom_complet"></div>
+        <div class="field">
+          <label>Niveau d'accès</label>
+          <select name="niveau_acces">
+            {% for n in niveaux %}<option value="{{ n.nom }}">{{ n.nom }}</option>{% endfor %}
+          </select>
+        </div>
+        <div class="field small" style="align-self:flex-end;">
+          <label><input type="checkbox" name="actif" checked style="width:auto;"> Actif</label>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-inline">Créer</button>
+    </form>
+  </div>
+
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <thead><tr><th>Identifiant</th><th>Nom complet</th><th>Niveau</th><th>Statut</th><th></th></tr></thead>
+      <tbody>
+        {% for u in utilisateurs %}
+        <tr>
+          <td class="figure">{{ u.nom_utilisateur }}</td>
+          <td>{{ u.nom_complet }}</td>
+          <td>{{ u.niveau_acces }}</td>
+          <td>{{ "Actif" if u.actif else "Inactif" }}</td>
+          <td>
+            <details style="display:inline-block;">
+              <summary style="cursor:pointer; font-size:0.78rem; color:var(--ink); display:inline;">Réinitialiser mdp</summary>
+              <form method="post" action="{{ url_for('utilisateurs_reinitialiser', user_id=u.id) }}" style="margin-top:6px;">
+                <input type="password" name="nouveau_mot_de_passe" placeholder="Nouveau mot de passe" required
+                       style="padding:4px 6px; font-size:0.8rem; border:1px solid var(--line); border-radius:3px;">
+                <button type="submit" class="btn-secondary" style="padding:4px 10px; font-size:0.78rem;">OK</button>
+              </form>
+            </details>
+            {% if u.id != session.user.id %}
+            <form method="post" action="{{ url_for('utilisateurs_supprimer', user_id=u.id) }}" style="display:inline;"
+                  onsubmit="return confirm('Supprimer cet utilisateur ?');">
+              <button type="submit" class="btn-danger-link">Suppr.</button>
+            </form>
+            {% endif %}
+          </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="5" style="text-align:center;color:var(--text-dim);padding:24px;">Aucun utilisateur.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

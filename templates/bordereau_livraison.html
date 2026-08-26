@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Bordereaux de livraison{% endblock %}
+{% block content %}
+  <h1>Bordereau de livraison</h1>
+  <p class="subtitle">Générés automatiquement à la validation d'un Bon de commande — confirmez ici les quantités réellement reçues.</p>
+
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <thead><tr><th>N°</th><th>Date</th><th>Statut</th></tr></thead>
+      <tbody>
+        {% for b in liste %}
+        <tr>
+          <td class="figure"><a href="{{ url_for('bordereau_livraison_detail', bordereau_id=b.id) }}">{{ b.numero }}</a></td>
+          <td class="figure">{{ b.date_livraison }}</td>
+          <td>{% if b.statut == "validee" %}<span style="color:var(--green);font-weight:600;">Validé</span>
+              {% else %}<span style="color:var(--text-dim);">En attente</span>{% endif %}</td>
+        </tr>
+        {% else %}
+        <tr><td colspan="3" style="text-align:center;color:var(--text-dim);padding:24px;">Aucun bordereau.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

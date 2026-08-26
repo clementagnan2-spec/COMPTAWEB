@@ -132,6 +132,39 @@ MENU_ROUTES = {
     "stocks": "stocks",
     "immobilisations": "immobilisations",
     "amortissements": "amortissements",
+    "grh_personnel": "grh_personnel",
+    "grh_paie": "grh_paie",
+    "exercices": "exercices",
+    "plan_comptable": "plan_comptable",
+    "plan_analytique": "plan_analytique",
+    "plan_budgetaire": "plan_budgetaire",
+    "plan_bailleur": "plan_bailleur",
+    "taux_tva": "taux_tva",
+    "taux_retenue": "taux_retenue",
+    "niveaux_acces": "niveaux_acces",
+    "utilisateurs": "utilisateurs",
+    "production": "production",
+    "tresorerie": "tresorerie",
+    "contrats": "contrats",
+    "expression_besoin": "expression_besoin",
+    "ep_bon_commande": "ep_bon_commande",
+    "bordereau_livraison": "bordereau_livraison",
+    "reglements": "reglements",
+    "recouvrement": "recouvrement",
+    "marges": "marges",
+    "admin_factures": "admin_factures",
+    "admin_modele_bon_commande": "admin_modele_bon_commande",
+    "reinitialisation": "reinitialisation",
+    "grh_time_sheet": "grh_time_sheet",
+    "grh_kpi": "grh_kpi",
+    "grh_tableau_bord": "grh_tableau_bord",
+    "grh_hs": "grh_hs",
+    "transport": "transport",
+    "missions": "missions",
+    "pieces_rechange": "pieces_rechange",
+    "reparations": "reparations",
+    "energie": "energie",
+    "maintenance": "maintenance",
 }
 
 
@@ -250,6 +283,7 @@ def saisie():
             libelles = request.form.getlist("ligne_libelle")
             debits = request.form.getlist("ligne_debit")
             credits = request.form.getlist("ligne_credit")
+            analytics = request.form.getlist("ligne_analytic")
             lignes = []
             for i in range(len(comptes)):
                 if not comptes[i].strip():
@@ -259,6 +293,7 @@ def saisie():
                     "libelle": libelles[i].strip() if i < len(libelles) else "",
                     "debit": float(debits[i]) if i < len(debits) and debits[i] else 0,
                     "credit": float(credits[i]) if i < len(credits) and credits[i] else 0,
+                    "analytic_code": analytics[i].strip() if i < len(analytics) and analytics[i].strip() else None,
                 })
             core.add_ecriture_multi_lignes(db, date_str, piece, journal, lignes, tiers=tiers)
             flash("Écriture enregistrée.", "success")
@@ -619,6 +654,1255 @@ def amortissements():
     for i, t in enumerate(taux):
         t["field_key"] = f"taux_{i}"
     return render_template("amortissements.html", taux=taux)
+
+
+# ---------------------------------------------------------------------------
+# GRH > Liste du personnel
+# ---------------------------------------------------------------------------
+@app.route("/module/grh_personnel", methods=["GET", "POST"])
+@menu_requis("grh_personnel")
+def grh_personnel():
+    db = get_db()
+    if request.method == "POST":
+        try:
+            core.add_personnel(
+                db, request.form["nom"], matricule=request.form.get("matricule", ""),
+                prenom=request.form.get("prenom", ""), poste=request.form.get("poste", ""),
+                service=request.form.get("service", ""), date_embauche=request.form.get("date_embauche", ""),
+                telephone=request.form.get("telephone", ""), email=request.form.get("email", ""),
+                salaire_base=float(request.form.get("salaire_base") or 0),
+                statut=request.form.get("statut", "actif"),
+            )
+            flash("Employé ajouté.", "success")
+        except (ValueError, KeyError) as exc:
+            flash(str(exc), "error")
+        return redirect(url_for("grh_personnel"))
+    return render_template("grh_personnel.html", personnel=core.list_personnel(db))
+
+
+@app.route("/module/grh_personnel/supprimer/<int:personnel_id>", methods=["POST"])
+@menu_requis("grh_personnel")
+def grh_personnel_supprimer(personnel_id):
+    try:
+        core.delete_personnel(get_db(), personnel_id)
+        flash("Employé supprimé.", "success")
+    except Exception as exc:
+        flash(f"Suppression impossible : {exc}", "error")
+    return redirect(url_for("grh_personnel"))
+
+
+# ---------------------------------------------------------------------------
+# GRH > Paie (Bulletins, État de paie, Paramètres)
+# ---------------------------------------------------------------------------
+def _periode_actuelle():
+    return request.args.get("periode") or session.get("paie_periode") or core.date.today().strftime("%Y-%m")
+
+
+@app.route("/module/grh_paie")
+@menu_requis("grh_paie")
+def grh_paie():
+    periode = _periode_actuelle()
+    session["paie_periode"] = periode
+    return redirect(url_for("grh_paie_bulletins", periode=periode))
+
+
+@app.route("/module/grh_paie/bulletins", methods=["GET", "POST"])
+@menu_requis("grh_paie")
+def grh_paie_bulletins():
+    db = get_db()
+    periode = _periode_actuelle()
+    session["paie_periode"] = periode
+
+    if request.method == "POST":
+        try:
+            personnel_id = int(request.form["personnel_id"])
+            core.set_bulletin_paie(
+                db, personnel_id, periode,
+                classification=request.form.get("classification", "AUTRE"),
+                salaire_base=float(request.form.get("salaire_base") or 0),
+                prime_anciennete=float(request.form.get("prime_anciennete") or 0),
+                heures_sup=float(request.form.get("heures_sup") or 0),
+                sursalaire=float(request.form.get("sursalaire") or 0),
+                gratification=float(request.form.get("gratification") or 0),
+                indemnite_caisse=float(request.form.get("indemnite_caisse") or 0),
+                indemnite_logement=float(request.form.get("indemnite_logement") or 0),
+                indemnite_fonction=float(request.form.get("indemnite_fonction") or 0),
+                indemnite_transport=float(request.form.get("indemnite_transport") or 0),
+                personnes_a_charge=int(request.form.get("personnes_a_charge") or 0),
+                retenue_pret=float(request.form.get("retenue_pret") or 0),
+            )
+            flash("Bulletin enregistré.", "success")
+        except (ValueError, KeyError) as exc:
+            flash(str(exc), "error")
+        return redirect(url_for("grh_paie_bulletins", periode=periode))
+
+    bulletins = core.list_bulletins_paie(db, periode=periode)
+    verrouille = core.est_periode_paie_validee(db, periode)
+    return render_template("grh_paie_bulletins.html", personnel=core.list_personnel(db, actifs_only=True),
+                            bulletins=bulletins, periode=periode, verrouille=verrouille)
+
+
+@app.route("/module/grh_paie/bulletins/supprimer/<int:bulletin_id>", methods=["POST"])
+@menu_requis("grh_paie")
+def grh_paie_bulletin_supprimer(bulletin_id):
+    try:
+        core.delete_bulletin_paie(get_db(), bulletin_id)
+        flash("Bulletin supprimé.", "success")
+    except ValueError as exc:
+        flash(str(exc), "error")
+    return redirect(url_for("grh_paie_bulletins", periode=session.get("paie_periode")))
+
+
+@app.route("/module/grh_paie/etat", methods=["GET", "POST"])
+@menu_requis("grh_paie")
+def grh_paie_etat():
+    db = get_db()
+    periode = _periode_actuelle()
+    session["paie_periode"] = periode
+
+    if request.method == "POST" and request.form.get("action") == "valider":
+        try:
+            etat, piece = core.valider_paie_periode(db, periode)
+            flash(f"Paie {periode} comptabilisée (pièce {piece}).", "success")
+        except ValueError as exc:
+            flash(str(exc), "error")
+        return redirect(url_for("grh_paie_etat", periode=periode))
+
+    etat = core.compute_paie_periode(db, periode)
+    verrouille = core.est_periode_paie_validee(db, periode)
+    return render_template("grh_paie_etat.html", etat=etat, periode=periode, verrouille=verrouille)
+
+
+@app.route("/module/grh_paie/parametres", methods=["GET", "POST"])
+@menu_requis("grh_paie")
+def grh_paie_parametres():
+    db = get_db()
+    if session["user"]["niveau_acces"] != "Administrateur":
+        flash("Réservé à l'administrateur.", "error")
+        return redirect(url_for("grh_paie_bulletins"))
+    if request.method == "POST":
+        try:
+            params = core.get_paie_parametres(db)
+            params["taux_cnss_salarie"] = float(request.form["taux_cnss_salarie"]) / 100
+            params["plafond_cnss"] = float(request.form["plafond_cnss"])
+            params["cnss_salariale_plafonnee"] = float(request.form["cnss_salariale_plafonnee"])
+            params["taux_cnss_patronale"] = float(request.form["taux_cnss_patronale"]) / 100
+            params["taux_tpa"] = float(request.form["taux_tpa"]) / 100
+            params["taux_retenue_obligatoire"] = float(request.form["taux_retenue_obligatoire"]) / 100
+            params["abattement_cadre"] = float(request.form["abattement_cadre"]) / 100
+            params["abattement_autre"] = float(request.form["abattement_autre"]) / 100
+            core.set_paie_parametres(db, params)
+            flash("Paramètres de paie enregistrés.", "success")
+        except (ValueError, KeyError) as exc:
+            flash(str(exc), "error")
+        return redirect(url_for("grh_paie_parametres"))
+    params = core.get_paie_parametres(db)
+    return render_template("grh_paie_parametres.html", p=params)
+
+
+@app.route("/module/grh_paie/bulletin/<int:bulletin_id>/apercu")
+@menu_requis("grh_paie")
+def grh_paie_apercu(bulletin_id):
+    try:
+        return core.render_bulletin_paie_html(get_db(), bulletin_id)
+    except ValueError as exc:
+        flash(str(exc), "error")
+        return redirect(url_for("grh_paie_bulletins"))
+
+
+# ---------------------------------------------------------------------------
+# PARAMÈTRES > Exercices comptables (clôture)
+# ---------------------------------------------------------------------------
+@app.route("/module/exercices", methods=["GET", "POST"])
+@menu_requis("exercices")
+def exercices():
+    db = get_db()
+    if request.method == "POST":
+        action = request.form.get("action")
+        try:
+            if action == "nouveau":
+                core.set_current_exercice(db, request.form["exercice"].strip())
+                flash("Exercice créé/activé.", "success")
+            elif action == "activer":
+                core.set_current_exercice(db, request.form["exercice"])
+                session["exercice"] = request.form["exercice"]
+                flash("Exercice actif changé.", "success")
+            elif action == "cloturer":
+                ex = request.form["exercice"]
+                next_ex = core.close_exercice(db, ex)
+                core.set_current_exercice(db, next_ex)
+                session["exercice"] = next_ex
+                flash(f"Exercice {ex} clôturé. Soldes d'ouverture de {next_ex} calculés.", "success")
+        except (ValueError, KeyError) as exc:
+            flash(str(exc), "error")
+        return redirect(url_for("exercices"))
+
+    liste = core.list_exercices(db)
+    bilans = {}
+    for e in liste:
+        try:
+            bilans[e["exercice"]] = core.compute_bilan(db, exercice=e["exercice"])["ecart"]
+        except Exception:
+            bilans[e["exercice"]] = None
+    return render_template("exercices.html", liste=liste, bilans=bilans,
+                            exercice_actif=core.get_current_exercice(db))
+
+
+# ---------------------------------------------------------------------------
+# PARAMÈTRES > Plans auxiliaires (comptable / analytique / budgétaire / bailleurs)
+# ---------------------------------------------------------------------------
+@app.route("/module/plan_comptable", methods=["GET", "POST"])
+@menu_requis("plan_comptable")
+def plan_comptable():
+    db = get_db()
+    if request.method == "POST":
+        try:
+            core.add_account(db, request.form["code"].strip(), request.form["label"].strip())
+            flash("Compte enregistré.", "success")
+        except (ValueError, KeyError) as exc:
+            flash(str(exc), "error")
+        return redirect(url_for("plan_comptable"))
+    q = request.args.get("q", "")
+    comptes = core.search_accounts(db, q, limit=500) if q else core.search_accounts(db, "", limit=500)
+    return render_template("plan_comptable.html", comptes=comptes, q=q)
+
+
+@app.route("/module/plan_comptable/supprimer/<code>", methods=["POST"])
+@menu_requis("plan_comptable")
+def plan_comptable_supprimer(code):
+    try:
+        core.delete_account(get_db(), code)
+        flash("Compte supprimé.", "success")
+    except Exception as exc:
+        flash(f"Suppression impossible : {exc}", "error")
+    return redirect(url_for("plan_comptable"))
+
+
+@app.route("/module/plan_analytique", methods=["GET", "POST"])
+@menu_requis("plan_analytique")
+def plan_analytique():
+    db = get_db()
+    if request.method == "POST":
+        try:
+            core.add_analytic_code(db, request.form["code"].strip(), request.form["label"].strip(),
+                                    unite=request.form.get("unite") or None)
+            flash("Code analytique enregistré.", "success")
+        except (ValueError, KeyError) as exc:
+            flash(str(exc), "error")
+        return redirect(url_for("plan_analytique"))
+    return render_template("plan_analytique.html", codes=core.list_analytic_codes(db))
+
+
+@app.route("/module/plan_analytique/supprimer/<code>", methods=["POST"])
+@menu_requis("plan_analytique")
+def plan_analytique_supprimer(code):
+    try:
+        core.delete_analytic_code(get_db(), code)
+        flash("Code analytique supprimé.", "success")
+    except Exception as exc:
+        flash(f"Suppression impossible : {exc}", "error")
+    return redirect(url_for("plan_analytique"))
+
+
+@app.route("/module/plan_budgetaire", methods=["GET", "POST"])
+@menu_requis("plan_budgetaire")
+def plan_budgetaire():
+    db = get_db()
+    if request.method == "POST":
+        try:
+            core.add_budget_code(db, request.form["code"].strip(), request.form["label"].strip(),
+                                  montant=float(request.form.get("montant") or 0))
+            flash("Ligne budgétaire enregistrée.", "success")
+        except (ValueError, KeyError) as exc:
+            flash(str(exc), "error")
+        return redirect(url_for("plan_budgetaire"))
+    return render_template("plan_budgetaire.html", codes=core.list_budget_codes(db))
+
+
+@app.route("/module/plan_budgetaire/supprimer/<code>", methods=["POST"])
+@menu_requis("plan_budgetaire")
+def plan_budgetaire_supprimer(code):
+    try:
+        core.delete_budget_code(get_db(), code)
+        flash("Ligne budgétaire supprimée.", "success")
+    except Exception as exc:
+        flash(f"Suppression impossible : {exc}", "error")
+    return redirect(url_for("plan_budgetaire"))
+
+
+@app.route("/module/plan_bailleur", methods=["GET", "POST"])
+@menu_requis("plan_bailleur")
+def plan_bailleur():
+    db = get_db()
+    if request.method == "POST":
+        try:
+            core.add_donor_code(db, request.form["code"].strip(), request.form["label"].strip())
+            flash("Bailleur enregistré.", "success")
+        except (ValueError, KeyError) as exc:
+            flash(str(exc), "error")
+        return redirect(url_for("plan_bailleur"))
+    return render_template("plan_bailleur.html", codes=core.list_donor_codes(db))
+
+
+@app.route("/module/plan_bailleur/supprimer/<code>", methods=["POST"])
+@menu_requis("plan_bailleur")
+def plan_bailleur_supprimer(code):
+    try:
+        core.delete_donor_code(get_db(), code)
+        flash("Bailleur supprimé.", "success")
+    except Exception as exc:
+        flash(f"Suppression impossible : {exc}", "error")
+    return redirect(url_for("plan_bailleur"))
+
+
+# ---------------------------------------------------------------------------
+# ADMIN > Taux de TVA / Taux de retenue à la source
+# ---------------------------------------------------------------------------
+@app.route("/module/taux_tva", methods=["GET", "POST"])
+@menu_requis("taux_tva")
+def taux_tva():
+    db = get_db()
+    if request.method == "POST":
+        try:
+            core.add_taux_tva(db, request.form["code"].strip(), request.form["label"].strip(),
+                               montant=float(request.form.get("montant") or 0),
+                               compte=request.form.get("compte") or None)
+            flash("Taux de TVA enregistré.", "success")
+        except (ValueError, KeyError) as exc:
+            flash(str(exc), "error")
+        return redirect(url_for("taux_tva"))
+    return render_template("taux_tva.html", taux=core.list_taux_tva(db))
+
+
+@app.route("/module/taux_tva/supprimer/<code>", methods=["POST"])
+@menu_requis("taux_tva")
+def taux_tva_supprimer(code):
+    try:
+        core.delete_taux_tva(get_db(), code)
+        flash("Taux de TVA supprimé.", "success")
+    except Exception as exc:
+        flash(f"Suppression impossible : {exc}", "error")
+    return redirect(url_for("taux_tva"))
+
+
+@app.route("/module/taux_retenue", methods=["GET", "POST"])
+@menu_requis("taux_retenue")
+def taux_retenue():
+    db = get_db()
+    if request.method == "POST":
+        try:
+            core.add_taux_retenue(db, request.form["code"].strip(), request.form["label"].strip(),
+                                   montant=float(request.form.get("montant") or 0),
+                                   compte=request.form.get("compte") or None)
+            flash("Taux de retenue enregistré.", "success")
+        except (ValueError, KeyError) as exc:
+            flash(str(exc), "error")
+        return redirect(url_for("taux_retenue"))
+    return render_template("taux_retenue.html", taux=core.list_taux_retenue(db))
+
+
+@app.route("/module/taux_retenue/supprimer/<code>", methods=["POST"])
+@menu_requis("taux_retenue")
+def taux_retenue_supprimer(code):
+    try:
+        core.delete_taux_retenue(get_db(), code)
+        flash("Taux de retenue supprimé.", "success")
+    except Exception as exc:
+        flash(f"Suppression impossible : {exc}", "error")
+    return redirect(url_for("taux_retenue"))
+
+
+# ---------------------------------------------------------------------------
+# ADMIN > Niveaux d'accès / Utilisateurs
+# ---------------------------------------------------------------------------
+@app.route("/module/niveaux_acces", methods=["GET", "POST"])
+@menu_requis("niveaux_acces")
+def niveaux_acces():
+    db = get_db()
+    if request.method == "POST":
+        try:
+            core.add_niveau_acces(db, request.form["nom"].strip(), description=request.form.get("description", ""))
+            flash("Niveau d'accès créé.", "success")
+        except (ValueError, KeyError) as exc:
+            flash(str(exc), "error")
+        return redirect(url_for("niveaux_acces"))
+    niveaux = core.list_niveaux_acces(db)
+    menus_par_niveau = {n["nom"]: core.get_menus_autorises(db, n["nom"]) for n in niveaux}
+    tous_les_menus = [(label, key) for _titre, items in core.MENU_STRUCTURE for label, key in items]
+    return render_template("niveaux_acces.html", niveaux=niveaux, menus_par_niveau=menus_par_niveau,
+                            tous_les_menus=tous_les_menus)
+
+
+@app.route("/module/niveaux_acces/supprimer/<nom>", methods=["POST"])
+@menu_requis("niveaux_acces")
+def niveaux_acces_supprimer(nom):
+    try:
+        core.delete_niveau_acces(get_db(), nom)
+        flash("Niveau d'accès supprimé.", "success")
+    except Exception as exc:
+        flash(f"Suppression impossible : {exc}", "error")
+    return redirect(url_for("niveaux_acces"))
+
+
+@app.route("/module/niveaux_acces/menus/<nom>", methods=["POST"])
+@menu_requis("niveaux_acces")
+def niveaux_acces_menus(nom):
+    keys = request.form.getlist("menu_key")
+    core.set_menus_autorises(get_db(), nom, keys)
+    flash(f"Menus autorisés mis à jour pour « {nom} ».", "success")
+    return redirect(url_for("niveaux_acces"))
+
+
+@app.route("/module/utilisateurs", methods=["GET", "POST"])
+@menu_requis("utilisateurs")
+def utilisateurs():
+    db = get_db()
+    if request.method == "POST":
+        try:
+            core.add_utilisateur(db, request.form["nom_utilisateur"].strip(), request.form["mot_de_passe"],
+                                  nom_complet=request.form.get("nom_complet", ""),
+                                  niveau_acces=request.form.get("niveau_acces", "Lecture seule"),
+                                  actif=bool(request.form.get("actif")))
+            flash("Utilisateur créé.", "success")
+        except (ValueError, KeyError) as exc:
+            flash(str(exc), "error")
+        return redirect(url_for("utilisateurs"))
+    return render_template("utilisateurs.html", utilisateurs=core.list_utilisateurs(db),
+                            niveaux=core.list_niveaux_acces(db))
+
+
+@app.route("/module/utilisateurs/supprimer/<int:user_id>", methods=["POST"])
+@menu_requis("utilisateurs")
+def utilisateurs_supprimer(user_id):
+    if user_id == session["user"]["id"]:
+        flash("Vous ne pouvez pas supprimer votre propre compte.", "error")
+        return redirect(url_for("utilisateurs"))
+    try:
+        core.delete_utilisateur(get_db(), user_id)
+        flash("Utilisateur supprimé.", "success")
+    except Exception as exc:
+        flash(f"Suppression impossible : {exc}", "error")
+    return redirect(url_for("utilisateurs"))
+
+
+@app.route("/module/utilisateurs/reinitialiser/<int:user_id>", methods=["POST"])
+@menu_requis("utilisateurs")
+def utilisateurs_reinitialiser(user_id):
+    nouveau_mdp = request.form.get("nouveau_mot_de_passe", "")
+    if not nouveau_mdp:
+        flash("Nouveau mot de passe requis.", "error")
+    else:
+        core.update_utilisateur(get_db(), user_id, nouveau_mot_de_passe=nouveau_mdp)
+        flash("Mot de passe réinitialisé.", "success")
+    return redirect(url_for("utilisateurs"))
+
+
+# ---------------------------------------------------------------------------
+# PRODUCTION > Fabrication (recettes / nomenclature + coût de production)
+# ---------------------------------------------------------------------------
+@app.route("/module/production", methods=["GET", "POST"])
+@menu_requis("production")
+def production():
+    db = get_db()
+    if request.method == "POST":
+        try:
+            core.add_produit_fini(
+                db, request.form["code"].strip(), request.form["nom"].strip(),
+                description=request.form.get("description", ""),
+                quantite_produite=float(request.form.get("quantite_produite") or 1),
+                marge_pourcentage=float(request.form.get("marge_pourcentage") or 30),
+                compte_stock=request.form.get("compte_stock") or "360000",
+            )
+            flash("Produit fini enregistré.", "success")
+        except (ValueError, KeyError) as exc:
+            flash(str(exc), "error")
+        return redirect(url_for("production"))
+    return render_template("production.html", produits=core.list_produits_finis(db))
+
+
+@app.route("/module/production/<code>/supprimer", methods=["POST"])
+@menu_requis("production")
+def production_supprimer(code):
+    try:
+        core.delete_produit_fini(get_db(), code)
+        flash("Produit fini supprimé.", "success")
+    except Exception as exc:
+        flash(f"Suppression impossible : {exc}", "error")
+    return redirect(url_for("production"))
+
+
+@app.route("/module/production/<code>", methods=["GET", "POST"])
+@menu_requis("production")
+def production_detail(code):
+    db = get_db()
+    exercice = exercice_actif(db)
+    produit = core.get_produit_fini(db, code)
+    if not produit:
+        flash("Produit introuvable.", "error")
+        return redirect(url_for("production"))
+
+    if request.method == "POST":
+        action = request.form.get("action")
+        try:
+            if action == "ajouter_ligne":
+                core.add_recette_ligne(
+                    db, code, request.form["type_ligne"], request.form["libelle"],
+                    float(request.form["quantite"]), compte=request.form.get("compte") or None,
+                    cout_unitaire=float(request.form["cout_unitaire"]) if request.form.get("cout_unitaire") else None,
+                    analytic_code=request.form.get("analytic_code") or None,
+                )
+                flash("Ligne de recette ajoutée.", "success")
+            elif action == "produire":
+                resultat, warnings = core.valider_fabrication(db, code, exercice=exercice)
+                flash(f"Fabrication comptabilisée — {resultat['quantite_produite']} unité(s) produite(s).", "success")
+                for w in warnings:
+                    flash(w, "error")
+        except (ValueError, KeyError) as exc:
+            flash(str(exc), "error")
+        return redirect(url_for("production_detail", code=code, exercice=exercice))
+
+    cout = core.compute_cout_production(db, code, exercice=exercice)
+    return render_template("production_detail.html", produit=produit, cout=cout,
+                            ligne_types=core.LIGNE_TYPES, exercice=exercice,
+                            exercices=core.list_exercices(db))
+
+
+@app.route("/module/production/<code>/ligne/<int:ligne_id>/supprimer", methods=["POST"])
+@menu_requis("production")
+def production_ligne_supprimer(ligne_id, code):
+    core.delete_recette_ligne(get_db(), ligne_id)
+    flash("Ligne supprimée.", "success")
+    return redirect(url_for("production_detail", code=code))
+
+
+# ---------------------------------------------------------------------------
+# TRESORERIE
+# ---------------------------------------------------------------------------
+@app.route("/module/tresorerie")
+@menu_requis("tresorerie")
+def tresorerie():
+    db = get_db()
+    exercice = exercice_actif(db)
+    date_from = request.args.get("date_from") or f"{exercice}-01-01"
+    date_to = request.args.get("date_to") or f"{exercice}-12-31"
+    lignes, totaux = core.compute_tresorerie_banques_horizontal(db, date_from=date_from, date_to=date_to,
+                                                                  exercice=exercice)
+    engagements = core.compute_engagements_a_payer(db)
+    return render_template("tresorerie.html", lignes=lignes, totaux=totaux, engagements=engagements,
+                            exercice=exercice, exercices=core.list_exercices(db),
+                            date_from=date_from, date_to=date_to)
+
+
+# ---------------------------------------------------------------------------
+# ENGAGEMENTS-PROJETS > Contrats (suivi des délais fournisseurs)
+# ---------------------------------------------------------------------------
+@app.route("/module/contrats", methods=["GET", "POST"])
+@menu_requis("contrats")
+def contrats():
+    db = get_db()
+    if request.method == "POST":
+        try:
+            core.add_commande(
+                db, request.form["fournisseur_code"], request.form.get("piece", ""),
+                request.form.get("libelle", ""), float(request.form.get("montant") or 0),
+                request.form["date_commande"],
+            )
+            flash("Commande/contrat enregistré.", "success")
+        except (ValueError, KeyError) as exc:
+            flash(str(exc), "error")
+        return redirect(url_for("contrats"))
+    return render_template("contrats.html", commandes=core.list_commandes(db), fournisseurs=core.list_fournisseurs(db),
+                            today=core.date.today().isoformat())
+
+
+@app.route("/module/contrats/<int:commande_id>/livraison", methods=["POST"])
+@menu_requis("contrats")
+def contrats_livraison(commande_id):
+    core.update_commande(get_db(), commande_id, date_livraison_reelle=request.form.get("date_livraison_reelle"))
+    flash("Date de livraison réelle enregistrée.", "success")
+    return redirect(url_for("contrats"))
+
+
+@app.route("/module/contrats/<int:commande_id>/paiement", methods=["POST"])
+@menu_requis("contrats")
+def contrats_paiement(commande_id):
+    core.update_commande(get_db(), commande_id, date_paiement_reel=request.form.get("date_paiement_reel"))
+    flash("Date de paiement réelle enregistrée.", "success")
+    return redirect(url_for("contrats"))
+
+
+@app.route("/module/contrats/<int:commande_id>/supprimer", methods=["POST"])
+@menu_requis("contrats")
+def contrats_supprimer(commande_id):
+    core.delete_commande(get_db(), commande_id)
+    flash("Commande supprimée.", "success")
+    return redirect(url_for("contrats"))
+
+
+# ---------------------------------------------------------------------------
+# ENGAGEMENTS-PROJETS > Expression de besoin
+# ---------------------------------------------------------------------------
+@app.route("/module/expression_besoin", methods=["GET", "POST"])
+@menu_requis("expression_besoin")
+def expression_besoin():
+    db = get_db()
+    if request.method == "POST":
+        try:
+            eid = core.create_expression_besoin(
+                db, request.form["numero"], request.form["date_demande"],
+                demandeur=request.form.get("demandeur", ""), service=request.form.get("service", ""),
+            )
+            flash("Expression de besoin créée.", "success")
+            return redirect(url_for("expression_besoin_detail", expression_id=eid))
+        except (ValueError, KeyError) as exc:
+            flash(str(exc), "error")
+        return redirect(url_for("expression_besoin"))
+    return render_template("expression_besoin.html", liste=core.list_expressions_besoin(db),
+                            today=core.date.today().isoformat())
+
+
+@app.route("/module/expression_besoin/<int:expression_id>", methods=["GET", "POST"])
+@menu_requis("expression_besoin")
+def expression_besoin_detail(expression_id):
+    db = get_db()
+    exp = core.get_expression_besoin(db, expression_id)
+    if not exp:
+        flash("Expression de besoin introuvable.", "error")
+        return redirect(url_for("expression_besoin"))
+    if request.method == "POST":
+        action = request.form.get("action")
+        try:
+            if action == "ajouter_ligne":
+                core.add_ligne_expression_besoin(db, expression_id, request.form["libelle"],
+                                                  float(request.form["quantite"]), unite=request.form.get("unite"))
+                flash("Ligne ajoutée.", "success")
+            elif action == "valider":
+                bon_id = core.valider_expression_besoin(db, expression_id)
+                flash("Expression validée — basculée en Bon de commande.", "success")
+                return redirect(url_for("ep_bon_commande_detail", bon_id=bon_id))
+        except (ValueError, KeyError) as exc:
+            flash(str(exc), "error")
+        return redirect(url_for("expression_besoin_detail", expression_id=expression_id))
+    return render_template("expression_besoin_detail.html", exp=exp,
+                            lignes=core.list_lignes_expression_besoin(db, expression_id))
+
+
+@app.route("/module/expression_besoin/<int:expression_id>/ligne/<int:ligne_id>/supprimer", methods=["POST"])
+@menu_requis("expression_besoin")
+def expression_besoin_ligne_supprimer(expression_id, ligne_id):
+    core.delete_ligne_expression_besoin(get_db(), ligne_id)
+    flash("Ligne supprimée.", "success")
+    return redirect(url_for("expression_besoin_detail", expression_id=expression_id))
+
+
+# ---------------------------------------------------------------------------
+# ENGAGEMENTS-PROJETS > Bon de commande (comptabilise l'achat à la validation)
+# ---------------------------------------------------------------------------
+@app.route("/module/ep_bon_commande", methods=["GET", "POST"])
+@menu_requis("ep_bon_commande")
+def ep_bon_commande():
+    db = get_db()
+    if request.method == "POST":
+        try:
+            bid = core.create_ep_bon_commande(
+                db, request.form["numero"], request.form["date_commande"],
+                fournisseur_code=request.form.get("fournisseur_code", ""),
+            )
+            flash("Bon de commande créé en brouillon.", "success")
+            return redirect(url_for("ep_bon_commande_detail", bon_id=bid))
+        except (ValueError, KeyError) as exc:
+            flash(str(exc), "error")
+        return redirect(url_for("ep_bon_commande"))
+    return render_template("ep_bon_commande.html", liste=core.list_ep_bons_commande(db),
+                            fournisseurs=core.list_fournisseurs(db), today=core.date.today().isoformat())
+
+
+@app.route("/module/ep_bon_commande/<int:bon_id>", methods=["GET", "POST"])
+@menu_requis("ep_bon_commande")
+def ep_bon_commande_detail(bon_id):
+    db = get_db()
+    bon = core.get_ep_bon_commande(db, bon_id)
+    if not bon:
+        flash("Bon de commande introuvable.", "error")
+        return redirect(url_for("ep_bon_commande"))
+    if request.method == "POST":
+        action = request.form.get("action")
+        try:
+            if action == "ajouter_ligne":
+                core.add_ligne_ep_bon_commande(
+                    db, bon_id, request.form["libelle"], float(request.form["quantite"]),
+                    prix_unitaire=float(request.form.get("prix_unitaire") or 0),
+                    unite=request.form.get("unite"), compte_charge=request.form.get("compte_charge") or None,
+                    analytic_code=request.form.get("analytic_code") or None,
+                )
+                flash("Ligne ajoutée.", "success")
+            elif action == "valider":
+                bordereau_id, reglement_id = core.valider_ep_bon_commande(db, bon_id)
+                flash("Bon de commande validé — achat comptabilisé, Bordereau et Règlement générés.", "success")
+        except (ValueError, KeyError) as exc:
+            flash(str(exc), "error")
+        return redirect(url_for("ep_bon_commande_detail", bon_id=bon_id))
+    lignes = core.list_lignes_ep_bon_commande(db, bon_id)
+    totals = core.compute_ep_bon_commande_totals(db, bon_id)
+    return render_template("ep_bon_commande_detail.html", bon=bon, lignes=lignes, totals=totals)
+
+
+@app.route("/module/ep_bon_commande/<int:bon_id>/ligne/<int:ligne_id>/supprimer", methods=["POST"])
+@menu_requis("ep_bon_commande")
+def ep_bon_commande_ligne_supprimer(bon_id, ligne_id):
+    core.delete_ligne_ep_bon_commande(get_db(), ligne_id)
+    flash("Ligne supprimée.", "success")
+    return redirect(url_for("ep_bon_commande_detail", bon_id=bon_id))
+
+
+# ---------------------------------------------------------------------------
+# ENGAGEMENTS-PROJETS > Bordereau de livraison
+# ---------------------------------------------------------------------------
+@app.route("/module/bordereau_livraison")
+@menu_requis("bordereau_livraison")
+def bordereau_livraison():
+    return render_template("bordereau_livraison.html", liste=core.list_bordereaux_livraison(get_db()))
+
+
+@app.route("/module/bordereau_livraison/<int:bordereau_id>", methods=["GET", "POST"])
+@menu_requis("bordereau_livraison")
+def bordereau_livraison_detail(bordereau_id):
+    db = get_db()
+    bordereau = core.get_bordereau_livraison(db, bordereau_id)
+    if not bordereau:
+        flash("Bordereau introuvable.", "error")
+        return redirect(url_for("bordereau_livraison"))
+    if request.method == "POST":
+        action = request.form.get("action")
+        try:
+            if action == "maj_quantite":
+                core.update_ligne_bordereau_livraison(db, int(request.form["ligne_id"]),
+                                                        float(request.form["quantite_livree"]))
+                flash("Quantité livrée mise à jour.", "success")
+            elif action == "valider":
+                core.valider_bordereau_livraison(db, bordereau_id)
+                flash("Bordereau validé (réception confirmée).", "success")
+        except (ValueError, KeyError) as exc:
+            flash(str(exc), "error")
+        return redirect(url_for("bordereau_livraison_detail", bordereau_id=bordereau_id))
+    lignes = core.list_lignes_bordereau_livraison(db, bordereau_id)
+    return render_template("bordereau_livraison_detail.html", bordereau=bordereau, lignes=lignes)
+
+
+# ---------------------------------------------------------------------------
+# ENGAGEMENTS-PROJETS > Règlements (comptabilise si créé hors Bon de commande)
+# ---------------------------------------------------------------------------
+@app.route("/module/reglements", methods=["GET", "POST"])
+@menu_requis("reglements")
+def reglements():
+    db = get_db()
+    if request.method == "POST":
+        try:
+            rid = core.create_reglement(
+                db, request.form["numero"], request.form["date_reglement"],
+                fournisseur_code=request.form.get("fournisseur_code", ""),
+            )
+            flash("Règlement créé en brouillon.", "success")
+            return redirect(url_for("reglements_detail", reglement_id=rid))
+        except (ValueError, KeyError) as exc:
+            flash(str(exc), "error")
+        return redirect(url_for("reglements"))
+    return render_template("reglements.html", liste=core.list_reglements(db), fournisseurs=core.list_fournisseurs(db),
+                            today=core.date.today().isoformat())
+
+
+@app.route("/module/reglements/<int:reglement_id>", methods=["GET", "POST"])
+@menu_requis("reglements")
+def reglements_detail(reglement_id):
+    db = get_db()
+    reglement = core.get_reglement(db, reglement_id)
+    if not reglement:
+        flash("Règlement introuvable.", "error")
+        return redirect(url_for("reglements"))
+    if request.method == "POST":
+        action = request.form.get("action")
+        try:
+            if action == "ajouter_ligne":
+                core.add_ligne_reglement(
+                    db, reglement_id, request.form.get("compte_charge") or None, request.form["libelle"],
+                    float(request.form["quantite"]), prix_unitaire=float(request.form.get("prix_unitaire") or 0),
+                    analytic_code=request.form.get("analytic_code") or None,
+                )
+                flash("Ligne ajoutée.", "success")
+            elif action == "valider":
+                core.valider_reglement(db, reglement_id)
+                flash("Règlement validé — charge comptabilisée.", "success")
+            elif action == "payer":
+                montant = core.enregistrer_paiement_reglement(
+                    db, reglement_id, request.form["date_paiement"], request.form["compte_paiement"])
+                flash(f"Paiement de {montant:,.0f} F CFA comptabilisé.".replace(",", " "), "success")
+        except (ValueError, KeyError) as exc:
+            flash(str(exc), "error")
+        return redirect(url_for("reglements_detail", reglement_id=reglement_id))
+    lignes = core.list_lignes_reglement(db, reglement_id)
+    totals = core.compute_reglement_totals(db, reglement_id)
+    return render_template("reglements_detail.html", reglement=reglement, lignes=lignes, totals=totals)
+
+
+@app.route("/module/reglements/<int:reglement_id>/ligne/<int:ligne_id>/supprimer", methods=["POST"])
+@menu_requis("reglements")
+def reglements_ligne_supprimer(reglement_id, ligne_id):
+    core.delete_ligne_reglement(get_db(), ligne_id)
+    flash("Ligne supprimée.", "success")
+    return redirect(url_for("reglements_detail", reglement_id=reglement_id))
+
+
+# ---------------------------------------------------------------------------
+# COMMERCIAL > Recouvrement (factures clients simples, hors Facturation TVA)
+# ---------------------------------------------------------------------------
+@app.route("/module/recouvrement", methods=["GET", "POST"])
+@menu_requis("recouvrement")
+def recouvrement():
+    db = get_db()
+    if request.method == "POST":
+        try:
+            core.add_facture(
+                db, request.form["client_code"], request.form.get("piece", ""), request.form.get("libelle", ""),
+                float(request.form["montant"]), request.form["date_facture"],
+            )
+            flash("Facture enregistrée.", "success")
+        except (ValueError, KeyError) as exc:
+            flash(str(exc), "error")
+        return redirect(url_for("recouvrement"))
+    return render_template("recouvrement.html", factures=core.list_factures(db), clients=core.list_clients(db),
+                            today=core.date.today().isoformat())
+
+
+@app.route("/module/recouvrement/<int:facture_id>/payer", methods=["POST"])
+@menu_requis("recouvrement")
+def recouvrement_payer(facture_id):
+    try:
+        core.enregistrer_paiement_facture(get_db(), facture_id, request.form["date_paiement_reel"],
+                                           request.form["compte_reglement"])
+        flash("Paiement comptabilisé.", "success")
+    except (ValueError, KeyError) as exc:
+        flash(str(exc), "error")
+    return redirect(url_for("recouvrement"))
+
+
+@app.route("/module/recouvrement/<int:facture_id>/supprimer", methods=["POST"])
+@menu_requis("recouvrement")
+def recouvrement_supprimer(facture_id):
+    core.delete_facture(get_db(), facture_id)
+    flash("Facture supprimée.", "success")
+    return redirect(url_for("recouvrement"))
+
+
+# ---------------------------------------------------------------------------
+# COMMERCIAL > Marges bénéficiaires
+# ---------------------------------------------------------------------------
+@app.route("/module/marges")
+@menu_requis("marges")
+def marges():
+    db = get_db()
+    exercice = exercice_actif(db)
+    cr = core.compute_liasse_resultat(db, exercice=exercice)
+    return render_template("marges.html", cr=cr, exercice=exercice, exercices=core.list_exercices(db))
+
+
+# ---------------------------------------------------------------------------
+# ADMIN > Modification des factures (dévalidation consolidée vente + achat)
+# ---------------------------------------------------------------------------
+@app.route("/module/admin_factures")
+@menu_requis("admin_factures")
+def admin_factures():
+    db = get_db()
+    factures = (
+        [{"type": "vente", "id": f["id"], "numero": f["numero"], "date": f["date_facture"],
+          "tiers": f["raison_sociale"]} for f in core.list_factures_vente(db) if f["statut"] == "validee"]
+        + [{"type": "achat", "id": f["id"], "numero": f["numero"], "date": f["date_facture"],
+            "tiers": f["raison_sociale"]} for f in core.list_factures_achat(db) if f["statut"] == "validee"]
+    )
+    return render_template("admin_factures.html", factures=factures)
+
+
+@app.route("/module/admin_factures/devalider", methods=["POST"])
+@menu_requis("admin_factures")
+def admin_factures_devalider():
+    db = get_db()
+    type_facture = request.form.get("type")
+    facture_id = int(request.form.get("id"))
+    try:
+        if type_facture == "vente":
+            core.devalider_facture_vente(db, facture_id)
+        else:
+            core.devalider_facture_achat(db, facture_id)
+        flash("Facture dévalidée — repassée en brouillon, écritures retirées.", "success")
+    except (ValueError, KeyError) as exc:
+        flash(str(exc), "error")
+    return redirect(url_for("admin_factures"))
+
+
+# ---------------------------------------------------------------------------
+# ADMIN > Modèle de bon de commande (en-tête/pied de page par défaut)
+# ---------------------------------------------------------------------------
+@app.route("/module/admin_modele_bon_commande", methods=["GET", "POST"])
+@menu_requis("admin_modele_bon_commande")
+def admin_modele_bon_commande():
+    db = get_db()
+    if request.method == "POST":
+        core.set_text_setting(db, "bon_commande_entete_defaut", request.form.get("entete", "").strip())
+        core.set_text_setting(db, "bon_commande_pied_defaut", request.form.get("pied", "").strip())
+        flash("Modèle de bon de commande enregistré.", "success")
+        return redirect(url_for("admin_modele_bon_commande"))
+    entete = core.get_text_setting(db, "bon_commande_entete_defaut", "")
+    pied = core.get_text_setting(db, "bon_commande_pied_defaut", "")
+    return render_template("admin_modele_bon_commande.html", entete=entete, pied=pied)
+
+
+# ---------------------------------------------------------------------------
+# ADMIN > Réinitialisation des données (réservé à l'administrateur)
+# ---------------------------------------------------------------------------
+@app.route("/module/reinitialisation", methods=["GET", "POST"])
+@menu_requis("reinitialisation")
+def reinitialisation():
+    db = get_db()
+    if session["user"]["niveau_acces"] != "Administrateur":
+        flash("Réservé à l'administrateur.", "error")
+        return redirect(url_for("dashboard"))
+    if request.method == "POST":
+        categories = request.form.getlist("categorie")
+        confirmation = request.form.get("confirmation", "")
+        if confirmation != "SUPPRIMER":
+            flash("Tapez SUPPRIMER en majuscules pour confirmer.", "error")
+        elif not categories:
+            flash("Sélectionnez au moins une catégorie.", "error")
+        else:
+            exercice = request.form.get("exercice") or None
+            rapport = core.reinitialiser_donnees(db, categories, exercice=exercice)
+            details = " · ".join(f"{core.REINIT_CATEGORIES.get(k, k)} : {v} ligne(s)" for k, v in rapport.items())
+            flash(f"Données réinitialisées — {details}", "success")
+        return redirect(url_for("reinitialisation"))
+    return render_template("reinitialisation.html", categories=core.REINIT_CATEGORIES,
+                            exercices=core.list_exercices(db))
+
+
+# ---------------------------------------------------------------------------
+# GRH > Time sheet
+# ---------------------------------------------------------------------------
+@app.route("/module/grh_time_sheet", methods=["GET", "POST"])
+@menu_requis("grh_time_sheet")
+def grh_time_sheet():
+    db = get_db()
+    if request.method == "POST":
+        try:
+            core.add_time_sheet(db, int(request.form["personnel_id"]), request.form["date_pointage"],
+                                 float(request.form["heures"]), activite=request.form.get("activite", ""),
+                                 notes=request.form.get("notes", ""))
+            flash("Pointage enregistré.", "success")
+        except (ValueError, KeyError) as exc:
+            flash(str(exc), "error")
+        return redirect(url_for("grh_time_sheet"))
+    return render_template("grh_time_sheet.html", pointages=core.list_time_sheet(db),
+                            personnel=core.list_personnel(db, actifs_only=True),
+                            today=core.date.today().isoformat())
+
+
+@app.route("/module/grh_time_sheet/<int:ts_id>/supprimer", methods=["POST"])
+@menu_requis("grh_time_sheet")
+def grh_time_sheet_supprimer(ts_id):
+    core.delete_time_sheet(get_db(), ts_id)
+    flash("Pointage supprimé.", "success")
+    return redirect(url_for("grh_time_sheet"))
+
+
+# ---------------------------------------------------------------------------
+# GRH > KPI
+# ---------------------------------------------------------------------------
+@app.route("/module/grh_kpi", methods=["GET", "POST"])
+@menu_requis("grh_kpi")
+def grh_kpi():
+    db = get_db()
+    if request.method == "POST":
+        try:
+            core.add_kpi(
+                db, request.form["indicateur"], description=request.form.get("description", ""),
+                personnel_id=int(request.form["personnel_id"]) if request.form.get("personnel_id") else None,
+                service=request.form.get("service", ""), periode=request.form.get("periode", ""),
+                valeur_cible=float(request.form.get("valeur_cible") or 0),
+                valeur_realisee=float(request.form.get("valeur_realisee") or 0),
+                unite=request.form.get("unite", ""), statut=request.form.get("statut", "en_cours"),
+            )
+            flash("KPI enregistré.", "success")
+        except (ValueError, KeyError) as exc:
+            flash(str(exc), "error")
+        return redirect(url_for("grh_kpi"))
+    return render_template("grh_kpi.html", kpis=core.list_kpi(db), personnel=core.list_personnel(db))
+
+
+@app.route("/module/grh_kpi/<int:kpi_id>/statut", methods=["POST"])
+@menu_requis("grh_kpi")
+def grh_kpi_statut(kpi_id):
+    core.update_kpi(get_db(), kpi_id, statut=request.form["statut"],
+                     valeur_realisee=float(request.form.get("valeur_realisee") or 0))
+    flash("KPI mis à jour.", "success")
+    return redirect(url_for("grh_kpi"))
+
+
+@app.route("/module/grh_kpi/<int:kpi_id>/supprimer", methods=["POST"])
+@menu_requis("grh_kpi")
+def grh_kpi_supprimer(kpi_id):
+    core.delete_kpi(get_db(), kpi_id)
+    flash("KPI supprimé.", "success")
+    return redirect(url_for("grh_kpi"))
+
+
+# ---------------------------------------------------------------------------
+# GRH > HS (hygiène santé)
+# ---------------------------------------------------------------------------
+@app.route("/module/grh_hs", methods=["GET", "POST"])
+@menu_requis("grh_hs")
+def grh_hs():
+    db = get_db()
+    if request.method == "POST":
+        try:
+            core.add_hs(
+                db, request.form["date_evenement"], type_evenement=request.form.get("type_evenement", "incident"),
+                personnel_id=int(request.form["personnel_id"]) if request.form.get("personnel_id") else None,
+                description=request.form.get("description", ""), gravite=request.form.get("gravite", ""),
+                statut=request.form.get("statut", "ouvert"),
+            )
+            flash("Événement HS enregistré.", "success")
+        except (ValueError, KeyError) as exc:
+            flash(str(exc), "error")
+        return redirect(url_for("grh_hs"))
+    return render_template("grh_hs.html", liste=core.list_hs(db), personnel=core.list_personnel(db),
+                            today=core.date.today().isoformat())
+
+
+@app.route("/module/grh_hs/<int:hs_id>/statut", methods=["POST"])
+@menu_requis("grh_hs")
+def grh_hs_statut(hs_id):
+    core.update_hs(get_db(), hs_id, statut=request.form["statut"])
+    flash("Statut mis à jour.", "success")
+    return redirect(url_for("grh_hs"))
+
+
+@app.route("/module/grh_hs/<int:hs_id>/supprimer", methods=["POST"])
+@menu_requis("grh_hs")
+def grh_hs_supprimer(hs_id):
+    core.delete_hs(get_db(), hs_id)
+    flash("Événement supprimé.", "success")
+    return redirect(url_for("grh_hs"))
+
+
+# ---------------------------------------------------------------------------
+# GRH > Tableau de bord GRH (synthèse lecture seule)
+# ---------------------------------------------------------------------------
+@app.route("/module/grh_tableau_bord")
+@menu_requis("grh_tableau_bord")
+def grh_tableau_bord():
+    return render_template("grh_tableau_bord.html", d=core.compute_tableau_bord_grh(get_db()))
+
+
+# ---------------------------------------------------------------------------
+# TRANSPORT > Parc auto
+# ---------------------------------------------------------------------------
+@app.route("/module/transport", methods=["GET", "POST"])
+@menu_requis("transport")
+def transport():
+    db = get_db()
+    if request.method == "POST":
+        try:
+            core.add_vehicule(
+                db, request.form["immatriculation"], marque=request.form.get("marque", ""),
+                modele=request.form.get("modele", ""), type_vehicule=request.form.get("type_vehicule", ""),
+                date_acquisition=request.form.get("date_acquisition", ""),
+                chauffeur_affecte=request.form.get("chauffeur_affecte", ""),
+                statut=request.form.get("statut", "actif"),
+            )
+            flash("Véhicule enregistré.", "success")
+        except (ValueError, KeyError) as exc:
+            flash(str(exc), "error")
+        return redirect(url_for("transport"))
+    return render_template("transport.html", vehicules=core.list_vehicules(db))
+
+
+@app.route("/module/transport/<int:vehicule_id>/supprimer", methods=["POST"])
+@menu_requis("transport")
+def transport_supprimer(vehicule_id):
+    core.delete_vehicule(get_db(), vehicule_id)
+    flash("Véhicule supprimé.", "success")
+    return redirect(url_for("transport"))
+
+
+# ---------------------------------------------------------------------------
+# TRANSPORT > Missions
+# ---------------------------------------------------------------------------
+@app.route("/module/missions", methods=["GET", "POST"])
+@menu_requis("missions")
+def missions():
+    db = get_db()
+    if request.method == "POST":
+        try:
+            core.add_mission(
+                db, request.form["destination"],
+                vehicule_id=int(request.form["vehicule_id"]) if request.form.get("vehicule_id") else None,
+                chauffeur=request.form.get("chauffeur", ""), motif=request.form.get("motif", ""),
+                date_depart=request.form.get("date_depart", ""), date_retour=request.form.get("date_retour", ""),
+                km_depart=float(request.form["km_depart"]) if request.form.get("km_depart") else None,
+                km_retour=float(request.form["km_retour"]) if request.form.get("km_retour") else None,
+            )
+            flash("Mission enregistrée.", "success")
+        except (ValueError, KeyError) as exc:
+            flash(str(exc), "error")
+        return redirect(url_for("missions"))
+    return render_template("missions.html", missions=core.list_missions(db), vehicules=core.list_vehicules(db))
+
+
+@app.route("/module/missions/<int:mission_id>/statut", methods=["POST"])
+@menu_requis("missions")
+def missions_statut(mission_id):
+    core.update_mission(get_db(), mission_id, statut=request.form["statut"])
+    flash("Statut mis à jour.", "success")
+    return redirect(url_for("missions"))
+
+
+@app.route("/module/missions/<int:mission_id>/supprimer", methods=["POST"])
+@menu_requis("missions")
+def missions_supprimer(mission_id):
+    core.delete_mission(get_db(), mission_id)
+    flash("Mission supprimée.", "success")
+    return redirect(url_for("missions"))
+
+
+# ---------------------------------------------------------------------------
+# TRANSPORT/MAINTENANCE-QUALITÉ > Pièces de rechange (stock partagé)
+# ---------------------------------------------------------------------------
+@app.route("/module/pieces_rechange", methods=["GET", "POST"])
+@menu_requis("pieces_rechange")
+def pieces_rechange():
+    db = get_db()
+    if request.method == "POST":
+        try:
+            core.add_piece_rechange(
+                db, request.form["designation"], code=request.form.get("code", ""),
+                quantite_stock=float(request.form.get("quantite_stock") or 0), unite=request.form.get("unite", ""),
+                cout_unitaire=float(request.form.get("cout_unitaire") or 0),
+                fournisseur_code=request.form.get("fournisseur_code", ""),
+            )
+            flash("Pièce de rechange enregistrée.", "success")
+        except (ValueError, KeyError) as exc:
+            flash(str(exc), "error")
+        return redirect(url_for("pieces_rechange"))
+    return render_template("pieces_rechange.html", pieces=core.list_pieces_rechange(db),
+                            fournisseurs=core.list_fournisseurs(db))
+
+
+@app.route("/module/pieces_rechange/<int:piece_id>/supprimer", methods=["POST"])
+@menu_requis("pieces_rechange")
+def pieces_rechange_supprimer(piece_id):
+    core.delete_piece_rechange(get_db(), piece_id)
+    flash("Pièce supprimée.", "success")
+    return redirect(url_for("pieces_rechange"))
+
+
+# ---------------------------------------------------------------------------
+# TRANSPORT > Réparations (décrémente automatiquement le stock de pièces)
+# ---------------------------------------------------------------------------
+@app.route("/module/reparations", methods=["GET", "POST"])
+@menu_requis("reparations")
+def reparations():
+    db = get_db()
+    if request.method == "POST":
+        try:
+            core.create_reparation(
+                db, request.form["description"],
+                vehicule_id=int(request.form["vehicule_id"]) if request.form.get("vehicule_id") else None,
+                date_reparation=request.form.get("date_reparation") or None, garage=request.form.get("garage", ""),
+                cout_main_oeuvre=float(request.form.get("cout_main_oeuvre") or 0),
+            )
+            flash("Réparation créée.", "success")
+        except (ValueError, KeyError) as exc:
+            flash(str(exc), "error")
+        return redirect(url_for("reparations"))
+    return render_template("reparations.html", liste=core.list_reparations(db), vehicules=core.list_vehicules(db),
+                            today=core.date.today().isoformat())
+
+
+@app.route("/module/reparations/<int:reparation_id>", methods=["GET", "POST"])
+@menu_requis("reparations")
+def reparations_detail(reparation_id):
+    db = get_db()
+    reparation = core.get_reparation(db, reparation_id)
+    if not reparation:
+        flash("Réparation introuvable.", "error")
+        return redirect(url_for("reparations"))
+    if request.method == "POST":
+        action = request.form.get("action")
+        try:
+            if action == "ajouter_piece":
+                core.add_ligne_reparation(db, reparation_id, int(request.form["piece_id"]),
+                                           quantite=float(request.form["quantite"]))
+                flash("Pièce ajoutée — stock décrémenté.", "success")
+            elif action == "terminer":
+                core.update_reparation(db, reparation_id, statut="terminee")
+                flash("Réparation marquée terminée.", "success")
+        except (ValueError, KeyError) as exc:
+            flash(str(exc), "error")
+        return redirect(url_for("reparations_detail", reparation_id=reparation_id))
+    lignes = core.list_lignes_reparation(db, reparation_id)
+    cout_total = core.compute_cout_total_reparation(db, reparation_id)
+    return render_template("reparations_detail.html", reparation=reparation, lignes=lignes, cout_total=cout_total,
+                            pieces=core.list_pieces_rechange(db))
+
+
+@app.route("/module/reparations/<int:reparation_id>/ligne/<int:ligne_id>/supprimer", methods=["POST"])
+@menu_requis("reparations")
+def reparations_ligne_supprimer(reparation_id, ligne_id):
+    core.delete_ligne_reparation(get_db(), ligne_id)
+    flash("Ligne supprimée — stock restitué.", "success")
+    return redirect(url_for("reparations_detail", reparation_id=reparation_id))
+
+
+# ---------------------------------------------------------------------------
+# MAINTENANCE-QUALITÉ > Énergie / Maintenance (même écran générique que le
+# bureau : coûts par code analytique, alimentés automatiquement par Saisie
+# et Fabrication)
+# ---------------------------------------------------------------------------
+def _analytique_periode_view(prefix, suggestions, titre, description):
+    db = get_db()
+    date_from = request.args.get("date_from") or None
+    date_to = request.args.get("date_to") or None
+    if request.method == "POST" and request.form.get("action") == "ajouter_suggestions":
+        n = core.ajouter_codes_analytiques_suggeres(db, suggestions)
+        flash(f"{n} code(s) analytique(s) ajouté(s)." if n else "Tous les codes courants existent déjà.", "success")
+        return redirect(request.path)
+    codes = core.compute_couts_analytiques_categorie(db, prefix, date_from=date_from, date_to=date_to)
+    totaux = {
+        "solde_debut_periode": sum(c["solde_debut_periode"] for c in codes),
+        "debit_periode": sum(c["debit_periode"] for c in codes),
+        "credit_periode": sum(c["credit_periode"] for c in codes),
+        "solde_fin_periode": sum(c["solde_fin_periode"] for c in codes),
+    }
+    return render_template("analytique_periode.html", codes=codes, totaux=totaux, titre=titre,
+                            description=description, date_from=date_from, date_to=date_to,
+                            exercice=core.get_current_exercice(db))
+
+
+@app.route("/module/energie", methods=["GET", "POST"])
+@menu_requis("energie")
+def energie():
+    return _analytique_periode_view(
+        core.PREFIX_ENERGIE, core.SUGGESTIONS_ENERGIE, "Énergie",
+        "Coûts d'énergie (eau, électricité, essence, gasoil, gaz...) par code analytique, sur une "
+        "période choisie — alimentés par les écritures de Saisie taguées avec un code « ENERGIE- » "
+        "et par les lignes « Énergie » des recettes de Fabrication.")
+
+
+@app.route("/module/maintenance", methods=["GET", "POST"])
+@menu_requis("maintenance")
+def maintenance():
+    return _analytique_periode_view(
+        core.PREFIX_MAINTENANCE, core.SUGGESTIONS_MAINTENANCE, "Maintenance",
+        "Coûts de maintenance (véhicules, bâtiments, machines, informatique...) par code analytique, "
+        "sur une période choisie — alimentés par les écritures de Saisie taguées avec un code "
+        "« MAINT- » et par les lignes « Autre charge » des recettes de Fabrication qui leur sont associées.")
 
 
 if __name__ == "__main__":

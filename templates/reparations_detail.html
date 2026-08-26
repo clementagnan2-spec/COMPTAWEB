@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}Réparation {{ reparation.description }}{% endblock %}
+{% block content %}
+  <h1>{{ reparation.description }}</h1>
+  <p class="subtitle">{{ reparation.date_reparation }} — {{ reparation.garage }} —
+    {% if reparation.statut == "terminee" %}<span style="color:var(--green);font-weight:600;">Terminée</span>
+    {% else %}<span style="color:var(--text-dim);">En cours</span>{% endif %}
+  </p>
+
+  {% if reparation.statut != "terminee" %}
+  <div class="form-card">
+    <h2 class="section-title" style="margin-top:0;">Ajouter une pièce utilisée</h2>
+    <form method="post" class="form-row" style="align-items:flex-end;">
+      <input type="hidden" name="action" value="ajouter_piece">
+      <div class="field grow">
+        <label>Pièce</label>
+        <select name="piece_id" required>
+          {% for p in pieces %}<option value="{{ p.id }}">{{ p.designation }} (stock : {{ p.quantite_stock }})</option>{% endfor %}
+        </select>
+      </div>
+      <div class="field small"><label>Quantité</label><input type="text" name="quantite" value="1" required></div>
+      <div class="field small"><button type="submit" class="btn">Ajouter</button></div>
+    </form>
+  </div>
+  {% endif %}
+
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <thead><tr><th>Pièce</th><th class="num">Quantité</th><th class="num">Coût unitaire</th>
+          <th class="num">Montant</th><th></th></tr></thead>
+      <tbody>
+        {% for l in lignes %}
+        <tr>
+          <td>{{ l.designation }}</td>
+          <td class="num figure">{{ l.quantite }}</td>
+          <td class="num figure">{{ l.cout_unitaire | cfa }}</td>
+          <td class="num figure">{{ l.montant | cfa }}</td>
+          <td>
+            {% if reparation.statut != "terminee" %}
+            <form method="post" action="{{ url_for('reparations_ligne_supprimer', reparation_id=reparation.id, ligne_id=l.id) }}">
+              <button type="submit" class="btn-danger-link">Suppr.</button>
+            </form>
+            {% endif %}
+          </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="5" style="text-align:center;color:var(--text-dim);padding:24px;">Aucune pièce utilisée.</td></tr>
+        {% endfor %}
+      </tbody>
+      <tfoot>
+        <tr class="total-row"><td colspan="3" style="text-align:right;">Coût total (pièces + main-d'œuvre)</td>
+            <td class="num figure">{{ cout_total | cfa }}</td><td></td></tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <div style="margin-top:20px; display:flex; gap:10px;">
+    <a href="{{ url_for('reparations') }}" class="btn-secondary" style="text-decoration:none;">← Retour</a>
+    {% if reparation.statut != "terminee" %}
+    <form method="post">
+      <input type="hidden" name="action" value="terminer">
+      <button type="submit" class="btn btn-inline">Marquer terminée</button>
+    </form>
+    {% endif %}
+  </div>
+{% endblock %}

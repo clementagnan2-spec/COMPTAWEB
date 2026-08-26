@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Fabrication{% endblock %}
+{% block content %}
+  <h1>Fabrication</h1>
+  <p class="subtitle">Produits finis et leur recette de fabrication.</p>
+
+  <div class="form-card">
+    <h2 class="section-title" style="margin-top:0;">Nouveau produit fini</h2>
+    <form method="post">
+      <div class="form-row">
+        <div class="field small"><label>Code</label><input type="text" name="code" required></div>
+        <div class="field grow"><label>Nom</label><input type="text" name="nom" required></div>
+        <div class="field small"><label>Qté produite / lot</label><input type="text" name="quantite_produite" value="1"></div>
+        <div class="field small"><label>Marge (%)</label><input type="text" name="marge_pourcentage" value="30"></div>
+        <div class="field small"><label>Compte de stock</label><input type="text" name="compte_stock" value="360000"></div>
+      </div>
+      <div class="form-row">
+        <div class="field grow"><label>Description</label><input type="text" name="description"></div>
+      </div>
+      <button type="submit" class="btn btn-inline">Enregistrer</button>
+    </form>
+  </div>
+
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <thead><tr><th>Code</th><th>Nom</th><th>Description</th><th class="num">Qté/lot</th>
+          <th class="num">Marge</th><th>Compte stock</th><th></th></tr></thead>
+      <tbody>
+        {% for p in produits %}
+        <tr>
+          <td class="figure"><a href="{{ url_for('production_detail', code=p.code) }}">{{ p.code }}</a></td>
+          <td>{{ p.nom }}</td>
+          <td>{{ p.description }}</td>
+          <td class="num figure">{{ p.quantite_produite }}</td>
+          <td class="num figure">{{ p.marge_pourcentage }}%</td>
+          <td class="figure">{{ p.compte_stock }}</td>
+          <td>
+            <a href="{{ url_for('production_detail', code=p.code) }}" style="color:var(--ink); font-size:0.78rem; margin-right:8px;">Recette</a>
+            <form method="post" action="{{ url_for('production_supprimer', code=p.code) }}" style="display:inline;"
+                  onsubmit="return confirm('Supprimer ce produit fini et sa recette ?');">
+              <button type="submit" class="btn-danger-link">Suppr.</button>
+            </form>
+          </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="7" style="text-align:center;color:var(--text-dim);padding:24px;">Aucun produit fini.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

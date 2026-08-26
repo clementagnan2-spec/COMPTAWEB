@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Plan bailleurs de fonds{% endblock %}
+{% block content %}
+  <h1>Plan bailleurs de fonds</h1>
+  <p class="subtitle">Bailleurs de fonds (pour le suivi de projets financés).</p>
+
+  <div class="form-card">
+    <form method="post" class="form-row" style="align-items:flex-end;">
+      <div class="field small"><label>Code</label><input type="text" name="code" required></div>
+      <div class="field grow"><label>Libellé</label><input type="text" name="label" required></div>
+      <div class="field small"><button type="submit" class="btn">Enregistrer</button></div>
+    </form>
+  </div>
+
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <thead><tr><th>Code</th><th>Libellé</th><th></th></tr></thead>
+      <tbody>
+        {% for c in codes %}
+        <tr>
+          <td class="figure">{{ c.code }}</td>
+          <td>{{ c.label }}</td>
+          <td>
+            <form method="post" action="{{ url_for('plan_bailleur_supprimer', code=c.code) }}"
+                  onsubmit="return confirm('Supprimer ce bailleur ?');">
+              <button type="submit" class="btn-danger-link">Suppr.</button>
+            </form>
+          </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="3" style="text-align:center;color:var(--text-dim);padding:24px;">Aucun bailleur.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

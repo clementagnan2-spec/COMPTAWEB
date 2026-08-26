@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}HS (hygiène santé){% endblock %}
+{% block content %}
+  <h1>HS (hygiène santé)</h1>
+  <p class="subtitle">Journal des incidents et événements liés à l'hygiène et à la sécurité.</p>
+
+  <div class="form-card">
+    <h2 class="section-title" style="margin-top:0;">Nouvel événement</h2>
+    <form method="post">
+      <div class="form-row">
+        <div class="field small"><label>Date</label><input type="date" name="date_evenement" value="{{ today }}" required></div>
+        <div class="field small">
+          <label>Type</label>
+          <select name="type_evenement"><option value="incident">Incident</option><option value="accident">Accident</option><option value="observation">Observation</option></select>
+        </div>
+        <div class="field">
+          <label>Employé (optionnel)</label>
+          <select name="personnel_id"><option value="">—</option>
+            {% for p in personnel %}<option value="{{ p.id }}">{{ p.nom }} {{ p.prenom }}</option>{% endfor %}
+          </select>
+        </div>
+        <div class="field small">
+          <label>Gravité</label>
+          <select name="gravite"><option value="faible">Faible</option><option value="moyenne">Moyenne</option><option value="grave">Grave</option></select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field grow"><label>Description</label><input type="text" name="description"></div>
+      </div>
+      <button type="submit" class="btn btn-inline">Enregistrer</button>
+    </form>
+  </div>
+
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <thead><tr><th>Date</th><th>Type</th><th>Employé</th><th>Gravité</th><th>Description</th><th>Statut</th><th></th></tr></thead>
+      <tbody>
+        {% for h in liste %}
+        <tr>
+          <td class="figure">{{ h.date_evenement }}</td>
+          <td>{{ h.type_evenement }}</td>
+          <td>{{ h.employe }}</td>
+          <td style="{{ 'color:var(--red);font-weight:600;' if h.gravite == 'grave' else '' }}">{{ h.gravite }}</td>
+          <td>{{ h.description }}</td>
+          <td>
+            <form method="post" action="{{ url_for('grh_hs_statut', hs_id=h.id) }}">
+              <select name="statut" onchange="this.form.submit()" style="font-size:0.78rem; padding:2px;">
+                <option value="ouvert" {% if h.statut == "ouvert" %}selected{% endif %}>Ouvert</option>
+                <option value="ferme" {% if h.statut == "ferme" %}selected{% endif %}>Fermé</option>
+              </select>
+            </form>
+          </td>
+          <td>
+            <form method="post" action="{{ url_for('grh_hs_supprimer', hs_id=h.id) }}">
+              <button type="submit" class="btn-danger-link">Suppr.</button>
+            </form>
+          </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="7" style="text-align:center;color:var(--text-dim);padding:24px;">Aucun événement.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

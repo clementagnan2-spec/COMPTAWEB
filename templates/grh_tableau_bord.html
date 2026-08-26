@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Tableau de bord GRH{% endblock %}
+{% block content %}
+  <h1>Tableau de bord GRH</h1>
+  <p class="subtitle">Synthèse en lecture seule (Personnel, Time sheet, KPI, HS).</p>
+
+  <div class="card-grid" style="margin-bottom:24px;">
+    <div class="tile">
+      <div class="tile-group">Personnel</div>
+      <div class="tile-label" style="font-size:1.4rem;">{{ d.nb_personnel_actif }} / {{ d.nb_personnel_total }}</div>
+    </div>
+    <div class="tile">
+      <div class="tile-group">Heures pointées (30j)</div>
+      <div class="tile-label" style="font-size:1.4rem;">{{ d.total_heures_30j }} h</div>
+    </div>
+    <div class="tile">
+      <div class="tile-group">KPI en cours</div>
+      <div class="tile-label" style="font-size:1.4rem;">{{ d.nb_kpi_en_cours }}</div>
+    </div>
+    <div class="tile">
+      <div class="tile-group">KPI atteints</div>
+      <div class="tile-label" style="font-size:1.4rem; color:var(--green);">{{ d.nb_kpi_atteints }}</div>
+    </div>
+    <div class="tile">
+      <div class="tile-group">KPI non atteints</div>
+      <div class="tile-label" style="font-size:1.4rem; color:var(--red);">{{ d.nb_kpi_non_atteints }}</div>
+    </div>
+    <div class="tile">
+      <div class="tile-group">Incidents HS ouverts</div>
+      <div class="tile-label" style="font-size:1.4rem; color:{{ 'var(--red)' if d.nb_hs_ouverts else 'var(--green)' }};">{{ d.nb_hs_ouverts }}</div>
+    </div>
+  </div>
+
+  <h2 class="section-title">Incidents HS ouverts, par gravité</h2>
+  <div class="form-card">
+    {% if not d.hs_par_gravite %}
+      <p style="color:var(--green); margin:0;">Aucun incident ouvert.</p>
+    {% else %}
+      {% for gravite, nb in d.hs_par_gravite.items() %}
+        <p style="margin:4px 0;">• {{ gravite }} : {{ nb }}</p>
+      {% endfor %}
+    {% endif %}
+  </div>
+{% endblock %}

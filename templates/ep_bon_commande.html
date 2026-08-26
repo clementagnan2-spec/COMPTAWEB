@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Bon de commande{% endblock %}
+{% block content %}
+  <h1>Bon de commande</h1>
+  <p class="subtitle">La validation comptabilise directement l'achat et génère automatiquement le Bordereau de livraison et le Règlement.</p>
+
+  <div class="form-card">
+    <h2 class="section-title" style="margin-top:0;">Nouveau bon de commande</h2>
+    <form method="post" class="form-row" style="align-items:flex-end;">
+      <div class="field small"><label>N° Pièce</label><input type="text" name="numero" required></div>
+      <div class="field small"><label>Date</label><input type="date" name="date_commande" value="{{ today }}" required></div>
+      <div class="field grow">
+        <label>Fournisseur</label>
+        <select name="fournisseur_code">
+          <option value="">—</option>
+          {% for f in fournisseurs %}<option value="{{ f.code }}">{{ f.code }} — {{ f.raison_sociale }}</option>{% endfor %}
+        </select>
+      </div>
+      <div class="field small"><button type="submit" class="btn">Créer (brouillon)</button></div>
+    </form>
+  </div>
+
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <thead><tr><th>N°</th><th>Date</th><th>Fournisseur</th><th>Statut</th></tr></thead>
+      <tbody>
+        {% for b in liste %}
+        <tr>
+          <td class="figure"><a href="{{ url_for('ep_bon_commande_detail', bon_id=b.id) }}">{{ b.numero }}</a></td>
+          <td class="figure">{{ b.date_commande }}</td>
+          <td>{{ b.fournisseur_code }}</td>
+          <td>{% if b.statut == "validee" %}<span style="color:var(--green);font-weight:600;">Validé</span>
+              {% else %}<span style="color:var(--text-dim);">Brouillon</span>{% endif %}</td>
+        </tr>
+        {% else %}
+        <tr><td colspan="4" style="text-align:center;color:var(--text-dim);padding:24px;">Aucun bon de commande.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

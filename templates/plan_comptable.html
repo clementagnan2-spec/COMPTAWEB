@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Plan comptable{% endblock %}
+{% block content %}
+  <h1>Plan comptable</h1>
+  <p class="subtitle">Comptes SYSCOHADA utilisés par l'application.</p>
+
+  <div class="form-card">
+    <h2 class="section-title" style="margin-top:0;">Ajouter / modifier un compte</h2>
+    <form method="post" class="form-row" style="align-items:flex-end;">
+      <div class="field small"><label>Code</label><input type="text" name="code" required></div>
+      <div class="field grow"><label>Libellé</label><input type="text" name="label" required></div>
+      <div class="field small"><button type="submit" class="btn">Enregistrer</button></div>
+    </form>
+  </div>
+
+  <form method="get" class="form-row" style="max-width:400px;margin-bottom:14px;">
+    <input type="text" name="q" value="{{ q }}" placeholder="Rechercher code ou libellé...">
+    <button type="submit" class="btn-secondary">Rechercher</button>
+  </form>
+
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <thead><tr><th>Code</th><th>Libellé</th><th>Classe</th><th></th></tr></thead>
+      <tbody>
+        {% for c in comptes %}
+        <tr>
+          <td class="figure">{{ c.code }}</td>
+          <td>{{ c.label }}</td>
+          <td class="figure">{{ c.classe }}</td>
+          <td>
+            <form method="post" action="{{ url_for('plan_comptable_supprimer', code=c.code) }}"
+                  onsubmit="return confirm('Supprimer ce compte ?');">
+              <button type="submit" class="btn-danger-link">Suppr.</button>
+            </form>
+          </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="4" style="text-align:center;color:var(--text-dim);padding:24px;">Aucun compte.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

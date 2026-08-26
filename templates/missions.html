@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}Missions{% endblock %}
+{% block content %}
+  <h1>Missions</h1>
+  <p class="subtitle">Déplacements des véhicules.</p>
+
+  <div class="form-card">
+    <h2 class="section-title" style="margin-top:0;">Nouvelle mission</h2>
+    <form method="post">
+      <div class="form-row">
+        <div class="field grow"><label>Destination</label><input type="text" name="destination" required></div>
+        <div class="field">
+          <label>Véhicule</label>
+          <select name="vehicule_id"><option value="">—</option>
+            {% for v in vehicules %}<option value="{{ v.id }}">{{ v.immatriculation }} — {{ v.marque }} {{ v.modele }}</option>{% endfor %}
+          </select>
+        </div>
+        <div class="field"><label>Chauffeur</label><input type="text" name="chauffeur"></div>
+      </div>
+      <div class="form-row">
+        <div class="field grow"><label>Motif</label><input type="text" name="motif"></div>
+        <div class="field small"><label>Date départ</label><input type="date" name="date_depart"></div>
+        <div class="field small"><label>Date retour</label><input type="date" name="date_retour"></div>
+        <div class="field small"><label>Km départ</label><input type="text" name="km_depart"></div>
+        <div class="field small"><label>Km retour</label><input type="text" name="km_retour"></div>
+      </div>
+      <button type="submit" class="btn btn-inline">Enregistrer</button>
+    </form>
+  </div>
+
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <thead><tr><th>Destination</th><th>Véhicule</th><th>Chauffeur</th><th>Motif</th>
+          <th>Départ</th><th>Retour</th><th>Statut</th><th></th></tr></thead>
+      <tbody>
+        {% for m in missions %}
+        <tr>
+          <td>{{ m.destination }}</td>
+          <td class="figure">{{ m.immatriculation }}</td>
+          <td>{{ m.chauffeur }}</td>
+          <td>{{ m.motif }}</td>
+          <td class="figure">{{ m.date_depart }}</td>
+          <td class="figure">{{ m.date_retour }}</td>
+          <td>
+            <form method="post" action="{{ url_for('missions_statut', mission_id=m.id) }}">
+              <select name="statut" onchange="this.form.submit()" style="font-size:0.78rem; padding:2px;">
+                <option value="en_cours" {% if m.statut == "en_cours" %}selected{% endif %}>En cours</option>
+                <option value="terminee" {% if m.statut == "terminee" %}selected{% endif %}>Terminée</option>
+              </select>
+            </form>
+          </td>
+          <td>
+            <form method="post" action="{{ url_for('missions_supprimer', mission_id=m.id) }}">
+              <button type="submit" class="btn-danger-link">Suppr.</button>
+            </form>
+          </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="8" style="text-align:center;color:var(--text-dim);padding:24px;">Aucune mission.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

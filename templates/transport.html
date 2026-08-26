@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}Parc auto{% endblock %}
+{% block content %}
+  <h1>Parc auto</h1>
+  <p class="subtitle">Véhicules de l'entreprise.</p>
+
+  <div class="form-card">
+    <h2 class="section-title" style="margin-top:0;">Nouveau véhicule</h2>
+    <form method="post">
+      <div class="form-row">
+        <div class="field small"><label>Immatriculation</label><input type="text" name="immatriculation" required></div>
+        <div class="field"><label>Marque</label><input type="text" name="marque"></div>
+        <div class="field"><label>Modèle</label><input type="text" name="modele"></div>
+        <div class="field small"><label>Type</label><input type="text" name="type_vehicule"></div>
+      </div>
+      <div class="form-row">
+        <div class="field small"><label>Date d'acquisition</label><input type="date" name="date_acquisition"></div>
+        <div class="field grow"><label>Chauffeur affecté</label><input type="text" name="chauffeur_affecte"></div>
+        <div class="field small">
+          <label>Statut</label>
+          <select name="statut"><option value="actif">Actif</option><option value="hors_service">Hors service</option></select>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-inline">Enregistrer</button>
+    </form>
+  </div>
+
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <thead><tr><th>Immatriculation</th><th>Marque</th><th>Modèle</th><th>Type</th>
+          <th>Chauffeur</th><th>Statut</th><th></th></tr></thead>
+      <tbody>
+        {% for v in vehicules %}
+        <tr>
+          <td class="figure">{{ v.immatriculation }}</td>
+          <td>{{ v.marque }}</td>
+          <td>{{ v.modele }}</td>
+          <td>{{ v.type_vehicule }}</td>
+          <td>{{ v.chauffeur_affecte }}</td>
+          <td>{{ "Actif" if v.statut == "actif" else "Hors service" }}</td>
+          <td>
+            <form method="post" action="{{ url_for('transport_supprimer', vehicule_id=v.id) }}"
+                  onsubmit="return confirm('Supprimer ce véhicule ?');">
+              <button type="submit" class="btn-danger-link">Suppr.</button>
+            </form>
+          </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="7" style="text-align:center;color:var(--text-dim);padding:24px;">Aucun véhicule.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

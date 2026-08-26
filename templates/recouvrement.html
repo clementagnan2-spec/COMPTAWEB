@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}Recouvrement{% endblock %}
+{% block content %}
+  <h1>Recouvrement</h1>
+  <p class="subtitle">Suivi des factures clients et de leur encaissement — échéance calculée selon le délai de paiement du client.</p>
+
+  <div class="form-card">
+    <h2 class="section-title" style="margin-top:0;">Nouvelle facture</h2>
+    <form method="post" class="form-row" style="align-items:flex-end;">
+      <div class="field grow">
+        <label>Client</label>
+        <select name="client_code" required>
+          {% for c in clients %}<option value="{{ c.code }}">{{ c.code }} — {{ c.raison_sociale }}</option>{% endfor %}
+        </select>
+      </div>
+      <div class="field small"><label>N° Pièce</label><input type="text" name="piece"></div>
+      <div class="field grow"><label>Libellé</label><input type="text" name="libelle"></div>
+      <div class="field small"><label>Montant</label><input type="text" name="montant" required></div>
+      <div class="field small"><label>Date</label><input type="date" name="date_facture" value="{{ today }}"></div>
+      <div class="field small"><button type="submit" class="btn">Enregistrer</button></div>
+    </form>
+  </div>
+
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <thead><tr><th>Client</th><th>Pièce</th><th>Libellé</th><th class="num">Montant</th>
+          <th>Échéance</th><th>Statut</th><th></th></tr></thead>
+      <tbody>
+        {% for f in factures %}
+        <tr>
+          <td>{{ f.raison_sociale }}</td>
+          <td class="figure">{{ f.piece }}</td>
+          <td>{{ f.libelle }}</td>
+          <td class="num figure">{{ f.montant | cfa }}</td>
+          <td class="figure">{{ f.date_echeance_paiement }}</td>
+          <td style="{{ 'color:var(--red);font-weight:600;' if f.depassement else '' }}">
+            {{ f.statut_paiement }}
+            {% if not f.date_paiement_reel %}
+            <form method="post" action="{{ url_for('recouvrement_payer', facture_id=f.id) }}" style="margin-top:4px; display:flex; gap:4px;">
+              <input type="date" name="date_paiement_reel" style="font-size:0.75rem; padding:2px 4px;" required>
+              <input type="text" name="compte_reglement" placeholder="Compte banque" style="font-size:0.75rem; padding:2px 4px; width:90px;" required>
+              <button type="submit" class="btn-secondary" style="padding:2px 8px; font-size:0.72rem;">Payé</button>
+            </form>
+            {% endif %}
+          </td>
+          <td>
+            <form method="post" action="{{ url_for('recouvrement_supprimer', facture_id=f.id) }}"
+                  onsubmit="return confirm('Supprimer ?');">
+              <button type="submit" class="btn-danger-link">Suppr.</button>
+            </form>
+          </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="7" style="text-align:center;color:var(--text-dim);padding:24px;">Aucune facture.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

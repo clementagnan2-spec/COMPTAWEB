@@ -38,6 +38,7 @@
             <th>Libellé</th>
             <th style="width:130px">Débit</th>
             <th style="width:130px">Crédit</th>
+            <th style="width:130px">Code analytique</th>
             <th style="width:30px"></th>
           </tr>
         </thead>
@@ -105,6 +106,7 @@ function ajouterLigne() {
     <td><input type="text" name="ligne_libelle" placeholder="Libellé"></td>
     <td><input type="text" name="ligne_debit" class="num-input montant-input" placeholder="0"></td>
     <td><input type="text" name="ligne_credit" class="num-input montant-input" placeholder="0"></td>
+    <td><input type="text" name="ligne_analytic" placeholder="ex. ENERGIE-EAU"></td>
     <td><button type="button" class="btn-danger-link" onclick="this.closest('tr').remove(); recalcTotaux();">✕</button></td>
   `;
   tbody.appendChild(tr);

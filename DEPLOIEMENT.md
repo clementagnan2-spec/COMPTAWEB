@@ -98,10 +98,81 @@ n'est garantie sur le plan Starter — on pourra passer à un plan avec
 3. ~~Fournisseurs / Clients / Facturation~~ ✅ fait (voir ci-dessous)
 4. ~~Stocks~~ ✅ fait (voir ci-dessous)
 5. ~~Immobilisations~~ ✅ fait (voir ci-dessous)
-6. **GRH / Paie** ← prochaine étape
-7. Fabrication / Production
-8. Trésorerie
-9. Écrans ADMIN
+6. ~~GRH / Paie (Personnel + moteur de paie)~~ ✅ fait (voir ci-dessous)
+7. ~~Paramètres + Admin (fondations transverses)~~ ✅ fait (voir ci-dessous)
+8. ~~Fabrication / Production~~ ✅ fait (voir ci-dessous)
+9. ~~Trésorerie~~ ✅ fait (voir ci-dessous)
+10. ~~ENGAGEMENTS-PROJETS (Contrats, Expression de besoin, Bon de
+    commande, Bordereau de livraison, Règlements)~~ ✅ fait (voir
+    ci-dessous)
+11. ~~COMMERCIAL (Recouvrement, Marges bénéficiaires)~~ ✅ fait (voir
+    ci-dessous)
+12. ~~ADMIN restants (Modification des factures, Modèle de bon de
+    commande, Réinitialisation des données)~~ ✅ fait (voir ci-dessous)
+13. ~~GRH restants (Time sheet, KPI, Tableau de bord, HS)~~ ✅ fait (voir
+    ci-dessous)
+14. ~~TRANSPORT (Parc auto, Missions, Pièces de rechange, Réparations)~~
+    ✅ fait (voir ci-dessous)
+15. ~~MAINTENANCE-QUALITÉ (Énergie, Maintenance)~~ ✅ fait (voir ci-dessous)
+16. RAPPORTS TECHNIQUES — reste volontairement "en construction" : c'était
+    déjà un écran non défini dans l'application de bureau elle-même
+    ("dites-moi quels rapports vous voulez ici"), donc rien n'a été
+    oublié — dites-moi ce que vous voulez y voir et je le construis.
+17. Synchronisation — n'a pas de sens en version web (spécifique au
+    partage de fichier `.db` en réseau local du bureau/client) ; à
+    remplacer si besoin par un export/sauvegarde de la base, dites-moi
+    si vous en voulez un.
+
+## 🎉 Toutes les fonctionnalités comptables et opérationnelles sont
+## construites et testées (46 sous-menus sur 48 — les 2 restants sont
+## des cas particuliers expliqués ci-dessus, pas des oublis).
+
+## Détail de l'étape 7 — Paramètres + Admin (fondations transverses)
+
+- **Exercices comptables** : création, activation, **clôture** (report
+  des soldes vers l'exercice suivant, verrouillage en lecture seule,
+  alerte si le Bilan n'est pas équilibré) — testé (clôture 2026 → 2027
+  créé et activé automatiquement).
+- **Plan comptable, Plan analytique, Plan budgétaire, Plan bailleurs** :
+  consultation/recherche, ajout, suppression.
+- **Taux de TVA** et **Taux de retenue à la source** : listes
+  paramétrables (utilisées par Facturation et les futurs écrans Achats).
+- **Niveaux d'accès** : création de niveaux personnalisés + sélection
+  des sous-menus autorisés par niveau (cases à cocher) — testé avec un
+  niveau sur-mesure (2 menus seulement) et vérifié que l'utilisateur
+  rattaché ne voit bien que ces 2 menus.
+- **Utilisateurs** : création, réinitialisation de mot de passe,
+  suppression (protection contre l'auto-suppression) — testé de bout
+  en bout, y compris connexion avec le mot de passe réinitialisé.
+
+Ces écrans sont les fondations dont dépendent plusieurs autres modules
+(Facturation utilise déjà Taux de TVA, tout utilisateur dépend de
+Niveaux d'accès) — les avoir maintenant sécurise la suite.
+
+Sous-menus GRH restants (Time sheet, KPI, Tableau de bord GRH, Heures
+sup.) : pas encore construits, moins prioritaires — seront traités dans
+un lot ultérieur.
+
+## Détail de l'étape 6 — GRH / Paie
+
+- **Liste du personnel** : ajout, liste, suppression des employés.
+- **Paie** (3 onglets) :
+  - **Bulletins** : saisie des éléments de gain par employé et par
+    période (salaire de base, primes, indemnités, retenue prêt...).
+  - **État de paie** : calcul automatique complet — CNSS salariale et
+    patronale, TPA patronale, IUTS (barème réel à 9
+    tranches avec réduction selon charges de famille), net perçu, coût
+    total employeur — puis **Valider la paie** génère toutes les
+    écritures comptables (charge salaires, retenues CNSS/IUTS,
+    charges patronales) automatiquement, équilibrées, envoyées en
+    Saisie sous la pièce `PAIE-AAAA-MM`. La période se verrouille
+    ensuite (bulletins non modifiables), comme sur le bureau.
+  - **Paramètres** (administrateur uniquement) : taux CNSS, TPA,
+    abattements — modifiables sans toucher au code.
+- Testé de bout en bout avec un vrai bulletin (200 000 F CFA de salaire
+  de base) : calculs vérifiés (CNSS 11 000, IUTS 14 729, net perçu
+  172 528) et écritures comptables parfaitement équilibrées (238 000 =
+  238 000) en base après validation.
 
 ## Détail de l'étape 5 — Immobilisations
 
@@ -142,3 +213,129 @@ n'est garantie sur le plan Starter — on pourra passer à un plan avec
 - Testé de bout en bout : création facture → ligne → validation →
   écritures équilibrées vérifiées en base → apparition correcte dans
   Saisie → dévalidation → écritures bien supprimées.
+
+## Détail de l'étape 8 — Fabrication / Production
+
+- **Fabrication** : création de produits finis (quantité par lot, marge,
+  compte de stock) + **recette de fabrication** (nomenclature) par
+  produit — chaque ligne (matière première, main-d'œuvre, énergie,
+  amortissement d'équipement, autre charge) reprend **automatiquement**
+  son coût réel : coût unitaire moyen du stock pour les matières, coût
+  d'amortissement réellement comptabilisé pour les équipements, coût
+  moyen pondéré du code analytique pour la main-d'œuvre/énergie — sinon
+  coût saisi manuellement.
+- Calcul automatique du **coût de production total**, coût unitaire, et
+  **prix de vente suggéré** selon la marge paramétrée.
+- **Produire (comptabiliser)** : diminue le stock de matières (quantité
+  + valeur) et augmente le stock de produits finis, écritures générées
+  automatiquement.
+- Testé de bout en bout avec un cas réel (matière première reprise du
+  stock à 1000 F/unité + main-d'œuvre manuelle 2000 F → coût unitaire
+  produit 700 F, prix de vente 910 F) : écritures de fabrication
+  vérifiées parfaitement équilibrées (14 100 = 14 100) et impact correct
+  sur les stocks.
+
+## Détail de l'étape 9 — Trésorerie
+
+- Vue par compte de trésorerie (banques, caisse — classe 5) : solde en
+  début de période choisie, entrées, sorties, solde en fin de période.
+- **Capacité à faire face aux engagements** : compare la trésorerie
+  disponible aux règlements déjà validés mais pas encore décaissés
+  (alerte visuelle si le solde après engagements serait négatif).
+- Testé : une écriture bancaire (dépôt de capital 500 000 F sur
+  521000) apparaît correctement dans le tableau.
+
+## Détail de l'étape 10 — ENGAGEMENTS-PROJETS (circuit d'achat complet)
+
+- **Contrats** : journal des commandes fournisseurs avec échéances de
+  livraison et de paiement calculées automatiquement (délais du
+  fournisseur), alerte visuelle en cas de retard.
+- **Expression de besoin** : création + lignes → validation bascule
+  automatiquement en Bon de commande (lignes recopiées), sans écriture
+  comptable à ce stade.
+- **Bon de commande** : ajout de lignes (compte de charge + code
+  analytique par ligne) → **validation** comptabilise directement
+  l'achat (Débit charge, Crédit fournisseur, retenue fiscale
+  optionnelle) **et génère automatiquement** le Bordereau de livraison
+  et le Règlement correspondants (déjà marqués validés, pas de double
+  écriture).
+- **Bordereau de livraison** : confirmation des quantités réellement
+  reçues (aucune écriture — la comptabilisation a déjà eu lieu au Bon
+  de commande).
+- **Règlements** : peut aussi être créé directement (dépense hors
+  circuit d'achat complet) → validation comptabilise la charge →
+  **Enregistrer le paiement** comptabilise l'encaissement bancaire/caisse
+  et solde la dette fournisseur.
+- Testé de bout en bout : Bon de commande (10 000 F) → validation
+  (écriture 604000/401000 équilibrée) → Bordereau et Règlement
+  auto-créés → paiement du règlement → dette fournisseur (401000)
+  ramenée exactement à 0. Circuit Expression de besoin → Bon de
+  commande également vérifié (ligne recopiée correctement).
+
+## Détail de l'étape 11 — COMMERCIAL (Recouvrement + Marges)
+
+- **Recouvrement** : factures clients simples (montant global, hors
+  détail TVA — différent de Facturation), échéance calculée selon le
+  délai de paiement du client, encaissement comptabilisé
+  automatiquement (Débit banque/caisse, Crédit client 411000) — testé
+  avec écriture équilibrée vérifiée.
+- **Marges bénéficiaires** : marge commerciale, valeur ajoutée et
+  résultat d'exploitation, calculés directement depuis la liasse
+  fiscale (même moteur que le Compte de résultat).
+
+## Détail de l'étape 12 — ADMIN restants
+
+- **Modification des factures** : vue consolidée de toutes les factures
+  déjà validées (vente ET achat), avec dévalidation en un clic (retire
+  les écritures comptables générées, repasse en brouillon modifiable) —
+  testé avec une vraie facture.
+- **Modèle de bon de commande** : en-tête/pied de page par défaut,
+  appliqué automatiquement aux bons de commande qui n'ont pas leur
+  propre en-tête renseigné.
+- **Réinitialisation des données** : suppression par catégorie (écritures,
+  soldes d'ouverture, fiches immobilisations, circuit d'engagements,
+  factures, transport), avec double garde-fou — confirmation JavaScript
+  + obligation de taper "SUPPRIMER" en majuscules — testé (2 écritures
+  supprimées après confirmation correcte, refusé si mot de confirmation
+  incorrect).
+
+## Détail de l'étape 13 — GRH restants
+
+- **Time sheet** : pointage des heures travaillées par employé et par jour.
+- **KPI** : indicateurs de performance (cible/réalisé/taux), par employé
+  ou par service, avec statut (en cours/atteint/non atteint).
+- **HS (hygiène santé)** : journal des incidents/accidents/observations,
+  avec gravité et statut (ouvert/fermé).
+- **Tableau de bord GRH** : synthèse en cartes agrégeant automatiquement
+  les 3 écrans ci-dessus + Personnel — testé (1 employé actif, 8h
+  pointées, KPI à 95%, incident créé, tous les chiffres agrégés
+  correctement).
+
+## Détail de l'étape 14 — TRANSPORT
+
+- **Parc auto** : liste des véhicules (immatriculation, marque, modèle,
+  chauffeur affecté, statut).
+- **Missions** : déplacements (destination, chauffeur, dates, kilométrage),
+  statut en cours/terminée.
+- **Pièces de rechange** : stock partagé entre Transport et Maintenance
+  (désignation, quantité, coût unitaire).
+- **Réparations** : par véhicule (ou équipement, sans véhicule) — chaque
+  pièce utilisée **décrémente automatiquement le stock**, refuse si le
+  stock est insuffisant (protection testée : demande de 100 pièces sur un
+  stock de 10 → refusée, stock resté intact), coût total = pièces +
+  main-d'œuvre calculé automatiquement (testé : 3 filtres × 5000 + 15000
+  main-d'œuvre = 30 000 F CFA).
+
+## Détail de l'étape 15 — MAINTENANCE-QUALITÉ (Énergie, Maintenance)
+
+- **Énergie** et **Maintenance** : coûts par code analytique (eau,
+  électricité, essence... / véhicules, bâtiments, machines...), sur une
+  période librement choisie — alimentés automatiquement par toute
+  écriture de Saisie taguée avec le bon code analytique, et par les
+  lignes de recette de Fabrication qui leur sont associées. Bouton
+  "Ajouter les codes courants" pour préremplir les codes suggérés.
+- **Correctif important au passage** : le champ "Code analytique" par
+  ligne manquait dans le formulaire web de Saisie des écritures (présent
+  côté moteur `core.py` depuis le début, mais pas encore exposé dans
+  l'interface HTML) — ajouté et testé de bout en bout (écriture taguée
+  ENERGIE-EAU → apparaît correctement dans l'écran Énergie).

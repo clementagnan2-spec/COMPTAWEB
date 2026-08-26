@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Modification des factures{% endblock %}
+{% block content %}
+  <h1>Modification des factures</h1>
+  <p class="subtitle">Toutes les factures validées (vente et achat). Dévalider retire les écritures comptables générées et repasse la facture en brouillon modifiable.</p>
+
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <thead><tr><th>Type</th><th>N°</th><th>Date</th><th>Client / Fournisseur</th><th></th></tr></thead>
+      <tbody>
+        {% for f in factures %}
+        <tr>
+          <td>{{ "Vente" if f.type == "vente" else "Achat" }}</td>
+          <td class="figure">{{ f.numero }}</td>
+          <td class="figure">{{ f.date }}</td>
+          <td>{{ f.tiers }}</td>
+          <td>
+            <form method="post" action="{{ url_for('admin_factures_devalider') }}"
+                  onsubmit="return confirm('Dévalider cette facture ? Ses écritures comptables seront retirées de la Saisie.');">
+              <input type="hidden" name="type" value="{{ f.type }}">
+              <input type="hidden" name="id" value="{{ f.id }}">
+              <button type="submit" class="btn-danger-link">Dévalider</button>
+            </form>
+          </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="5" style="text-align:center;color:var(--text-dim);padding:24px;">Aucune facture validée.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

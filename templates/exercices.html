@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}Exercices comptables{% endblock %}
+{% block content %}
+  <h1>Exercices comptables</h1>
+  <p class="subtitle">Exercice actif : <strong class="figure">{{ exercice_actif }}</strong></p>
+
+  <div class="form-card">
+    <h2 class="section-title" style="margin-top:0;">Créer / activer un exercice</h2>
+    <form method="post" class="form-row" style="align-items:flex-end;">
+      <input type="hidden" name="action" value="nouveau">
+      <div class="field small"><label>Année (AAAA)</label><input type="text" name="exercice" placeholder="2027" required></div>
+      <div class="field small"><button type="submit" class="btn">Créer / activer</button></div>
+    </form>
+  </div>
+
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <thead><tr><th>Exercice</th><th>Statut</th><th class="num">Écart de bilan</th><th></th></tr></thead>
+      <tbody>
+        {% for e in liste %}
+        <tr>
+          <td class="figure">{{ e.exercice }}</td>
+          <td>{% if e.cloture %}<span style="color:var(--text-dim);">Clôturé</span>
+              {% else %}<span style="color:var(--green);font-weight:600;">Ouvert</span>{% endif %}</td>
+          <td class="num figure">
+            {% if bilans[e.exercice] is not none %}
+              {{ bilans[e.exercice] | cfa }}
+              {% if bilans[e.exercice] >= 1 or bilans[e.exercice] <= -1 %}<span style="color:var(--red);"> ⚠</span>{% endif %}
+            {% else %}—{% endif %}
+          </td>
+          <td>
+            {% if not e.cloture %}
+            <form method="post" style="display:inline;" onsubmit="return confirm('Clôturer définitivement l\'exercice {{ e.exercice }} ? Cette action reporte les soldes et verrouille l\'exercice en lecture seule.');">
+              <input type="hidden" name="action" value="cloturer">
+              <input type="hidden" name="exercice" value="{{ e.exercice }}">
+              <button type="submit" class="btn-danger-link" style="color:var(--ink);">Clôturer</button>
+            </form>
+            {% if e.exercice != exercice_actif %}
+            <form method="post" style="display:inline; margin-left:8px;">
+              <input type="hidden" name="action" value="activer">
+              <input type="hidden" name="exercice" value="{{ e.exercice }}">
+              <button type="submit" class="btn-danger-link" style="color:var(--gold);">Activer</button>
+            </form>
+            {% endif %}
+            {% endif %}
+          </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="4" style="text-align:center;color:var(--text-dim);padding:24px;">Aucun exercice.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

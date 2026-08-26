@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Plan analytique{% endblock %}
+{% block content %}
+  <h1>Plan analytique</h1>
+  <p class="subtitle">Codes analytiques (centres de coûts, projets...).</p>
+
+  <div class="form-card">
+    <form method="post" class="form-row" style="align-items:flex-end;">
+      <div class="field small"><label>Code</label><input type="text" name="code" required></div>
+      <div class="field grow"><label>Libellé</label><input type="text" name="label" required></div>
+      <div class="field small"><label>Unité</label><input type="text" name="unite"></div>
+      <div class="field small"><button type="submit" class="btn">Enregistrer</button></div>
+    </form>
+  </div>
+
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <thead><tr><th>Code</th><th>Libellé</th><th>Unité</th><th></th></tr></thead>
+      <tbody>
+        {% for c in codes %}
+        <tr>
+          <td class="figure">{{ c.code }}</td>
+          <td>{{ c.label }}</td>
+          <td>{{ c.unite or "" }}</td>
+          <td>
+            <form method="post" action="{{ url_for('plan_analytique_supprimer', code=c.code) }}"
+                  onsubmit="return confirm('Supprimer ce code ?');">
+              <button type="submit" class="btn-danger-link">Suppr.</button>
+            </form>
+          </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="4" style="text-align:center;color:var(--text-dim);padding:24px;">Aucun code analytique.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

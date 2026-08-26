@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Réparations{% endblock %}
+{% block content %}
+  <h1>Réparations</h1>
+  <p class="subtitle">Réparations véhicules (ou équipements, sans véhicule renseigné).</p>
+
+  <div class="form-card">
+    <h2 class="section-title" style="margin-top:0;">Nouvelle réparation</h2>
+    <form method="post">
+      <div class="form-row">
+        <div class="field grow"><label>Description</label><input type="text" name="description" required></div>
+        <div class="field">
+          <label>Véhicule (optionnel)</label>
+          <select name="vehicule_id"><option value="">—</option>
+            {% for v in vehicules %}<option value="{{ v.id }}">{{ v.immatriculation }}</option>{% endfor %}
+          </select>
+        </div>
+        <div class="field small"><label>Date</label><input type="date" name="date_reparation" value="{{ today }}"></div>
+      </div>
+      <div class="form-row">
+        <div class="field grow"><label>Garage</label><input type="text" name="garage"></div>
+        <div class="field small"><label>Coût main-d'œuvre</label><input type="text" name="cout_main_oeuvre"></div>
+      </div>
+      <button type="submit" class="btn btn-inline">Créer</button>
+    </form>
+  </div>
+
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <thead><tr><th>Date</th><th>Véhicule</th><th>Description</th><th>Garage</th><th>Statut</th></tr></thead>
+      <tbody>
+        {% for r in liste %}
+        <tr>
+          <td class="figure"><a href="{{ url_for('reparations_detail', reparation_id=r.id) }}">{{ r.date_reparation }}</a></td>
+          <td class="figure">{{ r.immatriculation }}</td>
+          <td>{{ r.description }}</td>
+          <td>{{ r.garage }}</td>
+          <td>{% if r.statut == "terminee" %}<span style="color:var(--green);">Terminée</span>
+              {% else %}<span style="color:var(--text-dim);">En cours</span>{% endif %}</td>
+        </tr>
+        {% else %}
+        <tr><td colspan="5" style="text-align:center;color:var(--text-dim);padding:24px;">Aucune réparation.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

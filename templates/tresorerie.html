@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block title %}Trésorerie{% endblock %}
+{% block content %}
+  <h1>Trésorerie</h1>
+  <p class="subtitle">Comptes de trésorerie (banques, caisse) — solde début / mouvements / solde fin sur la période choisie.</p>
+
+  <form method="get" class="form-row" style="max-width:500px; margin-bottom:18px;">
+    <input type="hidden" name="exercice" value="{{ exercice }}">
+    <div class="field small"><label>Du</label><input type="date" name="date_from" value="{{ date_from }}"></div>
+    <div class="field small"><label>Au</label><input type="date" name="date_to" value="{{ date_to }}"></div>
+    <div class="field small"><button type="submit" class="btn">Afficher</button></div>
+  </form>
+
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <thead><tr><th>Compte</th><th>Libellé</th><th class="num">Solde début</th>
+          <th class="num">Entrées</th><th class="num">Sorties</th><th class="num">Solde fin</th></tr></thead>
+      <tbody>
+        {% for l in lignes %}
+        <tr>
+          <td class="figure">{{ l.code }}</td>
+          <td>{{ l.label }}</td>
+          <td class="num figure">{{ l.solde_debut_periode | cfa }}</td>
+          <td class="num figure debit-amt">{{ l.debit_periode | cfa }}</td>
+          <td class="num figure credit-amt">{{ l.credit_periode | cfa }}</td>
+          <td class="num figure">{{ l.solde_fin_periode | cfa }}</td>
+        </tr>
+        {% else %}
+        <tr><td colspan="6" style="text-align:center;color:var(--text-dim);padding:24px;">
+          Aucun compte de trésorerie mouvementé sur cette période.</td></tr>
+        {% endfor %}
+      </tbody>
+      {% if lignes %}
+      <tfoot>
+        <tr class="total-row">
+          <td colspan="2">Total</td>
+          <td class="num figure">{{ totaux.solde_debut_periode | cfa }}</td>
+          <td class="num figure">{{ totaux.debit_periode | cfa }}</td>
+          <td class="num figure">{{ totaux.credit_periode | cfa }}</td>
+          <td class="num figure">{{ totaux.solde_fin_periode | cfa }}</td>
+        </tr>
+      </tfoot>
+      {% endif %}
+    </table>
+  </div>
+
+  <h2 class="section-title">Capacité à faire face aux engagements</h2>
+  <div class="form-card">
+    <div class="totals-row" style="font-size:1rem; flex-wrap:wrap;">
+      <span>Trésorerie disponible : <strong class="figure">{{ engagements.treso_disponible | cfa }}</strong></span>
+      <span>Engagements à payer (règlements validés non décaissés) : <strong class="figure">{{ engagements.total_engagements | cfa }}</strong></span>
+      <span>Solde après engagements :
+        <strong class="figure {{ 'ok' if engagements.peut_faire_face else 'ko' }}">{{ engagements.solde_apres_engagements | cfa }}</strong>
+      </span>
+    </div>
+  </div>
+
+  {% if engagements.engagements %}
+  <div class="data-table-wrap" style="margin-top:14px;">
+    <table class="data-table">
+      <thead><tr><th>N°</th><th>Date</th><th>Fournisseur</th><th class="num">Net à payer</th></tr></thead>
+      <tbody>
+        {% for e in engagements.engagements %}
+        <tr>
+          <td class="figure">{{ e.numero }}</td>
+          <td class="figure">{{ e.date_reglement }}</td>
+          <td>{{ e.raison_sociale }}</td>
+          <td class="num figure">{{ e.net_a_payer | cfa }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Niveaux d'accès{% endblock %}
+{% block content %}
+  <h1>Niveaux d'accès</h1>
+  <p class="subtitle">Chaque niveau détermine les sous-menus visibles pour les utilisateurs qui lui sont rattachés.</p>
+
+  <div class="form-card">
+    <h2 class="section-title" style="margin-top:0;">Nouveau niveau</h2>
+    <form method="post" class="form-row" style="align-items:flex-end;">
+      <div class="field small"><label>Nom</label><input type="text" name="nom" required></div>
+      <div class="field grow"><label>Description</label><input type="text" name="description"></div>
+      <div class="field small"><button type="submit" class="btn">Créer</button></div>
+    </form>
+  </div>
+
+  {% for n in niveaux %}
+  <div class="form-card">
+    <h2 class="section-title" style="margin-top:0; display:flex; justify-content:space-between; align-items:center;">
+      <span>{{ n.nom }} <span style="font-weight:400; color:var(--text-dim); font-size:0.8em;">{{ n.description }}</span></span>
+      {% if n.nom != "Administrateur" %}
+      <form method="post" action="{{ url_for('niveaux_acces_supprimer', nom=n.nom) }}"
+            onsubmit="return confirm('Supprimer ce niveau d\'accès ?');">
+        <button type="submit" class="btn-danger-link">Supprimer le niveau</button>
+      </form>
+      {% endif %}
+    </h2>
+    {% if n.nom == "Administrateur" %}
+      <p style="color:var(--text-dim); font-size:0.86rem;">L'Administrateur a toujours accès à tous les menus (non modifiable).</p>
+    {% else %}
+    <form method="post" action="{{ url_for('niveaux_acces_menus', nom=n.nom) }}">
+      <div style="columns:3; column-gap:20px;">
+        {% for label, key in tous_les_menus %}
+        <label style="display:block; font-size:0.85rem; margin-bottom:6px; break-inside:avoid;">
+          <input type="checkbox" name="menu_key" value="{{ key }}"
+                 {% if key in menus_par_niveau.get(n.nom, []) %}checked{% endif %}>
+          {{ label }}
+        </label>
+        {% endfor %}
+      </div>
+      <button type="submit" class="btn btn-inline" style="margin-top:14px;">Enregistrer les menus</button>
+    </form>
+    {% endif %}
+  </div>
+  {% endfor %}
+{% endblock %}

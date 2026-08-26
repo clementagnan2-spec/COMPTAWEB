@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Expression de besoin {{ exp.numero }}{% endblock %}
+{% block content %}
+  <h1>Expression de besoin {{ exp.numero }}</h1>
+  <p class="subtitle">
+    {% if exp.statut == "validee" %}<span style="color:var(--green);font-weight:600;">Validée</span>
+    {% else %}<span style="color:var(--text-dim);">Brouillon</span>{% endif %}
+  </p>
+
+  {% if exp.statut != "validee" %}
+  <div class="form-card">
+    <h2 class="section-title" style="margin-top:0;">Ajouter une ligne</h2>
+    <form method="post" class="form-row" style="align-items:flex-end;">
+      <input type="hidden" name="action" value="ajouter_ligne">
+      <div class="field grow"><label>Libellé</label><input type="text" name="libelle" required></div>
+      <div class="field small"><label>Quantité</label><input type="text" name="quantite" required></div>
+      <div class="field small"><label>Unité</label><input type="text" name="unite"></div>
+      <div class="field small"><button type="submit" class="btn">Ajouter</button></div>
+    </form>
+  </div>
+  {% endif %}
+
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <thead><tr><th>Libellé</th><th class="num">Quantité</th><th>Unité</th><th></th></tr></thead>
+      <tbody>
+        {% for l in lignes %}
+        <tr>
+          <td>{{ l.libelle }}</td>
+          <td class="num figure">{{ l.quantite }}</td>
+          <td>{{ l.unite or "" }}</td>
+          <td>
+            {% if exp.statut != "validee" %}
+            <form method="post" action="{{ url_for('expression_besoin_ligne_supprimer', expression_id=exp.id, ligne_id=l.id) }}">
+              <button type="submit" class="btn-danger-link">Suppr.</button>
+            </form>
+            {% endif %}
+          </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="4" style="text-align:center;color:var(--text-dim);padding:24px;">Aucune ligne.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div style="margin-top:20px; display:flex; gap:10px;">
+    <a href="{{ url_for('expression_besoin') }}" class="btn-secondary" style="text-decoration:none;">← Retour</a>
+    {% if lignes and exp.statut != "validee" %}
+    <form method="post" onsubmit="return confirm('Valider ? Cette expression basculera en Bon de commande.');">
+      <input type="hidden" name="action" value="valider">
+      <button type="submit" class="btn btn-inline">Valider (→ Bon de commande)</button>
+    </form>
+    {% endif %}
+  </div>
+{% endblock %}

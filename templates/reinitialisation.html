@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Réinitialisation des données{% endblock %}
+{% block content %}
+  <h1>Réinitialisation des données</h1>
+  <div class="flash error">
+    Action irréversible — les données supprimées ne peuvent pas être récupérées. Réservé à l'administrateur.
+  </div>
+
+  <div class="form-card">
+    <form method="post" onsubmit="return confirm('Dernière confirmation : supprimer définitivement les catégories sélectionnées ?');">
+      <div style="margin-bottom:16px;">
+        {% for key, label in categories.items() %}
+        <label style="display:block; font-size:0.88rem; margin-bottom:8px;">
+          <input type="checkbox" name="categorie" value="{{ key }}" style="width:auto;"> {{ label }}
+        </label>
+        {% endfor %}
+      </div>
+
+      <div class="form-row">
+        <div class="field small">
+          <label>Limiter à un exercice (optionnel — pour Écritures/Soldes d'ouverture)</label>
+          <select name="exercice">
+            <option value="">Tous les exercices</option>
+            {% for e in exercices %}<option value="{{ e.exercice }}">{{ e.exercice }}</option>{% endfor %}
+          </select>
+        </div>
+      </div>
+
+      <div class="field" style="max-width:320px; margin:18px 0;">
+        <label>Tapez SUPPRIMER en majuscules pour confirmer</label>
+        <input type="text" name="confirmation" required>
+      </div>
+
+      <button type="submit" class="btn btn-inline" style="background:var(--red);">Supprimer définitivement</button>
+    </form>
+  </div>
+{% endblock %}

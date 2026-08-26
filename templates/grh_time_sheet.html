@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Time sheet{% endblock %}
+{% block content %}
+  <h1>Time sheet</h1>
+  <p class="subtitle">Pointage des heures travaillées par employé.</p>
+
+  <div class="form-card">
+    <h2 class="section-title" style="margin-top:0;">Nouveau pointage</h2>
+    <form method="post" class="form-row" style="align-items:flex-end;">
+      <div class="field grow">
+        <label>Employé</label>
+        <select name="personnel_id" required>
+          {% for p in personnel %}<option value="{{ p.id }}">{{ p.matricule }} — {{ p.nom }} {{ p.prenom }}</option>{% endfor %}
+        </select>
+      </div>
+      <div class="field small"><label>Date</label><input type="date" name="date_pointage" value="{{ today }}" required></div>
+      <div class="field small"><label>Heures</label><input type="text" name="heures" required></div>
+      <div class="field grow"><label>Activité</label><input type="text" name="activite"></div>
+      <div class="field small"><button type="submit" class="btn">Enregistrer</button></div>
+    </form>
+  </div>
+
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <thead><tr><th>Date</th><th>Employé</th><th class="num">Heures</th><th>Activité</th><th></th></tr></thead>
+      <tbody>
+        {% for t in pointages %}
+        <tr>
+          <td class="figure">{{ t.date_pointage }}</td>
+          <td>{{ t.employe }}</td>
+          <td class="num figure">{{ t.heures }}</td>
+          <td>{{ t.activite }}</td>
+          <td>
+            <form method="post" action="{{ url_for('grh_time_sheet_supprimer', ts_id=t.id) }}">
+              <button type="submit" class="btn-danger-link">Suppr.</button>
+            </form>
+          </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="5" style="text-align:center;color:var(--text-dim);padding:24px;">Aucun pointage.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

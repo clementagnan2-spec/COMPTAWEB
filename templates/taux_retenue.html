@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}Taux de retenue à la source{% endblock %}
+{% block content %}
+  <h1>Taux de retenue à la source</h1>
+  <p class="subtitle">Taux de retenue à la source disponibles appliqués en Facturation ou Achats.</p>
+
+  <div class="form-card">
+    <form method="post" class="form-row" style="align-items:flex-end;">
+      <div class="field small"><label>Code</label><input type="text" name="code" required></div>
+      <div class="field grow"><label>Libellé</label><input type="text" name="label" required></div>
+      <div class="field small"><label>Taux (%)</label><input type="text" name="montant"></div>
+      <div class="field small autocomplete-wrap"><label>Compte</label><input type="text" name="compte" id="compte-input" autocomplete="off"></div>
+      <div class="field small"><button type="submit" class="btn">Enregistrer</button></div>
+    </form>
+  </div>
+
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <thead><tr><th>Code</th><th>Libellé</th><th class="num">Taux (%)</th><th>Compte</th><th></th></tr></thead>
+      <tbody>
+        {% for t in taux %}
+        <tr>
+          <td class="figure">{{ t.code }}</td>
+          <td>{{ t.label }}</td>
+          <td class="num figure">{{ t.montant }}</td>
+          <td class="figure">{{ t.compte or "" }}</td>
+          <td>
+            <form method="post" action="{{ url_for('taux_retenue_supprimer', code=t.code) }}"
+                  onsubmit="return confirm('Supprimer ce taux ?');">
+              <button type="submit" class="btn-danger-link">Suppr.</button>
+            </form>
+          </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="5" style="text-align:center;color:var(--text-dim);padding:24px;">Aucun taux de retenue.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="autocomplete-list" id="autocomplete-list"></div>
+<script>
+const compteInput = document.getElementById('compte-input');
+compteInput.addEventListener('input', async () => {
+  const q = compteInput.value.trim();
+  const list = document.getElementById('autocomplete-list');
+  if (q.length < 1) { list.style.display = 'none'; return; }
+  const resp = await fetch('/api/comptes?q=' + encodeURIComponent(q));
+  const comptes = await resp.json();
+  list.innerHTML = '';
+  comptes.slice(0, 15).forEach(c => {
+    const div = document.createElement('div');
+    div.innerHTML = `<span class="code">${c.code}</span>${c.label}`;
+    div.onclick = () => { compteInput.value = c.code; list.style.display = 'none'; };
+    list.appendChild(div);
+  });
+  const rect = compteInput.getBoundingClientRect();
+  list.style.left = (rect.left + window.scrollX) + 'px';
+  list.style.top = (rect.bottom + window.scrollY + 2) + 'px';
+  list.style.display = comptes.length ? 'block' : 'none';
+});
+document.addEventListener('click', (e) => {
+  const list = document.getElementById('autocomplete-list');
+  if (e.target !== compteInput && !list.contains(e.target)) list.style.display = 'none';
+});
+</script>
+{% endblock %}
