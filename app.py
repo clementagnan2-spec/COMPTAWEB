@@ -91,14 +91,38 @@ def menu_requis(menu_key):
     return decorator
 
 
+DEFAULT_ADMIN_USER = "admin"
+DEFAULT_ADMIN_PASSWORD = "1234"
+
+
+def ensure_default_admin(db):
+    """Tant qu'aucun disque persistant n'est configuré (voir DEPLOIEMENT.md),
+    la base repart à zéro à chaque redéploiement. Pour éviter de repasser par
+    l'écran de création à chaque fois, on recrée automatiquement un compte
+    admin/1234 s'il n'existe aucun utilisateur.
+    SÉCURITÉ : ce mot de passe par défaut est volontairement faible et connu
+    de quiconque lit ce code — à changer dès que possible via ADMIN >
+    Utilisateurs, en particulier une fois des données réelles saisies."""
+    if core.list_utilisateurs(db):
+        return False
+    core.ajouter_niveaux_acces_suggeres(db)
+    core.ajouter_niveaux_acces_suggeres_menus(db)
+    core.add_utilisateur(db, DEFAULT_ADMIN_USER, DEFAULT_ADMIN_PASSWORD,
+                          nom_complet="Administrateur", niveau_acces="Administrateur", actif=True)
+    return True
+
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    if not core.list_utilisateurs(get_db()):
-        return redirect(url_for("premiere_configuration"))
+    db = get_db()
+    if ensure_default_admin(db):
+        flash(f"Compte administrateur par défaut créé : identifiant « {DEFAULT_ADMIN_USER} », "
+              f"mot de passe « {DEFAULT_ADMIN_PASSWORD} ». Changez ce mot de passe dès que possible "
+              "dans ADMIN > Utilisateurs.", "error")
     if request.method == "POST":
         nom = request.form.get("nom_utilisateur", "")
         mdp = request.form.get("mot_de_passe", "")
-        user = core.verify_password(get_db(), nom, mdp)
+        user = core.verify_password(db, nom, mdp)
         if user:
             session["user"] = user
             dest = request.args.get("next") or url_for("dashboard")

@@ -383,3 +383,17 @@ fournisseur bien créé.
   sous-menus ouverts en même temps. Corrigé, testé (un seul sous-menu
   visible à la fois, quel que soit l'ordre de survol) et vérifié que le
   clic sur un lien de sous-menu navigue toujours correctement.
+
+## Correctif — Compte administrateur par défaut (admin / 1234)
+
+Tant qu'il n'y a pas de disque persistant, la base repart à zéro à
+chaque redéploiement. Pour éviter de repasser par l'écran de création à
+chaque fois : dès que la page de connexion est visitée sur une base
+vide, un compte **admin / 1234** (niveau Administrateur) est créé
+automatiquement, avec un message qui le rappelle à l'écran.
+
+⚠️ **Sécurité** — ce mot de passe est volontairement faible et visible
+dans le code source ; le site étant public sur Internet (pas seulement
+en local), **changez ce mot de passe dans ADMIN > Utilisateurs dès que
+vous saisissez de vraies données**, et envisagez d'activer le disque
+persistant à ce moment-là pour ne plus dépendre de ce mécanisme.
