@@ -367,3 +367,19 @@ Testé de bout en bout : export d'un code analytique → suppression en base
 → réimport du même fichier → code bien restauré ; téléchargement du
 modèle Fournisseurs → remplissage avec un vrai fournisseur → import →
 fournisseur bien créé.
+
+## Correctif — Menu latéral compact + titre de page
+
+- Le menu latéral n'affiche plus que les 13 grands titres (SAISIE,
+  COMMERCIAL, PRODUCTION...) — les sous-menus apparaissent maintenant au
+  survol de la souris, dans un petit panneau qui se déploie sur la
+  droite (comme un menu déroulant), et se replie automatiquement vers le
+  haut s'il est trop près du bas de l'écran.
+- Ajout du titre **"PLATEFORME INTÉGRÉE DE GESTION"** en haut de chaque
+  page, comme sur le bureau.
+- Bug trouvé et corrigé pendant les tests : un minuteur partagé entre
+  tous les groupes de menu faisait qu'un survol sur un nouveau groupe
+  annulait par erreur la fermeture du précédent, laissant deux
+  sous-menus ouverts en même temps. Corrigé, testé (un seul sous-menu
+  visible à la fois, quel que soit l'ordre de survol) et vérifié que le
+  clic sur un lien de sous-menu navigue toujours correctement.

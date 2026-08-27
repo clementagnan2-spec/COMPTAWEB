@@ -15,11 +15,13 @@
       <nav>
         {% for titre, items in menu %}
           {% if items %}
-          <div class="menu-group">
-            <div class="group-title">{{ titre }}</div>
-            {% for label, key in items %}
-              <a href="{{ menu_url(key) }}">{{ label }}</a>
-            {% endfor %}
+          <div class="menu-group has-flyout">
+            <div class="group-title-main">{{ titre }}</div>
+            <div class="flyout">
+              {% for label, key in items %}
+                <a href="{{ menu_url(key) }}">{{ label }}</a>
+              {% endfor %}
+            </div>
           </div>
           {% endif %}
         {% endfor %}
@@ -32,20 +34,23 @@
     </aside>
     <div class="main">
       <div class="topbar">
-        <span class="exercice">Connecté : <strong>{{ session.user.nom_utilisateur }}</strong></span>
-        {% if exercice is defined and exercices is defined %}
-        <form method="get" class="exercice-form">
-          <span class="exercice">Exercice :</span>
-          <select name="exercice" onchange="this.form.submit()">
-            {% for e in exercices %}
-              <option value="{{ e.exercice }}" {% if e.exercice == exercice %}selected{% endif %}>
-                {{ e.exercice }}{% if e.cloture %} (clôturé){% endif %}
-              </option>
-            {% endfor %}
-            {% if not exercices %}<option value="{{ exercice }}">{{ exercice }}</option>{% endif %}
-          </select>
-        </form>
-        {% endif %}
+        <span class="app-title">Plateforme intégrée de gestion</span>
+        <div class="topbar-right">
+          {% if exercice is defined and exercices is defined %}
+          <form method="get" class="exercice-form">
+            <span class="exercice">Exercice :</span>
+            <select name="exercice" onchange="this.form.submit()">
+              {% for e in exercices %}
+                <option value="{{ e.exercice }}" {% if e.exercice == exercice %}selected{% endif %}>
+                  {{ e.exercice }}{% if e.cloture %} (clôturé){% endif %}
+                </option>
+              {% endfor %}
+              {% if not exercices %}<option value="{{ exercice }}">{{ exercice }}</option>{% endif %}
+            </select>
+          </form>
+          {% endif %}
+          <span class="exercice">Connecté : <strong>{{ session.user.nom_utilisateur }}</strong></span>
+        </div>
       </div>
       <div class="content">
         {% with messages = get_flashed_messages(with_categories=true) %}
@@ -57,5 +62,40 @@
       </div>
     </div>
   </div>
+  <script>
+    // Positionnement des sous-menus au survol : en `position: fixed` calculé
+    // en JS (plutôt qu'en CSS pur) pour échapper proprement au conteneur
+    // du menu, qui a un `overflow-y: auto` (sinon le sous-menu serait coupé).
+    let flyoutTimer = null;
+    let openFlyout = null;
+    document.querySelectorAll('.menu-group.has-flyout').forEach(group => {
+      const flyout = group.querySelector('.flyout');
+      const show = () => {
+        clearTimeout(flyoutTimer);
+        if (openFlyout && openFlyout !== flyout) openFlyout.classList.remove('open');
+        openFlyout = flyout;
+        const rect = group.getBoundingClientRect();
+        flyout.style.left = rect.right + 'px';
+        flyout.classList.add('open');
+        const flyoutHeight = flyout.offsetHeight;
+        let top = rect.top;
+        if (top + flyoutHeight > window.innerHeight - 8) {
+          top = Math.max(8, window.innerHeight - flyoutHeight - 8);
+        }
+        flyout.style.top = top + 'px';
+      };
+      const hide = () => {
+        clearTimeout(flyoutTimer);
+        flyoutTimer = setTimeout(() => {
+          flyout.classList.remove('open');
+          if (openFlyout === flyout) openFlyout = null;
+        }, 150);
+      };
+      group.addEventListener('mouseenter', show);
+      group.addEventListener('mouseleave', hide);
+      flyout.addEventListener('mouseenter', () => clearTimeout(flyoutTimer));
+      flyout.addEventListener('mouseleave', hide);
+    });
+  </script>
 </body>
 </html>
