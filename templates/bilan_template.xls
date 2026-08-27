@@ -1,0 +1,1246 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <Version>16.00</Version>
+ </DocumentProperties>
+ <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
+  <Colors>
+   <Color>
+    <Index>2</Index>
+    <RGB>#999999</RGB>
+   </Color>
+   <Color>
+    <Index>3</Index>
+    <RGB>#F0F0F0</RGB>
+   </Color>
+  </Colors>
+ </OfficeDocumentSettings>
+ <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+  <WindowHeight>7185</WindowHeight>
+  <WindowWidth>20490</WindowWidth>
+  <WindowTopX>32767</WindowTopX>
+  <WindowTopY>32767</WindowTopY>
+  <ProtectStructure>False</ProtectStructure>
+  <ProtectWindows>False</ProtectWindows>
+ </ExcelWorkbook>
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s62">
+   <Alignment ss:Vertical="Top"/>
+   <Borders/>
+   <Font ss:FontName="Arial" ss:Color="#000000"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s63">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#F0F0F0" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s64">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#F0F0F0" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s65">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#F0F0F0" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s66">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#F0F0F0" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s67">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#F0F0F0" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s68">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#F0F0F0" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s69">
+   <Alignment ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#F0F0F0" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s70">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#F0F0F0" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s71">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#F0F0F0" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s72">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#F0F0F0" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s73">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s74">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="0\ \ &quot;XOF&quot;"/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s75">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="Fixed"/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s76">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="Fixed"/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s77">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s78">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="0\ \ &quot;XOF&quot;"/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s79">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="Fixed"/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s81">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#99CCFF" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s82">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#99CCFF" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="0\ \ &quot;XOF&quot;"/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s83">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#99CCFF" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="Fixed"/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s84">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s85">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s87">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#99CCFF" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s88">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#99CCFF" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="Fixed"/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s89">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000"/>
+   <Interior ss:Color="#99CCFF" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s90">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#99CCFF" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s92">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000"/>
+   <Interior ss:Color="#99CCFF" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s93">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000"/>
+   <Interior ss:Color="#99CCFF" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="Fixed"/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s94">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#FFCC00" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s95">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#FFCC00" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s96">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#FFCC00" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="0\ \ &quot;XOF&quot;"/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s97">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s98">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#99CCFF" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s100">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000"/>
+   <Interior ss:Color="#99CCFF" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s101">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#FF6600" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s102">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#3366FF" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s103">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#FFFF00" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s104">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000"/>
+   <Interior ss:Color="#FF99CC" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s105">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000"/>
+   <Interior ss:Color="#999999" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s106">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="0\ \ &quot;XOF&quot;"/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s107">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000"/>
+   <Interior ss:Color="#808080" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s108">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000"/>
+   <Interior ss:Color="#00FFFF" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s109">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000"/>
+   <Interior ss:Color="#00FF00" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s110">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000"/>
+   <Interior ss:Color="#00FF00" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="0\ \ &quot;XOF&quot;"/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s111">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#99CCFF" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s112">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#99CCFF" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="0\ \ &quot;XOF&quot;"/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s113">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#FFCC00" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s114">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#FFCC00" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="0\ \ &quot;XOF&quot;"/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s115">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#99CCFF" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="Fixed"/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s116">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#FFCC00" ss:Pattern="Solid"/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s117">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#FFCC00" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="Fixed"/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s118">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000" ss:Bold="1"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="Fixed"/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s123">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000"/>
+   <Interior ss:Color="#99CCFF" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="0\ \ &quot;XOF&quot;"/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s124">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000"/>
+   <Interior ss:Color="#99CCFF" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="0\ \ &quot;XOF&quot;"/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s126">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="0\ \ &quot;XOF&quot;"/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s127">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#000000"/>
+   </Borders>
+   <Font ss:FontName="Arial" ss:Color="#000000"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="0\ \ &quot;XOF&quot;"/>
+   <Protection/>
+  </Style>
+ </Styles>
+ <Worksheet ss:Name="Feuil1">
+  <Table ss:ExpandedColumnCount="8" ss:ExpandedRowCount="38" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="60" ss:DefaultRowHeight="15">
+   <Column ss:Width="210"/>
+   <Column ss:Width="90" ss:Span="3"/>
+   <Column ss:Index="6" ss:Width="210"/>
+   <Column ss:Width="90" ss:Span="1"/>
+   <Row>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">BILAN SYNTHETIQUE</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">1</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Edition du : 01/01/2024 au 31/12/2024                                                            </Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s64"/>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Exercice N</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">N-1</Data></Cell>
+    <Cell ss:StyleID="s68"/>
+    <Cell ss:StyleID="s68"/>
+    <Cell ss:StyleID="s69"/>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">ACTIF</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Brut</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Amortissements</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Net</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Net</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">PASSIF</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Exercice N</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Exercice</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s71"/>
+    <Cell ss:StyleID="s72"/>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">et provisions</Data></Cell>
+    <Cell ss:StyleID="s72"/>
+    <Cell ss:StyleID="s72"/>
+    <Cell ss:StyleID="s72"/>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">net</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">N-1 net</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">Charges immo</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">=CtaCptSolde(&quot;201*&quot;,&quot;209*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String" x:Ticked="1">=-CtaCptSolde(&quot;280*&quot;)-CtaCptSolde(&quot;290*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s76"><Data ss:Type="String">=CtaCptSolde(&quot;201*&quot;,&quot;209*&quot;)-(-CtaCptSolde(&quot;280*&quot;)-CtaCptSolde(&quot;290*&quot;))</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">=CtaCptSoldeNm1(&quot;201*&quot;,&quot;209*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s73"/>
+    <Cell ss:StyleID="s73"/>
+    <Cell ss:StyleID="s73"/>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">RED+Brevets, Logiciels licence :211</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String" x:Ticked="1">=CtaCptSolde(&quot;21*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String" x:Ticked="1">=-CtaCptSolde(&quot;281*&quot;)-CtaCptSolde(&quot;291*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String" x:Ticked="1">=CtaCptSolde(&quot;21*&quot;)-(-CtaCptSolde(&quot;281*&quot;)-CtaCptSolde(&quot;291*&quot;))</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeNm1(&quot;21*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">Capitaux propres</Data></Cell>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"/>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">Terrains22</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String" x:Ticked="1">=CtaCptSolde(&quot;22*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String" x:Ticked="1">=-CtaCptSolde(&quot;282*&quot;)-CtaCptSolde(&quot;292*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String" x:Ticked="1">=CtaCptSolde(&quot;22*&quot;)-(-CtaCptSolde(&quot;282*&quot;)-CtaCptSolde(&quot;292*&quot;))</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeNm1(&quot;22*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">     Capital *10*</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">=[R120.EtLoc]=-CtaCptSolde(&quot;10*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String" x:Ticked="1">=-CtaCptSoldeNm1(&quot;10*&quot;)</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">Batiments231-234</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">=CtaCptSolde(&quot;231*&quot;,&quot;233*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">=-CtaCptSolde(&quot;2831*&quot;,&quot;2833*&quot;)-CtaCptSolde(&quot;2931*&quot;,&quot;2933*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">=CtaCptSolde(&quot;231*&quot;,&quot;233*&quot;)-(-CtaCptSolde(&quot;2831*&quot;,&quot;2833*&quot;)-CtaCptSolde(&quot;2931*&quot;,&quot;2933*&quot;))</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeNm1(&quot;231*&quot;,&quot;233*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">     Réserves *11*</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">=[R130.EtLoc]=-CtaCptSolde(&quot;11*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String" x:Ticked="1">=-CtaCptSoldeNm1(&quot;11*&quot;)</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">Installations et agencements234-239</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">=CtaCptSolde(&quot;234*&quot;,&quot;239*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">=-CtaCptSolde(&quot;2834*&quot;,&quot;2839*&quot;)-CtaCptSolde(&quot;2934*&quot;,&quot;2939*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">=CtaCptSolde(&quot;234*&quot;,&quot;239*&quot;)-(-CtaCptSolde(&quot;2834*&quot;,&quot;2839*&quot;)-CtaCptSolde(&quot;2934*&quot;,&quot;2939*&quot;))</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">=CtaCptSoldeNm1(&quot;234*&quot;,&quot;239*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">Report à nouveau *12*</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">=[R140.EtLoc]=-CtaCptSolde(&quot;12*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String" x:Ticked="1">=-CtaCptSoldeNm1(&quot;12*&quot;)</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">Materiels244</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">=CtaCptSolde(&quot;240*&quot;,&quot;244*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">=-CtaCptSolde(&quot;2840*&quot;,&quot;2844*&quot;)-CtaCptSolde(&quot;2940*&quot;,&quot;2944*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">=CtaCptSolde(&quot;240*&quot;,&quot;244*&quot;)-(-CtaCptSolde(&quot;2840*&quot;,&quot;2844*&quot;)-CtaCptSolde(&quot;2940*&quot;,&quot;2944*&quot;))</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeNm1(&quot;240*&quot;,&quot;244*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">     Réserve légale *11*</Data></Cell>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"/>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">Materiels de transport245</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String" x:Ticked="1">=CtaCptSolde(&quot;245*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">=-CtaCptSolde(&quot;2845*&quot;,&quot;2849*&quot;)-CtaCptSolde(&quot;2945*&quot;,&quot;2949*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">=CtaCptSolde(&quot;245*&quot;)-(-CtaCptSolde(&quot;2845*&quot;,&quot;2849*&quot;)-CtaCptSolde(&quot;2945*&quot;,&quot;2949*&quot;))</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeNm1(&quot;245*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">     Résultat (bénéfice ou perte)*13*</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">=[R150.EtLoc]=-CtaCptSolde(&quot;7*&quot;)-CtaCptSolde(&quot;6*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s77"/>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">Avances et accomptes verses sur immo25</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String" x:Ticked="1">=CtaCptSolde(&quot;25*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">=-CtaCptSolde(&quot;2850*&quot;,&quot;2859*&quot;)-CtaCptSolde(&quot;2950*&quot;,&quot;2959*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">=CtaCptSolde(&quot;25*&quot;)-(-CtaCptSolde(&quot;2850*&quot;,&quot;2859*&quot;)-CtaCptSolde(&quot;2950*&quot;,&quot;2959*&quot;))</Data></Cell>
+    <Cell ss:StyleID="s126"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeNm1(&quot;25*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">     Résultats antérieurs *13-15*</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">=[R152.EtLoc]=-CtaCptSolde(&quot;13*&quot;,&quot;15*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String" x:Ticked="1">=-CtaCptSoldeNm1(&quot;13*&quot;,&quot;15*&quot;)</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">Immobilisations financiès26</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String" x:Ticked="1">=CtaCptSolde(&quot;26*&quot;)+CtaCptSolde(&quot;27*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">=-CtaCptSolde(&quot;2860*&quot;,&quot;2869*&quot;)-CtaCptSolde(&quot;2960*&quot;,&quot;2969*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">=CtaCptSolde(&quot;26*&quot;)+CtaCptSolde(&quot;27*&quot;)-(-CtaCptSolde(&quot;2860*&quot;,&quot;2869*&quot;)-CtaCptSolde(&quot;2960*&quot;,&quot;2969*&quot;))</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeNm1(&quot;26*&quot;)+CtaCptSoldeNm1(&quot;27*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">      Emprunts bancaires (II) 16-17</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">=[R153.EtLoc]=CtaCptSoldeCrédit(&quot;16*&quot;,&quot;17*&quot;)-CtaCptSoldeDébit(&quot;16*&quot;,&quot;17*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeCréditNm1(&quot;16*&quot;,&quot;17*&quot;)-CtaCptSoldeDébitNm1(&quot;16*&quot;,&quot;17*&quot;)</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">         TOTAL I</Data></Cell>
+    <Cell ss:StyleID="s82"><Data ss:Type="String">=CtaCptSolde(&quot;201*&quot;,&quot;27*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">=-CtaCptSolde(&quot;280*&quot;,&quot;2869*&quot;)-CtaCptSolde(&quot;290*&quot;,&quot;2969*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">=CtaCptSolde(&quot;20*&quot;,&quot;27*&quot;)-(-CtaCptSolde(&quot;280*&quot;,&quot;2869*&quot;)-CtaCptSolde(&quot;290*&quot;,&quot;2969*&quot;))</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">=CtaCptSoldeNm1(&quot;20*&quot;,&quot;27*&quot;)-(-CtaCptSoldeNm1(&quot;280*&quot;,&quot;2869*&quot;)-CtaCptSoldeNm1(&quot;290*&quot;,&quot;2969*&quot;))</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">Liaison interne *18*</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">=[R170.EtLoc]=CtaCptSoldeCrédit(&quot;18*&quot;)-CtaCptSoldeDébit(&quot;18*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeCréditNm1(&quot;18*&quot;)-CtaCptSoldeDébitNm1(&quot;18*&quot;)</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s84"><Data ss:Type="String">Actif circulant :</Data></Cell>
+    <Cell ss:StyleID="s85"/>
+    <Cell ss:StyleID="s85"/>
+    <Cell ss:StyleID="s85"/>
+    <Cell ss:StyleID="s85"/>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Prov fin + banq créditrices *19*</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">=[R171.EtLoc]=CtaCptSolde(&quot;19*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s127"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeNm1(&quot;19*&quot;)</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">     Marchandises *31*39*</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">=CtaCptSoldeDébit(&quot;3*&quot;,&quot;39*&quot;)-CtaCptSoldeCrédit(&quot;3*&quot;,&quot;39*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s89"/>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">=CtaCptSoldeDébit(&quot;3*&quot;,&quot;39*&quot;)-CtaCptSoldeCrédit(&quot;3*&quot;,&quot;39*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">=CtaCptSoldeDébitNm1(&quot;3*&quot;,&quot;39*&quot;)-CtaCptSoldeCréditNm1(&quot;3*&quot;,&quot;39*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s85"/>
+    <Cell ss:StyleID="s85"/>
+    <Cell ss:StyleID="s85"/>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Stoks 31</Data></Cell>
+    <Cell ss:StyleID="s123"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeDébit(&quot;31*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s92"/>
+    <Cell ss:StyleID="s123"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeDébit(&quot;31*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s93"><Data ss:Type="String">=CtaCptSoldeDébitNm1(&quot;31*&quot;)-CtaCptSoldeCréditNm1(&quot;3*&quot;,&quot;39*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s94"/>
+    <Cell ss:StyleID="s94"/>
+    <Cell ss:StyleID="s94"/>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Stoks 32</Data></Cell>
+    <Cell ss:StyleID="s123"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeDébit(&quot;32*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s92"/>
+    <Cell ss:StyleID="s123"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeDébit(&quot;32*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s123"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeDébitNm1(&quot;32*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s94"><Data ss:Type="String">   </Data></Cell>
+    <Cell ss:StyleID="s94"/>
+    <Cell ss:StyleID="s94"/>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Stoks 33</Data></Cell>
+    <Cell ss:StyleID="s123"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeDébit(&quot;33*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s92"/>
+    <Cell ss:StyleID="s123"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeDébit(&quot;33*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s123"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeDébitNm1(&quot;33*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s95"><Data ss:Type="String">          TOTAL I</Data></Cell>
+    <Cell ss:StyleID="s94"><Data ss:Type="String">=[R201.EtLoc]=[R120.EtLoc]+[R130.EtLoc]+[R140.EtLoc]+[R150.EtLoc]+[R152.EtLoc]+[R153.EtLoc]+[R170.EtLoc]+[R171.EtLoc]</Data></Cell>
+    <Cell ss:StyleID="s96"><Data ss:Type="String">=-CtaCptSoldeNm1(&quot;10*&quot;,&quot;19*&quot;)</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Stoks 36</Data></Cell>
+    <Cell ss:StyleID="s123"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeDébit(&quot;36*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s92"/>
+    <Cell ss:StyleID="s123"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeDébit(&quot;36*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s123"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeDébitNm1(&quot;36*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s97"/>
+    <Cell ss:StyleID="s97"/>
+    <Cell ss:StyleID="s97"/>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s98"><Data ss:Type="String">Stoks 38</Data></Cell>
+    <Cell ss:StyleID="s124"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeDébit(&quot;38*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s100"/>
+    <Cell ss:StyleID="s124"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeDébit(&quot;38*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s124"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeDébitNm1(&quot;38*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s97"/>
+    <Cell ss:StyleID="s97"/>
+    <Cell ss:StyleID="s97"/>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s97"/>
+    <Cell ss:StyleID="s97"/>
+    <Cell ss:StyleID="s97"/>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s101"><Data ss:Type="String">    Frs avaces versées *40*</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeDébit(&quot;40*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s78"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeDébit(&quot;40*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeDébitNm1(&quot;40*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s101"><Data ss:Type="String">Fournisseurs *40</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeCrédit(&quot;40*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeCréditNm1(&quot;40*&quot;)</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s102"><Data ss:Type="String">Client débiteurs *411*</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeDébit(&quot;41*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s78"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeDébit(&quot;41*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeDébitNm1(&quot;41*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s102"><Data ss:Type="String">Clients créditeurs *411</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeCrédit(&quot;41*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeCréditNm1(&quot;41*&quot;)</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Personel (Débiteurs *42*)</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeDébit(&quot;42*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s78"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeDébit(&quot;42*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeDébitNm1(&quot;42*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Personel (crédit42*)</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeCrédit(&quot;42*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeCréditNm1(&quot;42*&quot;)</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">CNSS débiteur &quot;43*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeDébit(&quot;43*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s78"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeDébit(&quot;43*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeDébitNm1(&quot;43*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">CNSS et Autres crédit(&quot;43*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeCrédit(&quot;43*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeCréditNm1(&quot;43*&quot;)</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s105"><Data ss:Type="String">IUTS -TPA -TVA *44*45* débiteurs</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeDébit(&quot;44*&quot;,&quot;45*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s106"><Data ss:Type="String">=CtaCptSoldeDébit(&quot;44*&quot;,&quot;45*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">=CtaCptSoldeDébitNm1(&quot;44*&quot;,&quot;45*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s107"><Data ss:Type="String">IUTS -TPA -TVA *44*45* Créditeur</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">=CtaCptSoldeCrédit(&quot;44*&quot;,&quot;45*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">=CtaCptSoldeCréditNm1(&quot;44*&quot;,&quot;45*&quot;)</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s108"><Data ss:Type="String">Débiteurs divers *46*</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeDébit(&quot;46*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s106"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeDébit(&quot;46*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeDébitNm1(&quot;46*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s108"><Data ss:Type="String">Créditeurs divers  *46*</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeCrédit(&quot;46*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String" x:Ticked="1">=CtaCptSoldeCréditNm1(&quot;46*&quot;)</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s108"><Data ss:Type="String">HAO -Débiteurs divers *47*49*</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">=CtaCptSoldeDébit(&quot;47*&quot;,&quot;49*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s106"><Data ss:Type="String">=CtaCptSoldeDébit(&quot;47*&quot;,&quot;49*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">=CtaCptSoldeDébitNm1(&quot;47*&quot;,&quot;49*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s108"><Data ss:Type="String">HAO-Créditeurs divers  *47*49*</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">=CtaCptSoldeCrédit(&quot;47*&quot;,&quot;49*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">=CtaCptSoldeCréditNm1(&quot;47*&quot;,&quot;49*&quot;)</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s109"><Data ss:Type="String">Banq débitrices(50 ,56)</Data></Cell>
+    <Cell ss:StyleID="s110"><Data ss:Type="String">=CtaCptSoldeDébit(&quot;50*&quot;,&quot;56*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">=CtaCptSoldeDébit(&quot;50*&quot;,&quot;56*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">=CtaCptSoldeDébitNm1(&quot;50*&quot;,&quot;56*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s109"><Data ss:Type="String"> banq créditrices *50-56*</Data></Cell>
+    <Cell ss:StyleID="s110"><Data ss:Type="String">=CtaCptSoldeCrédit(&quot;50*&quot;,&quot;56*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">=CtaCptSoldeCréditNm1(&quot;50*&quot;,&quot;56*&quot;)</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s109"><Data ss:Type="String">Caisse  débitrice 57 ,59</Data></Cell>
+    <Cell ss:StyleID="s110"><Data ss:Type="String">=CtaCptSoldeDébit(&quot;57*&quot;,&quot;59*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">=CtaCptSoldeDébit(&quot;57*&quot;,&quot;59*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">=CtaCptSoldeDébitNm1(&quot;57*&quot;,&quot;59*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s109"><Data ss:Type="String"> caisse créditrices **57*59*</Data></Cell>
+    <Cell ss:StyleID="s110"><Data ss:Type="String">=CtaCptSoldeCrédit(&quot;57*&quot;,&quot;59*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">=CtaCptSoldeCréditNm1(&quot;57*&quot;,&quot;59*&quot;)</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s97"><Data ss:Type="String">2 112 856 004</Data></Cell>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"/>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s111"><Data ss:Type="String">         TOTAL II</Data></Cell>
+    <Cell ss:StyleID="s112"><Data ss:Type="String">=CtaCptSoldeDébit(&quot;4*&quot;,&quot;59*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s98"/>
+    <Cell ss:StyleID="s112"><Data ss:Type="String">=CtaCptSoldeDébit(&quot;4*&quot;,&quot;59*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s112"><Data ss:Type="String">=CtaCptSoldeDébitNm1(&quot;4*&quot;,&quot;59*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s113"><Data ss:Type="String">          TOTAL II</Data></Cell>
+    <Cell ss:StyleID="s114"><Data ss:Type="String">=CtaCptSoldeCrédit(&quot;4*&quot;,&quot;59*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s114"><Data ss:Type="String">=CtaCptSoldeCréditNm1(&quot;4*&quot;,&quot;59*&quot;)</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s111"><Data ss:Type="String">TOTAL GENERAL (I+II+III)</Data></Cell>
+    <Cell ss:StyleID="s112"><Data ss:Type="String">=CtaCptSoldeDébit(&quot;20*&quot;,&quot;59*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">=-CtaCptSolde(&quot;280*&quot;,&quot;2869*&quot;)-CtaCptSolde(&quot;290*&quot;,&quot;2969*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">=CtaCptSoldeDébit(&quot;201*&quot;,&quot;59*&quot;)-(-CtaCptSolde(&quot;280*&quot;,&quot;2869*&quot;)-CtaCptSolde(&quot;290*&quot;,&quot;2969*&quot;))</Data></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">=CtaCptSoldeDébitNm1(&quot;201*&quot;,&quot;59*&quot;)-CtaCptSoldeDébitNm1(&quot;28*&quot;,&quot;29*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s113"><Data ss:Type="String">TOTAL GENERAL (I+II+III+IV)</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">=[R200.EtLoc]=[R201.EtLoc]+CtaCptSoldeCrédit(&quot;4*&quot;,&quot;59*&quot;)</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">=-CtaCptSoldeNm1(&quot;10*&quot;,&quot;19*&quot;)+CtaCptSoldeCréditNm1(&quot;4*&quot;,&quot;59*&quot;)</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s118"/>
+    <Cell ss:StyleID="s97"/>
+    <Cell ss:StyleID="s97"/>
+    <Cell ss:StyleID="s97"/>
+    <Cell ss:StyleID="s97"/>
+    <Cell ss:StyleID="s118"/>
+    <Cell ss:StyleID="s97"/>
+    <Cell ss:StyleID="s97"/>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.4921259845"/>
+    <Footer x:Margin="0.4921259845"/>
+    <PageMargins x:Bottom="0.984251969" x:Left="0.78740157499999996"
+     x:Right="0.78740157499999996" x:Top="0.984251969"/>
+   </PageSetup>
+   <Selected/>
+   <TopRowVisible>20</TopRowVisible>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>37</ActiveRow>
+     <ActiveCol>5</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+</Workbook>
