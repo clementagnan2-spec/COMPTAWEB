@@ -71,6 +71,18 @@ def login_required(view):
     def wrapped(*args, **kwargs):
         if "user" not in session:
             return redirect(url_for("login", next=request.path))
+        # Vérifie que l'utilisateur de la session existe toujours réellement
+        # en base — nécessaire tant qu'il n'y a pas de disque persistant : un
+        # redémarrage du serveur vide la base, mais la session (cookie signé
+        # côté navigateur) survit, elle, au redémarrage. Sans ce contrôle, on
+        # se retrouve « connecté » selon le cookie face à une base vide —
+        # écrans incohérents (ex. « Aucun utilisateur » dans Utilisateurs).
+        db = get_db()
+        ids_valides = {u["id"] for u in core.list_utilisateurs(db)}
+        if session["user"].get("id") not in ids_valides:
+            session.clear()
+            flash("Votre session n'était plus valide (le serveur a redémarré) — reconnectez-vous.", "error")
+            return redirect(url_for("login", next=request.path))
         return view(*args, **kwargs)
     return wrapped
 

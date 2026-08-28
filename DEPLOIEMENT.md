@@ -397,3 +397,22 @@ dans le code source ; le site étant public sur Internet (pas seulement
 en local), **changez ce mot de passe dans ADMIN > Utilisateurs dès que
 vous saisissez de vraies données**, et envisagez d'activer le disque
 persistant à ce moment-là pour ne plus dépendre de ce mécanisme.
+
+## Correctif — Session incohérente après redémarrage (« Aucun utilisateur »)
+
+Bug trouvé en conditions réelles : sans disque persistant, un
+redémarrage du serveur vide la base de données, mais la session de
+connexion (cookie signé, stockée côté navigateur) survit, elle, au
+redémarrage — on se retrouvait donc « connecté » selon l'écran, face à
+une base réellement vide (écran Utilisateurs affichant "Aucun
+utilisateur" alors que la barre latérale montrait un utilisateur
+connecté).
+
+**Corrigé** : chaque page vérifie maintenant que l'utilisateur de la
+session existe *réellement* en base à chaque requête. Si ce n'est plus
+le cas (session périmée par un redémarrage), l'utilisateur est
+proprement déconnecté avec un message explicite, puis redirigé vers la
+connexion — où le compte admin/1234 par défaut est recréé
+automatiquement au même moment. Testé de bout en bout en simulant un
+vrai redémarrage de processus (comme un redéploiement Render) avec
+l'ancien cookie de session.

@@ -8226,86 +8226,6 @@ def compute_balance_agee(conn, seuils=(30, 60, 90), date_reference=None):
     return sorted(par_client.values(), key=lambda c: -c["total"])
 
 
-def compute_arrete_comptes(conn, date_arrete=None, exercice=None):
-    """Tableau de vérification avant clôture (« arrêté de comptes ») —
-    rassemble en un seul appel les contrôles habituels de fin de période :
-    comptes fournisseurs (soldes anormaux), factures fournisseurs non
-    parvenues (livraison reçue sans facture correspondante), balance âgée
-    clients, rapprochements bancaires (écart pointé/comptable), impôts et
-    charges sociales (soldes 43x/44x/447x), engagements en retard
-    (livraison/paiement), et statut de la paie de la dernière période
-    saisie. Ne modifie rien — uniquement un état des lieux à une date
-    donnée (aujourd'hui par défaut)."""
-    date_arrete = date_arrete or date.today().strftime("%Y-%m-%d")
-    exercice = exercice or get_current_exercice(conn)
-
-    # 1. Comptes fournisseurs : solde de chaque compte 40x, anomalie si
-    #    solde DÉBITEUR (un fournisseur ne devrait normalement pas nous
-    #    devoir de l'argent, sauf avance versée).
-    balance = compute_balance(conn, only_with_movement=True, exercice=exercice)
-    fournisseurs_comptes = [b for b in balance if b["code"].startswith("40")]
-    fournisseurs_anomalies = [b for b in fournisseurs_comptes if b["solde_cloture"] > 0.01]
-
-    # 2. Factures fournisseurs non parvenues : commande livrée
-    #    (date_livraison_reelle renseignée) mais AUCUNE facture d'achat
-    #    n'a jamais été saisie pour ce fournisseur depuis la commande —
-    #    signal à vérifier manuellement, pas une détection garantie à 100%
-    #    (aucun lien direct commande <-> facture dans le modèle de données).
-    commandes = list_commandes(conn)
-    factures_achat_par_fournisseur = {}
-    for f in list_factures_achat(conn):
-        factures_achat_par_fournisseur.setdefault(f["fournisseur_code"], []).append(f["date_facture"])
-    factures_non_parvenues = []
-    for c in commandes:
-        if not c["date_livraison_reelle"]:
-            continue
-        dates_factures = factures_achat_par_fournisseur.get(c["fournisseur_code"], [])
-        a_une_facture_apres = any(d and d >= c["date_commande"] for d in dates_factures)
-        if not a_une_facture_apres:
-            factures_non_parvenues.append(c)
-
-    # 3. Balance âgée clients (impayés)
-    clients_balance_agee = compute_balance_agee(conn, date_reference=date_arrete)
-
-    # 4. Rapprochements bancaires : pour chaque compte 52x, solde
-    #    comptable vs total des mouvements pointés — l'écart doit
-    #    correspondre aux mouvements non encore retrouvés sur le relevé.
-    banques = compute_comptes_prefixe_periode(conn, "52", date_to=date_arrete, exercice=exercice)
-    rapprochements = [{
-        "compte": b["code"], "libelle": b["label"], "solde_comptable": b["solde_fin_periode"],
-    } for b in banques]
-
-    # 5. Impôts et charges sociales : soldes des comptes TVA (443/444),
-    #    IUTS/retenues (447), CNSS (43) à la date d'arrêté.
-    impots = (compute_comptes_prefixe_periode(conn, "443", date_to=date_arrete, exercice=exercice)
-              + compute_comptes_prefixe_periode(conn, "444", date_to=date_arrete, exercice=exercice)
-              + compute_comptes_prefixe_periode(conn, "447", date_to=date_arrete, exercice=exercice))
-    charges_sociales = compute_comptes_prefixe_periode(conn, "43", date_to=date_arrete, exercice=exercice)
-
-    # 6. Situation des engagements : commandes fournisseurs et factures
-    #    clients en dépassement de délai (livraison ou paiement).
-    engagements_fournisseurs_retard = [c for c in commandes
-                                        if c["depassement_livraison"] or c["depassement_paiement"]]
-    factures_clients_retard = [f for f in list_factures(conn) if f["depassement"]]
-
-    # 7. Statut de la paie : les 3 dernières périodes distinctes saisies,
-    #    validées ou non.
-    periodes = sorted({b["periode"] for b in list_bulletins_paie(conn)}, reverse=True)[:3]
-    paie_statuts = [{"periode": p, "validee": est_periode_paie_validee(conn, p)} for p in periodes]
-
-    return {
-        "date_arrete": date_arrete, "exercice": exercice,
-        "fournisseurs": {"comptes": fournisseurs_comptes, "anomalies": fournisseurs_anomalies},
-        "factures_non_parvenues": factures_non_parvenues,
-        "clients_balance_agee": clients_balance_agee,
-        "rapprochements_bancaires": rapprochements,
-        "impots": impots, "charges_sociales": charges_sociales,
-        "engagements_fournisseurs_retard": engagements_fournisseurs_retard,
-        "factures_clients_retard": factures_clients_retard,
-        "paie_statuts": paie_statuts,
-    }
-
-
 # ---------------------------------------------------------------------------
 # Synchronisation (menu PARAMÈTRES) — revérifie/répare la structure de
 # toutes les tables de la base (utile après une mise à jour du logiciel qui
@@ -8354,8 +8274,7 @@ MENU_STRUCTURE = [
     ("RAPPORTS FINANCIERS", [("Grand livre", "grand_livre"), ("Balance", "balance"),
                              ("Bilan SYSCOHADA", "bilan_syscohada"),
                              ("Compte de résultat (SIG)", "compte_resultat_sig"), ("TFT", "tft"),
-                             ("Situation financière", "situation_financiere"),
-                             ("Arrêté de comptes", "arrete_comptes")]),
+                             ("Situation financière", "situation_financiere")]),
     ("ENGAGEMENTS-PROJETS", [("Fournisseurs", "fournisseurs"), ("Contrats", "contrats"),
                               ("Expression de besoin", "expression_besoin"),
                               ("Bon de commande", "ep_bon_commande"),
@@ -8412,9 +8331,9 @@ def ajouter_niveaux_acces_suggeres_menus(conn):
     tous = [key for _titre, items in MENU_STRUCTURE for _label, key in items]
 
     comptable_menus = ["saisie", "ouverture", "grand_livre", "balance", "bilan_syscohada",
-                        "compte_resultat_sig", "tft", "situation_financiere", "arrete_comptes",
-                        "tresorerie", "exercices", "plan_comptable", "plan_analytique",
-                        "plan_budgetaire", "plan_bailleur", "synchronisation"]
+                        "compte_resultat_sig", "tft", "situation_financiere", "tresorerie",
+                        "exercices", "plan_comptable", "plan_analytique", "plan_budgetaire",
+                        "plan_bailleur", "synchronisation"]
     vendeur_menus = ["clients", "recouvrement", "facturation", "stocks", "marges"]
     charge_achats_menus = ["fournisseurs", "contrats", "expression_besoin", "ep_bon_commande",
                             "bordereau_livraison", "reglements"]
